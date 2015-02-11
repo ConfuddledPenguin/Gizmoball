@@ -121,6 +121,35 @@ public class GUI {
 
 	}
 
+	private JMenu createFileMenu() {
+
+		JMenu menuList = new JMenu("Menu");
+
+		JMenuItem LoadButton = new JMenuItem("Load");
+		LoadButton.addActionListener(controller);
+		menuList.add(LoadButton);
+
+		JMenuItem ReloadButton = new JMenuItem("Reload");
+		ReloadButton.addActionListener(controller);
+		menuList.add(ReloadButton);
+
+		JMenuItem ModeButton;
+
+		if (this.mode == 'b')
+			ModeButton = new JMenuItem("Run Mode");
+		else
+			ModeButton = new JMenuItem("Build Mode");
+
+		ModeButton.addActionListener(controller);
+		menuList.add(ModeButton);
+
+		JMenuItem QuitButton = new JMenuItem("Quit");
+		QuitButton.addActionListener(controller);
+		menuList.add(QuitButton);
+
+		return menuList;
+	}
+	
 	private JMenu createSettingsMenu() {
 
 		JMenu menuList = new JMenu("Settings");
@@ -168,55 +197,64 @@ public class GUI {
 	}
 
 	private JMenu createBuildMenu() {
-
+		
 		JMenu menuList = new JMenu("Build");
 
-		JMenuItem AddGizmo = new JMenuItem("Add Gizmo");
-		AddGizmo.addActionListener(controller);
-		menuList.add(AddGizmo);
+		menuList.add(createGizmoMenu());
 
 		JMenuItem AddBall = new JMenuItem("Add Ball");
 		AddBall.addActionListener(controller);
 		menuList.add(AddBall);
 
-		JMenuItem AddFlipper = new JMenuItem("Add Flipper");
-		AddFlipper.addActionListener(controller);
-		menuList.add(AddFlipper);
+		menuList.add(createFlipperMenu());
 
-		JMenuItem AddAbsorber = new JMenuItem("AddAbsorber");
+		JMenuItem AddAbsorber = new JMenuItem("Add Absorber");
 		AddAbsorber.addActionListener(controller);
 		menuList.add(AddAbsorber);
 
 		return menuList;
 	}
-
-	private JMenu createFileMenu() {
-
-		JMenu menuList = new JMenu("Menu");
-
-		JMenuItem LoadButton = new JMenuItem("Load");
-		LoadButton.addActionListener(controller);
-		menuList.add(LoadButton);
-
-		JMenuItem ReloadButton = new JMenuItem("Reload");
-		ReloadButton.addActionListener(controller);
-		menuList.add(ReloadButton);
-
-		JMenuItem ModeButton;
-
-		if (this.mode == 'b')
-			ModeButton = new JMenuItem("Run Mode");
-		else
-			ModeButton = new JMenuItem("Build Mode");
-
-		ModeButton.addActionListener(controller);
-		menuList.add(ModeButton);
-
-		JMenuItem QuitButton = new JMenuItem("Quit");
-		QuitButton.addActionListener(controller);
-		menuList.add(QuitButton);
-
-		return menuList;
+	
+	private JMenu createGizmoMenu(){
+	
+		JMenu AddGizmo = new JMenu("AddGizmo");
+		
+		JMenuItem AddSqaure = new JMenuItem("Square");
+		AddSqaure.addActionListener(controller);
+		AddGizmo.add(AddSqaure);
+		
+		JMenuItem AddCircle = new JMenuItem("Circle");
+		AddCircle.addActionListener(controller);
+		AddGizmo.add(AddCircle);	
+		
+		JMenu addTriangle = new JMenu("Triangle");
+		
+		JMenuItem leftTriangle = new JMenuItem("Left Triangle");
+		leftTriangle.addActionListener(controller);
+		addTriangle.add(leftTriangle);
+		
+		JMenuItem rightTriangle = new JMenuItem("Right Triangle");
+		rightTriangle.addActionListener(controller);
+		addTriangle.add(rightTriangle);
+		
+		AddGizmo.add(addTriangle);
+		
+		return AddGizmo;
+	}
+	
+	private JMenu createFlipperMenu(){
+		
+		JMenu flipperMenu = new JMenu("Add Flipper");
+		
+		JMenuItem Left = new JMenuItem("Left Flipper");
+		Left.addActionListener(controller);
+		flipperMenu.add(Left);
+		
+		JMenuItem Right = new JMenuItem("Right Flipper");
+		Right.addActionListener(controller);
+		flipperMenu.add(Right);	
+		
+		return flipperMenu;
 	}
 
 	public String switchMode() {
