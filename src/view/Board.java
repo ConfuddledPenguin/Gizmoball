@@ -37,9 +37,33 @@ public  class Board extends JPanel implements Observer, IView {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	}
-
+	
+	private void addGizmo(){
+		
+	}
+	
+	private void addBall(){
+		
+	}
+	
+	private void addFlipper(){
+		
+	}
+	
+	private void addAbsorber(){
+		
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		
+		/*if(arg instanceof Gizmo)
+			addGizmo(arg);
+		else if(arg instanceof Ball)
+			addBall(arg);
+		else if(arg instanceof Flipper)
+			addFlipper(arg);
+		else if(arg instanceof Absorber)
+			addAbsorber(arg);*/
 	}
 }
