@@ -5,6 +5,9 @@ import interfaces.IView;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,20 +15,21 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Model;
+import model.gizmos.IGizmo;
 
 public  class Board extends JPanel implements Observer, IView {
 
 	private static final long serialVersionUID = 1L;
 	protected int width;
 	protected int height;
-
+	protected List<IGizmo> gizmoList;
+	
 	public Board(int w, int h, Model m) {
 		
 		width = w;
 		height = h;
-		
+		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
-		
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
 	}
@@ -36,34 +40,22 @@ public  class Board extends JPanel implements Observer, IView {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-	}
-	
-	private void addGizmo(){
 		
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(new Color(0,0,255));
+		if(!gizmoList.isEmpty()){
+			for (IGizmo gizmo : gizmoList){
+				g2.fillRect(gizmo.getPos().x, gizmo.getPos().y,gizmo.getWidth(),gizmo.getHeight());
+			}
 	}
-	
-	private void addBall(){
-		
-	}
-	
-	private void addFlipper(){
-		
-	}
-	
-	private void addAbsorber(){
-		
-	}
+}
 	
 	@Override
 	public void update(Observable o, Object arg) {
+	
+		if (arg instanceof IGizmo)
+			gizmoList.add((IGizmo)arg);
 		
-		/*if(arg instanceof Gizmo)
-			addGizmo(arg);
-		else if(arg instanceof Ball)
-			addBall(arg);
-		else if(arg instanceof Flipper)
-			addFlipper(arg);
-		else if(arg instanceof Absorber)
-			addAbsorber(arg);*/
+		repaint();
 	}
 }

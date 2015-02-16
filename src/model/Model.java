@@ -1,8 +1,8 @@
 package model;
 
-import java.util.Observable;
-
 import interfaces.IModel;
+
+import java.util.Observable;
 
 public class Model extends Observable implements IModel {
 	

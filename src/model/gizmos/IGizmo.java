@@ -66,5 +66,4 @@ public interface IGizmo {
 	 * @return The height
 	 */
 	int getHeight();
-	
 }

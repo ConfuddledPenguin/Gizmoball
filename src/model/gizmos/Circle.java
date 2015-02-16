@@ -11,5 +11,5 @@ public class Circle extends Gizmo {
 		
 		triggerConnections();
 	}
-
+	
 }
