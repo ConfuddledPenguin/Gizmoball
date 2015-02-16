@@ -2,14 +2,14 @@ package model.gizmos;
 
 public class Triangle extends Gizmo{
 
-	public Triangle() {
-		// TODO Auto-generated constructor stub
+	public Triangle(int x, int y) {
+		super(x, y, 1, 1, Gizmo.Type.Triangle);
 	}
 	
 	@Override
 	public void trigger() {
-		// TODO Auto-generated method stub
 		
+		triggerConnections();
 	}
 
 }

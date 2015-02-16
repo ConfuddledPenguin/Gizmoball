@@ -2,14 +2,14 @@ package model.gizmos;
 
 public class Circle extends Gizmo {
 
-	public Circle() {
-		// TODO Auto-generated constructor stub
+	public Circle(int x, int y) {
+		super(x, y, 1, 1, Gizmo.Type.Circle);
 	}
 	
 	@Override
 	public void trigger() {
-		// TODO Auto-generated method stub
 		
+		triggerConnections();
 	}
 
 }
