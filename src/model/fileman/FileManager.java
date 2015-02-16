@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import model.Board;
+import model.exceptions.GridPosAlreadyTakenException;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
 import model.gizmos.Gizmo;
@@ -41,6 +44,7 @@ public class FileManager {
 	public void load(File file) throws FileNotFoundException, IOException {
 	
 		Map<String, IGizmo> gizmos = new HashMap<String, IGizmo>();
+		Board board = new Board();
 		
 		LineNumberReader reader = new LineNumberReader(new FileReader(file));
 		
@@ -55,36 +59,44 @@ public class FileManager {
 			}
 			String token = st.nextToken();
 			
+			String name;
 			switch (token) {
 				case "Rotate":
 					System.out.println("Rotate");
+					//TODO
 					continue;
 				case "Delete":
-					System.out.println("Delete");
+					name = st.nextToken();
+					IGizmo r = gizmos.remove(name);
+					board.removeGizmo(r);
 					continue;
 				case "Move":
 					System.out.println("Move");
+					//TODO
 					continue;
 				case "Connect":
-					System.out.println("Connect");
+					name = st.nextToken();
+					String name2 = st.nextToken();
+					IGizmo g = gizmos.get(name);
+					g.connection(gizmos.get(name2));
 					continue;
 				case "KeyConnect":
 					System.out.println("Key Connect");
+					//TODO
 					continue;
 				case "Gravity":
 					token = st.nextToken();
 					float value = Float.parseFloat(token);
-					System.out.println("Gravity " + value);
 					continue;
 				case "Friction":
 					token = st.nextToken();
 					float mu = Float.parseFloat(token);
 					token = st.nextToken();
 					float mu2 = Float.parseFloat(token);
-					System.out.println("Friction " + mu + " " + mu2);
 					continue;
 				case "Ball":
 					System.out.println("Ball");
+					//TODO
 					continue;
 					
 			}
@@ -97,8 +109,7 @@ public class FileManager {
 				return;
 			}
 			
-			
-			String name;
+			//+using vars from above
 			String xstring;
 			String ystring;
 			int x;
@@ -115,6 +126,12 @@ public class FileManager {
 					y = Integer.parseInt(ystring);
 					g = new Circle(x, y);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 					
 				case Square:
@@ -126,6 +143,12 @@ public class FileManager {
 					y = Integer.parseInt(ystring);
 					g = new Square(x, y);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 					
 				case Absorber:
@@ -136,11 +159,17 @@ public class FileManager {
 					ystring = st.nextToken();
 					y = Integer.parseInt(ystring);
 					String x2string = st.nextToken();
-					int x2 = Integer.parseInt(xstring);
+					int x2 = Integer.parseInt(x2string);
 					String y2string = st.nextToken();
-					int y2 = Integer.parseInt(ystring);
+					int y2 = Integer.parseInt(y2string);
 					g = new Absorber(x, y, x2, y2);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 					
 				case Triangle:
@@ -152,6 +181,12 @@ public class FileManager {
 					y = Integer.parseInt(ystring);
 					g = new Triangle(x, y);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 					
 				case RightFlipper:
@@ -163,6 +198,12 @@ public class FileManager {
 					y = Integer.parseInt(ystring);
 					g = new RightFlipper(x, y);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 					
 				case LeftFlipper:
@@ -174,6 +215,12 @@ public class FileManager {
 					y = Integer.parseInt(ystring);
 					g = new LeftFlipper(x, y);
 					gizmos.put(name, g);
+					try {
+						board.addGizmo(g);
+					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					continue;
 			}
 		}

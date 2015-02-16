@@ -33,15 +33,17 @@ public class Board {
 		int height = g.getWidth();
 		
 		//check if in bounds
-		if(x + width >= Global.BOARDWIDTH || y + height >= Global.BOARDHEIGHT){
+		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
+			System.out.println("x: " + x + " y: " + y);
+			System.out.println("x: " + (x+width) + " y: " + (y+width));
 			throw new InvalidGridPosException("Position: " + x + ":" + y + 
 					"is invalid. Please ensure Grid position is viable.");
 		}
 		
 		//check if already filled
 		for(int i = x; i < width; i++){
-			for (int i1 = y; i1 < height; i++){
-				if(grid[i][i1]){
+			for (int j = y; j < height; j++){
+				if(grid[i][j]){
 					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
 					"is already taken");
 				}
@@ -52,9 +54,10 @@ public class Board {
 		gizmos.add(g);
 		
 		//mark as taken
-		for(int i = 0; i < width; i++){
-			for (int i1 = 0; i1 < height; i++){
-				grid[i1][i] = true;
+		for(int i = x; i < width + x - 1; i++){
+			for (int j = y; j < height + y - 1; j++){
+				System.out.flush();
+				grid[i][j] = true;
 			}
 		}
 	}//End addGizmo();
@@ -76,8 +79,8 @@ public class Board {
 		
 		//mark as empty
 		for(int i = x; i < width; i++){
-			for (int i1 = y; i1 < height; i++){
-				grid[i][i1] = false;
+			for (int j = y; j < height; j++){
+				grid[i][j] = false;
 			}
 		}
 	}
