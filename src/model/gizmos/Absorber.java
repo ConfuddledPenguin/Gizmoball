@@ -11,4 +11,5 @@ public class Absorber extends Gizmo {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

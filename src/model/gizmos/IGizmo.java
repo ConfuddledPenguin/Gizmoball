@@ -10,5 +10,4 @@ public interface IGizmo {
 	Point getPos();
 	int getWidth();
 	int getHeight();
-	
 }
