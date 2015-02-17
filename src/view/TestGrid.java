@@ -22,152 +22,175 @@ import model.gizmos.Circle;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import model.gizmos.Square;
+import model.gizmos.Triangle;
 
 public class TestGrid extends JPanel implements Observer {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4952517095084067303L;
 	private int columnCount = 30;
-    private int rowCount = 30;
-    private List<Rectangle> cells;
-    private Point selectedCell;
+	private int rowCount = 30;
+	private List<Rectangle> cells;
+	private Point selectedCell;
 	private List<IGizmo> gizmoList;
 	private static final int L = 20;
-	
-    public TestGrid(Model m) {
-        cells = new ArrayList<>(columnCount * rowCount);
-        gizmoList = new ArrayList<IGizmo>();
-        m.addObserver(this);
-        
-    	final JPopupMenu popup = new JPopupMenu();
-		JMenuItem jm1 = new JMenuItem("Add Gizmo");		
-        popup.add(jm1);
-        
-    	JMenuItem jm2 = new JMenuItem("Delete Gizmo");
-        popup.add(jm2);
-        
-        MouseAdapter mouseHandler;
-        mouseHandler = new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                Point point = e.getPoint();
 
-                int width = getWidth();
-                int height = getHeight();
+	public TestGrid(Model m) {
+		cells = new ArrayList<>(columnCount * rowCount);
+		gizmoList = new ArrayList<IGizmo>();
+		m.addObserver(this);
 
-                int cellWidth = width / columnCount;
-                int cellHeight = height / rowCount;
+		final JPopupMenu popup = new JPopupMenu();
+		JMenuItem jm1 = new JMenuItem("Add Gizmo");
+		popup.add(jm1);
 
-                int column = e.getX() / cellWidth;
-                int row = e.getY() / cellHeight;
+		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
+		popup.add(jm2);
 
-                selectedCell = new Point(column, row);
-                repaint();
+		MouseAdapter mouseHandler;
+		mouseHandler = new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				Point point = e.getPoint();
 
-            }
-            
-        };
-        addMouseMotionListener(mouseHandler);
-        addMouseListener( new MouseAdapter()	
-        {
-            public void mousePressed(MouseEvent e)
-            {
-                System.out.println("pressed");
-            }
+				int width = getWidth();
+				int height = getHeight();
 
-            public void mouseReleased(MouseEvent e)
-            {
-                if (e.isPopupTrigger())
-                {
-                    popup.show(e.getComponent(), e.getX(), e.getY());
-                }
-            }
-        });
-    
-        
-    
-    }
+				int cellWidth = width / columnCount;
+				int cellHeight = height / rowCount;
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(600, 600);
-    }
+				int column = e.getX() / cellWidth;
+				int row = e.getY() / cellHeight;
 
-    @Override
-    public void invalidate() {
-        cells.clear();
-        selectedCell = null;
-        super.invalidate();
-    }
+				selectedCell = new Point(column, row);
+				repaint();
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g.create();			
-			
-        int width = getWidth();
-        int height = getHeight();
+			}
 
-        int cellWidth = width / columnCount;
-        int cellHeight = height / rowCount;
+		};
+		addMouseMotionListener(mouseHandler);
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				System.out.println("pressed");
+			}
 
-        int xOffset = (width - (columnCount * cellWidth)) / 2;
-        int yOffset = (height - (rowCount * cellHeight)) / 2;
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					popup.show(e.getComponent(), e.getX(), e.getY());
+				}
+			}
+		});
 
-        if (cells.isEmpty()) {
-            for (int row = 0; row < rowCount; row++) {
-                for (int col = 0; col < columnCount; col++) {
-                    Rectangle cell = new Rectangle(
-                            xOffset + (col * cellWidth),
-                            yOffset + (row * cellHeight),
-                            cellWidth,
-                            cellHeight);
-                    cells.add(cell);
-                }
-            }
-        }
+	}
 
-        if (selectedCell != null) {
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(600, 600);
+	}
 
-            int index = selectedCell.x + (selectedCell.y * columnCount);
-            Rectangle cell = cells.get(index);
-            g2d.setColor(Color.YELLOW);
-            g2d.fill(cell);
+	@Override
+	public void invalidate() {
+		cells.clear();
+		selectedCell = null;
+		super.invalidate();
+	}
 
-        }
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D) g.create();
 
-        g2d.setColor(Color.GRAY);
-        for (Rectangle cell : cells) {
-            g2d.draw(cell);
-        }
+		int width = getWidth();
+		int height = getHeight();
+
+		int cellWidth = width / columnCount;
+		int cellHeight = height / rowCount;
+
+		int xOffset = (width - (columnCount * cellWidth)) / 2;
+		int yOffset = (height - (rowCount * cellHeight)) / 2;
+
+		if (cells.isEmpty()) {
+			for (int row = 0; row < rowCount; row++) {
+				for (int col = 0; col < columnCount; col++) {
+					Rectangle cell = new Rectangle(xOffset + (col * cellWidth),
+							yOffset + (row * cellHeight), cellWidth, cellHeight);
+					cells.add(cell);
+				}
+			}
+		}
+
+		if (selectedCell != null) {
+
+			int index = selectedCell.x + (selectedCell.y * columnCount);
+			Rectangle cell = cells.get(index);
+			g2d.setColor(Color.YELLOW);
+			g2d.fill(cell);
+
+		}
+
+		g2d.setColor(Color.GRAY);
+		for (Rectangle cell : cells) {
+			g2d.draw(cell);
+		}
 
 		g2d.setColor(Color.BLUE);
 
-		if(!gizmoList.isEmpty()){
-			for (int i=0; i < gizmoList.size(); i++){
+		if (!gizmoList.isEmpty()) {
+			for (int i = 0; i < gizmoList.size(); i++) {
 				IGizmo gizmo = gizmoList.get(i);
-				if(gizmo instanceof Square)
-					g2d.fillRect(gizmo.getXPos()*L,gizmo.getYPos()*L,gizmo.getWidth()*L,gizmo.getHeight()*L);
+				if (gizmo instanceof Square)
+					g2d.fillRect(gizmo.getXPos() * L, gizmo.getYPos() * L,
+							gizmo.getWidth() * L, gizmo.getHeight() * L);
 				else if (gizmo instanceof Circle)
-					g2d.fillOval(gizmo.getXPos()*L,gizmo.getYPos()*L,gizmo.getWidth()*L,gizmo.getHeight()*L);
-				
+					g2d.fillOval(gizmo.getXPos() * L, gizmo.getYPos() * L,
+							gizmo.getWidth() * L, gizmo.getHeight() * L);
+				else if (gizmo instanceof Triangle) {
+					if (((Triangle) gizmo).getOrientation() == 'L') {
+						g2d.fillPolygon(
+								new int[] {
+										gizmo.getXPos() * L,
+										gizmo.getXPos() * L,
+										gizmo.getXPos() * L + gizmo.getWidth()
+												* L },
+								new int[] {
+										gizmo.getYPos() * L,
+										gizmo.getYPos() * L + gizmo.getHeight()
+												* L,
+										gizmo.getYPos() * L + gizmo.getHeight()
+												* L }, 3);
+
+					}else if (((Triangle) gizmo).getOrientation() == 'R') {
+						g2d.fillPolygon(
+								new int[] {
+										gizmo.getXPos() * L + gizmo.getWidth() * L,
+										gizmo.getXPos() * L + gizmo.getWidth() * L ,
+										gizmo.getXPos() * L },
+								new int[] {
+										gizmo.getYPos() * L,
+										gizmo.getYPos() * L + gizmo.getHeight()
+												* L,
+										gizmo.getYPos() * L + gizmo.getHeight()
+												* L }, 3);
+
+					}
+				}
+
 			}
 		}
-        
-        g2d.dispose();
-        
-    }
-    	
+
+		g2d.dispose();
+
+	}
+
 	@Override
 	public void update(Observable o, Object arg) {
-	
-		if (arg instanceof IGizmo){
-			gizmoList.add((IGizmo)arg);
+
+		if (arg instanceof IGizmo) {
+			gizmoList.add((IGizmo) arg);
 		}
-		
+
 		repaint();
 	}
 }
-
