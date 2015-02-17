@@ -26,7 +26,7 @@ public class GUI {
 
 		this.model = m;
 		this.mode = mode;
-		this.board = new Board(500, 500, this.model);
+		this.board = new Board(600, 600, this.model);
 		this.model.addObserver(this.board);
 		this.controller = new Controller(this.model);
 		

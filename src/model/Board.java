@@ -25,7 +25,7 @@ public class Board {
 	 * @throws InvalidGridPosException Invalid grid position
 	 * @throws GridPosAlreadyTakenException Gird position already occupied
 	 */
-	public void addGizmo(IGizmo g){
+	public void addGizmo(IGizmo g) throws GridPosAlreadyTakenException, InvalidGridPosException {
 		checkArea(g);
 		
 		//add

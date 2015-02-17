@@ -179,6 +179,9 @@ public class FileManager {
 					x = Integer.parseInt(xstring);
 					ystring = st.nextToken();
 					y = Integer.parseInt(ystring);
+					//I've changed the triangle constuctor to accept a char value determining
+					//if its a left or right triangle. I'd edit your code to work but I dont
+					//want to break it. Love Andy xoxox
 					g = new Triangle(x, y);
 					gizmos.put(name, g);
 					try {
