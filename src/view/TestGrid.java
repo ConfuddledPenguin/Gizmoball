@@ -36,7 +36,8 @@ public class TestGrid extends JPanel implements Observer {
 	private Point selectedCell;
 	private List<IGizmo> gizmoList;
 	private static final int L = 20;
-
+	private Point clickedCell; // cell clicked by user
+	
 	public TestGrid(Model m) {
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
@@ -73,7 +74,30 @@ public class TestGrid extends JPanel implements Observer {
 		addMouseMotionListener(mouseHandler);
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				System.out.println("pressed");
+				Point point = e.getPoint();
+				
+				int width = getWidth();
+				int height = getHeight();
+				
+				int cellWidth = width / columnCount;
+				int cellHeight = height / rowCount;
+				
+				int column = e.getX() / cellWidth;
+				int row = e.getY() / cellHeight;
+				
+				if (clickedCell != null) {
+					if (clickedCell.x == column && clickedCell.y == row) {
+						// cell was already clicked so un-select it
+						clickedCell = null;
+					}
+					else {
+						clickedCell = new Point(column, row);
+					}
+				}
+				else {
+					clickedCell = new Point(column, row);
+				}
+				System.out.format("pressed column: %d, row: %d\n", column, row);
 			}
 
 			public void mouseReleased(MouseEvent e) {
@@ -122,12 +146,18 @@ public class TestGrid extends JPanel implements Observer {
 		}
 
 		if (selectedCell != null) {
-
 			int index = selectedCell.x + (selectedCell.y * columnCount);
 			Rectangle cell = cells.get(index);
 			g2d.setColor(Color.YELLOW);
 			g2d.fill(cell);
 
+		}
+		
+		if (clickedCell != null) {
+			int index = clickedCell.x + (clickedCell.y * columnCount);
+			Rectangle cell = cells.get(index);
+			g2d.setColor(Color.RED);
+			g2d.fill(cell);
 		}
 
 		g2d.setColor(Color.GRAY);
@@ -192,5 +222,13 @@ public class TestGrid extends JPanel implements Observer {
 		}
 
 		repaint();
+	}
+	
+	public Point getSelectedCell() {
+		return selectedCell;
+	}
+	
+	public Point getclickedCell() {
+		return clickedCell;
 	}
 }
