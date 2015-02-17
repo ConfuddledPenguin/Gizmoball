@@ -1,14 +1,5 @@
 package tests;
 
-import static org.junit.Assert.*;
-import model.Board;
-import model.exceptions.GridPosAlreadyTakenException;
-import model.exceptions.InvalidGridPosException;
-import model.gizmos.Circle;
-import model.gizmos.IGizmo;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class BoardTests {
 

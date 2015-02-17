@@ -182,7 +182,9 @@ public class FileManager {
 					//I've changed the triangle constuctor to accept a char value determining
 					//if its a left or right triangle. I'd edit your code to work but I dont
 					//want to break it. Love Andy xoxox
-					g = new Triangle(x, y);
+					// edit (Nathan): Seems the triangle class has been updated, so I've added a char in here:
+					// no errors now at least...
+					g = new Triangle(x, y, 'l');
 					gizmos.put(name, g);
 					try {
 						board.addGizmo(g);
