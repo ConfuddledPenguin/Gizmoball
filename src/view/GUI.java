@@ -63,9 +63,11 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container cp = frame.getContentPane();
+		
+		cp.add(new TestGrid(model), BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);
-		cp.add(board, BorderLayout.SOUTH);
+		//cp.add(board, BorderLayout.SOUTH);
 
 		frame.setResizable(false);
 		frame.pack();
