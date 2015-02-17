@@ -23,28 +23,24 @@ import model.gizmos.Triangle;
 
 /**
  * Responsible for loading and saving the files
+ * 
+ * This object is responsible for loading from the file and 
+ * creating new boards, as well as saving existing boards.
  */
-public class FileManager {	
-	
-//	public static void main(String[] args) {
-//		
-//		FileManager fm = new FileManager();
-//		
-//		File file = new File("res/test2.txt");
-//		
-//		try {
-//			fm.load(file);
-//		} catch (IOException e) {
-//			System.out.println("fuck");
-//			e.printStackTrace();
-//		} catch (IncorrectFileFormatException e) {
-//			System.out.println("Shit");
-//			e.printStackTrace();
-//		}
-//		
-//	}
+class FileManager {	
 
-	public Board load(IModel m, File file) throws FileNotFoundException, IOException, IncorrectFileFormatException {
+	/**
+	 * Loads the given file and returns the playable board,
+	 * while setting up the model for gameplay.
+	 *  
+	 * @param m The model we are loading into
+	 * @param file The file to load
+	 * @return The board
+	 * @throws FileNotFoundException File not found
+	 * @throws IOException Error reading file
+	 * @throws IncorrectFileFormatException File in incorrect format
+	 */
+	Board load(Model m, File file) throws FileNotFoundException, IOException, IncorrectFileFormatException {
 	
 		Map<String, IGizmo> gizmos = new HashMap<String, IGizmo>();
 		Board board = (Board) m.getBoard();
@@ -201,7 +197,7 @@ public class FileManager {
 					x = Integer.parseInt(xstring);
 					ystring = st.nextToken();
 					y = Integer.parseInt(ystring);
-					g = new Triangle(x, y);
+					g = new Triangle(x, y, 'x');
 					gizmos.put(name, g);
 					try {
 						board.addGizmo(g);

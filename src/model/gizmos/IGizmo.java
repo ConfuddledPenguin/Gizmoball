@@ -66,4 +66,13 @@ public interface IGizmo {
 	 * @return The height
 	 */
 	int getHeight();
+	
+	/**
+	 * Rotates the gizmo.
+	 * 
+	 * The gizmo has for positions, 0, 1, 2, 3 each
+	 * increment is at 90` clockwise to the last.
+	 * 
+	 */
+	void rotate();
 }
