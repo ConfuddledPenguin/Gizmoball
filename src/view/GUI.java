@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -21,6 +22,7 @@ public class GUI {
 	private Controller controller;
 	private char mode;
 	private Model model;
+	private TestGrid grid;
 
 	public GUI(char mode, Model m) {
 
@@ -28,7 +30,7 @@ public class GUI {
 		this.mode = mode;
 		this.board = new Board(600, 600, this.model);
 		this.model.addObserver(this.board);
-		this.controller = new Controller(this.model);
+		this.controller = new Controller(this.model, this);
 		
 		if (mode == 'r')
 			createAndShowRunGUI();
@@ -64,7 +66,8 @@ public class GUI {
 
 		Container cp = frame.getContentPane();
 		
-		cp.add(new TestGrid(model), BorderLayout.SOUTH);
+		grid = new TestGrid(model);
+		cp.add(grid, BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);
 		//cp.add(board, BorderLayout.SOUTH);
@@ -272,5 +275,11 @@ public class GUI {
 		}
 		
 		
+	}
+	public Point getClickedCell() {
+		Point cell = grid.getclickedCell();
+		if (cell == null)
+			return new Point(0,0);
+		return cell;
 	}
 }
