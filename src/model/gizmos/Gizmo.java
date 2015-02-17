@@ -10,6 +10,10 @@ import java.util.Set;
  */
 public abstract class Gizmo implements IGizmo {
 	
+	/**
+	 * Used to represent the type of gizmo
+	 *
+	 */
 	public enum Type{
 		Circle{
 			@Override
@@ -58,6 +62,7 @@ public abstract class Gizmo implements IGizmo {
 	protected int ycord;
 	protected int width;
 	protected int height;
+	protected int angle;
 	protected Type type;
 	
 	protected Set<IGizmo> connections = new HashSet<IGizmo>();
@@ -146,5 +151,13 @@ public abstract class Gizmo implements IGizmo {
 		
 		for(IGizmo g: connections)
 			g.trigger();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#rotate()
+	 */
+	public void rotate(){
+		angle = angle++ % 4;
 	}
 }

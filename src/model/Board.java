@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,76 +11,58 @@ import model.gizmos.*;
  * Represents the board the game is played on
  *
  */
-public class Board {
+public class Board implements IBoard {
 
 	/*
-	 * This a bad idea, but it works with little tought for now
+	 * This a bad idea, but it works with little thought for now
 	 */
 	private boolean[][] grid = new boolean[Global.BOARDHEIGHT][Global.BOARDWIDTH];
 	private Set<IGizmo> gizmos = new HashSet<IGizmo>();
 	
-	/**
-	 * Adds the gizmo to the board.
-	 * 
-	 * @param g The gizmo to add
-	 * @throws InvalidGridPosException Invalid grid position
-	 * @throws GridPosAlreadyTakenException Gird position already occupied
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBoard#addGizmo()
 	 */
-	public void addGizmo(IGizmo g) throws GridPosAlreadyTakenException, InvalidGridPosException {
-		checkArea(g);
-		
-		//add
-		gizmos.add(g);
-		
-		int x = g.getXPos();
-		int y = g.getYPos();
-		int width = g.getWidth();
-		int height = g.getWidth();		
-		
-		//mark as taken
-		for(int i = x; i < width + x; i++){
-			for (int j = y; j < height + y; j++){
-				System.out.flush();
-				grid[i][j] = true;
-			}
-		}
-	}//End addGizmo();
-	
-	
-	/**
-	 * Checks the area on the board.
-	 * 
-	 * @param g The gizmo to added.s
-	 */
-	private boolean checkArea(IGizmo g){
+	public void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
 		
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
 		int height = g.getWidth();
 		
+		//check if in bounds
+		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
+			System.out.println("x: " + x + " y: " + y);
+			System.out.println("x: " + (x+width) + " y: " + (y+width));
+			throw new InvalidGridPosException("Position: " + x + ":" + y + 
+					"is invalid. Please ensure Grid position is viable.");
+		}
 		
-		if (x < 30){//check if already filled
-			for(int i = x; i < x+width; i++){
-				for (int j = y; j < y+height; j++){
-					if(grid[i][j]){
-						g.setPos(x+1, y);
-						if(checkArea(g)) return true;
-						else{
-							g.setPos(0, y+1);
-							if(checkArea(g)) return true;
-						}
-					}
+		//check if already filled
+		for(int i = x; i < x + width; i++){
+			for (int j = y; j < y + height; j++){
+				if(grid[i][j]){
+					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
+					"is already taken");
 				}
 			}
-		return true;
-		}else return false;
-	}
+		}
+		
+		//add
+		gizmos.add(g);
+		
+		//mark as taken
+		for(int i = x; i < width + x - 1; i++){
+			for (int j = y; j < height + y - 1; j++){
+				System.out.flush();
+				grid[i][j] = true;
+			}
+		}
+	}//End addGizmo();
 	
-	/**
-	 * Remove the given gizmo from the board
-	 * 
-	 * @param g The gizmo to remove;
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBoard#removeGizmo()
 	 */
 	public void removeGizmo(IGizmo g){
 		
@@ -92,10 +75,20 @@ public class Board {
 		gizmos.remove(g);
 		
 		//mark as empty
-		for(int i = x; i < width; i++){
-			for (int j = y; j < height; j++){
+		for(int i = x; i < x + width; i++){
+			for (int j = y; j < y + height; j++){
 				grid[i][j] = false;
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBoard#getGizmos()
+	 */
+	@Override
+	public Set<IGizmo> getGizmos() {
+		
+		return Collections.unmodifiableSet(gizmos);
 	}
 }
