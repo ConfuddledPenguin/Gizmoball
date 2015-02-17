@@ -5,15 +5,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
 import model.Model;
 import controller.Controller;
 
@@ -21,7 +18,7 @@ public class GUI {
 
 	private JFrame frame;
 	private Board board;
-	private ActionListener controller;
+	private Controller controller;
 	private char mode;
 	private Model model;
 
@@ -85,25 +82,25 @@ public class GUI {
 		JButton button1 = new JButton("Start");
 		button1.setFont(gf);
 		button1.setMaximumSize(new Dimension(100, 100));
-		button1.addActionListener(controller);
+		button1.addActionListener(controller.getRunListener());
 		buttons.add(button1);
 
 		JButton button2 = new JButton("Step");
 		button2.setFont(gf);
 		button2.setMaximumSize(new Dimension(100, 100));
-		button2.addActionListener(controller);
+		button2.addActionListener(controller.getRunListener());
 		buttons.add(button2);
 
 		JButton button3 = new JButton("Restart");
 		button3.setFont(gf);
 		button3.setMaximumSize(new Dimension(100, 100));
-		button3.addActionListener(controller);
+		button3.addActionListener(controller.getRunListener());
 		buttons.add(button3);
 
 		JButton button4 = new JButton("Quit");
 		button4.setFont(gf);
 		button4.setMaximumSize(new Dimension(100, 100));
-		button4.addActionListener(controller);
+		button4.addActionListener(controller.getRunListener());
 		buttons.add(button4);
 
 		return buttons;
@@ -127,11 +124,11 @@ public class GUI {
 		JMenu menuList = new JMenu("Menu");
 
 		JMenuItem LoadButton = new JMenuItem("Load");
-		LoadButton.addActionListener(controller);
+		LoadButton.addActionListener(controller.getRunListener());
 		menuList.add(LoadButton);
 
 		JMenuItem ReloadButton = new JMenuItem("Reload");
-		ReloadButton.addActionListener(controller);
+		ReloadButton.addActionListener(controller.getRunListener());
 		menuList.add(ReloadButton);
 
 		JMenuItem ModeButton;
@@ -141,11 +138,11 @@ public class GUI {
 		else
 			ModeButton = new JMenuItem("Build Mode");
 
-		ModeButton.addActionListener(controller);
+		ModeButton.addActionListener(controller.getRunListener());
 		menuList.add(ModeButton);
 
 		JMenuItem QuitButton = new JMenuItem("Quit");
-		QuitButton.addActionListener(controller);
+		QuitButton.addActionListener(controller.getRunListener());
 		menuList.add(QuitButton);
 
 		return menuList;
@@ -156,19 +153,19 @@ public class GUI {
 		JMenu menuList = new JMenu("Settings");
 
 		JMenuItem Friction = new JMenuItem("Friction");
-		Friction.addActionListener(controller);
+		Friction.addActionListener(controller.getBuildListener());
 		menuList.add(Friction);
 
 		JMenuItem Gravity = new JMenuItem("Gravity");
-		Gravity.addActionListener(controller);
+		Gravity.addActionListener(controller.getBuildListener());
 		menuList.add(Gravity);
 
 		JMenuItem Connect = new JMenuItem("Connect");
-		Connect.addActionListener(controller);
+		Connect.addActionListener(controller.getBuildListener());
 		menuList.add(Connect);
 
 		JMenuItem Disconnect = new JMenuItem("Disconnect");
-		Disconnect.addActionListener(controller);
+		Disconnect.addActionListener(controller.getBuildListener());
 		menuList.add(Disconnect);
 
 		return menuList;
@@ -179,19 +176,19 @@ public class GUI {
 		JMenu menuList = new JMenu("Edit");
 
 		JMenuItem Rotate = new JMenuItem("Rotate");
-		Rotate.addActionListener(controller);
+		Rotate.addActionListener(controller.getBuildListener());
 		menuList.add(Rotate);
 
 		JMenuItem Move = new JMenuItem("Move");
-		Move.addActionListener(controller);
+		Move.addActionListener(controller.getBuildListener());
 		menuList.add(Move);
 
 		JMenuItem Delete = new JMenuItem("Delete");
-		Delete.addActionListener(controller);
+		Delete.addActionListener(controller.getBuildListener());
 		menuList.add(Delete);
 
 		JMenuItem ClearBoard = new JMenuItem("Clear Board");
-		ClearBoard.addActionListener(controller);
+		ClearBoard.addActionListener(controller.getBuildListener());
 		menuList.add(ClearBoard);
 
 		return menuList;
@@ -204,13 +201,13 @@ public class GUI {
 		menuList.add(createGizmoMenu());
 
 		JMenuItem AddBall = new JMenuItem("Add Ball");
-		AddBall.addActionListener(controller);
+		AddBall.addActionListener(controller.getBuildListener());
 		menuList.add(AddBall);
 
 		menuList.add(createFlipperMenu());
 
 		JMenuItem AddAbsorber = new JMenuItem("Add Absorber");
-		AddAbsorber.addActionListener(controller);
+		AddAbsorber.addActionListener(controller.getBuildListener());
 		menuList.add(AddAbsorber);
 
 		return menuList;
@@ -221,21 +218,21 @@ public class GUI {
 		JMenu AddGizmo = new JMenu("AddGizmo");
 		
 		JMenuItem AddSqaure = new JMenuItem("Square");
-		AddSqaure.addActionListener(controller);
+		AddSqaure.addActionListener(controller.getBuildListener());
 		AddGizmo.add(AddSqaure);
 		
 		JMenuItem AddCircle = new JMenuItem("Circle");
-		AddCircle.addActionListener(controller);
+		AddCircle.addActionListener(controller.getBuildListener());
 		AddGizmo.add(AddCircle);	
 		
 		JMenu addTriangle = new JMenu("Triangle");
 		
 		JMenuItem leftTriangle = new JMenuItem("Left Triangle");
-		leftTriangle.addActionListener(controller);
+		leftTriangle.addActionListener(controller.getBuildListener());
 		addTriangle.add(leftTriangle);
 		
 		JMenuItem rightTriangle = new JMenuItem("Right Triangle");
-		rightTriangle.addActionListener(controller);
+		rightTriangle.addActionListener(controller.getBuildListener());
 		addTriangle.add(rightTriangle);
 		
 		AddGizmo.add(addTriangle);
@@ -248,11 +245,11 @@ public class GUI {
 		JMenu flipperMenu = new JMenu("Add Flipper");
 		
 		JMenuItem Left = new JMenuItem("Left Flipper");
-		Left.addActionListener(controller);
+		Left.addActionListener(controller.getBuildListener());
 		flipperMenu.add(Left);
 		
 		JMenuItem Right = new JMenuItem("Right Flipper");
-		Right.addActionListener(controller);
+		Right.addActionListener(controller.getBuildListener());
 		flipperMenu.add(Right);	
 		
 		return flipperMenu;
