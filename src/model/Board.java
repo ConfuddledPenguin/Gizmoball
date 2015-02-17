@@ -25,33 +25,16 @@ public class Board {
 	 * @throws InvalidGridPosException Invalid grid position
 	 * @throws GridPosAlreadyTakenException Gird position already occupied
 	 */
-	public void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
+	public void addGizmo(IGizmo g){
+		checkArea(g);
+		
+		//add
+		gizmos.add(g);
 		
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
-		int height = g.getWidth();
-		
-		//check if in bounds
-		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
-			System.out.println("x: " + x + " y: " + y);
-			System.out.println("x: " + (x+width) + " y: " + (y+width));
-			throw new InvalidGridPosException("Position: " + x + ":" + y + 
-					"is invalid. Please ensure Grid position is viable.");
-		}
-		
-		//check if already filled
-		for(int i = x; i < x+width; i++){
-			for (int j = y; j < x+height; j++){
-				if(grid[i][j]){
-					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
-					"is already taken");
-				}
-			}
-		}
-		
-		//add
-		gizmos.add(g);
+		int height = g.getWidth();		
 		
 		//mark as taken
 		for(int i = x; i < width + x; i++){
@@ -61,6 +44,37 @@ public class Board {
 			}
 		}
 	}//End addGizmo();
+	
+	
+	/**
+	 * Checks the area on the board.
+	 * 
+	 * @param g The gizmo to added.s
+	 */
+	private boolean checkArea(IGizmo g){
+		
+		int x = g.getXPos();
+		int y = g.getYPos();
+		int width = g.getWidth();
+		int height = g.getWidth();
+		
+		
+		if (x < 30){//check if already filled
+			for(int i = x; i < x+width; i++){
+				for (int j = y; j < y+height; j++){
+					if(grid[i][j]){
+						g.setPos(x+1, y);
+						if(checkArea(g)) return true;
+						else{
+							g.setPos(0, y+1);
+							if(checkArea(g)) return true;
+						}
+					}
+				}
+			}
+		return true;
+		}else return false;
+	}
 	
 	/**
 	 * Remove the given gizmo from the board

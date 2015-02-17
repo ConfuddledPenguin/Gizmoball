@@ -21,14 +21,9 @@ public class Model extends Observable implements IModel {
 	
 	public void addGizmo(IGizmo g){
 			
-			try {
-				board.addGizmo(g);
-				setChanged();
-				notifyObservers(g);	
-			} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		board.addGizmo(g);
+		setChanged();
+		notifyObservers(g);	
 
 	}
 	
