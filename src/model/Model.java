@@ -54,14 +54,13 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @param g the gizm to add
 	 * 
-	 * @deprecated use {@link model.IBoard#addGizmo(IGizmo)}
 	 */
 	public void addGizmo(IGizmo g){
 			
 		try {
 			board.addGizmo(g);
 			setChanged();
-			notifyObservers(g);	
+			notifyObservers(g);
 		} catch (GridPosAlreadyTakenException | InvalidGridPosException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

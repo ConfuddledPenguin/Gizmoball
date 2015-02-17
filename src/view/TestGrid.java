@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -38,14 +40,28 @@ public class TestGrid extends JPanel implements Observer {
 	private static final int L = 20;
 	private Point clickedCell; // cell clicked by user
 	
-	public TestGrid(Model m) {
+	public TestGrid(Model m, ActionListener listener) {
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
 
 		final JPopupMenu popup = new JPopupMenu();
-		JMenuItem jm1 = new JMenuItem("Add Gizmo");
-		popup.add(jm1);
+		JMenu AddGizmo = new JMenu("Add Gizmo");
+		JMenuItem square = new JMenuItem("Square");
+		square.addActionListener(listener);
+		JMenuItem circle = new JMenuItem("Circle");
+		circle.addActionListener(listener);
+		JMenuItem lTriangle = new JMenuItem("Left Triangle");
+		lTriangle.addActionListener(listener);
+		JMenuItem rTriangle = new JMenuItem("Right Triangle");
+		rTriangle.addActionListener(listener);
+		
+		
+		AddGizmo.add(square);
+		AddGizmo.add(circle);
+		AddGizmo.add(lTriangle);
+		AddGizmo.add(rTriangle);
+		popup.add(AddGizmo);
 
 		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
 		popup.add(jm2);
@@ -98,6 +114,8 @@ public class TestGrid extends JPanel implements Observer {
 					clickedCell = new Point(column, row);
 				}
 				System.out.format("pressed column: %d, row: %d\n", column, row);
+				
+				repaint();
 			}
 
 			public void mouseReleased(MouseEvent e) {

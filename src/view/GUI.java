@@ -66,7 +66,7 @@ public class GUI {
 
 		Container cp = frame.getContentPane();
 		
-		grid = new TestGrid(model);
+		grid = new TestGrid(model, controller.getBuildListener());
 		cp.add(grid, BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);

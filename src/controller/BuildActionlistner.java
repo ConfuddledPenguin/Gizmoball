@@ -34,7 +34,6 @@ public class BuildActionlistner implements ActionListener {
 		switch (e.getActionCommand()) {
 
 		case ("Square"):
-
 			model.addGizmo(new Square(x, y));
 			break;
 
