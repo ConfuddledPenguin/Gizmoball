@@ -141,6 +141,7 @@ public class GUI {
 			ModeButton = new JMenuItem("Build Mode");
 
 		ModeButton.addActionListener(controller.getRunListener());
+		ModeButton.addActionListener(controller.getBuildListener());
 		menuList.add(ModeButton);
 
 		JMenuItem QuitButton = new JMenuItem("Quit");
@@ -260,10 +261,16 @@ public class GUI {
 	public String switchMode() {
 		if (this.mode == 'r') {
 			this.mode = 'b';
+			frame.dispose();
+			createAndShowBuildGUI();
 			return "Switch to Build Mode.";
 		} else {
 			this.mode = 'r';
+			frame.dispose();
+			createAndShowRunGUI();
 			return "Switch to Build Mode.";
 		}
+		
+		
 	}
 }

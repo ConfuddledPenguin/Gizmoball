@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import main.GizmoBallMain;
 import model.Model;
 import model.gizmos.Circle;
 import model.gizmos.Square;
@@ -40,6 +41,9 @@ public class BuildActionlistner implements ActionListener {
 			model.addGizmo(new Triangle(0,0,'R'));
 			break;
 
+		case ("Run Mode"):
+			System.out.println("Going into running mode!!!!");
+			GizmoBallMain.gui.switchMode();
 		}
 
 	}

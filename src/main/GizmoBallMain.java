@@ -8,8 +8,10 @@ public class GizmoBallMain {
 	 * @author Cameron, Andrew, Tom, Marc, Nathan
 	 * 
 	 */
+	public static GUI gui;
+	
 	public static void main(String[] args){
 		
-		new GUI('b',new Model(50, 50));
+		gui = new GUI('b',new Model(50, 50));
 	}
 }
