@@ -6,13 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Model;
-import model.gizmos.Circle;
 import model.gizmos.Square;
-import model.gizmos.Triangle;
+
 
 
 public class Controller implements IController, ActionListener {
-
+	
 	private Model model;
 	
 	public Controller(Model m) {
@@ -26,20 +25,17 @@ public class Controller implements IController, ActionListener {
 				+ " with e.paramString " + e.paramString());
 		switch(e.getActionCommand()){
 		
-		case("Sqaure"):
-			model.addGizmo(new Square());
+		case("Square"):
+			model.addGizmo(new Square(1,1));
 			break;
 		
 		case("Left Triangle"):
-			model.addGizmo(new Triangle());
 			break;
 		
 		case("Circle"):
-			model.addGizmo(new Circle());
 			break;
 		
 		case("Right Triangle"):
-			model.addGizmo(new Triangle());
 			break;
 		
 		}

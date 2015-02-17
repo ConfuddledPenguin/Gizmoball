@@ -41,8 +41,8 @@ public class Board {
 		}
 		
 		//check if already filled
-		for(int i = x; i < width; i++){
-			for (int j = y; j < height; j++){
+		for(int i = x; i < x+width; i++){
+			for (int j = y; j < x+height; j++){
 				if(grid[i][j]){
 					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
 					"is already taken");
@@ -54,8 +54,8 @@ public class Board {
 		gizmos.add(g);
 		
 		//mark as taken
-		for(int i = x; i < width + x - 1; i++){
-			for (int j = y; j < height + y - 1; j++){
+		for(int i = x; i < width + x; i++){
+			for (int j = y; j < height + y; j++){
 				System.out.flush();
 				grid[i][j] = true;
 			}

@@ -10,6 +10,6 @@ public class GizmoBallMain {
 	 */
 	public static void main(String[] args){
 		
-		new GUI('r',new Model(20, 20));
+		new GUI('b',new Model(50, 50));
 	}
 }

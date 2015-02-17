@@ -15,11 +15,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Model;
+import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
 public  class Board extends JPanel implements Observer, IView {
 
 	private static final long serialVersionUID = 1L;
+	private static final int L = 20;
 	protected int width;
 	protected int height;
 	protected List<IGizmo> gizmoList;
@@ -43,9 +45,11 @@ public  class Board extends JPanel implements Observer, IView {
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
+
 		if(!gizmoList.isEmpty()){
-			for (IGizmo gizmo : gizmoList){
-				g2.fillRect(gizmo.getPos().x, gizmo.getPos().y,gizmo.getWidth(),gizmo.getHeight());
+			for (int i=0; i < gizmoList.size(); i++){
+				IGizmo gizmo = gizmoList.get(i);
+				g2.fillRect(gizmo.getXPos()*L,gizmo.getYPos()*L,gizmo.getWidth()*L,gizmo.getHeight()*L);
 			}
 	}
 }
@@ -53,8 +57,10 @@ public  class Board extends JPanel implements Observer, IView {
 	@Override
 	public void update(Observable o, Object arg) {
 	
-		if (arg instanceof IGizmo)
-			gizmoList.add((IGizmo)arg);
+		if (arg instanceof Gizmo){
+			gizmoList.add((Gizmo)arg);
+			System.out.print("GIZMO");
+		}
 		
 		repaint();
 	}

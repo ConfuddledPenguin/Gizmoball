@@ -29,8 +29,10 @@ public class GUI {
 
 		this.model = m;
 		this.mode = mode;
+		this.board = new Board(500, 500, this.model);
+		this.model.addObserver(this.board);
 		this.controller = new Controller(this.model);
-
+		
 		if (mode == 'r')
 			createAndShowRunGUI();
 		else if (mode == 'b')
@@ -42,7 +44,7 @@ public class GUI {
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		board = new Board(500, 500, this.model);
+
 		Container cp = frame.getContentPane();
 
 		JMenuBar menuBar = new JMenuBar();
@@ -63,7 +65,6 @@ public class GUI {
 		frame = new JFrame("Gizmoball (Build Mode)");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		board = new Board(500, 500, this.model);
 		Container cp = frame.getContentPane();
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);
