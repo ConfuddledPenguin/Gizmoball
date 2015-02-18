@@ -195,6 +195,7 @@ public abstract class Gizmo implements IGizmo {
 			
 		case BottomLeft:
 			this.o = Orientation.TopLeft;
+			break;
 		case BottomRight:
 			this.o = Orientation.BottomLeft;
 			break;
@@ -203,6 +204,26 @@ public abstract class Gizmo implements IGizmo {
 			break;
 		case TopRight:
 			this.o = Orientation.BottomRight;
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void rotateAntiClockwise(){
+		switch(this.o){
+			
+		case BottomLeft:
+			this.o = Orientation.BottomRight;
+			break;
+		case BottomRight:
+			this.o = Orientation.TopRight;
+			break;
+		case TopLeft:
+			this.o = Orientation.BottomLeft;
+			break;
+		case TopRight:
+			this.o = Orientation.TopLeft;
 			break;
 		default:
 			break;

@@ -1,7 +1,9 @@
 package controller;
 
 import interfaces.IController;
+
 import java.awt.event.ActionListener;
+
 import model.Model;
 import view.GUI;
 

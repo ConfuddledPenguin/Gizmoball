@@ -12,32 +12,23 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import model.Model;
-import model.gizmos.Circle;
-import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
-import model.gizmos.Square;
-import model.gizmos.Triangle;
 
-public class BuildBoard extends JPanel implements Observer {
+public class BuildBoard extends Board {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4952517095084067303L;
 	private static final int columnCount = 30;
 	private static final int rowCount = 30;
-	private static final int L = 20;
+
 
 	private List<Rectangle> cells;
-	private List<IGizmo> gizmoList;
+
 	private Point selectedCell;
 	private Point clickedCell;
 	
@@ -114,7 +105,7 @@ public class BuildBoard extends JPanel implements Observer {
 		
 		JPopupMenu popup = new JPopupMenu();
 		
-		JMenu AddGizmo = new JMenu("Add Gizmo");
+		JMenu AddGizmo = new JMenu("Add");
 		
 		JMenuItem square = new JMenuItem("Square");
 		square.addActionListener(listener);
@@ -142,7 +133,8 @@ public class BuildBoard extends JPanel implements Observer {
 		
 		popup.add(rotate);	
 
-		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
+		JMenuItem jm2 = new JMenuItem("Delete");
+		jm2.addActionListener(listener);
 		popup.add(jm2);
 		
 		return popup;
@@ -213,49 +205,8 @@ public class BuildBoard extends JPanel implements Observer {
 		}
 
 		g2d.setColor(Color.BLUE);
-
-		if (!gizmoList.isEmpty()) {
-			for (int i = 0; i < gizmoList.size(); i++) {
-				IGizmo gizmo = gizmoList.get(i);
-				if (gizmo instanceof Square)
-					g2d.fillRect(gizmo.getXPos() * L, gizmo.getYPos() * L,
-							gizmo.getWidth() * L, gizmo.getHeight() * L);
-				else if (gizmo instanceof Circle)
-					g2d.fillOval(gizmo.getXPos() * L, gizmo.getYPos() * L,
-							gizmo.getWidth() * L, gizmo.getHeight() * L);
-				else if (gizmo instanceof Triangle) {
-					if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
-						g2d.fillPolygon(
-								new int[] {
-										gizmo.getXPos() * L,
-										gizmo.getXPos() * L,
-										gizmo.getXPos() * L + gizmo.getWidth()
-												* L },
-								new int[] {
-										gizmo.getYPos() * L,
-										gizmo.getYPos() * L + gizmo.getHeight()
-												* L,
-										gizmo.getYPos() * L + gizmo.getHeight()
-												* L }, 3);
-
-					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomRight)) {
-						g2d.fillPolygon(
-								new int[] {
-										gizmo.getXPos() * L + gizmo.getWidth() * L,
-										gizmo.getXPos() * L + gizmo.getWidth() * L ,
-										gizmo.getXPos() * L },
-								new int[] {
-										gizmo.getYPos() * L,
-										gizmo.getYPos() * L + gizmo.getHeight()
-												* L,
-										gizmo.getYPos() * L + gizmo.getHeight()
-												* L }, 3);
-
-					}
-				}
-
-			}
-		}
+		
+		drawGizmos(g2d);
 
 		g2d.dispose();
 
@@ -265,7 +216,10 @@ public class BuildBoard extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 
 		if (arg instanceof IGizmo) {
-			gizmoList.add((IGizmo) arg);
+			if(!gizmoList.contains(arg))
+				gizmoList.add((IGizmo) arg);
+			else
+				gizmoList.remove(arg);
 		}
 
 		repaint();

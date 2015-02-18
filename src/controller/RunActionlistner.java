@@ -31,6 +31,7 @@ public class RunActionlistner implements ActionListener {
 			case ("Build Mode"):
 				GizmoBallMain.gui.switchMode();
 				System.out.println("Going into Build Mode!!");
+				break;
 			}
 	}
 

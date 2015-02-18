@@ -46,16 +46,20 @@ public class BuildActionlistner implements ActionListener {
 			break;
 			
 		case ("Clockwise"):
-			//rotate clockwise
+			model.RotateClockwise(view.getClickedCell());
 			break;
 		
 		case ("Anti-Clockwise"):
-			//rotate clockwise
+			model.RotateAntiClockwise(view.getClickedCell());
 			break;
-			
+		
+		case ("Delete"):
+			model.deleteGizmo(view.getClickedCell());
+			break;
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();
+			break;
 		}
 
 	}

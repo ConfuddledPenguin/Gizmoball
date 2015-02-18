@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class Model extends Observable implements IModel {
 	/**
 	 * Add a gizmo to the board
 	 * 
-	 * @param g the gizm to add
+	 * @param g the gizmo to add
 	 * 
 	 */
 	public void addGizmo(IGizmo g){
@@ -65,6 +66,28 @@ public class Model extends Observable implements IModel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void deleteGizmo(Point p){
+		setChanged();
+		notifyObservers(board.getGizmo(p.x, p.y));
+		board.removeGizmo(board.getGizmo(p.x, p.y));
+	}
+	
+	public void RotateClockwise(Point p){
+		IGizmo g = board.getGizmo(p.x, p.y);
+		
+		g.rotateClockwise();
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void RotateAntiClockwise(Point p){
+		IGizmo g = board.getGizmo(p.x, p.y);
+		
+		g.rotateAntiClockwise();
+		setChanged();
+		notifyObservers();
 	}
 		
 	/**
