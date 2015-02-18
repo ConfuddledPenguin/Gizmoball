@@ -3,6 +3,7 @@ package model.gizmos;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * A gizmo
  * 
@@ -58,12 +59,43 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	public enum Orientation {
+		BottomLeft{
+			@Override
+			public String toString() {
+				return "Bottom Left";
+			}
+		},
+		
+		BottomRight{
+			@Override
+			public String toString() {
+				return "Bottom Right";
+			}
+		},
+		
+		TopLeft{
+			@Override
+			public String toString() {
+				return "Top Left";
+			}
+		},
+		
+		TopRight{
+			@Override
+			public String toString() {
+				return "Top Right";
+			}
+		}
+	}
+	
 	protected int xcord;
 	protected int ycord;
 	protected int width;
 	protected int height;
 	protected int angle;
 	protected Type type;
+	protected Orientation o;
 	
 	protected Set<IGizmo> connections = new HashSet<IGizmo>();
 
@@ -73,6 +105,7 @@ public abstract class Gizmo implements IGizmo {
 		this.width = width;
 		this.height = height;
 		this.type = type;
+		this.o = Orientation.BottomLeft;
 	}
 
 	/*
@@ -157,7 +190,26 @@ public abstract class Gizmo implements IGizmo {
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#rotate()
 	 */
-	public void rotate(){
-		angle = angle++ % 4;
+	public void rotateClockwise(){
+		switch(this.o){
+			
+		case BottomLeft:
+			this.o = Orientation.TopLeft;
+		case BottomRight:
+			this.o = Orientation.BottomLeft;
+			break;
+		case TopLeft:
+			this.o = Orientation.TopRight;
+			break;
+		case TopRight:
+			this.o = Orientation.BottomRight;
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public Orientation getOrientation(){
+		return o;
 	}
 }

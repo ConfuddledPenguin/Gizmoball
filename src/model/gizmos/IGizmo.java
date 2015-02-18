@@ -74,5 +74,5 @@ public interface IGizmo {
 	 * increment is at 90` clockwise to the last.
 	 * 
 	 */
-	void rotate();
+	void rotateClockwise();
 }

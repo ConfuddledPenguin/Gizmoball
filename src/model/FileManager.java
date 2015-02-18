@@ -68,7 +68,7 @@ class FileManager {
 				case "Rotate":
 					name = st.nextToken();
 					g = gizmos.get(name);
-					g.rotate();
+					g.rotateClockwise();
 					continue;
 				case "Delete":
 					name = st.nextToken();
@@ -197,7 +197,7 @@ class FileManager {
 					x = Integer.parseInt(xstring);
 					ystring = st.nextToken();
 					y = Integer.parseInt(ystring);
-					g = new Triangle(x, y, 'x');
+					g = new Triangle(x, y);
 					gizmos.put(name, g);
 					try {
 						board.addGizmo(g);

@@ -37,18 +37,14 @@ public class BuildActionlistner implements ActionListener {
 			model.addGizmo(new Square(x, y));
 			break;
 
-		case ("Left Triangle"):
-			model.addGizmo(new Triangle(x,y,'L'));
+		case ("Triangle"):
+			model.addGizmo(new Triangle(x,y));
 			break;
 
 		case ("Circle"):
 			model.addGizmo(new Circle(x,y));
 			break;
-
-		case ("Right Triangle"):
-			model.addGizmo(new Triangle(x,y,'R'));
-			break;
-
+			
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();

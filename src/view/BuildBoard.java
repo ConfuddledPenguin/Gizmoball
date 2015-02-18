@@ -21,7 +21,7 @@ import javax.swing.JPopupMenu;
 
 import model.Model;
 import model.gizmos.Circle;
-import model.gizmos.Gizmo;
+import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
@@ -51,16 +51,13 @@ public class BuildBoard extends JPanel implements Observer {
 		square.addActionListener(listener);
 		JMenuItem circle = new JMenuItem("Circle");
 		circle.addActionListener(listener);
-		JMenuItem lTriangle = new JMenuItem("Left Triangle");
-		lTriangle.addActionListener(listener);
-		JMenuItem rTriangle = new JMenuItem("Right Triangle");
-		rTriangle.addActionListener(listener);
+		JMenuItem triangle = new JMenuItem("Triangle");
+		triangle.addActionListener(listener);
 		
 		
 		AddGizmo.add(square);
 		AddGizmo.add(circle);
-		AddGizmo.add(lTriangle);
-		AddGizmo.add(rTriangle);
+		AddGizmo.add(triangle);
 		popup.add(AddGizmo);
 
 		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
@@ -70,7 +67,6 @@ public class BuildBoard extends JPanel implements Observer {
 		mouseHandler = new MouseAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				Point point = e.getPoint();
 
 				int width = getWidth();
 				int height = getHeight();
@@ -90,7 +86,6 @@ public class BuildBoard extends JPanel implements Observer {
 		addMouseMotionListener(mouseHandler);
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				Point point = e.getPoint();
 				
 				int width = getWidth();
 				int height = getHeight();
@@ -195,7 +190,7 @@ public class BuildBoard extends JPanel implements Observer {
 					g2d.fillOval(gizmo.getXPos() * L, gizmo.getYPos() * L,
 							gizmo.getWidth() * L, gizmo.getHeight() * L);
 				else if (gizmo instanceof Triangle) {
-					if (((Triangle) gizmo).getOrientation() == 'L') {
+					if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
 						g2d.fillPolygon(
 								new int[] {
 										gizmo.getXPos() * L,
@@ -209,7 +204,7 @@ public class BuildBoard extends JPanel implements Observer {
 										gizmo.getYPos() * L + gizmo.getHeight()
 												* L }, 3);
 
-					}else if (((Triangle) gizmo).getOrientation() == 'R') {
+					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomRight)) {
 						g2d.fillPolygon(
 								new int[] {
 										gizmo.getXPos() * L + gizmo.getWidth() * L,

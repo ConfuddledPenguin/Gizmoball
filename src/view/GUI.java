@@ -28,7 +28,6 @@ public class GUI {
 
 		this.model = m;
 		this.mode = mode;
-		this.model.addObserver(this.runBoard);
 		this.controller = new Controller(this.model, this);
 		
 		if (mode == 'r')
