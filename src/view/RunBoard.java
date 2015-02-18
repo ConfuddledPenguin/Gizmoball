@@ -14,6 +14,7 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import model.Ball;
 import model.Model;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
@@ -24,6 +25,7 @@ public  class RunBoard extends JPanel implements Observer, IView {
 	private static final int L = 20;
 	protected int width;
 	protected int height;
+	protected Ball ball;
 	protected List<IGizmo> gizmoList;
 	
 	public RunBoard(int w, int h, Model m) {
@@ -51,12 +53,24 @@ public  class RunBoard extends JPanel implements Observer, IView {
 				IGizmo gizmo = gizmoList.get(i);
 				g2.fillRect(gizmo.getXPos()*L,gizmo.getYPos()*L,gizmo.getWidth()*L,gizmo.getHeight()*L);
 			}
-	}
+		
+		}
+		
+		if (ball != null) {
+			g2.setColor(ball.getColour());
+			int x = (int) (ball.getExactX() - ball.getRadius());
+			int y = (int) (ball.getExactY() - ball.getRadius());
+			int width = (int) (2 * ball.getRadius());
+			g2.fillOval(x, y, width, width);
+		}	
 }
 	
 	@Override
 	public void update(Observable o, Object arg) {
-	
+		
+		if (arg instanceof Ball)
+			this.ball = (Ball)arg;
+			
 		if (arg instanceof Gizmo){
 			gizmoList.add((Gizmo)arg);
 			System.out.print("GIZMO");
