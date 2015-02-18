@@ -22,6 +22,7 @@ import model.gizmos.IGizmo;
 public class Model extends Observable implements IModel {
 	
 	private Board board;
+	private Ball ball;
 	
 	/**
 	 * The constructor
@@ -32,7 +33,8 @@ public class Model extends Observable implements IModel {
 	public Model(int boardHeight, int boardWidth) {
 		
 		new Global(boardHeight, boardWidth);
-		board = new Board();		
+		board = new Board();
+		ball = new Ball(19,19,0,0);
 	}
 	
 	/**
@@ -75,5 +77,9 @@ public class Model extends Observable implements IModel {
 	 */
 	public IBoard getBoard() {
 		return board;
+	}
+	
+	public Ball getBall() {
+		return ball;
 	}
 }

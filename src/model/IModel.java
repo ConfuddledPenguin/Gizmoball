@@ -27,6 +27,22 @@ public interface IModel {
 	 * @return
 	 */
 	public abstract IBoard getBoard();
+	
+	/**
+	 * Set the value of gravity on the model
+	 * 
+	 * @param gravity the value for gravity
+	 */
+	public void setGravity(float gravity);
+	
+	
+	/**
+	 * Sets the value of friction in the model
+	 *  
+	 * @param mu The mu value
+	 * @param mu2 The mu2 values
+	 */
+	public void setFriction(float mu, float mu2);
 
 	/**
 	 * Adds a gizmo
