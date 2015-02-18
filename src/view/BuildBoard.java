@@ -32,39 +32,26 @@ public class BuildBoard extends JPanel implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = -4952517095084067303L;
-	private int columnCount = 30;
-	private int rowCount = 30;
-	private List<Rectangle> cells;
-	private Point selectedCell;
-	private List<IGizmo> gizmoList;
+	private static final int columnCount = 30;
+	private static final int rowCount = 30;
 	private static final int L = 20;
-	private Point clickedCell; // cell clicked by user
+
+	private List<Rectangle> cells;
+	private List<IGizmo> gizmoList;
+	private Point selectedCell;
+	private Point clickedCell;
 	
 	public BuildBoard(Model m, ActionListener listener) {
+		
+		
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
-
-		final JPopupMenu popup = new JPopupMenu();
-		JMenu AddGizmo = new JMenu("Add Gizmo");
-		JMenuItem square = new JMenuItem("Square");
-		square.addActionListener(listener);
-		JMenuItem circle = new JMenuItem("Circle");
-		circle.addActionListener(listener);
-		JMenuItem triangle = new JMenuItem("Triangle");
-		triangle.addActionListener(listener);
 		
 		
-		AddGizmo.add(square);
-		AddGizmo.add(circle);
-		AddGizmo.add(triangle);
-		popup.add(AddGizmo);
-
-		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
-		popup.add(jm2);
-
-		MouseAdapter mouseHandler;
-		mouseHandler = new MouseAdapter() {
+		final JPopupMenu popup = createPopupMenu(listener);
+		
+		addMouseMotionListener(new MouseAdapter() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
 
@@ -82,8 +69,8 @@ public class BuildBoard extends JPanel implements Observer {
 
 			}
 
-		};
-		addMouseMotionListener(mouseHandler);
+		});
+
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				
@@ -121,6 +108,53 @@ public class BuildBoard extends JPanel implements Observer {
 			}
 		});
 
+	}
+	
+	private JPopupMenu createPopupMenu(ActionListener listener){
+		
+		JPopupMenu popup = new JPopupMenu();
+		
+		JMenu AddGizmo = new JMenu("Add Gizmo");
+		
+		JMenuItem square = new JMenuItem("Square");
+		square.addActionListener(listener);
+		AddGizmo.add(square);
+		
+		JMenuItem circle = new JMenuItem("Circle");
+		circle.addActionListener(listener);
+		AddGizmo.add(circle);
+		
+		JMenuItem triangle = new JMenuItem("Triangle");
+		triangle.addActionListener(listener);		
+		AddGizmo.add(triangle);
+		
+		popup.add(AddGizmo);
+		
+		JMenu rotate = new JMenu("Rotate");
+		
+		JMenuItem clockwise = new JMenuItem("Clockwise");
+		clockwise.addActionListener(listener);
+		rotate.add(clockwise);
+		
+		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
+		aClockwise.addActionListener(listener);
+		rotate.add(aClockwise);
+		
+		popup.add(rotate);	
+
+		JMenuItem jm2 = new JMenuItem("Delete Gizmo");
+		popup.add(jm2);
+		
+		return popup;
+
+	}
+	
+	public Point getSelectedCell() {
+		return selectedCell;
+	}
+	
+	public Point getclickedCell() {
+		return clickedCell;
 	}
 
 	@Override
@@ -226,7 +260,7 @@ public class BuildBoard extends JPanel implements Observer {
 		g2d.dispose();
 
 	}
-
+	
 	@Override
 	public void update(Observable o, Object arg) {
 
@@ -235,13 +269,5 @@ public class BuildBoard extends JPanel implements Observer {
 		}
 
 		repaint();
-	}
-	
-	public Point getSelectedCell() {
-		return selectedCell;
-	}
-	
-	public Point getclickedCell() {
-		return clickedCell;
 	}
 }

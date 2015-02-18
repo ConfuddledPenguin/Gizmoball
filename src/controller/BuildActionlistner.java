@@ -45,6 +45,14 @@ public class BuildActionlistner implements ActionListener {
 			model.addGizmo(new Circle(x,y));
 			break;
 			
+		case ("Clockwise"):
+			//rotate clockwise
+			break;
+		
+		case ("Anti-Clockwise"):
+			//rotate clockwise
+			break;
+			
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();
