@@ -18,18 +18,17 @@ import controller.Controller;
 public class GUI {
 
 	private JFrame frame;
-	private Board board;
+	private RunBoard runBoard;
 	private Controller controller;
 	private char mode;
 	private Model model;
-	private TestGrid grid;
+	private BuildBoard buildBoard;
 
 	public GUI(char mode, Model m) {
 
 		this.model = m;
 		this.mode = mode;
-		this.board = new Board(600, 600, this.model);
-		this.model.addObserver(this.board);
+		this.model.addObserver(this.runBoard);
 		this.controller = new Controller(this.model, this);
 		
 		if (mode == 'r')
@@ -43,7 +42,7 @@ public class GUI {
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
+		this.runBoard = new RunBoard(600, 600, this.model);
 		Container cp = frame.getContentPane();
 
 		JMenuBar menuBar = new JMenuBar();
@@ -51,7 +50,7 @@ public class GUI {
 
 		cp.add(menuBar, BorderLayout.PAGE_START);
 		cp.add(createRunButtons(), BorderLayout.CENTER);
-		cp.add(board, BorderLayout.SOUTH);
+		cp.add(runBoard, BorderLayout.SOUTH);
 
 		frame.setResizable(false);
 		frame.pack();
@@ -66,8 +65,8 @@ public class GUI {
 
 		Container cp = frame.getContentPane();
 		
-		grid = new TestGrid(model, controller.getBuildListener());
-		cp.add(grid, BorderLayout.SOUTH);
+		buildBoard = new BuildBoard(model, controller.getBuildListener());
+		cp.add(buildBoard, BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);
 		//cp.add(board, BorderLayout.SOUTH);
@@ -277,7 +276,7 @@ public class GUI {
 		
 	}
 	public Point getClickedCell() {
-		Point cell = grid.getclickedCell();
+		Point cell = buildBoard.getclickedCell();
 		if (cell == null)
 			return new Point(0,0);
 		return cell;

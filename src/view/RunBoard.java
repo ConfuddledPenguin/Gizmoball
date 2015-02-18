@@ -18,7 +18,7 @@ import model.Model;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
-public  class Board extends JPanel implements Observer, IView {
+public  class RunBoard extends JPanel implements Observer, IView {
 
 	private static final long serialVersionUID = 1L;
 	private static final int L = 20;
@@ -26,7 +26,7 @@ public  class Board extends JPanel implements Observer, IView {
 	protected int height;
 	protected List<IGizmo> gizmoList;
 	
-	public Board(int w, int h, Model m) {
+	public RunBoard(int w, int h, Model m) {
 		
 		width = w;
 		height = h;

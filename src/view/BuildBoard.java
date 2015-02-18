@@ -26,7 +26,7 @@ import model.gizmos.IGizmo;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
 
-public class TestGrid extends JPanel implements Observer {
+public class BuildBoard extends JPanel implements Observer {
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ public class TestGrid extends JPanel implements Observer {
 	private static final int L = 20;
 	private Point clickedCell; // cell clicked by user
 	
-	public TestGrid(Model m, ActionListener listener) {
+	public BuildBoard(Model m, ActionListener listener) {
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
