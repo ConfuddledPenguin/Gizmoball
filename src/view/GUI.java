@@ -133,6 +133,10 @@ public class GUI {
 		JMenuItem ReloadButton = new JMenuItem("Reload");
 		ReloadButton.addActionListener(controller.getRunListener());
 		menuList.add(ReloadButton);
+		
+		JMenuItem SaveAsButton = new JMenuItem("Save As");
+		SaveAsButton.addActionListener(controller.getRunListener());
+		menuList.add(SaveAsButton);
 
 		JMenuItem ModeButton;
 

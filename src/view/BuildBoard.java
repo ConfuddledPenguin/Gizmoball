@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import model.IModel;
 import model.Model;
 import model.gizmos.Circle;
 import model.gizmos.Gizmo.Orientation;
@@ -41,8 +42,11 @@ public class BuildBoard extends JPanel implements Observer {
 	private Point selectedCell;
 	private Point clickedCell;
 	
-	public BuildBoard(Model m, ActionListener listener) {
+	private IModel model;
+	
+	public BuildBoard(IModel m, ActionListener listener) {
 		
+		model = m;
 		
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
@@ -266,6 +270,8 @@ public class BuildBoard extends JPanel implements Observer {
 
 		if (arg instanceof IGizmo) {
 			gizmoList.add((IGizmo) arg);
+		} else if(arg == null){
+			gizmoList = model.getBoard().getGizmos();
 		}
 
 		repaint();

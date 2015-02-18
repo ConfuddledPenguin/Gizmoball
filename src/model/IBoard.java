@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Set;
+import java.util.List;
 
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
@@ -14,13 +14,17 @@ import model.gizmos.IGizmo;
 public interface IBoard {
 
 	/**
-	 * Adds the gizmo to the board.
+	 * Adds the gizmo to the board. Returns false
+	 * if the gizmo is already present in the model
 	 * 
 	 * @param g The gizmo to add
+	 * 
+	 * @return true if addition had an effect on the model, otherwise false.
+	 * 
 	 * @throws InvalidGridPosException Invalid grid position
 	 * @throws GridPosAlreadyTakenException Gird position already occupied
 	 */
-	public abstract void addGizmo(IGizmo g) throws InvalidGridPosException,
+	public abstract boolean addGizmo(IGizmo g) throws InvalidGridPosException,
 			GridPosAlreadyTakenException;//End addGizmo();
 
 	/**
@@ -35,7 +39,7 @@ public interface IBoard {
 	 * 
 	 * @return A unmodifiable set of gizmos
 	 */
-	public abstract Set<IGizmo> getGizmos();
+	public abstract List<IGizmo> getGizmos();
 	
 	/**
 	 * Returns the Gizmo at the location specified by the

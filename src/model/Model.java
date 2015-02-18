@@ -36,7 +36,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	/**
-	 * Loads a board from the givin file
+	 * Loads a board from the given file
 	 * 
 	 * @param file The file to load from
 	 * 
@@ -47,12 +47,25 @@ public class Model extends Observable implements IModel {
 	public void loadBoard(File file) throws FileNotFoundException, IOException, IncorrectFileFormatException{
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
+		setChanged();
+		notifyObservers();
+	}
+	
+	/**
+	 * Save the board to the given file
+	 * 
+	 * @param file The file to write to
+	 * @throws IOException Error writing to file
+	 */
+	public void saveBoard(File file) throws IOException {
+		//TODO write to disk
+		System.out.println("--MODEL---: Asked to write to file " + file.getPath());
 	}
 	
 	/**
 	 * Add a gizmo to the board
 	 * 
-	 * @param g the gizm to add
+	 * @param g the gizmo to add
 	 * 
 	 */
 	public void addGizmo(IGizmo g){
