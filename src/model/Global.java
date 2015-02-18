@@ -1,9 +1,21 @@
 package model;
 
-public class Global {
+class Global {
 	
 	public static int BOARDHEIGHT = 20;
 	public static int BOARDWIDTH = 20;
+	/**
+	 * Expressed in terms of L
+	 */
+	public static double GRAVITY = 16.0;
+	/**
+	 * Expressed in terms of seconds
+	 */
+	public static double FRICTIONMU = 0.025;
+	/**
+	 * Expressed in terms of L
+	 */
+	public static double FRICTIONMU2 = 0.026;
 	
 	public Global(int boardHeight, int boardWidth) {
 		

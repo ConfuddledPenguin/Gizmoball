@@ -89,7 +89,9 @@ class FileManager {
 						float xf = Float.parseFloat(xstring);
 						ystring = st.nextToken();
 						float yf = Float.parseFloat(ystring);
-						//TODO move the ball
+						IBall ball = m.getBall();
+						ball.setExactX(xf);
+						ball.setExactY(yf);
 					}
 					continue;
 				case "Connect":
@@ -100,23 +102,23 @@ class FileManager {
 					continue;
 				case "KeyConnect":
 					System.out.println("Key Connect");
-					//TODO
+					//TODO connect keys
 					continue;
 				case "Gravity":
 					token = st.nextToken();
 					float value = Float.parseFloat(token);
-					//TODO set gravity
+					m.setGravity(value);
 					continue;
 				case "Friction":
 					token = st.nextToken();
 					float mu = Float.parseFloat(token);
 					token = st.nextToken();
 					float mu2 = Float.parseFloat(token);
-					//TODO set friction
+					m.setFriction(mu, mu2);
 					continue;
 				case "Ball":
 					System.out.println("Ball");
-					//TODO
+					//TODO add ball
 					continue;
 					
 			}

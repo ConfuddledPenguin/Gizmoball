@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Ball;
+import model.IBall;
 import model.Model;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
@@ -26,7 +27,7 @@ public  class RunBoard extends JPanel implements Observer, IView {
 	private Model model;
 	protected int width;
 	protected int height;
-	protected Ball ball;
+	protected IBall ball;
 	protected List<IGizmo> gizmoList;
 	
 	public RunBoard(int w, int h, Model m) {
@@ -71,7 +72,7 @@ public  class RunBoard extends JPanel implements Observer, IView {
 	public void update(Observable o, Object arg) {
 		
 		if (arg instanceof Ball)
-			this.ball = (Ball)arg;
+			this.ball = (IBall)arg;
 			
 		if (arg instanceof Gizmo){
 			gizmoList.add((Gizmo)arg);

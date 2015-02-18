@@ -1,7 +1,5 @@
 package model;
 
-import interfaces.IModel;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -69,7 +67,6 @@ public class Model extends Observable implements IModel {
 		}
 	}
 		
-
 	/**
 	 * Returns the Board
 	 * 
@@ -79,7 +76,62 @@ public class Model extends Observable implements IModel {
 		return board;
 	}
 	
-	public Ball getBall() {
+	/**
+	 * Returns the ball
+	 * 
+	 * @return the ball
+	 */
+	public IBall getBall() {
 		return ball;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.setGravity(double gravity)
+	 */
+	@Override
+	public void setGravity(double gravity) {
+		Global.GRAVITY = gravity;		
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.getGravity()
+	 */
+	@Override
+	public double getGravity() {
+
+		return Global.GRAVITY;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.setFriction(float my, float, mu2)
+	 */
+	@Override
+	public void setFriction(float mu, float mu2) {
+		
+		Global.FRICTIONMU = mu;
+		Global.FRICTIONMU2 = mu2;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.getFrictionMU()
+	 */
+	@Override
+	public double getFrictionMU() {
+		
+		return Global.FRICTIONMU;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.getFrictionMU2()
+	 */
+	@Override
+	public double getFrictionMU2() {
+
+		return Global.FRICTIONMU2;
 	}
 }

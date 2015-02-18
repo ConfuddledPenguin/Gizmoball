@@ -16,7 +16,7 @@ public class Board implements IBoard {
 	/*
 	 * This a bad idea, but it works with little thought for now
 	 */
-	private boolean[][] grid = new boolean[Global.BOARDHEIGHT][Global.BOARDWIDTH];
+	private IGizmo[][] grid = new IGizmo[Global.BOARDHEIGHT][Global.BOARDWIDTH];
 	private Set<IGizmo> gizmos = new HashSet<IGizmo>();
 	
 	/*
@@ -32,8 +32,6 @@ public class Board implements IBoard {
 		
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
-			System.out.println("x: " + x + " y: " + y);
-			System.out.println("x: " + (x+width) + " y: " + (y+width));
 			throw new InvalidGridPosException("Position: " + x + ":" + y + 
 					"is invalid. Please ensure Grid position is viable.");
 		}
@@ -41,7 +39,7 @@ public class Board implements IBoard {
 		//check if already filled
 		for(int i = x; i < x + width; i++){
 			for (int j = y; j < y + height; j++){
-				if(grid[i][j]){
+				if(grid[i][j] != null){
 					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
 					"is already taken");
 				}
@@ -52,13 +50,13 @@ public class Board implements IBoard {
 		gizmos.add(g);
 		
 		//mark as taken
-		for(int i = x; i < width + x - 1; i++){
-			for (int j = y; j < height + y - 1; j++){
-				System.out.flush();
-				grid[i][j] = true;
+		for(int i = x; i < width + x; i++){
+			for (int j = y; j < height + y; j++){
+				grid[i][j] = g;
 			}
 		}
 	}//End addGizmo();
+	
 	
 	/*
 	 * (non-Javadoc)
@@ -71,13 +69,13 @@ public class Board implements IBoard {
 		int width = g.getWidth();
 		int height = g.getWidth();
 		
-		//add
+		//remove
 		gizmos.remove(g);
 		
 		//mark as empty
 		for(int i = x; i < x + width; i++){
 			for (int j = y; j < y + height; j++){
-				grid[i][j] = false;
+				grid[i][j] = null;
 			}
 		}
 	}
@@ -90,5 +88,16 @@ public class Board implements IBoard {
 	public Set<IGizmo> getGizmos() {
 		
 		return Collections.unmodifiableSet(gizmos);
+	}
+
+
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBoard#getGizmo(int x, int y)
+	 */
+	@Override
+	public IGizmo getGizmo(int x, int y) {
+		
+		return grid[x][y];
 	}
 }

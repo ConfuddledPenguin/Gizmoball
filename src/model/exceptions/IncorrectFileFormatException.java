@@ -9,8 +9,6 @@ public class IncorrectFileFormatException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = -1198914037893632341L;
-	private Exception e;
-	
 	public IncorrectFileFormatException(String msg) {
 		super(msg);
 	}

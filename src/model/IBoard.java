@@ -36,5 +36,16 @@ public interface IBoard {
 	 * @return A unmodifiable set of gizmos
 	 */
 	public abstract Set<IGizmo> getGizmos();
+	
+	/**
+	 * Returns the Gizmo at the location specified by the
+	 * x and y arguments
+	 * 
+	 * @param x The x cord
+	 * @param y The y cord
+	 * 
+	 * @return The gizmo located in the cords
+	 */
+	public IGizmo getGizmo(int x, int y);
 
 }

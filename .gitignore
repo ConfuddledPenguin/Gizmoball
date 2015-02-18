@@ -1,6 +1,8 @@
 bin/*
-.settings/*
+.settings
 .classpath
 .project
-/bin
+/bin/*
+/doc/*
+.class
 log.txt

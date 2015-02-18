@@ -7,6 +7,10 @@ import java.io.IOException;
 import model.exceptions.IncorrectFileFormatException;
 import model.gizmos.IGizmo;
 
+/**
+ * A public interface for the Model
+ *
+ */
 public interface IModel {
 
 	/**
@@ -24,7 +28,7 @@ public interface IModel {
 	/**
 	 * Get the Board
 	 *  
-	 * @return
+	 * @return The board
 	 */
 	public abstract IBoard getBoard();
 	
@@ -33,7 +37,14 @@ public interface IModel {
 	 * 
 	 * @param gravity the value for gravity
 	 */
-	public void setGravity(float gravity);
+	public void setGravity(double gravity);
+	
+	/**
+	 * Get the value of gravity on the model
+	 * 
+	 * @return this.gravity
+	 */
+	public double getGravity();
 	
 	
 	/**
@@ -43,6 +54,20 @@ public interface IModel {
 	 * @param mu2 The mu2 values
 	 */
 	public void setFriction(float mu, float mu2);
+	
+	/**
+	 * Get the value of friction mu on the model
+	 * 
+	 * @return this.frictionMU
+	 */
+	public double getFrictionMU();
+	
+	/**
+	 * Get the value of friction mu2 on the model
+	 * 
+	 * @return this.frictionMU2
+	 */
+	public double getFrictionMU2();
 
 	/**
 	 * Adds a gizmo
