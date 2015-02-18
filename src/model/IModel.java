@@ -77,5 +77,10 @@ public interface IModel {
 	 * @deprecated Add gizmos through the board now.
 	 */
 	public abstract void addGizmo(IGizmo g);
+	
+	/**
+	 * Updates the balls position after 1 frame of movement
+	 */
+	public void moveBall();
 
 }

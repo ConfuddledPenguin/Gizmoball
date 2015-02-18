@@ -18,13 +18,13 @@ public class Ball implements IBall {
 
 	private boolean stopped;
 
-	// x, y coordinates and x,y velocity
+	// x, y coordinates(L) and x,y velocity
 	public Ball(double x, double y, double xv, double yv) {
-		xpos = x; // Centre coordinates
-		ypos = y;
+		radius = 10;
+		xpos = (x * Global.L) + radius; // Centre coordinates
+		ypos = (y * Global.L) + radius;
 		colour = Color.GREEN;
 		velocity = new Vect(xv, yv);
-		radius = 10;
 		stopped = false;
 	}
 
@@ -124,6 +124,18 @@ public class Ball implements IBall {
 	@Override
 	public Color getColour() {
 		return colour;
+	}
+
+	/* Set x using L as the measurement */
+	@Override
+	public void setX(int x) {
+		xpos = x * Global.L;
+	}
+
+	/* Set y using L as the measurement */
+	@Override
+	public void setY(int y) {
+		ypos = y * Global.L;
 	}
 
 }

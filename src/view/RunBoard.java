@@ -59,6 +59,7 @@ public  class RunBoard extends JPanel implements Observer, IView {
 		
 		}
 		
+		ball = model.getBall();
 		if (ball != null) {
 			g2.setColor(ball.getColour());
 			int x = (int) (ball.getExactX() - ball.getRadius());

@@ -25,13 +25,30 @@ public class RunActionlistner implements ActionListener {
 				+ " with e.paramString " + e.paramString());
 
 		if (e.getSource() == timer) {
-			// move ball
+			System.out.println("timer.");
+			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
 				GizmoBallMain.gui.switchMode();
 				System.out.println("Going into Build Mode!!");
+				break;
+			case ("Start"):
+				timer.start();
+				break;
+			case ("Step"):
+				model.moveBall();
+				break;
+			case ("Stop"): //TODO add Stop option in GUI
+				timer.stop();
+				break;
+			case ("Restart"):
+				break;
+			case ("Quit"):
+				System.exit(0);
+				break;
 			}
+		
 	}
 
 }

@@ -32,7 +32,7 @@ public class Model extends Observable implements IModel {
 		
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		ball = new Ball(19,19,0,0);
+		ball = new Ball(0,0,20,20);
 	}
 	
 	/**
@@ -134,4 +134,45 @@ public class Model extends Observable implements IModel {
 
 		return Global.FRICTIONMU2;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel.moveBall()
+	 */
+	@Override
+	public void moveBall() {
+		double moveTime = 0.05; /* 20 times a second */
+		
+		if (ball != null && !ball.stopped()) {
+			ball = moveBallForTime(ball, moveTime);
+			
+			this.setChanged();
+			this.notifyObservers();
+		}
+	}
+	
+	
+	/**
+	 * Updates the X and Y coordinates of ball b to
+	 * represent movement over a given time
+	 * @param b a ball
+	 * @param moveTime the time over which the ball has moved
+	 * @return ball b with updated coordinates
+	 */
+	private Ball moveBallForTime(Ball b, double moveTime) {
+		double xVelocity = b.getVelo().x();
+		double yVelocity = b.getVelo().y();
+		
+		// calculate distance travelled
+		double xDistance = xVelocity * moveTime;
+		double yDistance = yVelocity * moveTime;
+		
+		double newX = b.getExactX() + xDistance;
+		double newY = b.getExactY() + yDistance;
+		
+		b.setExactX(newX);
+		b.setExactY(newY);
+		return b;
+	}
+	
 }
