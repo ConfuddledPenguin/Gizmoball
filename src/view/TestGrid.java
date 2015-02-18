@@ -121,6 +121,7 @@ public class TestGrid extends JPanel implements Observer {
 			public void mouseReleased(MouseEvent e) {
 				if (e.isPopupTrigger()) {
 					popup.show(e.getComponent(), e.getX(), e.getY());
+					if (clickedCell == null) mousePressed(e);
 				}
 			}
 		});
@@ -168,7 +169,6 @@ public class TestGrid extends JPanel implements Observer {
 			Rectangle cell = cells.get(index);
 			g2d.setColor(Color.YELLOW);
 			g2d.fill(cell);
-
 		}
 		
 		if (clickedCell != null) {
