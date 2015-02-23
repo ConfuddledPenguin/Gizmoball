@@ -104,7 +104,6 @@ public class Board implements IBoard {
 	 */
 	@Override
 	public IGizmo getGizmo(int x, int y) {
-		
 		return grid[x][y];
 	}
 }
