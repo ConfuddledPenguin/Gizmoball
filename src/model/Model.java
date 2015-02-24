@@ -163,12 +163,13 @@ public class Model extends Observable implements IModel {
 	 * @return ball b with updated coordinates
 	 */
 	private Ball moveBallForTime(Ball b, double moveTime) {
+		
+		
+		//Detect possible crashes into shit
+		
+		//Move ball
 		double xVelocity = b.getVelo().x();
-		System.out.println("xV " + xVelocity);
-		double yVelocity = b.getVelo().y() - (Global.GRAVITY * moveTime);
-		System.out.println("yV " + yVelocity);
-		Vect v = new Vect(xVelocity, yVelocity);
-		b.setVelo(v);
+		double yVelocity = b.getVelo().y();
 		
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
@@ -181,6 +182,13 @@ public class Model extends Observable implements IModel {
 		
 		b.setX(newX);
 		b.setY(newY);
+		
+		//Work out new v
+		xVelocity = xVelocity;
+		yVelocity = (Global.GRAVITY * moveTime) + yVelocity; 
+		Vect v = new Vect(xVelocity, yVelocity);
+		b.setVelo(v);
+		
 		return b;
 	}
 	

@@ -15,9 +15,9 @@ public interface IBall {
 	public abstract Circle getCircle();
 
 	// Ball specific methods that deal with double precision.
-	public abstract double getExactX();
+	public abstract double getX();
 
-	public abstract double getExactY();
+	public abstract double getY();
 
 	public abstract void setExactX(double x);
 

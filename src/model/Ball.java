@@ -65,7 +65,6 @@ public class Ball implements IBall {
 	/* (non-Javadoc)
 	 * @see model.IBall#getExactX()
 	 */
-	@Override
 	public double getExactX() {
 		return xpos * Global.L + radius;
 	}
@@ -73,7 +72,6 @@ public class Ball implements IBall {
 	/* (non-Javadoc)
 	 * @see model.IBall#getExactY()
 	 */
-	@Override
 	public double getExactY() {
 		return ypos * Global.L + radius;
 	}

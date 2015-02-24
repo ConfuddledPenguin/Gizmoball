@@ -8,7 +8,7 @@ public class Global {
 	/**
 	 * Expressed in terms of L
 	 */
-	public static double GRAVITY = -25; //16.0;
+	public static double GRAVITY = 25;
 	/**
 	 * Expressed in terms of seconds
 	 */
@@ -16,9 +16,9 @@ public class Global {
 	/**
 	 * Expressed in terms of L
 	 */
-	static double FRICTIONMU2 = 0.026;
+	static double FRICTIONMU2 = 0.025;
 	
-	public static double REFRESHTIME = 16.66666666666666667 * 6;
+	public static double REFRESHTIME = 20; // 50fps
 	
 	Global(int boardHeight, int boardWidth) {
 		
