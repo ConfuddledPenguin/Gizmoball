@@ -10,6 +10,7 @@ public class Absorber extends Gizmo {
 	public void trigger() {
 		
 		triggerConnections();
+		
 	}
 
 }

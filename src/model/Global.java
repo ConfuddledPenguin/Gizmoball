@@ -1,24 +1,26 @@
 package model;
 
-class Global {
+public class Global {
 	
-	public static int BOARDHEIGHT = 20;
-	public static int BOARDWIDTH = 20;
-	public static int L = 20;  // 1 L = 20 pixels
+	static int BOARDHEIGHT = 20;
+	static int BOARDWIDTH = 20;
+	static int L = 20;  // 1 L = 20 pixels
 	/**
 	 * Expressed in terms of L
 	 */
-	public static double GRAVITY = 16.0;
+	public static double GRAVITY = -25; //16.0;
 	/**
 	 * Expressed in terms of seconds
 	 */
-	public static double FRICTIONMU = 0.025;
+	static double FRICTIONMU = 0.025;
 	/**
 	 * Expressed in terms of L
 	 */
-	public static double FRICTIONMU2 = 0.026;
+	static double FRICTIONMU2 = 0.026;
 	
-	public Global(int boardHeight, int boardWidth) {
+	public static double REFRESHTIME = 16.66666666666666667 * 6;
+	
+	Global(int boardHeight, int boardWidth) {
 		
 		Global.BOARDHEIGHT = boardHeight;
 		Global.BOARDWIDTH = boardWidth;

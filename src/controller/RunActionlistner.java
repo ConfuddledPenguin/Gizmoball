@@ -5,21 +5,26 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import view.GUI;
 import main.GizmoBallMain;
+import model.Global;
 import model.Model;
 
 public class RunActionlistner implements ActionListener {
 
 	private Model model;
 	private Timer timer;
+	private GUI gui;
 
-	public RunActionlistner(Model m) {
+	public RunActionlistner(Model m, GUI g) {
 		model = m;
-		timer = new Timer(50, this);
+		gui = g;
+		timer = new Timer((int) Global.REFRESHTIME, this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		System.out.println("Controller: The " + e.getActionCommand()
 				+ " button is clicked at " + new java.util.Date(e.getWhen())
 				+ " with e.paramString " + e.paramString());
@@ -35,12 +40,14 @@ public class RunActionlistner implements ActionListener {
 				break;
 			case ("Start"):
 				timer.start();
+				gui.changeStartStop("Stop");
 				break;
 			case ("Step"):
 				model.moveBall();
 				break;
-			case ("Stop"): //TODO add Stop option in GUI
+			case ("Stop"):
 				timer.stop();
+				gui.changeStartStop("Start");
 				break;
 			case ("Restart"):
 				break;

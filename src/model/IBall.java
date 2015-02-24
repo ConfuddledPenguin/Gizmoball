@@ -24,10 +24,10 @@ public interface IBall {
 	public abstract void setExactY(double y);
 	
 	// set X using L as the measurement
-	public abstract void setX(int x);
+	public abstract void setX(double x);
 	
 	// set Y using L as the measurement
-	public abstract void setY(int y);
+	public abstract void setY(double y);
 
 	public abstract void stop();
 

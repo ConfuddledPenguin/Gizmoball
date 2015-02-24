@@ -21,8 +21,8 @@ public class Ball implements IBall {
 	// x, y coordinates(L) and x,y velocity
 	public Ball(double x, double y, double xv, double yv) {
 		radius = 10;
-		xpos = (x * Global.L) + radius; // Centre coordinates
-		ypos = (y * Global.L) + radius;
+		xpos = x; // Centre coordinates
+		ypos = y;
 		colour = Color.GREEN;
 		velocity = new Vect(xv, yv);
 		stopped = false;
@@ -67,7 +67,7 @@ public class Ball implements IBall {
 	 */
 	@Override
 	public double getExactX() {
-		return xpos;
+		return xpos * Global.L + radius;
 	}
 
 	/* (non-Javadoc)
@@ -75,7 +75,7 @@ public class Ball implements IBall {
 	 */
 	@Override
 	public double getExactY() {
-		return ypos;
+		return ypos * Global.L + radius;
 	}
 
 	/* (non-Javadoc)
@@ -128,14 +128,24 @@ public class Ball implements IBall {
 
 	/* Set x using L as the measurement */
 	@Override
-	public void setX(int x) {
-		xpos = x * Global.L;
+	public void setX(double x) {
+		xpos = x;
 	}
 
 	/* Set y using L as the measurement */
 	@Override
-	public void setY(int y) {
-		ypos = y * Global.L;
+	public void setY(double newY) {
+		ypos = newY;
+	}
+	
+	/* Set x using L as the measurement */
+	public double getX() {
+		return xpos;
+	}
+
+	/* Set y using L as the measurement */
+	public double getY() {
+		return ypos;
 	}
 
 }

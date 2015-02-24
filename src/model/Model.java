@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Observable;
 
+import physics.Vect;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
@@ -32,7 +33,8 @@ public class Model extends Observable implements IModel {
 		
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		ball = new Ball(0,0,20,20);
+		ball = new Ball(10,19,0,-50);
+		
 	}
 	
 	/**
@@ -141,7 +143,8 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = 0.05; /* 20 times a second */
+		double moveTime = Global.REFRESHTIME/1000; // correct
+		System.out.println("movetime " + moveTime);
 		
 		if (ball != null && !ball.stopped()) {
 			ball = moveBallForTime(ball, moveTime);
@@ -161,17 +164,23 @@ public class Model extends Observable implements IModel {
 	 */
 	private Ball moveBallForTime(Ball b, double moveTime) {
 		double xVelocity = b.getVelo().x();
-		double yVelocity = b.getVelo().y();
+		System.out.println("xV " + xVelocity);
+		double yVelocity = b.getVelo().y() - (Global.GRAVITY * moveTime);
+		System.out.println("yV " + yVelocity);
+		Vect v = new Vect(xVelocity, yVelocity);
+		b.setVelo(v);
 		
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
+		System.out.println("Distance: x " + xDistance + " y " + yDistance);
 		
-		double newX = b.getExactX() + xDistance;
-		double newY = b.getExactY() + yDistance;
+		double newX = b.getX() + xDistance;
+		double newY = b.getY() + yDistance;
+		System.out.println("new coords: x " + newX + " y " + newY);
 		
-		b.setExactX(newX);
-		b.setExactY(newY);
+		b.setX(newX);
+		b.setY(newY);
 		return b;
 	}
 	

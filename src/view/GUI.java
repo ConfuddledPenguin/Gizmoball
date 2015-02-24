@@ -23,6 +23,7 @@ public class GUI {
 	private char mode;
 	private Model model;
 	private BuildBoard buildBoard;
+	private JButton startStopButton;
 
 	public GUI(char mode, Model m) {
 
@@ -82,11 +83,11 @@ public class GUI {
 		Font gf = new Font("Calbri", Font.BOLD, 12);
 		buttons.setLayout(new GridLayout(1, 4));
 
-		JButton button1 = new JButton("Start");
-		button1.setFont(gf);
-		button1.setMaximumSize(new Dimension(100, 100));
-		button1.addActionListener(controller.getRunListener());
-		buttons.add(button1);
+		startStopButton = new JButton("Start");
+		startStopButton.setFont(gf);
+		startStopButton.setMaximumSize(new Dimension(100, 100));
+		startStopButton.addActionListener(controller.getRunListener());
+		buttons.add(startStopButton);
 
 		JButton button2 = new JButton("Step");
 		button2.setFont(gf);
@@ -107,6 +108,10 @@ public class GUI {
 		buttons.add(button4);
 
 		return buttons;
+	}
+	
+	public void changeStartStop(String toWhat){
+		startStopButton.setText(toWhat);
 	}
 
 	private JMenuBar createBuildButtons() {
