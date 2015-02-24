@@ -49,7 +49,7 @@ public class Model extends Observable implements IModel {
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
 		setChanged();
-		notifyObservers();
+		notifyObservers(board.getGizmos());
 	}
 	
 	/**

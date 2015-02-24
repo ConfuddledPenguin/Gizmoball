@@ -224,8 +224,9 @@ public class BuildBoard extends Board {
 				gizmoList.add((IGizmo) arg);
 			else
 				gizmoList.remove(arg);
-		} else if(arg == null){
-			gizmoList = model.getBoard().getGizmos();
+		} else if(arg instanceof List<?>){
+			
+			gizmoList = (List<IGizmo>) arg;
 		}
 
 		repaint();
