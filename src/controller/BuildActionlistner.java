@@ -60,6 +60,9 @@ public class BuildActionlistner implements ActionListener {
 			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();
 			break;
+		case ("Move"):
+			model.moveGizmo(view.getClickedCell(), view.getMovedPoint());	
+			break;
 		}
 
 	}

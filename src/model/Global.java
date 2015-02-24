@@ -2,8 +2,8 @@ package model;
 
 class Global {
 	
-	public static int BOARDHEIGHT = 20;
-	public static int BOARDWIDTH = 20;
+	public static int BOARDHEIGHT = 30;
+	public static int BOARDWIDTH = 30;
 	/**
 	 * Expressed in terms of L
 	 */

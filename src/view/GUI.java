@@ -280,4 +280,8 @@ public class GUI {
 			return new Point(0,0);
 		return cell;
 	}
+	
+	public Point getMovedPoint(){
+		return this.buildBoard.getMousePt();
+	}
 }
