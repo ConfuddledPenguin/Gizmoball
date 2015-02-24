@@ -92,17 +92,15 @@ public class Model extends Observable implements IModel {
 		
 	public void moveGizmo(Point oldPoint, Point newPoint){
 		
-		int newX = (int) (newPoint.getX()/(600 / 30));
-		int newY = (int) (newPoint.getY()/(600 / 30));
-	
-		this.board.getGizmo(oldPoint.x, oldPoint.y).setPos(newX, newY);
-		
+		IGizmo g = this.board.getGizmoForMove(oldPoint);
+		g.setPos(newPoint.x, newPoint.y);
+		this.board.moveGizmo(g, oldPoint,newPoint);
 		setChanged();
 		notifyObservers();
 	}
 	/**
 	 * Returns the Board
-	 * 
+	 * 	s
 	 * @return the board
 	 */
 	public IBoard getBoard() {

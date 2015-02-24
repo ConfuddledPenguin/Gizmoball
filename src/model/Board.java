@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -98,5 +99,20 @@ public class Board implements IBoard {
 	@Override
 	public IGizmo getGizmo(int x, int y) {
 		return grid[x][y];
+	}
+	
+	public IGizmo getGizmoForMove(Point p){
+		for(IGizmo g: this.gizmos){
+			if(g.getXPos() == p.x && g.getYPos() == p.y){
+				return g;
+			}
+		}
+		return null;
+	}
+
+
+	public void moveGizmo(IGizmo g, Point oldPoint, Point newPoint) {
+		this.grid[oldPoint.x][oldPoint.y] = null;
+		this.grid[newPoint.x][newPoint.y] = g;
 	}
 }

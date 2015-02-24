@@ -29,15 +29,17 @@ public class BuildBoard extends Board {
 
 	private List<Rectangle> cells;
 
+	private boolean moving = false;
 	private Point selectedCell;
 	private Point clickedCell;
-	private Point mousePt;
+	private Point moveTarget;
 	
 	public BuildBoard(Model m, ActionListener listener) {
 
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
+		moveTarget = new Point (0,0);
 
 		final JPopupMenu popup = createPopupMenu(listener);
 
@@ -75,6 +77,8 @@ public class BuildBoard extends Board {
 
 				clickedCell = new Point(column, row);
 				repaint();
+				moving = true;
+				
 			}
 
 			public void mouseReleased(MouseEvent e) {
@@ -84,6 +88,8 @@ public class BuildBoard extends Board {
 					if (clickedCell == null)
 						mousePressed(e);
 				}
+				
+				moving = false;
 			}
 
 		});
@@ -91,8 +97,11 @@ public class BuildBoard extends Board {
 		addMouseMotionListener(new MouseAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				mousePt = e.getPoint();
-				listener.actionPerformed(new ActionEvent(this, 1, "Move"));
+				moveTarget = e.getPoint();	
+				listener.actionPerformed(new ActionEvent(this, 0, "Move"));
+				repaint();
+				
+				if(moving) clickedCell = getMousePt();
 			}
 		});
 	}
@@ -146,9 +155,31 @@ public class BuildBoard extends Board {
 	}
 	
 	public Point getMousePt() {
-		return mousePt;
+		
+		int width = getWidth();
+		int height = getHeight();
+
+		int cellWidth = width / columnCount;
+		int cellHeight = height / rowCount;
+		int column = (int) (moveTarget.getX() / cellWidth);
+		int row = (int) (moveTarget.getY() / cellHeight);		
+		return new Point(column, row);
 	}
 
+	private boolean containsGizmo(Point p){
+		
+		//int x = (p.x/(getWidth()/columnCount));
+		//int y = (p.y/(getHeight()/rowCount));
+		
+		for (IGizmo g: gizmoList){
+			if (g.getXPos() == p.x && g.getYPos() == p.y){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(600, 600);
