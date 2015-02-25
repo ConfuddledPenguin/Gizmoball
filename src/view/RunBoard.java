@@ -22,7 +22,6 @@ public  class RunBoard extends Board {
 	protected int width;
 	protected int height;
 	protected IBall ball;
-	protected List<IGizmo> gizmoList;
 	
 	public RunBoard(int w, int h, Model m) {
 		
@@ -44,7 +43,7 @@ public  class RunBoard extends Board {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
 		
-//		drawGizmos(g2);
+		drawGizmos(g2);
 		
 		if (ball != null) {
 			g2.setColor(ball.getColour());
