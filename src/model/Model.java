@@ -3,13 +3,18 @@ package model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
 
+import physics.Geometry;
+import physics.LineSegment;
 import physics.Vect;
+import physics.Circle;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.IGizmo;
+import model.Global;
 
 /**
  * 
@@ -22,6 +27,7 @@ public class Model extends Observable implements IModel {
 	
 	private Board board;
 	private Ball ball;
+	private Walls walls;
 	
 	/**
 	 * The constructor
@@ -30,9 +36,9 @@ public class Model extends Observable implements IModel {
 	 * @param boardWidth The width of the board;
 	 */
 	public Model(int boardHeight, int boardWidth) {
-		
 		new Global(boardHeight, boardWidth);
 		board = new Board();
+		walls = new Walls(-10, -10, 40, 40);
 	}
 	
 	/**
@@ -148,11 +154,22 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = Global.REFRESHTIME/1000; // correct
+		double moveTime = Global.MOVETIME;
 		System.out.println("movetime " + moveTime);
 		
 		if (ball != null && !ball.stopped()) {
-			ball = moveBallForTime(ball, moveTime);
+			CollisionDetails cd = timeUntilCollision();
+			double timeUntilCollision = cd.getTimeUntilCollision();
+			
+			if (timeUntilCollision > moveTime) {
+				// no collision this move
+				ball = moveBallForTime(ball, moveTime);
+			}
+			else {
+				// there is a collision this move
+				ball = moveBallForTime(ball, timeUntilCollision);
+				ball.setVelo(cd.getVelocity()); // update velocity after collision
+			}
 			
 			this.setChanged();
 			this.notifyObservers();
@@ -195,6 +212,54 @@ public class Model extends Observable implements IModel {
 		b.setVelo(v);
 		
 		return b;
+	}
+	
+	private CollisionDetails timeUntilCollision() {
+		// physics.Circle - not gizmos.circle
+		Circle ballSim = ball.getCircle(); // simulate the ball
+		Vect ballVelocity = ball.getVelo();
+		
+		Vect newVelocity = new Vect(0,0);
+		
+		double shortestTime = Double.MAX_VALUE;
+		double timeToObject = 0;
+		
+		// check for collision with walls
+		ArrayList<LineSegment> wallLines = walls.getWalls();
+		for (LineSegment line : wallLines) {
+			timeToObject = Geometry.timeUntilWallCollision(line, ballSim, ballVelocity);
+			if (timeToObject < shortestTime) {
+				shortestTime = timeToObject;
+				newVelocity = Geometry.reflectWall(line, ballVelocity);
+			}
+		}
+		
+		ArrayList<IGizmo> gizmos = new ArrayList<IGizmo>(board.getGizmos());
+		for (IGizmo gizmo : gizmos) {
+			if (gizmo.toString().equals("Circle")) {
+				model.gizmos.Circle mCircle = (model.gizmos.Circle)gizmo; // need access to model.Circle methods
+				Vect pos = new Vect(mCircle.getXPos(), mCircle.getYPos());
+				//double radius = mCircle.getRadius(); // TODO: get circle radius
+				double radius = 1; // use 1 for now
+				Circle circleSim = new Circle(pos, radius);  // simulate the circle
+				timeToObject = Geometry.timeUntilCircleCollision(circleSim, ballSim, ballVelocity);
+				if (timeToObject < shortestTime) {
+					shortestTime = timeToObject;
+					newVelocity = Geometry.reflectCircle(circleSim.getCenter(), ballSim.getCenter(), ballVelocity);
+				}
+			}
+			
+			else if (gizmo.toString().equals("Square")) {
+				// TODO: Complete
+				// get impact side - treat as line impact?
+			}
+		}
+		
+		
+		// TODO: check for collision with gizmos
+		
+		return new CollisionDetails(shortestTime, newVelocity);
+		
 	}
 	
 }
