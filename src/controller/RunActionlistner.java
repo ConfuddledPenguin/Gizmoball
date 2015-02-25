@@ -39,6 +39,7 @@ public class RunActionlistner implements ActionListener {
 				System.out.println("Going into Build Mode!!");
 				break;
 			case ("Start"):
+				model.addBall();
 				timer.start();
 				gui.changeStartStop("Stop");
 				break;

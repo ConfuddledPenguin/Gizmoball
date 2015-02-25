@@ -24,7 +24,6 @@ public  class RunBoard extends JPanel implements Observer, IView {
 
 	private static final long serialVersionUID = 1L;
 	private static final int L = 20;
-	private Model model;
 	protected int width;
 	protected int height;
 	protected IBall ball;
@@ -34,7 +33,6 @@ public  class RunBoard extends JPanel implements Observer, IView {
 		
 		width = w;
 		height = h;
-		model = m;
 		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -59,7 +57,6 @@ public  class RunBoard extends JPanel implements Observer, IView {
 		
 		}
 		
-		ball = model.getBall();
 		if (ball != null) {
 			g2.setColor(ball.getColour());
 			int x = (int) ((ball.getX() * 20) - ball.getRadius());

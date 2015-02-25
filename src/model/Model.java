@@ -33,8 +33,6 @@ public class Model extends Observable implements IModel {
 		
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		ball = new Ball(10,19,0,-50);
-		
 	}
 	
 	/**
@@ -87,6 +85,13 @@ public class Model extends Observable implements IModel {
 		return ball;
 	}
 
+	public void addBall() {
+		
+		ball = new Ball(10,19,0,-50);
+		
+		setChanged();
+		notifyObservers(ball);
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see model.IModel.setGravity(double gravity)
