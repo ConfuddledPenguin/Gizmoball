@@ -18,6 +18,14 @@ public class GizmoBallMain {
 		
 		gui = new GUI('r',m);
 		m.addBall();
-		//m.addGizmo(new Square(10,5));
+		m.addGizmo(new Circle(10,5));
+		m.addGizmo(new Circle(1,29));
+		m.addGizmo(new Circle(27,29));
+		m.addGizmo(new Circle(10,29));
+		m.addGizmo(new Circle(15,15));
+		m.addGizmo(new Circle(25,10));
+		m.addGizmo(new Circle(18,9));
+		m.addGizmo(new Circle(14,14));
+		m.addGizmo(new Circle(29,4));
 	}
 }

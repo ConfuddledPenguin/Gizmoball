@@ -137,7 +137,7 @@ public class Model extends Observable implements IModel {
 
 	public void addBall() {
 		
-		ball = new Ball(10,19,0,-50);
+		ball = new Ball(9.5,19,0,-50);
 		
 		setChanged();
 		notifyObservers(ball);
@@ -198,7 +198,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = Global.MOVETIME;
+		double moveTime = 0.03;//Global.MOVETIME;
 		System.out.println("movetime " + moveTime);
 		
 		if (ball != null && !ball.stopped()) {
@@ -282,7 +282,7 @@ public class Model extends Observable implements IModel {
 		for (IGizmo gizmo : gizmos) {
 			if (gizmo instanceof model.gizmos.Circle) {
 				model.gizmos.Circle mCircle = (model.gizmos.Circle)gizmo; // need access to model.Circle methods
-				Vect pos = new Vect(0,0);
+				Vect pos = new Vect(mCircle.getXPos(),mCircle.getYPos());
 				
 				//double radius = mCircle.getRadius(); // TODO: get circle radius
 				double radius = 0.5; // use 1 for now
