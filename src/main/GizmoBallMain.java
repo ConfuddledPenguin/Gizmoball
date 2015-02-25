@@ -1,5 +1,7 @@
 package main;
 
+import javax.swing.SwingUtilities;
+
 import model.*;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
@@ -12,12 +14,24 @@ public class GizmoBallMain {
 	 * 
 	 */
 	public static GUI gui;
+	final static Model m = new Model(50, 50);
 	
 	public static void main(String[] args){
+
+		SwingUtilities.invokeLater(new Runnable(){
+
+			@Override
+			public void run() {
+				gui = new GUI('r',m);
+				makeGizmos();
+			}
+			
+		});
 		
-		Model m = new Model(50, 50);
 		
-		gui = new GUI('r',m);
+	}
+	
+	private static void makeGizmos(){
 		m.addBall();
 		//m.addGizmo(new Square(10,5));
 		m.addGizmo(new Absorber(0, 20, 30, 1));
