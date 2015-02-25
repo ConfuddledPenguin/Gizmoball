@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Observer;
 
 import model.exceptions.IncorrectFileFormatException;
 import model.gizmos.IGizmo;
@@ -25,6 +26,14 @@ public interface IModel {
 	public abstract void loadBoard(File file) throws FileNotFoundException,
 			IOException, IncorrectFileFormatException;
 
+	/**
+	 * Save the board to the given file
+	 * 
+	 * @param file The file to write to
+	 * @throws IOException Error writing to file
+	 */
+	public void saveBoard(File file) throws IOException;
+	
 	/**
 	 * Get the Board
 	 *  
@@ -77,5 +86,11 @@ public interface IModel {
 	 * @deprecated Add gizmos through the board now.
 	 */
 	public abstract void addGizmo(IGizmo g);
+
+	/**
+	 * Add yourself as a 
+	 * @param buildBoard
+	 */
+	public abstract void addObserver(Observer o);
 
 }

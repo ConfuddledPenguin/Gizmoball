@@ -1,12 +1,13 @@
 package model;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import model.exceptions.*;
-import model.gizmos.*;
+import model.exceptions.GridPosAlreadyTakenException;
+import model.exceptions.InvalidGridPosException;
+import model.gizmos.IGizmo;
 
 /**
  * Represents the board the game is played on
@@ -18,13 +19,17 @@ public class Board implements IBoard {
 	 * This a bad idea, but it works with little thought for now
 	 */
 	private IGizmo[][] grid = new IGizmo[Global.BOARDHEIGHT][Global.BOARDWIDTH];
-	private Set<IGizmo> gizmos = new HashSet<IGizmo>();
+	private List<IGizmo> gizmos = new ArrayList<IGizmo>();
 	
 	/*
 	 * (non-Javadoc)
 	 * @see model.IBoard#addGizmo()
 	 */
-	public void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
+	public boolean addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
+		
+		if(gizmos.contains(g)){
+			return false;
+		}
 		
 		int x = g.getXPos();
 		int y = g.getYPos();
@@ -56,6 +61,8 @@ public class Board implements IBoard {
 				grid[i][j] = g;
 			}
 		}
+		
+		return true;
 	}//End addGizmo();
 	
 	
@@ -86,9 +93,9 @@ public class Board implements IBoard {
 	 * @see model.IBoard#getGizmos()
 	 */
 	@Override
-	public Set<IGizmo> getGizmos() {
+	public List<IGizmo> getGizmos() {
 		
-		return Collections.unmodifiableSet(gizmos);
+		return Collections.unmodifiableList(gizmos);
 	}
 
 

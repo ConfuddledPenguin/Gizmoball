@@ -18,6 +18,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import model.IModel;
 import model.Model;
 import model.gizmos.IGizmo;
 
@@ -251,6 +252,9 @@ public class BuildBoard extends Board {
 				gizmoList.add((IGizmo) arg);
 			else
 				gizmoList.remove(arg);
+		} else if(arg instanceof List<?>){
+			
+			gizmoList = (List<IGizmo>) arg;
 		}
 
 		repaint();

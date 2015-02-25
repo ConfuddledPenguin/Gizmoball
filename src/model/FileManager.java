@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import physics.Vect;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
@@ -64,6 +65,7 @@ class FileManager {
 			String ystring;
 			int x;
 			int y;
+			IBall ball;
 			switch (token) {
 				case "Rotate":
 					name = st.nextToken();
@@ -89,7 +91,7 @@ class FileManager {
 						float xf = Float.parseFloat(xstring);
 						ystring = st.nextToken();
 						float yf = Float.parseFloat(ystring);
-						IBall ball = m.getBall();
+						ball = m.getBall();
 						ball.setExactX(xf);
 						ball.setExactY(yf);
 					}
@@ -101,7 +103,7 @@ class FileManager {
 					g.connection(gizmos.get(name2));
 					continue;
 				case "KeyConnect":
-					System.out.println("Key Connect");
+					System.out.println("--MODEL---:FM:LOAD: Key Connect requested");
 					//TODO connect keys
 					continue;
 				case "Gravity":
@@ -117,19 +119,30 @@ class FileManager {
 					m.setFriction(mu, mu2);
 					continue;
 				case "Ball":
-					System.out.println("Ball");
-					//TODO add ball
+					name = st.nextToken();
+					xstring = st.nextToken();
+					float xf = Float.parseFloat(xstring);
+					ystring = st.nextToken();
+					float yf = Float.parseFloat(ystring);
+					ball = m.getBall();
+					ball.setExactX(xf);
+					ball.setExactY(yf);
+					xstring = st.nextToken();
+					xf = Float.parseFloat(xstring);
+					ystring = st.nextToken();
+					yf = Float.parseFloat(ystring);
+					ball = m.getBall();
+					Vect v = new Vect(xf, yf);
+					ball.setVelo(v);
 					continue;
-					
 			}
 			
 			Gizmo.Type type = null;
 			try{
 				type = Gizmo.Type.valueOf(token);
 			}catch(Exception e){
-				throw new IncorrectFileFormatException("File Error: Unknown Command on line " + reader.getLineNumber());
-			}finally{
 				reader.close();
+				throw new IncorrectFileFormatException("File Error: Unknown Command on line " + reader.getLineNumber());
 			}
 			
 			//using vars from the above switch			
@@ -146,9 +159,8 @@ class FileManager {
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 					
@@ -164,9 +176,8 @@ class FileManager {
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 					
@@ -181,14 +192,13 @@ class FileManager {
 					int x2 = Integer.parseInt(x2string);
 					String y2string = st.nextToken();
 					int y2 = Integer.parseInt(y2string);
-					g = new Absorber(x, y, x2, y2);
+					g = new Absorber(x, y, x2-x, y2-y);
 					gizmos.put(name, g);
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 					
@@ -204,9 +214,8 @@ class FileManager {
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 					
@@ -222,9 +231,8 @@ class FileManager {
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 					
@@ -240,9 +248,8 @@ class FileManager {
 					try {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
-					}finally{
 						reader.close();
+						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
 					}
 					continue;
 			}
