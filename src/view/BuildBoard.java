@@ -35,7 +35,7 @@ public class BuildBoard extends Board {
 	private Point clickedCell;
 	private Point moveTarget;
 	
-	public BuildBoard(Model m, ActionListener listener) {
+	public BuildBoard(Model m, final ActionListener listener) {
 
 		cells = new ArrayList<>(columnCount * rowCount);
 		gizmoList = new ArrayList<IGizmo>();

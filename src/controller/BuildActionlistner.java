@@ -27,22 +27,18 @@ public class BuildActionlistner implements ActionListener {
 				+ " button is clicked at " + new java.util.Date(e.getWhen())
 				+ " with e.paramString " + e.paramString());
 		
-		// not always needed but better than repeating for each case
-		int x = view.getClickedCell().x;
-		int y = view.getClickedCell().y;
-
 		switch (e.getActionCommand()) {
 
 		case ("Square"):
-			model.addGizmo(new Square(x, y));
+			model.addGizmo(new Square(view.getClickedCell().x,view.getClickedCell().y));
 			break;
 
 		case ("Triangle"):
-			model.addGizmo(new Triangle(x,y));
+			model.addGizmo(new Triangle(view.getClickedCell().x,view.getClickedCell().y));
 			break;
 
 		case ("Circle"):
-			model.addGizmo(new Circle(x,y));
+			model.addGizmo(new Circle(view.getClickedCell().x,view.getClickedCell().y));
 			break;
 			
 		case ("Clockwise"):
