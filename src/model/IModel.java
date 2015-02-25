@@ -97,5 +97,7 @@ public interface IModel {
 	 * @param buildBoard
 	 */
 	public abstract void addObserver(Observer o);
+	
+	public void addBall();
 
 }

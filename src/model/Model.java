@@ -217,7 +217,7 @@ public class Model extends Observable implements IModel {
 				ball = moveBallForTime(ball, timeUntilCollision); 
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 				if(getAbsorberHit()){
-					System.out.println("WORKS!!!!!!!!!!!!!!!!"); //testing
+					System.out.println("ABSORBER HIT"); //testing
 					addBall();
 					setAbsorberHit(false);
 				}

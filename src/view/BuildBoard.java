@@ -13,12 +13,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-
-import model.IModel;
 import model.Model;
 import model.gizmos.IGizmo;
 

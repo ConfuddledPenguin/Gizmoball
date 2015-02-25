@@ -41,7 +41,6 @@ public  class RunBoard extends Board {
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
-		
 		drawGizmos(g2);
 		
 		if (ball != null) {
@@ -50,7 +49,9 @@ public  class RunBoard extends Board {
 			int y = (int) ((ball.getY() * 20) - ball.getRadius());
 			int width = (int) (20 * ball.getRadius());
 			g2.fillOval(x, y, width, width);
-		}	
+		} 
+		
+		
 }
 	
 	@Override
@@ -61,9 +62,9 @@ public  class RunBoard extends Board {
 			
 		if (arg instanceof Gizmo){
 			gizmoList.add((Gizmo)arg);
-			System.out.print("GIZMO");
+			//System.out.print("GIZMO");
 		}
-		
+	
 		repaint();
 	}
 }

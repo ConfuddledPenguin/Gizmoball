@@ -20,7 +20,7 @@ public class GizmoBallMain {
 		gui = new GUI('r',m);
 		m.addBall();
 		//m.addGizmo(new Square(10,5));
-		m.addGizmo(new Absorber(0, 20, 30, 10));
+		m.addGizmo(new Absorber(0, 20, 30, 1));
 		m.addGizmo(new Circle(15,15));
 		m.addGizmo(new Circle(25,10));
 		m.addGizmo(new Circle(18,9));

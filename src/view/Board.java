@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Observer;
@@ -46,7 +47,9 @@ public abstract class Board extends JPanel implements Observer {
 						g2d.fillPolygon(new int[] {x,x+width,x+width}, new int[] {y,y,y+height}, 3);
 					}
 				} else if(gizmo instanceof Absorber){
+					g2d.setColor(new Color(255,0,0));
 					g2d.fillRect(x, y, width, height);
+					g2d.setColor(new Color(0,0,255));
 				}
 
 			}
