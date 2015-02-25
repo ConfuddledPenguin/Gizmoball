@@ -10,7 +10,6 @@ import javax.swing.Timer;
 import main.GizmoBallMain;
 import model.Global;
 import model.IModel;
-import model.Model;
 import model.exceptions.IncorrectFileFormatException;
 import view.FileChooser;
 import view.GUI;
@@ -23,7 +22,7 @@ public class RunActionlistner implements ActionListener {
 	private Timer timer;
 	private GUI gui;
 
-	public RunActionlistner(Model m, GUI g) {
+	public RunActionlistner(IModel m, GUI g) {
 
 		model = m;
 		gui = g;

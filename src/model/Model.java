@@ -7,15 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import physics.Geometry;
-import physics.LineSegment;
-import physics.Vect;
-import physics.Circle;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.IGizmo;
-import model.Global;
+import physics.Circle;
+import physics.Geometry;
+import physics.LineSegment;
+import physics.Vect;
 
 /**
  * 
@@ -42,15 +41,10 @@ public class Model extends Observable implements IModel {
 		walls = new Walls(0, -0, 30, 30);
 	}
 	
-	/**
-	 * Loads a board from the given file
-	 * 
-	 * @param file The file to load from
-	 * 
-	 * @throws FileNotFoundException File not found
-	 * @throws IOException Error reading file 
-	 * @throws IncorrectFileFormatException File in the wrong format
+	/* (non-Javadoc)
+	 * @see model.IModel#loadBoard(java.io.File)
 	 */
+	@Override
 	public void loadBoard(File file) throws FileNotFoundException, IOException, IncorrectFileFormatException{
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
@@ -58,23 +52,19 @@ public class Model extends Observable implements IModel {
 		notifyObservers(board.getGizmos());
 	}
 	
-	/**
-	 * Save the board to the given file
-	 * 
-	 * @param file The file to write to
-	 * @throws IOException Error writing to file
+	/* (non-Javadoc)
+	 * @see model.IModel#saveBoard(java.io.File)
 	 */
+	@Override
 	public void saveBoard(File file) throws IOException {
 		//TODO write to disk
 		System.out.println("--MODEL---: Asked to write to file " + file.getPath());
 	}
 	
-	/**
-	 * Add a gizmo to the board
-	 * 
-	 * @param g the gizmo to add
-	 * 
+	/* (non-Javadoc)
+	 * @see model.IModel#addGizmo(model.gizmos.IGizmo)
 	 */
+	@Override
 	public void addGizmo(IGizmo g){
 			
 		try {
@@ -87,12 +77,30 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.IModel#deleteGizmo(java.awt.Point)
+	 */
+	@Override
 	public void deleteGizmo(Point p){
+		
+		IGizmo g = board.getGizmo(p.x, p.y);
+		board.removeGizmo(g);
 		setChanged();
-		notifyObservers(board.getGizmo(p.x, p.y));
-		board.removeGizmo(board.getGizmo(p.x, p.y));
+		notifyObservers(g);
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.IModel#getGizmo(java.awt.Point)
+	 */
+	@Override
+	public IGizmo getGizmo(Point p){
+		return board.getGizmo(p.x, p.y);
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.IModel#RotateClockwise(java.awt.Point)
+	 */
+	@Override
 	public void RotateClockwise(Point p){
 		IGizmo g = board.getGizmo(p.x, p.y);
 		
@@ -101,6 +109,10 @@ public class Model extends Observable implements IModel {
 		notifyObservers();
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.IModel#RotateAntiClockwise(java.awt.Point)
+	 */
+	@Override
 	public void RotateAntiClockwise(Point p){
 		IGizmo g = board.getGizmo(p.x, p.y);
 		
@@ -109,32 +121,38 @@ public class Model extends Observable implements IModel {
 		notifyObservers();
 	}
 		
-	public void moveGizmo(Point oldPoint, Point newPoint){
+	/* (non-Javadoc)
+	 * @see model.IModel#moveGizmo(java.awt.Point, java.awt.Point)
+	 */
+	@Override
+	public void moveGizmo(Point gizmoPoint, Point newPoint){
 		
-		IGizmo g = this.board.getGizmoForMove(oldPoint);
+		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
 		g.setPos(newPoint.x, newPoint.y);
-		this.board.moveGizmo(g, oldPoint,newPoint);
+		this.board.moveGizmo(g, gizmoPoint,newPoint);
 		setChanged();
 		notifyObservers();
 	}
-	/**
-	 * Returns the Board
-	 * 	s
-	 * @return the board
+	
+	/* (non-Javadoc)
+	 * @see model.IModel#getBoard()
 	 */
-	public IBoard getBoard() {
+	public Board getBoard() {
 		return board;
 	}
 	
-	/**
-	 * Returns the ball
-	 * 
-	 * @return the ball
+	/* (non-Javadoc)
+	 * @see model.IModel#getBall()
 	 */
+	@Override
 	public IBall getBall() {
 		return ball;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IModel#addBall()
+	 */
+	@Override
 	public void addBall() {
 		
 		ball = new Ball(10,19,0,-50);
@@ -142,18 +160,17 @@ public class Model extends Observable implements IModel {
 		setChanged();
 		notifyObservers(ball);
 	}
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.setGravity(double gravity)
+	
+	/* (non-Javadoc)
+	 * @see model.IModel#setGravity(double)
 	 */
 	@Override
 	public void setGravity(double gravity) {
 		Global.GRAVITY = gravity;		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.getGravity()
+	/* (non-Javadoc)
+	 * @see model.IModel#getGravity()
 	 */
 	@Override
 	public double getGravity() {
@@ -161,9 +178,8 @@ public class Model extends Observable implements IModel {
 		return Global.GRAVITY;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.setFriction(float my, float, mu2)
+	/* (non-Javadoc)
+	 * @see model.IModel#setFriction(float, float)
 	 */
 	@Override
 	public void setFriction(float mu, float mu2) {
@@ -172,9 +188,8 @@ public class Model extends Observable implements IModel {
 		Global.FRICTIONMU2 = mu2;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.getFrictionMU()
+	/* (non-Javadoc)
+	 * @see model.IModel#getFrictionMU()
 	 */
 	@Override
 	public double getFrictionMU() {
@@ -182,9 +197,8 @@ public class Model extends Observable implements IModel {
 		return Global.FRICTIONMU;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.getFrictionMU2()
+	/* (non-Javadoc)
+	 * @see model.IModel#getFrictionMU2()
 	 */
 	@Override
 	public double getFrictionMU2() {
@@ -192,16 +206,24 @@ public class Model extends Observable implements IModel {
 		return Global.FRICTIONMU2;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.moveBall()
+	/* (non-Javadoc)
+	 * @see model.IModel#registerKeyStroke(int, boolean, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void registerKeyStroke(int keynumber, boolean onDown, IGizmo gizmo){
+		//TODO
+		System.out.println("--MODEL---: Asked to register key to gizmo");
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.IModel#moveBall()
 	 */
 	@Override
 	public void moveBall() {
 		double moveTime = Global.MOVETIME;
 		System.out.println("movetime " + moveTime);
 		
-		if (ball != null && !ball.stopped()) {
+		if (ball != null) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
 			
@@ -325,8 +347,6 @@ public class Model extends Observable implements IModel {
 		
 		// TODO: check for collision with gizmos
 		
-		return new CollisionDetails(shortestTime, newVelocity);
-		
+		return new CollisionDetails(shortestTime, newVelocity);	
 	}
-	
 }

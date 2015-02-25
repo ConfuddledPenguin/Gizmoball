@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import main.GizmoBallMain;
-import model.Model;
+import model.IModel;
 import view.GUI;
 import model.gizmos.Circle;
 import model.gizmos.Square;
@@ -13,10 +13,10 @@ import model.gizmos.Triangle;
 
 public class BuildActionlistner implements ActionListener {
 
-	private Model model;
+	private IModel model;
 	private GUI view;
 
-	public BuildActionlistner(Model m, GUI g) {
+	public BuildActionlistner(IModel m, GUI g) {
 		model = m;
 		view = g;
 	}

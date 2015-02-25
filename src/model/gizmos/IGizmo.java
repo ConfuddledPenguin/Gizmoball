@@ -1,5 +1,7 @@
 package model.gizmos;
 
+import model.gizmos.Gizmo.Orientation;
+
 /**
  * The gizmo interface
  * 
@@ -70,11 +72,20 @@ public interface IGizmo {
 	/**
 	 * Rotates the gizmo.
 	 * 
-	 * The gizmo has for positions, 0, 1, 2, 3 each
-	 * increment is at 90` clockwise to the last.
-	 * 
 	 */
 	void rotateClockwise();
 
+	/**
+	 * Rotates the gizmo anticlockwise
+	 */
 	void rotateAntiClockwise();
+	
+	/**
+	 * 
+	 * Get the rotation of the gizmo
+	 * 
+	 * @return The rotation enum
+	 */
+	public Orientation getOrientation();
+	
 }

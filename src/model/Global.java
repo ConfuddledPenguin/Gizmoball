@@ -21,7 +21,7 @@ public class Global {
 	
 	public static double REFRESHTIME = 20; // 50fps
 	
-	public static double MOVETIME = 1/REFRESHTIME; // 0.05 - 20 times per second
+	public static double MOVETIME = REFRESHTIME / 1000;
 	
 	Global(int boardHeight, int boardWidth) {
 		

@@ -47,7 +47,7 @@ public  class RunBoard extends Board {
 //		drawGizmos(g2);
 		
 		if (ball != null) {
-			g2.setColor(ball.getColour());
+			g2.setColor(Color.GREEN);
 			int x = (int) ((ball.getX() * 20) - ball.getRadius());
 			int y = (int) ((ball.getY() * 20) - ball.getRadius());
 			int width = (int) (2 * ball.getRadius());

@@ -7,7 +7,8 @@ import java.util.Set;
 /**
  * A gizmo
  * 
- * Imagine lots of interesting things written here
+ * This abstract class provided the base for all
+ * of the gizmo's that the model has.
  */
 public abstract class Gizmo implements IGizmo {
 	
@@ -59,6 +60,10 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/**
+	 * Used to represent the orientation
+	 * of the gizmo
+	 */
 	public enum Orientation {
 		BottomLeft{
 			@Override
@@ -97,8 +102,21 @@ public abstract class Gizmo implements IGizmo {
 	protected Type type;
 	protected Orientation o;
 	
+	/**
+	 * All of the gizmos interesting in being triggered 
+	 * when this gizmo is.
+	 */
 	protected Set<IGizmo> connections = new HashSet<IGizmo>();
 
+	/**
+	 * The constructor for the gizmo
+	 * 
+	 * @param x The x cord
+	 * @param y The y cord
+	 * @param width the width
+	 * @param height The height
+	 * @param type The Type of gizmo
+	 */
 	public Gizmo(int x, int y, int width, int height, Type type) {
 		this.xcord = x;
 		this.ycord = y;
@@ -188,7 +206,7 @@ public abstract class Gizmo implements IGizmo {
 	
 	/*
 	 * (non-Javadoc)
-	 * @see model.gizmos.IGizmo#rotate()
+	 * @see model.gizmos.IGizmo#rotateClockwise()
 	 */
 	public void rotateClockwise(){
 		switch(this.o){
@@ -210,6 +228,10 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#rotateAntiClockwise()
+	 */
 	public void rotateAntiClockwise(){
 		switch(this.o){
 			
@@ -230,6 +252,10 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getOrientation()
+	 */
 	public Orientation getOrientation(){
 		return o;
 	}

@@ -13,7 +13,7 @@ import model.gizmos.IGizmo;
  * Represents the board the game is played on
  *
  */
-public class Board implements IBoard {
+public class Board {
 
 	/*
 	 * This a bad idea, but it works with little thought for now
@@ -92,7 +92,6 @@ public class Board implements IBoard {
 	 * (non-Javadoc)
 	 * @see model.IBoard#getGizmos()
 	 */
-	@Override
 	public List<IGizmo> getGizmos() {
 		
 		return Collections.unmodifiableList(gizmos);
@@ -103,7 +102,6 @@ public class Board implements IBoard {
 	 * (non-Javadoc)
 	 * @see model.IBoard#getGizmo(int x, int y)
 	 */
-	@Override
 	public IGizmo getGizmo(int x, int y) {
 		return grid[x][y];
 	}

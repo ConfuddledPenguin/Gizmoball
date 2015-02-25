@@ -9,18 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import model.exceptions.*;
+import model.gizmos.*;
 import physics.Vect;
-import model.exceptions.GridPosAlreadyTakenException;
-import model.exceptions.IncorrectFileFormatException;
-import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
-import model.gizmos.Circle;
-import model.gizmos.Gizmo;
-import model.gizmos.IGizmo;
-import model.gizmos.LeftFlipper;
-import model.gizmos.RightFlipper;
-import model.gizmos.Square;
-import model.gizmos.Triangle;
 
 /**
  * Responsible for loading and saving the files
@@ -92,8 +83,8 @@ class FileManager {
 						ystring = st.nextToken();
 						float yf = Float.parseFloat(ystring);
 						ball = m.getBall();
-						ball.setExactX(xf);
-						ball.setExactY(yf);
+						ball.setX(xf);
+						ball.setY(yf);
 					}
 					continue;
 				case "Connect":
@@ -103,8 +94,18 @@ class FileManager {
 					g.connection(gizmos.get(name2));
 					continue;
 				case "KeyConnect":
-					System.out.println("--MODEL---:FM:LOAD: Key Connect requested");
-					//TODO connect keys
+					if(!st.nextToken().equals("key")){
+						throw new IncorrectFileFormatException("'key' expected on line " + reader.getLineNumber());
+					}
+					int keynumber = Integer.parseInt(st.nextToken());
+					String state = st.nextToken();
+					boolean onDown = true;
+					if(state.equals("up")){
+						onDown = false;
+					}
+					name = st.nextToken();
+					g = gizmos.get(name);
+					m.registerKeyStroke(keynumber, onDown, g);
 					continue;
 				case "Gravity":
 					token = st.nextToken();
@@ -125,8 +126,8 @@ class FileManager {
 					ystring = st.nextToken();
 					float yf = Float.parseFloat(ystring);
 					ball = m.getBall();
-					ball.setExactX(xf);
-					ball.setExactY(yf);
+					ball.setX(xf);
+					ball.setY(yf);
 					xstring = st.nextToken();
 					xf = Float.parseFloat(xstring);
 					ystring = st.nextToken();
