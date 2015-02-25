@@ -38,7 +38,7 @@ public class Model extends Observable implements IModel {
 	public Model(int boardHeight, int boardWidth) {
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		walls = new Walls(-10, -10, 40, 40);
+		walls = new Walls(0, -0, 30, 30);
 	}
 	
 	/**
@@ -167,7 +167,7 @@ public class Model extends Observable implements IModel {
 			}
 			else {
 				// there is a collision this move
-				ball = moveBallForTime(ball, timeUntilCollision);
+				ball = moveBallForTime(ball, timeUntilCollision); 
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 			}
 			
@@ -236,11 +236,12 @@ public class Model extends Observable implements IModel {
 		
 		ArrayList<IGizmo> gizmos = new ArrayList<IGizmo>(board.getGizmos());
 		for (IGizmo gizmo : gizmos) {
-			if (gizmo.toString().equals("Circle")) {
+			if (gizmo instanceof model.gizmos.Circle) {
 				model.gizmos.Circle mCircle = (model.gizmos.Circle)gizmo; // need access to model.Circle methods
-				Vect pos = new Vect(mCircle.getXPos(), mCircle.getYPos());
+				Vect pos = new Vect(0,0);
+				
 				//double radius = mCircle.getRadius(); // TODO: get circle radius
-				double radius = 1; // use 1 for now
+				double radius = 0.5; // use 1 for now
 				Circle circleSim = new Circle(pos, radius);  // simulate the circle
 				timeToObject = Geometry.timeUntilCircleCollision(circleSim, ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
@@ -249,9 +250,31 @@ public class Model extends Observable implements IModel {
 				}
 			}
 			
-			else if (gizmo.toString().equals("Square")) {
-				// TODO: Complete
-				// get impact side - treat as line impact?
+			else if (gizmo instanceof model.gizmos.Square) {
+				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
+				int x = gizmo.getXPos();
+				int y = gizmo.getYPos();
+				int w = gizmo.getWidth();
+				int h = gizmo.getHeight();
+				
+				LineSegment ls1 = new LineSegment(x, y, x+w, y); // top wall
+				LineSegment ls2 = new LineSegment(x, y, x, y+h);
+				LineSegment ls3 = new LineSegment(x+w, y, x+w, y+h);
+				LineSegment ls4 = new LineSegment(x, y+h, x+w, y+h);
+				
+				SqaureLines.add(ls1);
+				SqaureLines.add(ls2);
+				SqaureLines.add(ls3);
+				SqaureLines.add(ls4);
+				
+				for (LineSegment sqLine : SqaureLines) {
+					timeToObject = Geometry.timeUntilWallCollision(sqLine, ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectWall(sqLine, ballVelocity);
+					}
+				}
+				
 			}
 		}
 		

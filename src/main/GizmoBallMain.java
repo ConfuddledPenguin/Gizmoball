@@ -1,6 +1,8 @@
 package main;
 
 import model.*;
+import model.gizmos.Circle;
+import model.gizmos.Square;
 import view.GUI;
 
 public class GizmoBallMain {
@@ -12,6 +14,10 @@ public class GizmoBallMain {
 	
 	public static void main(String[] args){
 		
-		gui = new GUI('r',new Model(50, 50));
+		Model m = new Model(50, 50);
+		
+		gui = new GUI('r',m);
+		m.addBall();
+		//m.addGizmo(new Square(10,5));
 	}
 }
