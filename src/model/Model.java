@@ -29,6 +29,7 @@ public class Model extends Observable implements IModel {
 	private Board board;
 	private Ball ball;
 	private Walls walls;
+	private boolean absorberHit;
 	
 	/**
 	 * The constructor
@@ -40,6 +41,7 @@ public class Model extends Observable implements IModel {
 		new Global(boardHeight, boardWidth);
 		board = new Board();
 		walls = new Walls(0, -0, 30, 30);
+		absorberHit = false;
 	}
 	
 	/**
@@ -137,8 +139,9 @@ public class Model extends Observable implements IModel {
 
 	public void addBall() {
 		
-		ball = new Ball(9.5,19,0,-50);
-		
+		//ball = new Ball(9.5,19,0,-50); 	//old one
+		//ball = new Ball(28.5,19,0,-50);	//new one
+		ball = new Ball(28.5,19,-25,-50);		//testing one
 		setChanged();
 		notifyObservers(ball);
 	}
@@ -213,6 +216,11 @@ public class Model extends Observable implements IModel {
 				// there is a collision this move
 				ball = moveBallForTime(ball, timeUntilCollision); 
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
+				if(getAbsorberHit()){
+					System.out.println("WORKS!!!!!!!!!!!!!!!!"); //testing
+					addBall();
+					setAbsorberHit(false);
+				}
 			}
 			
 			this.setChanged();
@@ -220,6 +228,25 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param hit 
+	 * 
+	 * this is to set the absorberHit attribute
+	 * that is used for the absorber
+	 */
+	public void setAbsorberHit(boolean hit){
+		absorberHit = hit;
+	}
+	
+	/**
+	 * 
+	 * @return absorberHit this is so moveBall()
+	 * knows if it has hit the absorber or not
+	 */
+	private boolean getAbsorberHit(){
+		return absorberHit;
+	}
 	
 	/**
 	 * Updates the X and Y coordinates of ball b to
@@ -291,10 +318,9 @@ public class Model extends Observable implements IModel {
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
 					newVelocity = Geometry.reflectCircle(circleSim.getCenter(), ballSim.getCenter(), ballVelocity);
+					setAbsorberHit(false);
 				}
-			}
-			
-			else if (gizmo instanceof model.gizmos.Square) {
+			} else if (gizmo instanceof model.gizmos.Square) {
 				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
 				int x = gizmo.getXPos();
 				int y = gizmo.getYPos();
@@ -316,9 +342,34 @@ public class Model extends Observable implements IModel {
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
 						newVelocity = Geometry.reflectWall(sqLine, ballVelocity);
+						setAbsorberHit(false);
 					}
-				}
+				}	
+			} else if (gizmo instanceof model.gizmos.Absorber) {
+				ArrayList<LineSegment> absorberLines = new ArrayList<LineSegment>();
+				int x = gizmo.getXPos();
+				int y = gizmo.getYPos();
+				int w = gizmo.getWidth();
+				int h = gizmo.getHeight();
 				
+				LineSegment ls1 = new LineSegment(x, y, x+w, y); // top wall
+				LineSegment ls2 = new LineSegment(x, y, x, y+h);
+				LineSegment ls3 = new LineSegment(x+w, y, x+w, y+h);
+				LineSegment ls4 = new LineSegment(x, y+h, x+w, y+h);
+				
+				absorberLines.add(ls1);
+				absorberLines.add(ls2);
+				absorberLines.add(ls3);
+				absorberLines.add(ls4);
+				
+				for (LineSegment abLine : absorberLines) {
+					timeToObject = Geometry.timeUntilWallCollision(abLine, ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectWall(abLine, ballVelocity);
+						setAbsorberHit(true);
+					}
+				}	
 			}
 		}
 		
