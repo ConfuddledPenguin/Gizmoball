@@ -1,13 +1,10 @@
 package controller;
 
-import interfaces.IController;
-
 import java.awt.event.ActionListener;
-
 import model.Model;
 import view.GUI;
 
-public class Controller implements IController  {
+public class Controller  {
 	
 	private Model model;
 	private ActionListener runListener;

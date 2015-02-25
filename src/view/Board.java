@@ -1,20 +1,19 @@
 package view;
 
-import interfaces.IView;
-
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import model.gizmos.Absorber;
 import model.gizmos.Circle;
 import model.gizmos.IGizmo;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
 import model.gizmos.Gizmo.Orientation;
 
-public abstract class Board extends JPanel implements Observer, IView {
+public abstract class Board extends JPanel implements Observer {
 	
 	private static final long serialVersionUID = -8454000231742359788L;
 	protected List<IGizmo> gizmoList;
@@ -46,6 +45,8 @@ public abstract class Board extends JPanel implements Observer, IView {
 					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopRight)) {
 						g2d.fillPolygon(new int[] {x,x+width,x+width}, new int[] {y,y,y+height}, 3);
 					}
+				} else if(gizmo instanceof Absorber){
+					g2d.fillRect(x, y, width, height);
 				}
 
 			}
