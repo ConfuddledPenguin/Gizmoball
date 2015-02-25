@@ -6,3 +6,4 @@ bin/*
 /doc/*
 .class
 log.txt
+/bin

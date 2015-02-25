@@ -7,30 +7,39 @@ import java.io.IOException;
 
 import javax.swing.Timer;
 
-import view.FileChooser;
-import view.IFileChooser;
 import main.GizmoBallMain;
+import model.Global;
 import model.IModel;
+import model.Model;
 import model.exceptions.IncorrectFileFormatException;
+import view.FileChooser;
+import view.GUI;
+import view.IFileChooser;
+
 
 public class RunActionlistner implements ActionListener {
 
 	private IModel model;
 	private Timer timer;
+	private GUI gui;
 
-	public RunActionlistner(IModel m) {
+	public RunActionlistner(Model m, GUI g) {
+
 		model = m;
-		timer = new Timer(50, this);
+		gui = g;
+		timer = new Timer((int) Global.REFRESHTIME, this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		System.out.println("Controller: The " + e.getActionCommand()
 				+ " button is clicked at " + new java.util.Date(e.getWhen())
 				+ " with e.paramString " + e.paramString());
 
 		if (e.getSource() == timer) {
-			// move ball
+			System.out.println("timer.");
+			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
@@ -67,6 +76,23 @@ public class RunActionlistner implements ActionListener {
 					e1.printStackTrace();
 				}
 				break;
+			case ("Start"):
+				timer.start();
+				gui.changeStartStop("Stop");
+				break;
+			case ("Step"):
+				model.moveBall();
+				break;
+			case ("Stop"):
+				timer.stop();
+				gui.changeStartStop("Start");
+				break;
+			case ("Restart"):
+				break;
+			case ("Quit"):
+				System.exit(0);
+				break;
 			}
+		
 	}
 }

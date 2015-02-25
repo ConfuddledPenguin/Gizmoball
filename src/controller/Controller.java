@@ -15,7 +15,7 @@ public class Controller implements IController  {
 	
 	public Controller(Model m, GUI g) {
 		model = m;
-		runListener = new RunActionlistner(m);
+		runListener = new RunActionlistner(m, g);
 		buildListener = new BuildActionlistner(m, g);
 	}
 	
