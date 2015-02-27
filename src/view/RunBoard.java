@@ -41,14 +41,13 @@ public  class RunBoard extends Board {
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
-		
 		drawGizmos(g2);
 		
 		if (ball != null) {
 			g2.setColor(ball.getColour());
-			int x = (int) ((ball.getX() * 20) - ball.getRadius());
-			int y = (int) ((ball.getY() * 20) - ball.getRadius());
-			int width = (int) (20 * ball.getRadius());
+			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
+			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
+			int width = (int) (20 * (ball.getRadius() * 2));
 			g2.fillOval(x, y, width, width);
 		}	
 }

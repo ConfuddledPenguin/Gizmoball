@@ -20,7 +20,7 @@ public class Ball implements IBall {
 
 	// x, y coordinates(L) and x,y velocity
 	public Ball(double x, double y, double xv, double yv) {
-		radius = 1;
+		radius = 0.5;
 		xpos = x; // Centre coordinates
 		ypos = y;
 		colour = Color.GREEN;

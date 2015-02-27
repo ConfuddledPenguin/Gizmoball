@@ -39,7 +39,7 @@ public class Model extends Observable implements IModel {
 	public Model(int boardHeight, int boardWidth) {
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		walls = new Walls(0, -0, 30, 30);
+		walls = new Walls(0, 0, 30, 30);
 	}
 	
 	/**
@@ -284,8 +284,7 @@ public class Model extends Observable implements IModel {
 				model.gizmos.Circle mCircle = (model.gizmos.Circle)gizmo; // need access to model.Circle methods
 				Vect pos = new Vect(mCircle.getXPos(),mCircle.getYPos());
 				
-				//double radius = mCircle.getRadius(); // TODO: get circle radius
-				double radius = 0.5; // use 1 for now
+				double radius = (double)mCircle.getWidth()/2;
 				Circle circleSim = new Circle(pos, radius);  // simulate the circle
 				timeToObject = Geometry.timeUntilCircleCollision(circleSim, ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {

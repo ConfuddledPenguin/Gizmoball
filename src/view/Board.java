@@ -29,12 +29,18 @@ public abstract class Board extends JPanel implements Observer {
 				int y = gizmo.getYPos()*L;
 				int width = gizmo.getWidth()*L;
 				int height = gizmo.getHeight()*L;
+				int radius = width/2;
 						
-						
+				
+				/* When painting a gizmo we subtract the radius of that gizmo from the x and y
+				 * coordinates which are passed to Graphics2d. This is because gizmos store the x & y
+				 * coordinates of the center point of the gizmo, where as Graphics2d interprets them as
+				 * the top left corner of the gizmo.
+				 */
 				if (gizmo instanceof Square)
-					g2d.fillRect(x, y, width, height);
+					g2d.fillRect(x-radius, y-radius, width, height);
 				else if (gizmo instanceof Circle)
-					g2d.fillOval(x, y, width, height);
+					g2d.fillOval(x-radius, y-radius, width, height);
 				else if (gizmo instanceof Triangle) {
 					if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
 						g2d.fillPolygon(new int[] {x,x,x+width}, new int[] {y,y+height,y+height}, 3);
