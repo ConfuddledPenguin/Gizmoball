@@ -14,7 +14,9 @@ import physics.Circle;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
+import model.gizmos.Triangle;
 import model.Global;
 
 /**
@@ -251,7 +253,7 @@ public class Model extends Observable implements IModel {
 		
 		//Work out new v
 		xVelocity = xVelocity;
-		yVelocity = (Global.GRAVITY * moveTime) + yVelocity; 
+		yVelocity = yVelocity - Global.GRAVITY; 
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
 		
@@ -274,7 +276,7 @@ public class Model extends Observable implements IModel {
 			timeToObject = Geometry.timeUntilWallCollision(line, ballSim, ballVelocity);
 			if (timeToObject < shortestTime) {
 				shortestTime = timeToObject;
-				newVelocity = Geometry.reflectWall(line, ballVelocity);
+				newVelocity = Geometry.reflectWall(line, ballVelocity);	
 			}
 		}
 		
@@ -319,6 +321,48 @@ public class Model extends Observable implements IModel {
 					}
 				}
 				
+			} else if(gizmo instanceof Triangle){
+				ArrayList<LineSegment> TriangeLines = new ArrayList<LineSegment>();
+				int x = gizmo.getXPos();
+				int y = gizmo.getYPos();
+				int w = gizmo.getWidth();
+				int h = gizmo.getHeight();
+
+				
+				LineSegment ls1 = new LineSegment(0,0,0,0);
+				LineSegment ls2 = new LineSegment(0,0,0,0);
+				LineSegment ls3 = new LineSegment(0,0,0,0);
+
+				if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
+					ls1 = new LineSegment(x, y, x, y + h);
+					ls2 = new LineSegment(x, y + h, x + w, y + h);
+					ls3 = new LineSegment(x + w, y + h, x, y);
+				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomRight)) {
+					ls1 = new LineSegment(x, y + h, x + w, y);
+					ls2 = new LineSegment(x + w, y, x + w, y + h);
+					ls3 = new LineSegment(x + w, y + h, x, y + h);
+				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopLeft)) {
+					ls1 = new LineSegment(x, y, x + w, y);
+					ls2 = new LineSegment(x + w, y, x, y + h);
+					ls3 = new LineSegment(x, y + h, x, y);
+				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopRight)) {
+					ls1 = new LineSegment(x, y, x + w, y);
+					ls2 = new LineSegment(x + w, y, x + w, y + h);
+					ls3 = new LineSegment(x + w, y + h, x, y);
+
+				}
+
+				TriangeLines.add(ls1);
+				TriangeLines.add(ls2);
+				TriangeLines.add(ls3);
+
+				for (LineSegment tLine : TriangeLines) {
+					timeToObject = Geometry.timeUntilWallCollision(tLine,ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectWall(tLine, ballVelocity);
+					}
+				}
 			}
 		}
 		
