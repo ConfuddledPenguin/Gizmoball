@@ -27,58 +27,69 @@ import model.Global;
  *
  */
 public class Model extends Observable implements IModel {
-	
+
 	private Board board;
 	private Ball ball;
 	private Walls walls;
-	
+
 	/**
 	 * The constructor
 	 * 
-	 * @param boardHeight The height of the board
-	 * @param boardWidth The width of the board;
+	 * @param boardHeight
+	 *            The height of the board
+	 * @param boardWidth
+	 *            The width of the board;
 	 */
 	public Model(int boardHeight, int boardWidth) {
 		new Global(boardHeight, boardWidth);
 		board = new Board();
 		walls = new Walls(0, 0, 30, 30);
 	}
-	
+
 	/**
 	 * Loads a board from the given file
 	 * 
-	 * @param file The file to load from
+	 * @param file
+	 *            The file to load from
 	 * 
-	 * @throws FileNotFoundException File not found
-	 * @throws IOException Error reading file 
-	 * @throws IncorrectFileFormatException File in the wrong format
+	 * @throws FileNotFoundException
+	 *             File not found
+	 * @throws IOException
+	 *             Error reading file
+	 * @throws IncorrectFileFormatException
+	 *             File in the wrong format
 	 */
-	public void loadBoard(File file) throws FileNotFoundException, IOException, IncorrectFileFormatException{
+	public void loadBoard(File file) throws FileNotFoundException, IOException,
+			IncorrectFileFormatException {
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
 		setChanged();
 		notifyObservers(board.getGizmos());
 	}
-	
+
 	/**
 	 * Save the board to the given file
 	 * 
-	 * @param file The file to write to
-	 * @throws IOException Error writing to file
+	 * @param file
+	 *            The file to write to
+	 * @throws IOException
+	 *             Error writing to file
 	 */
 	public void saveBoard(File file) throws IOException {
-		//TODO write to disk
-		System.out.println("--MODEL---: Asked to write to file " + file.getPath());
+		// TODO write to disk
+		System.out.println("--MODEL---: Asked to write to file "
+				+ file.getPath());
 	}
-	
+
 	/**
 	 * Add a gizmo to the board
 	 * 
-	 * @param g the gizmo to add
+	 * @param g
+	 *            the gizmo to add
 	 * 
 	 */
-	public void addGizmo(IGizmo g){
-			
+	public void addGizmo(IGizmo g) {
+
 		try {
 			board.addGizmo(g);
 			setChanged();
@@ -88,46 +99,47 @@ public class Model extends Observable implements IModel {
 			e.printStackTrace();
 		}
 	}
-	
-	public void deleteGizmo(Point p){
+
+	public void deleteGizmo(Point p) {
 		setChanged();
 		notifyObservers(board.getGizmo(p.x, p.y));
 		board.removeGizmo(board.getGizmo(p.x, p.y));
 	}
-	
-	public void RotateClockwise(Point p){
+
+	public void RotateClockwise(Point p) {
 		IGizmo g = board.getGizmo(p.x, p.y);
-		
+
 		g.rotateClockwise();
 		setChanged();
 		notifyObservers();
 	}
-	
-	public void RotateAntiClockwise(Point p){
+
+	public void RotateAntiClockwise(Point p) {
 		IGizmo g = board.getGizmo(p.x, p.y);
-		
+
 		g.rotateAntiClockwise();
 		setChanged();
 		notifyObservers();
 	}
-		
-	public void moveGizmo(Point oldPoint, Point newPoint){
-		
+
+	public void moveGizmo(Point oldPoint, Point newPoint) {
+
 		IGizmo g = this.board.getGizmoForMove(oldPoint);
 		g.setPos(newPoint.x, newPoint.y);
-		this.board.moveGizmo(g, oldPoint,newPoint);
+		this.board.moveGizmo(g, oldPoint, newPoint);
 		setChanged();
 		notifyObservers();
 	}
+
 	/**
-	 * Returns the Board
-	 * 	s
+	 * Returns the Board s
+	 * 
 	 * @return the board
 	 */
 	public IBoard getBoard() {
 		return board;
 	}
-	
+
 	/**
 	 * Returns the ball
 	 * 
@@ -138,23 +150,26 @@ public class Model extends Observable implements IModel {
 	}
 
 	public void addBall() {
-		
-		ball = new Ball(9.5,19,0,-50);
-		
+
+		ball = new Ball(9.5, 19, 0, -50);
+
 		setChanged();
 		notifyObservers(ball);
-	}
-	/*
-	 * (non-Javadoc)
-	 * @see model.IModel.setGravity(double gravity)
-	 */
-	@Override
-	public void setGravity(double gravity) {
-		Global.GRAVITY = gravity;		
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel.setGravity(double gravity)
+	 */
+	@Override
+	public void setGravity(double gravity) {
+		Global.GRAVITY = gravity;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel.getGravity()
 	 */
 	@Override
@@ -165,27 +180,30 @@ public class Model extends Observable implements IModel {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel.setFriction(float my, float, mu2)
 	 */
 	@Override
 	public void setFriction(float mu, float mu2) {
-		
+
 		Global.FRICTIONMU = mu;
 		Global.FRICTIONMU2 = mu2;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel.getFrictionMU()
 	 */
 	@Override
 	public double getFrictionMU() {
-		
+
 		return Global.FRICTIONMU;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel.getFrictionMU2()
 	 */
 	@Override
@@ -193,183 +211,256 @@ public class Model extends Observable implements IModel {
 
 		return Global.FRICTIONMU2;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel.moveBall()
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = 0.03;//Global.MOVETIME;
+		double moveTime = 0.03;// Global.MOVETIME;
 		System.out.println("movetime " + moveTime);
-		
+
 		if (ball != null && !ball.stopped()) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
-			
+
 			if (timeUntilCollision > moveTime) {
 				// no collision this move
 				ball = moveBallForTime(ball, moveTime);
-			}
-			else {
+			} else {
 				// there is a collision this move
-				ball = moveBallForTime(ball, timeUntilCollision); 
-				ball.setVelo(cd.getVelocity()); // update velocity after collision
+				ball = moveBallForTime(ball, timeUntilCollision);
+				ball.setVelo(cd.getVelocity()); // update velocity after
+												// collision
 			}
-			
+
 			this.setChanged();
 			this.notifyObservers();
 		}
 	}
-	
-	
+
 	/**
-	 * Updates the X and Y coordinates of ball b to
-	 * represent movement over a given time
-	 * @param b a ball
-	 * @param moveTime the time over which the ball has moved
+	 * Updates the X and Y coordinates of ball b to represent movement over a
+	 * given time
+	 * 
+	 * @param b
+	 *            a ball
+	 * @param moveTime
+	 *            the time over which the ball has moved
 	 * @return ball b with updated coordinates
 	 */
 	private Ball moveBallForTime(Ball b, double moveTime) {
-		
-		
-		//Detect possible crashes into shit
-		
-		//Move ball
+
+		// Detect possible crashes into shit
+
+		// Move ball
 		double xVelocity = b.getVelo().x();
 		double yVelocity = b.getVelo().y();
-		
+
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
 		System.out.println("Distance: x " + xDistance + " y " + yDistance);
-		
+
 		double newX = b.getX() + xDistance;
 		double newY = b.getY() + yDistance;
 		System.out.println("new coords: x " + newX + " y " + newY);
-		
+
 		b.setX(newX);
 		b.setY(newY);
-		
-		//Work out new v
+
+		// Work out new v
 		xVelocity = xVelocity;
-		yVelocity = yVelocity - Global.GRAVITY; 
+		yVelocity = yVelocity - Global.GRAVITY;
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
-		
+
 		return b;
 	}
-	
+
 	private CollisionDetails timeUntilCollision() {
 		// physics.Circle - not gizmos.circle
 		Circle ballSim = ball.getCircle(); // simulate the ball
 		Vect ballVelocity = ball.getVelo();
-		
-		Vect newVelocity = new Vect(0,0);
-		
+
+		Vect newVelocity = new Vect(0, 0);
+
 		double shortestTime = Double.MAX_VALUE;
 		double timeToObject = 0;
-		
+
 		// check for collision with walls
 		ArrayList<LineSegment> wallLines = walls.getWalls();
 		for (LineSegment line : wallLines) {
-			timeToObject = Geometry.timeUntilWallCollision(line, ballSim, ballVelocity);
+			timeToObject = Geometry.timeUntilWallCollision(line, ballSim,
+					ballVelocity);
 			if (timeToObject < shortestTime) {
 				shortestTime = timeToObject;
-				newVelocity = Geometry.reflectWall(line, ballVelocity);	
+				newVelocity = Geometry.reflectWall(line, ballVelocity);
 			}
 		}
-		
+
 		ArrayList<IGizmo> gizmos = new ArrayList<IGizmo>(board.getGizmos());
 		for (IGizmo gizmo : gizmos) {
 			if (gizmo instanceof model.gizmos.Circle) {
-				model.gizmos.Circle mCircle = (model.gizmos.Circle)gizmo; // need access to model.Circle methods
-				Vect pos = new Vect(mCircle.getXPos(),mCircle.getYPos());
-				
-				double radius = (double)mCircle.getWidth()/2;
-				Circle circleSim = new Circle(pos, radius);  // simulate the circle
-				timeToObject = Geometry.timeUntilCircleCollision(circleSim, ballSim, ballVelocity);
+				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo; // need access to model.Circle methods
+				Vect pos = new Vect(mCircle.getXPos(), mCircle.getYPos());
+
+				double radius = (double)mCircle.getWidth()/2; // use 1 for now
+				Circle circleSim = new Circle(pos, radius); // simulate  circle
+				timeToObject = Geometry.timeUntilCircleCollision(circleSim,
+						ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectCircle(circleSim.getCenter(), ballSim.getCenter(), ballVelocity);
+					newVelocity = Geometry.reflectCircle(circleSim.getCenter(),
+							ballSim.getCenter(), ballVelocity);
 				}
 			}
-			
+
 			else if (gizmo instanceof model.gizmos.Square) {
+				ArrayList<Circle> Corners = new ArrayList<Circle>();
 				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
 				int x = gizmo.getXPos();
 				int y = gizmo.getYPos();
 				int w = gizmo.getWidth();
 				int h = gizmo.getHeight();
-				
-				LineSegment ls1 = new LineSegment(x, y, x+w, y); // top wall
-				LineSegment ls2 = new LineSegment(x, y, x, y+h);
-				LineSegment ls3 = new LineSegment(x+w, y, x+w, y+h);
-				LineSegment ls4 = new LineSegment(x, y+h, x+w, y+h);
-				
+
+				LineSegment ls1 = new LineSegment(x, y, x + w, y); // top wall
+				LineSegment ls2 = new LineSegment(x, y, x, y + h);
+				LineSegment ls3 = new LineSegment(x + w, y, x + w, y + h);
+				LineSegment ls4 = new LineSegment(x, y + h, x + w, y + h);
+
+				Circle c1 = new Circle(new Vect(x, y), 0);
+				Circle c2 = new Circle(new Vect(x + w, y), 0);
+				Circle c3 = new Circle(new Vect(x + w, y + h), 0);
+				Circle c4 = new Circle(new Vect(x, y + h), 0);
+
 				SqaureLines.add(ls1);
 				SqaureLines.add(ls2);
 				SqaureLines.add(ls3);
 				SqaureLines.add(ls4);
-				
+
+				Corners.add(c1);
+				Corners.add(c2);
+				Corners.add(c3);
+				Corners.add(c4);
+
 				for (LineSegment sqLine : SqaureLines) {
-					timeToObject = Geometry.timeUntilWallCollision(sqLine, ballSim, ballVelocity);
+					timeToObject = Geometry.timeUntilWallCollision(sqLine,
+							ballSim, ballVelocity);
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(sqLine, ballVelocity);
+						newVelocity = Geometry
+								.reflectWall(sqLine, ballVelocity);
 					}
 				}
-				
-			} else if(gizmo instanceof Triangle){
+
+				for (Circle corner : Corners) {
+					timeToObject = Geometry.timeUntilCircleCollision(corner,
+							ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectCircle(
+								corner.getCenter(), ballSim.getCenter(),
+								ballVelocity);
+					}
+
+				}
+
+			} else if (gizmo instanceof Triangle) {
+				ArrayList<Circle> Corners = new ArrayList<Circle>();
 				ArrayList<LineSegment> TriangeLines = new ArrayList<LineSegment>();
 				int x = gizmo.getXPos();
 				int y = gizmo.getYPos();
 				int w = gizmo.getWidth();
 				int h = gizmo.getHeight();
 
+				LineSegment ls1 = new LineSegment(0, 0, 0, 0);
+				LineSegment ls2 = new LineSegment(0, 0, 0, 0);
+				LineSegment ls3 = new LineSegment(0, 0, 0, 0);
 				
-				LineSegment ls1 = new LineSegment(0,0,0,0);
-				LineSegment ls2 = new LineSegment(0,0,0,0);
-				LineSegment ls3 = new LineSegment(0,0,0,0);
+				Circle c1 = new Circle(0,0,0);
+				Circle c2 = new Circle(0,0,0);
+				Circle c3 = new Circle(0,0,0);
 
-				if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
+
+				if (((Triangle) gizmo).getOrientation().equals(
+						Orientation.BottomLeft)) {
 					ls1 = new LineSegment(x, y, x, y + h);
 					ls2 = new LineSegment(x, y + h, x + w, y + h);
 					ls3 = new LineSegment(x + w, y + h, x, y);
-				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomRight)) {
+					
+					c1 = new Circle(x,y,0);
+					c2 = new Circle(x,y+h,0);
+					c3 = new Circle(x+w,y+h,0);
+					
+				} else if (((Triangle) gizmo).getOrientation().equals(
+						Orientation.BottomRight)) {
 					ls1 = new LineSegment(x, y + h, x + w, y);
 					ls2 = new LineSegment(x + w, y, x + w, y + h);
 					ls3 = new LineSegment(x + w, y + h, x, y + h);
-				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopLeft)) {
+					
+					c1 = new Circle(x+w,y,0);
+					c2 = new Circle(x,y+h,0);
+					c3 = new Circle(x+w,y+h,0);
+					
+				} else if (((Triangle) gizmo).getOrientation().equals(
+						Orientation.TopLeft)) {
 					ls1 = new LineSegment(x, y, x + w, y);
 					ls2 = new LineSegment(x + w, y, x, y + h);
 					ls3 = new LineSegment(x, y + h, x, y);
-				} else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopRight)) {
+					
+					c1 = new Circle(x,y,0);
+					c2 = new Circle(x+w,y,0);
+					c3 = new Circle(x,y+h,0);
+					
+				} else if (((Triangle) gizmo).getOrientation().equals(
+						Orientation.TopRight)) {
 					ls1 = new LineSegment(x, y, x + w, y);
 					ls2 = new LineSegment(x + w, y, x + w, y + h);
 					ls3 = new LineSegment(x + w, y + h, x, y);
 
+					c1 = new Circle(x,y,0);
+					c2 = new Circle(x+w,y,0);
+					c3 = new Circle(x+w,y+h,0);
 				}
 
 				TriangeLines.add(ls1);
 				TriangeLines.add(ls2);
 				TriangeLines.add(ls3);
+				
+				Corners.add(c1);
+				Corners.add(c2);
+				Corners.add(c3);
+				
 
 				for (LineSegment tLine : TriangeLines) {
-					timeToObject = Geometry.timeUntilWallCollision(tLine,ballSim, ballVelocity);
+					timeToObject = Geometry.timeUntilWallCollision(tLine,
+							ballSim, ballVelocity);
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
 						newVelocity = Geometry.reflectWall(tLine, ballVelocity);
 					}
 				}
+
+				for (Circle corner : Corners) {
+					timeToObject = Geometry.timeUntilCircleCollision(corner,
+							ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectCircle(
+								corner.getCenter(), ballSim.getCenter(),
+								ballVelocity);
+					}
+				}
 			}
 		}
-		
-		
+
 		// TODO: check for collision with gizmos
-		
+
 		return new CollisionDetails(shortestTime, newVelocity);
-		
+
 	}
-	
+
 }
