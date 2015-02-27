@@ -45,9 +45,9 @@ public  class RunBoard extends Board {
 		
 		if (ball != null) {
 			g2.setColor(ball.getColour());
-			int x = (int) ((ball.getX() * 20) - ball.getRadius());
-			int y = (int) ((ball.getY() * 20) - ball.getRadius());
-			int width = (int) (20 * ball.getRadius());
+			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
+			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
+			int width = (int) (20 * ball.getRadius() * 2);
 			g2.fillOval(x, y, width, width);
 		} 
 		
