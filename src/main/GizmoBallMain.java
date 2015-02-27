@@ -1,9 +1,7 @@
 package main;
 
-import model.*;
+import model.Model;
 import model.gizmos.Absorber;
-import model.gizmos.Circle;
-import model.gizmos.Square;
 import view.GUI;
 
 public class GizmoBallMain {

@@ -259,4 +259,13 @@ public abstract class Gizmo implements IGizmo {
 	public Orientation getOrientation(){
 		return o;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getType()
+	 */
+	public Type getType(){
+		
+		return type;
+	}
 }

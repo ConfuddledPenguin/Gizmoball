@@ -88,4 +88,11 @@ public interface IGizmo {
 	 */
 	public Orientation getOrientation();
 	
+	/**
+	 * Returns the type of the gizmo
+	 * 
+	 * @return The type
+	 */
+	public Gizmo.Type getType();
+	
 }

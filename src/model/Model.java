@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
@@ -29,6 +31,9 @@ public class Model extends Observable implements IModel {
 	private Ball ball;
 	private Walls walls;
 	
+	private Logger MODELLOG = Logger.getLogger("modelLog");
+	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
+	
 	/**
 	 * The constructor
 	 * 
@@ -36,9 +41,18 @@ public class Model extends Observable implements IModel {
 	 * @param boardWidth The width of the board;
 	 */
 	public Model(int boardHeight, int boardWidth) {
+		
+		
+		logging.Logger.setUp(MODELLOG);
+		logging.Logger.setUp(PHYSICSLOG);
+		MODELLOG.log(Level.FINE, "Model started");
+		
+		
 		new Global(boardHeight, boardWidth);
 		board = new Board();
 		walls = new Walls(0, -0, 30, 30);
+		
+		MODELLOG.log(Level.FINE, "Model loaded");
 	}
 	
 	/* (non-Javadoc)
@@ -46,10 +60,15 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void loadBoard(File file) throws FileNotFoundException, IOException, IncorrectFileFormatException{
+		
+		MODELLOG.log(Level.FINE, "Asked to load file at " + file.getAbsolutePath());
+		
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
 		setChanged();
 		notifyObservers(board.getGizmos());
+		
+		MODELLOG.log(Level.FINE, "File loaded: " + file.getAbsolutePath());
 	}
 	
 	/* (non-Javadoc)
@@ -58,7 +77,7 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void saveBoard(File file) throws IOException {
 		//TODO write to disk
-		System.out.println("--MODEL---: Asked to write to file " + file.getPath());
+		MODELLOG.log(Level.WARNING, "Asked to load file at : "+ file.getAbsolutePath() + " . Feature not added yet");
 	}
 	
 	/* (non-Javadoc)
@@ -66,7 +85,9 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void addGizmo(IGizmo g){
-			
+
+		MODELLOG.log(Level.FINE, "Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":" + g.getYPos());;
+		
 		try {
 			board.addGizmo(g);
 			setChanged();
@@ -84,6 +105,9 @@ public class Model extends Observable implements IModel {
 	public void deleteGizmo(Point p){
 		
 		IGizmo g = board.getGizmo(p.x, p.y);
+		
+		MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos " + g.getXPos() + ":" + g.getYPos());;
+
 		board.removeGizmo(g);
 		setChanged();
 		notifyObservers(g);
@@ -125,19 +149,19 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#moveGizmo(java.awt.Point, java.awt.Point)
 	 */
 	@Override
-	public void moveGizmo(Point gizmoPoint, Point newPoint){
+	public void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException{
 		
 		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
-		g.setPos(newPoint.x, newPoint.y);
 		this.board.moveGizmo(g, gizmoPoint,newPoint);
+		
 		setChanged();
-		notifyObservers();
+		notifyObservers(g);
 	}
 	
 	/* (non-Javadoc)
 	 * @see model.IModel#getBoard()
 	 */
-	public Board getBoard() {
+	Board getBoard() {
 		return board;
 	}
 	
@@ -166,6 +190,8 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void setGravity(double gravity) {
+		
+		MODELLOG.log(Level.INFO, "Gravity set to " + gravity );
 		Global.GRAVITY = gravity;		
 	}
 
@@ -183,6 +209,8 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void setFriction(float mu, float mu2) {
+		
+		MODELLOG.log(Level.INFO, "Friction set to: mu - " + mu + " mu2 - " + mu2);
 		
 		Global.FRICTIONMU = mu;
 		Global.FRICTIONMU2 = mu2;
@@ -212,7 +240,7 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void registerKeyStroke(int keynumber, boolean onDown, IGizmo gizmo){
 		//TODO
-		System.out.println("--MODEL---: Asked to register key to gizmo");
+		MODELLOG.log(Level.WARNING, "Asked to register key stroke. Feture not yet added");
 	}
 	
 	/* (non-Javadoc)
@@ -220,19 +248,21 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
+		
 		double moveTime = Global.MOVETIME;
-		System.out.println("movetime " + moveTime);
+		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 		
 		if (ball != null) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
 			
-			if (timeUntilCollision > moveTime) {
-				// no collision this move
+			if (timeUntilCollision > moveTime) { //no collisions
+				PHYSICSLOG.log(Level.FINE, "No  collisions");
 				ball = moveBallForTime(ball, moveTime);
 			}
-			else {
-				// there is a collision this move
+			else {// collision
+				
+				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
 				ball = moveBallForTime(ball, timeUntilCollision); 
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 			}
@@ -253,20 +283,23 @@ public class Model extends Observable implements IModel {
 	private Ball moveBallForTime(Ball b, double moveTime) {
 		
 		
-		//Detect possible crashes into shit
 		
 		//Move ball
 		double xVelocity = b.getVelo().x();
 		double yVelocity = b.getVelo().y();
 		
+		PHYSICSLOG.log(Level.FINE, "Current velocity: x " + xVelocity + " y " + yVelocity);
+		
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
-		System.out.println("Distance: x " + xDistance + " y " + yDistance);
+		
+		PHYSICSLOG.log(Level.FINE, "Moving distance: x " + xDistance + " y " + yDistance);
 		
 		double newX = b.getX() + xDistance;
 		double newY = b.getY() + yDistance;
-		System.out.println("new coords: x " + newX + " y " + newY);
+		
+		PHYSICSLOG.log(Level.FINE, "New Coords: x " + newX + " y " + newY);
 		
 		b.setX(newX);
 		b.setY(newY);
@@ -276,6 +309,8 @@ public class Model extends Observable implements IModel {
 		yVelocity = (Global.GRAVITY * moveTime) + yVelocity; 
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
+		
+		PHYSICSLOG.log(Level.FINE, "New velocity: x " + xVelocity + " y " + yVelocity);
 		
 		return b;
 	}

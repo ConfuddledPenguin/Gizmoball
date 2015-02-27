@@ -161,7 +161,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 					
@@ -178,7 +178,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 					
@@ -199,7 +199,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 					
@@ -216,7 +216,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 					
@@ -233,7 +233,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 					
@@ -250,7 +250,7 @@ class FileManager {
 						board.addGizmo(g);
 					} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
 						reader.close();
-						throw new IncorrectFileFormatException("File Error: one line" + reader.getLineNumber(), e);
+						throw new IncorrectFileFormatException("File Error: on line " + reader.getLineNumber() + " ", e);
 					}
 					continue;
 			}

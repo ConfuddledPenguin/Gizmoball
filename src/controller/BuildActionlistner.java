@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import main.GizmoBallMain;
 import model.IModel;
 import view.GUI;
+import model.exceptions.GridPosAlreadyTakenException;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.Circle;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
@@ -57,7 +59,15 @@ public class BuildActionlistner implements ActionListener {
 			GizmoBallMain.gui.switchMode();
 			break;
 		case ("Move"):
-			model.moveGizmo(view.getClickedCell(), view.getMovedPoint());	
+			try {
+				model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
+			} catch (InvalidGridPosException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (GridPosAlreadyTakenException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}	
 			break;
 		}
 

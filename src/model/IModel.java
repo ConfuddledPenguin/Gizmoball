@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.IGizmo;
 
 public interface IModel {
@@ -72,8 +74,11 @@ public interface IModel {
 	 * 
 	 * @param oldPoint The pint the gizmo is at
 	 * @param newPoint The new location for the gizmo
+	 * 
+	 * @throws GridPosAlreadyTakenException 
+	 * @throws InvalidGridPosException 
 	 */
-	public abstract void moveGizmo(Point gizmoPoint, Point newPoint);
+	public abstract void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException;
 
 	/**
 	 * Returns the ball
