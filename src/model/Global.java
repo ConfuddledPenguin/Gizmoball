@@ -9,7 +9,7 @@ public class Global {
 	/**
 	 * Expressed in terms of L
 	 */
-	public static double GRAVITY = 100;
+	public static double GRAVITY = -5;
 	/**
 	 * Expressed in terms of seconds
 	 */
