@@ -55,6 +55,6 @@ public class GizmoBallMain {
 		m.addGizmo(new Circle(21,14));
 		m.addGizmo(new Circle(22,14));
 		m.addGizmo(new Circle(23,13));
-		m.addGizmo(new Circle(26,10));
+		//m.addGizmo(new Circle(26,10));
 	}
 }
