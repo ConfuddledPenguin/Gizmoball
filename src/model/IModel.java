@@ -131,13 +131,11 @@ public interface IModel {
 	/**
 	 * Register a key to the model
 	 * 
-	 * @param keynumber The key number -- here since the file represents them this way
-	 * @param onDown If on key pressed down pass true else false
+	 * @param key The key number -- here since the file represents them this way
 	 * @param gizmo The gizmo to trigger
 	 */
-	public abstract void registerKeyStroke(int keynumber, boolean onDown,
-			IGizmo gizmo);
-
+	public abstract void registerKeyStroke(int key, IGizmo gizmo);
+	
 	/**
 	 * Updates the balls position after 1 frame of movement
 	 */
