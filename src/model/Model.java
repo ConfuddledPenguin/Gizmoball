@@ -482,5 +482,5 @@ public class Model extends Observable implements IModel {
 
 		return new CollisionDetails(shortestTime, newVelocity);
 	}
-	
+
 }
