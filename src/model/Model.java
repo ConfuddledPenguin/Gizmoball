@@ -321,6 +321,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void triggerKeyPress(int key, boolean onDown) {
+		MODELLOG.log(Level.INFO, "Key " + key + " processed by model");
 		for (IGizmo g : keyConnections.get(key)) {
 			g.trigger();
 		}
