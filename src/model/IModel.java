@@ -137,6 +137,22 @@ public interface IModel {
 	public abstract void registerKeyStroke(int key, IGizmo gizmo);
 	
 	/**
+	 * Unregister a previously registered key-gizmo connection
+	 * 
+	 * @param key The key number
+	 * @param gizmo The gizmo registered 
+	 */
+	public abstract void unRegisterKeyStroke(int key, IGizmo gizmo);
+	
+	/**
+	 * Inform the model that a key has been pressed
+	 * 
+	 * @param key The key number that has been pressed
+	 * @param onDown If on key pressed down pass true else false
+	 */
+	public abstract void triggerKeyPress(int key, boolean onDown);
+	
+	/**
 	 * Updates the balls position after 1 frame of movement
 	 */
 	public abstract void moveBall();

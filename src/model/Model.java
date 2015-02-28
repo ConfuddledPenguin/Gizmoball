@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Observable;
 import java.util.logging.Level;
@@ -33,7 +33,7 @@ public class Model extends Observable implements IModel {
 	private Board board;
 	private Ball ball;
 	private Walls walls;
-	private Map<Integer, ArrayList<IGizmo>> keyConnections;
+	private Map<Integer, HashSet<IGizmo>> keyConnections;
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
 	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
@@ -56,7 +56,7 @@ public class Model extends Observable implements IModel {
 		board = new Board();
 		walls = new Walls(0, -0, 30, 30);
 
-		keyConnections = new HashMap<Integer, ArrayList<IGizmo>>();
+		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
 
 		MODELLOG.log(Level.FINE, "Model loaded");
 	}
@@ -289,16 +289,41 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#registerKeyStroke(int, boolean, model.gizmos.IGizmo)
 	 */
 	@Override
-	public void registerKeyStroke(int keynumber, IGizmo gizmo) {
-		if (keyConnections.get(keynumber) != null) {
-			keyConnections.get(keynumber).add(gizmo);
-		} else
-			keyConnections.put(keynumber, new ArrayList<IGizmo>());
+	public void registerKeyStroke(int key, IGizmo gizmo) {
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).add(gizmo); // add new gizmo to set
+		} else // key already registered
+			keyConnections.put(key, new HashSet<IGizmo>());
 
 		MODELLOG.log(Level.INFO,
-				"Keystroke \"" + keynumber + "\" added to model, now triggering "
-						+ keyConnections.get(keynumber).size() + "gizmos");
+				"Keystroke \"" + key + "\" added to model, now triggering "
+						+ keyConnections.get(key).size() + "gizmos");
 
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see model.IModel#unRegisterKeyStroke(int, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void unRegisterKeyStroke(int key, IGizmo gizmo) {
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).remove(gizmo); // remove gizmo from set
+		} else // key already registered
+			throw new RuntimeException("Can't remove key connection: No such key connection exists");
+		// throw out any registered keys without connections
+		if (keyConnections.get(key).size() == 0)
+			keyConnections.remove(key);
+	}
+
+	/* (non-Javadoc)
+	 * @see model.IModel#triggerKeyPress(int, boolean)
+	 */
+	@Override
+	public void triggerKeyPress(int key, boolean onDown) {
+		for (IGizmo g : keyConnections.get(key)) {
+			g.trigger();
+		}
 	}
 
 	/*
@@ -457,4 +482,5 @@ public class Model extends Observable implements IModel {
 
 		return new CollisionDetails(shortestTime, newVelocity);
 	}
+	
 }
