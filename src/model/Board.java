@@ -34,12 +34,22 @@ public class Board implements IBoard {
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
-		int height = g.getWidth();
+		int height = g.getHeight(); //ERROR: THIS WAS g.getWidth();
+		/*
+		System.out.println("x = " + x);
+		System.out.println("y = " + y);
+		System.out.println("width = " + width);
+		System.out.println("height = " + height);
+		System.out.println("x+width = " + (x+width));
+		System.out.println("y+height = " + (y+height));
+		System.out.println("Global width = " + Global.BOARDWIDTH);
+		System.out.println("Global height = " + Global.BOARDHEIGHT);
+		*/
 		
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
-			throw new InvalidGridPosException("Position: " + x + ":" + y + 
-					"is invalid. Please ensure Grid position is viable.");
+			//throw new InvalidGridPosException("Position: " + x + ":" + y + 
+					//"is invalid. Please ensure Grid position is viable.");
 		}
 		
 		//check if already filled
