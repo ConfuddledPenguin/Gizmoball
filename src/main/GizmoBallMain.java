@@ -16,8 +16,9 @@ public class GizmoBallMain {
 		Model m = new Model(50, 50);
 		
 		gui = new GUI('r',m);
-		m.addBall();
+		//m.addBall();
 		//m.addGizmo(new Square(10,5));
-		m.addGizmo(new Absorber(0, 19, 30, 10));
+		//m.addGizmo(new Absorber(0, 19, 30, 10));
+		
 	}
 }

@@ -6,14 +6,17 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import model.Model;
 import controller.Controller;
+import controller.RunKeyListener;
 
 public class GUI {
 
@@ -41,8 +44,10 @@ public class GUI {
 
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 		this.runBoard = new RunBoard(600, 600, this.model);
+		this.runBoard.addKeyListener(controller.getRunKeyListener());
 		Container cp = frame.getContentPane();
 
 		JMenuBar menuBar = new JMenuBar();

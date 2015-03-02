@@ -32,12 +32,12 @@ public class RunActionlistner implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println("Controller: The " + e.getActionCommand()
-				+ " button is clicked at " + new java.util.Date(e.getWhen())
-				+ " with e.paramString " + e.paramString());
+//		System.out.println("Controller: The " + e.getActionCommand()
+//				+ " button is clicked at " + new java.util.Date(e.getWhen())
+//				+ " with e.paramString " + e.paramString());
 
 		if (e.getSource() == timer) {
-			System.out.println("timer.");
+			// System.out.println("timer.");
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
