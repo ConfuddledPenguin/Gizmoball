@@ -141,7 +141,7 @@ public class Model extends Observable implements IModel {
 		
 		//ball = new Ball(9.5,19,0,-50); 	//old one
 		//ball = new Ball(28.5,19,0,-50);	//new one
-		ball = new Ball(28.5,28.5,-10,-90);	//testing one
+		ball = new Ball(28.5,28.5,-10,-50);	//testing one
 		setChanged();
 		notifyObservers(ball);
 	}
@@ -201,7 +201,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = 0.03;//Global.MOVETIME;
+		double moveTime = Global.MOVETIME;
 		System.out.println("movetime " + moveTime);
 		
 		if (ball != null && !ball.stopped()) {
@@ -278,7 +278,8 @@ public class Model extends Observable implements IModel {
 		
 		//Work out new v
 		xVelocity = xVelocity;
-		yVelocity = (Global.GRAVITY * moveTime) + yVelocity; 
+		yVelocity = yVelocity + (Global.GRAVITY * moveTime);
+		System.out.println("vy = " + yVelocity);
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
 		
