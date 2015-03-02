@@ -334,7 +334,13 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-
+		
+		//Update the state of all the gizmos
+		for(IGizmo g: board.getGizmos()){
+			g.update();
+		}
+		
+		//move the ball
 		double moveTime = Global.MOVETIME;
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 

@@ -1,0 +1,8 @@
+Mar 02, 2015 11:06:17 AM model.Model <init>
+FINE: Model started
+Mar 02, 2015 11:06:17 AM model.Model <init>
+FINE: Model loaded
+Mar 02, 2015 11:06:21 AM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:19
+Mar 02, 2015 11:06:29 AM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 10:7

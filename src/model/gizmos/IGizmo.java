@@ -11,6 +11,14 @@ import model.gizmos.Gizmo.Orientation;
 public interface IGizmo {
 	
 	/**
+	 * Update the state of the gizmo
+	 * 
+	 * And performs any action the gizmo
+	 * is asked to perform
+	 */
+	public void update();
+	
+	/**
 	 * Trigger this gizmos action
 	 */
 	void trigger();
