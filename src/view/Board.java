@@ -29,12 +29,13 @@ public abstract class Board extends JPanel implements Observer {
 				int y = gizmo.getYPos()*L;
 				int width = gizmo.getWidth()*L;
 				int height = gizmo.getHeight()*L;
+				int radius = width/2;
 						
 						
 				if (gizmo instanceof Square)
 					g2d.fillRect(x, y, width, height);
 				else if (gizmo instanceof Circle)
-					g2d.fillOval(x, y, width, height);
+					g2d.fillOval(x-radius, y-radius, width, height);
 				else if (gizmo instanceof Triangle) {
 					if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
 						g2d.fillPolygon(new int[] {x,x,x+width}, new int[] {y,y+height,y+height}, 3);
@@ -45,7 +46,11 @@ public abstract class Board extends JPanel implements Observer {
 					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopRight)) {
 						g2d.fillPolygon(new int[] {x,x+width,x+width}, new int[] {y,y,y+height}, 3);
 					}
+<<<<<<< HEAD
 				} else if(gizmo instanceof Absorber){
+=======
+				} else if(gizmo instanceof Absorber) {
+>>>>>>> 48c381c9c56491b45813e4852ba01d81759fc7aa
 					g2d.fillRect(x, y, width, height);
 				}
 

@@ -9,7 +9,7 @@ public class Global {
 	/**
 	 * Expressed in terms of L
 	 */
-	public static double GRAVITY = 25;
+	public static double GRAVITY = -5;
 	/**
 	 * Expressed in terms of seconds
 	 */
@@ -19,7 +19,7 @@ public class Global {
 	 */
 	static double FRICTIONMU2 = 0.025;
 	
-	public static double REFRESHTIME = 20; // 50fps
+	public static double REFRESHTIME = 50; // 50fps
 	
 	public static double MOVETIME = 1/REFRESHTIME; // 0.05 - 20 times per second
 	
