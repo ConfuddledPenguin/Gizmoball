@@ -103,4 +103,11 @@ public interface IGizmo {
 	 */
 	public Gizmo.Type getType();
 	
+	/**
+	 * Get the angle of the gizmo (flippers especially...)
+	 * 
+	 * @return Angle in Degrees
+	 */
+	public int getAngle();
+	
 }

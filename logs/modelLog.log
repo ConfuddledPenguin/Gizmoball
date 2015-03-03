@@ -584,3 +584,601 @@ Mar 03, 2015 9:35:26 PM model.Model triggerKeyPress
 INFO: Key 68 processed by model
 Mar 03, 2015 9:35:26 PM model.Model triggerKeyPress
 INFO: Key 68 processed by model
+Mar 03, 2015 9:41:07 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:41:07 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:41:07 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:41:07 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:42:15 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:42:15 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:42:15 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:42:15 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:42:15 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:42:47 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:42:47 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:42:48 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:42:48 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:42:48 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:47:53 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:47:53 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:47:54 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:47:54 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:47:54 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:50:40 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:50:40 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:50:41 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:50:41 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:50:41 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:57:35 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:57:35 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:57:35 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:57:35 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:57:35 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:57:35 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 0gizmos
+Mar 03, 2015 9:57:36 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:57:36 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:57:37 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:57:37 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:57:37 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 9:57:38 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 9:57:38 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
+Mar 03, 2015 9:57:38 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
+Mar 03, 2015 9:57:38 PM model.Model triggerKeyPress
+INFO: Key 70 processed by model
+Mar 03, 2015 9:57:38 PM model.Model triggerKeyPress
+INFO: Key 70 processed by model
+Mar 03, 2015 9:57:39 PM model.Model triggerKeyPress
+INFO: Key 71 processed by model
+Mar 03, 2015 9:57:39 PM model.Model triggerKeyPress
+INFO: Key 71 processed by model
+Mar 03, 2015 9:57:40 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 9:57:40 PM model.Model triggerKeyPress
+INFO: Key 87 processed by model
+Mar 03, 2015 9:57:40 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 9:57:40 PM model.Model triggerKeyPress
+INFO: Key 87 processed by model
+Mar 03, 2015 9:57:40 PM model.Model triggerKeyPress
+INFO: Key 82 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 82 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 84 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 84 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 89 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 89 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 85 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 85 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 73 processed by model
+Mar 03, 2015 9:57:41 PM model.Model triggerKeyPress
+INFO: Key 73 processed by model
+Mar 03, 2015 9:58:05 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 9:58:05 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 9:58:07 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:58:07 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:58:07 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 9:58:07 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 9:58:07 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 9:58:07 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 0gizmos
+Mar 03, 2015 9:58:08 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 9:58:08 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 9:58:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:19 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:19 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:21 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:21 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:29 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:29 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:30 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:30 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:32 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:32 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:52 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:52 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:53 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:53 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:53 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:53 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:58:59 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:01 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:01 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:01 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:03 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:03 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:04 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:04 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:08 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 9:59:08 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:08 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:10 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:16 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:17 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:17 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 9:59:17 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:31 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:00:34 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:00:34 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:00:34 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:00:34 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:00:34 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:00:34 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 0gizmos
+Mar 03, 2015 10:00:35 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:35 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:36 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:36 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:42 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:00:43 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:29 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:05:29 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 10:05:31 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:05:31 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:05:32 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:05:32 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:05:32 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:05:32 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:05:34 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:34 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:37 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:37 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:53 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:05:53 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 10:05:56 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:05:56 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:05:56 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:05:56 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:05:56 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:05:56 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:05:58 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:58 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:58 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:05:59 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:25 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:06:25 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 10:06:26 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:06:26 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:06:27 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:06:27 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:06:27 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:06:27 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:06:28 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 10:06:29 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 10:06:29 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 10:06:29 PM model.Model triggerKeyPress
+INFO: Key 32 processed by model
+Mar 03, 2015 10:06:29 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:29 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:30 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:06:30 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:31 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:32 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:32 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:33 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:06:33 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:13:08 PM model.Model triggerKeyPress
+INFO: Key 81 processed by model
+Mar 03, 2015 10:13:12 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:13:12 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:13:13 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:13:13 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:13:13 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:13:13 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:17:18 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:17:18 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:17:18 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:17:18 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:17:18 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:17:18 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:18:46 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:18:46 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:18:47 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:18:47 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:18:47 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:18:47 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:20:40 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:20:42 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:20:42 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:20:43 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:20:43 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:20:43 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:20:43 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:21:07 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:21:07 PM model.Model triggerKeyPress
+INFO: Key 157 processed by model
+Mar 03, 2015 10:35:21 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:35:21 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:35:22 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:35:22 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:35:22 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:35:22 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:35:41 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:35:41 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:35:41 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:35:41 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:35:41 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:35:41 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:38:41 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:38:41 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:38:42 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:38:42 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:38:42 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:38:42 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:38:49 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:38:49 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:38:49 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:38:49 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:38:49 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:38:49 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:56:50 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:56:50 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:56:51 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:56:51 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:56:51 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:56:51 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:56:59 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 10:56:59 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:57:00 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:57:21 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:57:21 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:57:21 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:57:21 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:57:21 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:57:21 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:57:30 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 10:57:30 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:57:30 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:57:57 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:57:57 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:47 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:59:47 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:59:48 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:59:48 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:59:48 PM model.Model addGizmo
+FINE: Ading gizmo LeftFlipper to pos 10:10
+Mar 03, 2015 10:59:48 PM model.Model registerKeyStroke
+INFO: Keystroke "65" added to model, now triggering 1gizmos
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 9 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model

@@ -23,7 +23,6 @@ import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 
-
 /**
  * 
  * The model
@@ -152,21 +151,24 @@ public class Model extends Observable implements IModel {
 	public IGizmo getGizmo(Point p) {
 		return board.getGizmo(p.x, p.y);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getGizmos()
 	 */
 	public List<IGizmo> getGizmos() {
-		
+
 		return board.getGizmos();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#RotateClockwise(java.awt.Point)
 	 */
 	@Override
-	public void RotateClockwise(Point p){
+	public void RotateClockwise(Point p) {
 
 		IGizmo g = board.getGizmo(p.x, p.y);
 
@@ -181,7 +183,7 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#RotateAntiClockwise(java.awt.Point)
 	 */
 	@Override
-	public void RotateAntiClockwise(Point p){
+	public void RotateAntiClockwise(Point p) {
 
 		IGizmo g = board.getGizmo(p.x, p.y);
 
@@ -200,8 +202,7 @@ public class Model extends Observable implements IModel {
 			throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
-		this.board.moveGizmo(g, gizmoPoint,newPoint);
-
+		this.board.moveGizmo(g, gizmoPoint, newPoint);
 
 		setChanged();
 		notifyObservers(g);
@@ -233,10 +234,10 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void addBall() {
-		
-		//ball = new Ball(9.5,19,0,-50); 	//old one
-		//ball = new Ball(28.5,19,0,-50);	//new one
-		ball = new Ball(28.5,28.5,-10,-50);	//testing one
+
+		// ball = new Ball(9.5,19,0,-50); //old one
+		// ball = new Ball(28.5,19,0,-50); //new one
+		ball = new Ball(28.5, 28.5, -10, -50); // testing one
 
 		setChanged();
 		notifyObservers(ball);
@@ -309,44 +310,55 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void registerKeyStroke(int key, IGizmo gizmo) {
+		HashSet<IGizmo> set;
 		if (keyConnections.get(key) != null) { // key already has asssignment
 			keyConnections.get(key).add(gizmo); // add new gizmo to set
-		} else // key already registered
-			keyConnections.put(key, new HashSet<IGizmo>());
+		} else {
+			// key already registered
+			set = new HashSet<IGizmo>();
+			set.add(gizmo);
+			keyConnections.put(key, set);
+		}
 
-		MODELLOG.log(Level.INFO,
-				"Keystroke \"" + key + "\" added to model, now triggering "
-						+ keyConnections.get(key).size() + "gizmos");
+		MODELLOG.log(Level.INFO, "Keystroke \"" + key
+				+ "\" added to model, now triggering "
+				+ keyConnections.get(key).size() + "gizmos");
 
 	}
-	
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#unRegisterKeyStroke(int, model.gizmos.IGizmo)
 	 */
 	@Override
 	public void unRegisterKeyStroke(int key, IGizmo gizmo) {
 		if (keyConnections.get(key) != null) { // key already has asssignment
 			keyConnections.get(key).remove(gizmo); // remove gizmo from set
-		} else // key already registered
-			throw new RuntimeException("Can't remove key connection: No such key connection exists");
+		} else
+			// key already registered
+			throw new RuntimeException(
+					"Can't remove key connection: No such key connection exists");
 		// throw out any registered keys without connections
 		if (keyConnections.get(key).size() == 0)
 			keyConnections.remove(key);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#triggerKeyPress(int, boolean)
 	 */
 	@Override
 	public void triggerKeyPress(int key, boolean onDown) {
 		MODELLOG.log(Level.INFO, "Key " + key + " processed by model");
-		
+
 		Set<IGizmo> gizmos = keyConnections.get(key);
-		if( gizmos != null){
-		
+		if (gizmos != null) {
+
 			for (IGizmo g : keyConnections.get(key)) {
 				g.trigger();
+				System.out.println("TRIGGER");
 			}
 		}
 	}
@@ -358,13 +370,13 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveBall() {
-		
-		//Update the state of all the gizmos
-		for(IGizmo g: board.getGizmos()){
+
+		// Update the state of all the gizmos
+		for (IGizmo g : board.getGizmos()) {
 			g.update();
 		}
-		
-		//move the ball
+
+		// move the ball
 		double moveTime = Global.MOVETIME;
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 
@@ -378,11 +390,12 @@ public class Model extends Observable implements IModel {
 			} else {// collision
 
 				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
-				
-				ball = moveBallForTime(ball, timeUntilCollision); 
-				ball.setVelo(cd.getVelocity()); // update velocity after collision
-				if(getAbsorberHit()){
-					System.out.println("ABSORBER HIT"); //testing
+
+				ball = moveBallForTime(ball, timeUntilCollision);
+				ball.setVelo(cd.getVelocity()); // update velocity after
+												// collision
+				if (getAbsorberHit()) {
+					System.out.println("ABSORBER HIT"); // testing
 					addBall();
 					setAbsorberHit(false);
 				}
@@ -392,27 +405,27 @@ public class Model extends Observable implements IModel {
 			this.notifyObservers();
 		}
 	}
-	
+
 	/**
 	 * 
-	 * @param hit 
+	 * @param hit
 	 * 
-	 * this is to set the absorberHit attribute
-	 * that is used for the absorber
+	 *            this is to set the absorberHit attribute that is used for the
+	 *            absorber
 	 */
-	public void setAbsorberHit(boolean hit){
+	public void setAbsorberHit(boolean hit) {
 		absorberHit = hit;
 	}
-	
+
 	/**
 	 * 
-	 * @return absorberHit this is so moveBall()
-	 * knows if it has hit the absorber or not
+	 * @return absorberHit this is so moveBall() knows if it has hit the
+	 *         absorber or not
 	 */
-	private boolean getAbsorberHit(){
+	private boolean getAbsorberHit() {
 		return absorberHit;
 	}
-	
+
 	/**
 	 * Updates the X and Y coordinates of ball b to represent movement over a
 	 * given time
@@ -423,44 +436,53 @@ public class Model extends Observable implements IModel {
 	 *            the time over which the ball has moved
 	 * @return ball b with updated coordinates
 	 */
-	private Ball moveBallForTime(Ball b, double moveTime) {	
-		
-		String logString = "MOVING BALL--------------------------\nFor " + moveTime + "\n";
-		
-		//Move ball
+	private Ball moveBallForTime(Ball b, double moveTime) {
+
+		String logString = "MOVING BALL--------------------------\nFor "
+				+ moveTime + "\n";
+
+		// Move ball
 		double xVelocity = b.getVelo().x();
 		double yVelocity = b.getVelo().y();
-		
-		logString = logString + "Current velocity: x " + xVelocity + " y " + yVelocity + "\n";
-		
+
+		logString = logString + "Current velocity: x " + xVelocity + " y "
+				+ yVelocity + "\n";
+
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
-		
-		logString = logString + "Moving distance: x " + xDistance + " y " + yDistance + "\n";
-		
+
+		logString = logString + "Moving distance: x " + xDistance + " y "
+				+ yDistance + "\n";
+
 		double newX = b.getX() + xDistance;
 		double newY = b.getY() + yDistance;
-		
-		logString = logString + "New Coords: x " + newX + " y " + newY + "\nTime for Friction and Gravity calcs\n";
-		
+
+		logString = logString + "New Coords: x " + newX + " y " + newY
+				+ "\nTime for Friction and Gravity calcs\n";
+
 		b.setX(newX);
 		b.setY(newY);
 
 		// Work out new v
-		
-		//Gravity
+
+		// Gravity
 		yVelocity = (Global.GRAVITY * moveTime) + yVelocity;
-		
-		//Friction
-		xVelocity = xVelocity * (1-Global.FRICTIONMU * moveTime - Global.FRICTIONMU2 * Math.abs(xVelocity) * moveTime);
-		yVelocity = yVelocity * (1-Global.FRICTIONMU * moveTime - Global.FRICTIONMU2 * Math.abs(yVelocity) * moveTime);
-		
+
+		// Friction
+		xVelocity = xVelocity
+				* (1 - Global.FRICTIONMU * moveTime - Global.FRICTIONMU2
+						* Math.abs(xVelocity) * moveTime);
+		yVelocity = yVelocity
+				* (1 - Global.FRICTIONMU * moveTime - Global.FRICTIONMU2
+						* Math.abs(yVelocity) * moveTime);
+
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
-		
-		PHYSICSLOG.log(Level.FINE, logString + "New velocity: x " + xVelocity + " y " + yVelocity);
-		
+
+		PHYSICSLOG.log(Level.FINE, logString + "New velocity: x " + xVelocity
+				+ " y " + yVelocity);
+
 		return b;
 	}
 
@@ -486,23 +508,29 @@ public class Model extends Observable implements IModel {
 		}
 
 		ArrayList<IGizmo> gizmos = new ArrayList<IGizmo>(board.getGizmos());
-		
+
 		for (IGizmo gizmo : gizmos) {
 			if (gizmo instanceof model.gizmos.Circle) {
 
-				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo; // need access to model.Circle methods
-				Vect pos = new Vect(mCircle.getXPos(),mCircle.getYPos());
-				
-				double radius = (double)mCircle.getWidth()/2;
-				Circle circleSim = new Circle(pos, radius);  // simulate the circle
-				timeToObject = Geometry.timeUntilCircleCollision(circleSim, ballSim, ballVelocity);
+				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo; // need
+																			// access
+																			// to
+																			// model.Circle
+																			// methods
+				Vect pos = new Vect(mCircle.getXPos(), mCircle.getYPos());
+
+				double radius = (double) mCircle.getWidth() / 2;
+				Circle circleSim = new Circle(pos, radius); // simulate the
+															// circle
+				timeToObject = Geometry.timeUntilCircleCollision(circleSim,
+						ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectCircle(circleSim.getCenter(), ballSim.getCenter(), ballVelocity);
+					newVelocity = Geometry.reflectCircle(circleSim.getCenter(),
+							ballSim.getCenter(), ballVelocity);
 					setAbsorberHit(false);
 				}
 			} else if (gizmo instanceof model.gizmos.Square) {
-
 
 				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
 				ArrayList<Circle> Corners = new ArrayList<Circle>();
@@ -547,11 +575,12 @@ public class Model extends Observable implements IModel {
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
 
-						//TODO fix
-//						newVelocity = Geometry.reflectWall(sqLine, ballVelocity);
+						// TODO fix
+						// newVelocity = Geometry.reflectWall(sqLine,
+						// ballVelocity);
 						setAbsorberHit(false);
 					}
-				}	
+				}
 			} else if (gizmo instanceof model.gizmos.Absorber) {
 				ArrayList<LineSegment> absorberLines = new ArrayList<LineSegment>();
 
@@ -559,22 +588,24 @@ public class Model extends Observable implements IModel {
 				int y = gizmo.getYPos();
 				int w = gizmo.getWidth();
 				int h = gizmo.getHeight();
-				
-				LineSegment ls1 = new LineSegment(x, y, x+w, y); // top wall
-				LineSegment ls2 = new LineSegment(x, y, x, y+h);
-				LineSegment ls3 = new LineSegment(x+w, y, x+w, y+h);
-				LineSegment ls4 = new LineSegment(x, y+h, x+w, y+h);
-				
+
+				LineSegment ls1 = new LineSegment(x, y, x + w, y); // top wall
+				LineSegment ls2 = new LineSegment(x, y, x, y + h);
+				LineSegment ls3 = new LineSegment(x + w, y, x + w, y + h);
+				LineSegment ls4 = new LineSegment(x, y + h, x + w, y + h);
+
 				absorberLines.add(ls1);
 				absorberLines.add(ls2);
 				absorberLines.add(ls3);
 				absorberLines.add(ls4);
-				
+
 				for (LineSegment abLine : absorberLines) {
-					timeToObject = Geometry.timeUntilWallCollision(abLine, ballSim, ballVelocity);
+					timeToObject = Geometry.timeUntilWallCollision(abLine,
+							ballSim, ballVelocity);
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(abLine, ballVelocity);
+						newVelocity = Geometry
+								.reflectWall(abLine, ballVelocity);
 						setAbsorberHit(true);
 					}
 				}
