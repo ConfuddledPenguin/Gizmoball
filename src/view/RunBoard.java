@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -12,7 +11,7 @@ import javax.swing.BorderFactory;
 
 import model.Ball;
 import model.IBall;
-import model.Model;
+import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
@@ -23,7 +22,7 @@ public  class RunBoard extends Board {
 	protected int height;
 	protected IBall ball;
 	
-	public RunBoard(int w, int h, Model m) {
+	public RunBoard(int w, int h, IModel m) {
 		
 		super(m);
 		
