@@ -6,7 +6,8 @@ import javax.swing.SwingUtilities;
 import model.Model;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
-import model.gizmos.Square;
+import model.gizmos.IGizmo;
+import model.gizmos.LeftFlipper;
 import view.GUI;
 
 public class GizmoBallMain {
@@ -56,6 +57,10 @@ public class GizmoBallMain {
 //		m.addGizmo(new Circle(22,14));
 		m.addGizmo(new Circle(23,13));
 //		m.addGizmo(new Circle(26,10));
+		IGizmo flip = new LeftFlipper(10,10);
+		m.addGizmo(flip);
+		
+		m.registerKeyStroke(65, flip);
 
 	}
 }

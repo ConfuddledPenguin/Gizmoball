@@ -153,7 +153,7 @@ public abstract class Gizmo implements IGizmo {
 	 * This action is interested in the triggeredPercentage
 	 * value.
 	 */
-	private void action(){
+	protected void action(){
 		
 	}
 	
@@ -324,5 +324,13 @@ public abstract class Gizmo implements IGizmo {
 	public Type getType(){
 		
 		return type;
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getAngle()
+	 */
+	@Override
+	public int getAngle() {
+		return 0;
 	}
 }

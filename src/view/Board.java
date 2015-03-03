@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
+import model.gizmos.LeftFlipper;
 
 public abstract class Board extends JPanel implements Observer {
 	
@@ -54,6 +55,16 @@ public abstract class Board extends JPanel implements Observer {
 					g2d.setColor(new Color(255,0,0));
 					g2d.fillRect(x, y, width, height);
 					g2d.setColor(new Color(0,0,255));
+				} else if(gizmo instanceof LeftFlipper){
+					int angleDeg = gizmo.getAngle();
+					double angleRad = Math.PI * angleDeg/180;
+					
+			        g2d.translate(x, y);
+			        g2d.rotate(angleRad);
+					g2d.fillRect(0, 0, width, height);
+					g2d.rotate(- angleRad);
+					
+			        g2d.translate(-x, -y);
 				}
 			}
 		}

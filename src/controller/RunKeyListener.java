@@ -34,8 +34,7 @@ public class RunKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		model.triggerKeyPress(arg0.getKeyCode(), true);
-		System.out.println("key pressed");
-
+		System.out.println("key pressed " + arg0.getKeyCode());
 	}
 
 	/* (non-Javadoc)
@@ -44,7 +43,6 @@ public class RunKeyListener implements KeyListener {
 	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		System.out.println("key released");
 		model.triggerKeyPress(arg0.getKeyCode(), false);
 	}
 
@@ -53,8 +51,6 @@ public class RunKeyListener implements KeyListener {
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("key typed");
-
 		// do nothing
 	}
 	
