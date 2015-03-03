@@ -584,3 +584,495 @@ Mar 03, 2015 9:35:26 PM model.Model triggerKeyPress
 INFO: Key 68 processed by model
 Mar 03, 2015 9:35:26 PM model.Model triggerKeyPress
 INFO: Key 68 processed by model
+Mar 03, 2015 10:32:59 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:32:59 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:33:00 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:33:00 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:34:11 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:34:11 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:34:12 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:34:12 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:34:24 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:34:24 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:34:24 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:34:24 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:34:38 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:34:38 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:34:39 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:34:39 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:34:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:34:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:34:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:34:40 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:34:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:34:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:35:37 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:35:37 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:35:37 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:35:37 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:35:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:35:38 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:48:48 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:48:48 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:48:49 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:48:49 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:48:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:48:57 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:48:57 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:48:57 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:48:57 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:48:58 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:48:58 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:48:58 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:00 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:01 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:02 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:02 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:02 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:03 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:03 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:03 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:03 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:04 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:04 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:49:04 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:51:04 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:51:04 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:51:04 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:51:05 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:51:05 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:05 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:06 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:06 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:14 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:20 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:24 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:24 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:25 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:25 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:26 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:27 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:27 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:28 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:28 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:51:28 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:36 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 10:59:36 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 10:59:37 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 10:59:37 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 10:59:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:39 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:41 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 10:59:46 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:46 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:47 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:47 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:48 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:48 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:50 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:51 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:52 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:53 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:54 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:54 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:54 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:56 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:56 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:56 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 10:59:57 PM model.Model triggerKeyPress
+INFO: Key 83 processed by model
+Mar 03, 2015 11:00:06 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 11:00:06 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 11:00:06 PM model.Model addGizmo
+FINE: Ading gizmo Absorber to pos 0:29
+Mar 03, 2015 11:00:06 PM model.Model addGizmo
+FINE: Ading gizmo Circle to pos 23:13
+Mar 03, 2015 11:00:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:09 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:11 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
+Mar 03, 2015 11:00:12 PM model.Model triggerKeyPress
+INFO: Key 65 processed by model
