@@ -11,6 +11,8 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
@@ -331,36 +333,43 @@ public class Model extends Observable implements IModel {
 	 *            the time over which the ball has moved
 	 * @return ball b with updated coordinates
 	 */
-	private Ball moveBallForTime(Ball b, double moveTime) {		
+	private Ball moveBallForTime(Ball b, double moveTime) {	
+		
+		String logString = "MOVING BALL--------------------------\nFor " + moveTime + "\n";
 		
 		//Move ball
 		double xVelocity = b.getVelo().x();
 		double yVelocity = b.getVelo().y();
 		
-		PHYSICSLOG.log(Level.FINE, "Current velocity: x " + xVelocity + " y " + yVelocity);
+		logString = logString + "Current velocity: x " + xVelocity + " y " + yVelocity + "\n";
 		
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
 		
-		PHYSICSLOG.log(Level.FINE, "Moving distance: x " + xDistance + " y " + yDistance);
+		logString = logString + "Moving distance: x " + xDistance + " y " + yDistance + "\n";
 		
 		double newX = b.getX() + xDistance;
 		double newY = b.getY() + yDistance;
 		
-		PHYSICSLOG.log(Level.FINE, "New Coords: x " + newX + " y " + newY);
+		logString = logString + "New Coords: x " + newX + " y " + newY + "\nTime for Friction and Gravity calcs\n";
 		
 		b.setX(newX);
 		b.setY(newY);
 
 		// Work out new v
-		xVelocity = xVelocity;
-
-		yVelocity = yVelocity + (Global.GRAVITY * moveTime);
+		
+		//Gravity
+		yVelocity = (Global.GRAVITY * moveTime) + yVelocity;
+		
+		//Friction
+		xVelocity = xVelocity * (1-Global.FRICTIONMU * moveTime - Global.FRICTIONMU2 * Math.abs(xVelocity) * moveTime);
+		yVelocity = yVelocity * (1-Global.FRICTIONMU * moveTime - Global.FRICTIONMU2 * Math.abs(yVelocity) * moveTime);
+		
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
 		
-		PHYSICSLOG.log(Level.FINE, "New velocity: x " + xVelocity + " y " + yVelocity);
+		PHYSICSLOG.log(Level.FINE, logString + "New velocity: x " + xVelocity + " y " + yVelocity);
 		
 		return b;
 	}
