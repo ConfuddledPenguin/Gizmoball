@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 
 import model.Model;
 import controller.Controller;
-import controller.RunKeyListener;
 
 public class GUI {
 
@@ -47,7 +46,6 @@ public class GUI {
 		
 
 		this.runBoard = new RunBoard(600, 600, this.model);
-		this.runBoard.addKeyListener(controller.getRunKeyListener());
 		Container cp = frame.getContentPane();
 
 		JMenuBar menuBar = new JMenuBar();
@@ -57,6 +55,9 @@ public class GUI {
 		cp.add(createRunButtons(), BorderLayout.CENTER);
 		cp.add(runBoard, BorderLayout.SOUTH);
 
+		cp.addKeyListener(controller.getRunKeyListener());
+		cp.setFocusable(true);
+		cp.setFocusTraversalKeysEnabled(false);
 		frame.setResizable(false);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
@@ -111,7 +112,7 @@ public class GUI {
 		button4.setMaximumSize(new Dimension(100, 100));
 		button4.addActionListener(controller.getRunListener());
 		buttons.add(button4);
-
+		
 		return buttons;
 	}
 	

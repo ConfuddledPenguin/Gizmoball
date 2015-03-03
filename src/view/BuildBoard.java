@@ -18,7 +18,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import model.IModel;
 import model.Model;
 import model.gizmos.IGizmo;
 
