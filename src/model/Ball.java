@@ -23,7 +23,8 @@ public class Ball implements IBall {
 	 * @param yv The y velocity
 	 */
 	public Ball(double x, double y, double xv, double yv) {
-		radius = 0.5 * Global.L;
+
+		radius = 0.5;
 		xpos = x; // Centre coordinates
 		ypos = y;
 		velocity = new Vect(xv, yv);
