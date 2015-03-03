@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -322,8 +323,13 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void triggerKeyPress(int key, boolean onDown) {
 		MODELLOG.log(Level.INFO, "Key " + key + " processed by model");
-		for (IGizmo g : keyConnections.get(key)) {
-			g.trigger();
+		
+		Set<IGizmo> gizmos = keyConnections.get(key);
+		if( gizmos != null){
+		
+			for (IGizmo g : keyConnections.get(key)) {
+				g.trigger();
+			}
 		}
 	}
 

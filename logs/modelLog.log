@@ -548,3 +548,15 @@ Mar 03, 2015 8:53:29 PM model.Model triggerKeyPress
 INFO: Key 65 processed by model
 Mar 03, 2015 8:53:29 PM model.Model triggerKeyPress
 INFO: Key 65 processed by model
+Mar 03, 2015 9:03:25 PM model.Model <init>
+FINE: Model started
+Mar 03, 2015 9:03:25 PM model.Model <init>
+FINE: Model loaded
+Mar 03, 2015 9:03:28 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
+Mar 03, 2015 9:03:28 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
+Mar 03, 2015 9:03:28 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
+Mar 03, 2015 9:03:28 PM model.Model triggerKeyPress
+INFO: Key 68 processed by model
