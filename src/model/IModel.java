@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Observer;
 
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
@@ -87,10 +88,6 @@ public interface IModel {
 	 */
 	public abstract IBall getBall();
 
-	/**
-	 * Adds a ball
-	 */
-	public abstract void addBall();
 
 	/**
 	 * Set the value of gravity on the model
@@ -142,5 +139,9 @@ public interface IModel {
 	 * Updates the balls position after 1 frame of movement
 	 */
 	public abstract void moveBall();
+
+	public abstract void addObserver(Observer o);
+	
+	public void addBall();
 
 }

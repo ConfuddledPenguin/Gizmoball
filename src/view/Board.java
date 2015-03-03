@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Observer;
@@ -31,9 +32,13 @@ public abstract class Board extends JPanel implements Observer {
 				int height = gizmo.getHeight()*L;
 				int radius = width/2;
 						
-						
+				/* When painting a gizmo we subtract the radius of that gizmo from the x and y
+				 * coordinates which are passed to Graphics2d. This is because gizmos store the x & y
+				 * coordinates of the center point of the gizmo, where as Graphics2d interprets them as
+				 * the top left corner of the gizmo.
+				 */		
 				if (gizmo instanceof Square)
-					g2d.fillRect(x, y, width, height);
+					g2d.fillRect(x-radius, y-radius, width, height);
 				else if (gizmo instanceof Circle)
 					g2d.fillOval(x-radius, y-radius, width, height);
 				else if (gizmo instanceof Triangle) {
@@ -47,7 +52,9 @@ public abstract class Board extends JPanel implements Observer {
 						g2d.fillPolygon(new int[] {x,x+width,x+width}, new int[] {y,y,y+height}, 3);
 					}
 				} else if(gizmo instanceof Absorber){
+					g2d.setColor(new Color(255,0,0));
 					g2d.fillRect(x, y, width, height);
+					g2d.setColor(new Color(0,0,255));
 				}
 
 			}
