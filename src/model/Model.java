@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +16,10 @@ import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
-
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
-
 import model.gizmos.Triangle;
 import model.Global;
 
@@ -131,6 +131,15 @@ public class Model extends Observable implements IModel {
 	@Override
 	public IGizmo getGizmo(Point p){
 		return board.getGizmo(p.x, p.y);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel#getGizmos()
+	 */
+	public List<IGizmo> getGizmos() {
+		
+		return board.getGizmos();
 	}
 	
 	/* (non-Javadoc)

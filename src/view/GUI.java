@@ -43,6 +43,7 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.runBoard = new RunBoard(600, 600, this.model);
+		this.buildBoard = null;
 		Container cp = frame.getContentPane();
 
 		JMenuBar menuBar = new JMenuBar();
@@ -66,6 +67,7 @@ public class GUI {
 		Container cp = frame.getContentPane();
 		
 		buildBoard = new BuildBoard(model, controller.getBuildListener());
+		runBoard = null;
 		cp.add(buildBoard, BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);

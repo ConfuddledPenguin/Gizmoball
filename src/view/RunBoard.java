@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import javax.swing.BorderFactory;
@@ -24,9 +25,10 @@ public  class RunBoard extends Board {
 	
 	public RunBoard(int w, int h, Model m) {
 		
+		super(m);
+		
 		width = w;
 		height = h;
-		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
@@ -62,6 +64,9 @@ public  class RunBoard extends Board {
 		if (arg instanceof Gizmo){
 			gizmoList.add((Gizmo)arg);
 			System.out.print("GIZMO");
+		} else if(arg instanceof List<?>){
+			
+			gizmoList = (List<IGizmo>) arg;
 		}
 		
 		repaint();

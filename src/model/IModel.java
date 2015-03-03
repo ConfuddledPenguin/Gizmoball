@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Observer;
 
 import model.exceptions.GridPosAlreadyTakenException;
@@ -143,5 +145,12 @@ public interface IModel {
 	public abstract void addObserver(Observer o);
 	
 	public void addBall();
+	
+	/**
+	 * Get all gizmos
+	 * 
+	 * @return this.gizmos
+	 */
+	public List<IGizmo> getGizmos();
 
 }

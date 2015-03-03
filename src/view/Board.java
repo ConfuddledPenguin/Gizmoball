@@ -1,11 +1,13 @@
 package view;
 
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import model.IModel;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
 import model.gizmos.IGizmo;
@@ -18,6 +20,14 @@ public abstract class Board extends JPanel implements Observer {
 	private static final long serialVersionUID = -8454000231742359788L;
 	protected List<IGizmo> gizmoList;
 	protected static final int L = 20;
+	
+	protected IModel model;
+	
+	public Board(IModel model) {
+		
+		gizmoList = new ArrayList<IGizmo>(model.getGizmos());
+		
+	}
 
 	protected void drawGizmos(Graphics2D g2d){
 		

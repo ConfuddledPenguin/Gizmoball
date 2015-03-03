@@ -37,8 +37,9 @@ public class BuildBoard extends Board {
 	
 	public BuildBoard(Model m, final ActionListener listener) {
 
+		super(m);
+		
 		cells = new ArrayList<>(columnCount * rowCount);
-		gizmoList = new ArrayList<IGizmo>();
 		m.addObserver(this);
 		moveTarget = new Point (0,0);
 
