@@ -173,7 +173,7 @@ public class Board {
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
-		int height = g.getWidth();
+		int height = g.getHeight();
 		
 		//mark as taken
 		for(int i = x; i < width + x; i++){
@@ -218,7 +218,7 @@ public class Board {
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
-		int height = g.getWidth();
+		int height = g.getHeight();
 		
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
