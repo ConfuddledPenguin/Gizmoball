@@ -192,12 +192,10 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void addBall() {
-
-		ball = new Ball(9.5, 19, 0, -50);
 		
 		//ball = new Ball(9.5,19,0,-50); 	//old one
 		//ball = new Ball(28.5,19,0,-50);	//new one
-//		ball = new Ball(28.5,28.5,-10,-50);	//testing one
+		ball = new Ball(28.5,28.5,-10,-50);	//testing one
 		setChanged();
 		notifyObservers(ball);
 	}
