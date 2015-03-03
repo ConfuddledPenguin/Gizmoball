@@ -63,5 +63,4 @@ public abstract class Board extends JPanel implements Observer {
 			}
 		}
 	}
-
 }
