@@ -7,4 +7,6 @@ bin/*
 .class
 log.txt
 /bin
+<<<<<<< HEAD
 /logs/*
+

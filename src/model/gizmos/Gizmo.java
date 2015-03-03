@@ -3,6 +3,8 @@ package model.gizmos;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Global;
+
 
 /**
  * A gizmo
@@ -101,6 +103,18 @@ public abstract class Gizmo implements IGizmo {
 	protected int angle;
 	protected Type type;
 	protected Orientation o;
+	protected boolean triggered = false;
+	protected double TRIGGER_TIME = 5000; // in ms
+	protected double triggeredFor = 0;
+	
+	/**
+	 * This expresses the triggeredFor time as a
+	 * percentage of the TRIGGER_TIME.
+	 * 
+	 * This value is expressed as a decimal and should
+	 * be between 0 and 1; 
+	 */
+	protected double triggeredPercentage = 0;
 	
 	/**
 	 * All of the gizmos interesting in being triggered 
@@ -125,12 +139,55 @@ public abstract class Gizmo implements IGizmo {
 		this.type = type;
 		this.o = Orientation.BottomLeft;
 	}
+	
+	/**
+	 * Performs the action of the gizmo
+	 *
+	 * This is called by the update method
+	 * and should be overridden by individual 
+	 * gizmos.
+	 * 
+	 * By default this does nothing, so it should
+	 * be overridden to make things more interesting
+	 * 
+	 * This action is interested in the triggeredPercentage
+	 * value.
+	 */
+	private void action(){
+		
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#update()
+	 */
+	public void update(){
+		
+		if(triggered){
+			
+			triggeredPercentage = TRIGGER_TIME / triggeredFor;
+			
+			triggeredFor += Global.MOVETIME;
+			
+			if(triggeredFor >= TRIGGER_TIME){
+				triggered = false;
+			}
+			
+			action();
+			
+		}else{
+			triggeredPercentage = 0;
+		}
+		
+	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
 	public void trigger(){
+		
+		triggered = true;
 		
 		triggerConnections();	
 	}

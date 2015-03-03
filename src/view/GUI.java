@@ -6,12 +6,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import model.Model;
 import controller.Controller;
 
@@ -41,6 +43,7 @@ public class GUI {
 
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 		this.runBoard = new RunBoard(600, 600, this.model);
 		this.buildBoard = null;
@@ -53,6 +56,9 @@ public class GUI {
 		cp.add(createRunButtons(), BorderLayout.CENTER);
 		cp.add(runBoard, BorderLayout.SOUTH);
 
+		cp.addKeyListener(controller.getRunKeyListener());
+		cp.setFocusable(true);
+		cp.setFocusTraversalKeysEnabled(false);
 		frame.setResizable(false);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
@@ -108,7 +114,7 @@ public class GUI {
 		button4.setMaximumSize(new Dimension(100, 100));
 		button4.addActionListener(controller.getRunListener());
 		buttons.add(button4);
-
+		
 		return buttons;
 	}
 	

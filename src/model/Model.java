@@ -5,25 +5,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
-import model.gizmos.Triangle;
-import model.Global;
 
 
 /**
@@ -39,7 +37,8 @@ public class Model extends Observable implements IModel {
 	private Ball ball;
 	private Walls walls;
 	private boolean absorberHit;
-	
+	private Map<Integer, HashSet<IGizmo>> keyConnections;
+
 	private Logger MODELLOG = Logger.getLogger("modelLog");
 	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
 
@@ -52,55 +51,68 @@ public class Model extends Observable implements IModel {
 	 *            The width of the board;
 	 */
 	public Model(int boardHeight, int boardWidth) {
-		
-		
+
 		logging.Logger.setUp(MODELLOG);
 		logging.Logger.setUp(PHYSICSLOG);
 		MODELLOG.log(Level.FINE, "Model started");
-		
-		
+
 		new Global(boardHeight, boardWidth);
 		board = new Board();
 		walls = new Walls(0, -0, 30, 30);
-		
+
+		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+
 		MODELLOG.log(Level.FINE, "Model loaded");
 
 		absorberHit = false;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#loadBoard(java.io.File)
 	 */
 	@Override
-	public void loadBoard(File file) throws FileNotFoundException, IOException, IncorrectFileFormatException{
-		
-		MODELLOG.log(Level.FINE, "Asked to load file at " + file.getAbsolutePath());
-		
+	public void loadBoard(File file) throws FileNotFoundException, IOException,
+			IncorrectFileFormatException {
+
+		MODELLOG.log(Level.FINE,
+				"Asked to load file at " + file.getAbsolutePath());
+
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
 		setChanged();
 		notifyObservers(board.getGizmos());
-		
+
 		MODELLOG.log(Level.FINE, "File loaded: " + file.getAbsolutePath());
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#saveBoard(java.io.File)
 	 */
 	@Override
 	public void saveBoard(File file) throws IOException {
-		//TODO write to disk
-		MODELLOG.log(Level.WARNING, "Asked to load file at : "+ file.getAbsolutePath() + " . Feature not added yet");
+		// TODO write to disk
+		MODELLOG.log(Level.WARNING,
+				"Asked to load file at : " + file.getAbsolutePath()
+						+ " . Feature not added yet");
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#addGizmo(model.gizmos.IGizmo)
 	 */
 	@Override
-	public void addGizmo(IGizmo g){
+	public void addGizmo(IGizmo g) {
 
-		MODELLOG.log(Level.FINE, "Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":" + g.getYPos());;
-		
+		MODELLOG.log(Level.FINE,
+				"Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":"
+						+ g.getYPos());
+		;
+
 		try {
 			board.addGizmo(g);
 			setChanged();
@@ -110,28 +122,34 @@ public class Model extends Observable implements IModel {
 			e.printStackTrace();
 		}
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#deleteGizmo(java.awt.Point)
 	 */
 	@Override
-	public void deleteGizmo(Point p){
-		
+	public void deleteGizmo(Point p) {
+
 		IGizmo g = board.getGizmo(p.x, p.y);
-		
-		MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos " + g.getXPos() + ":" + g.getYPos());;
+
+		MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
+				+ g.getXPos() + ":" + g.getYPos());
+		;
 
 		board.removeGizmo(g);
 
 		setChanged();
 		notifyObservers(g);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getGizmo(java.awt.Point)
 	 */
 	@Override
-	public IGizmo getGizmo(Point p){
+	public IGizmo getGizmo(Point p) {
 		return board.getGizmo(p.x, p.y);
 	}
 	
@@ -156,8 +174,10 @@ public class Model extends Observable implements IModel {
 		setChanged();
 		notifyObservers();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#RotateAntiClockwise(java.awt.Point)
 	 */
 	@Override
@@ -169,28 +189,36 @@ public class Model extends Observable implements IModel {
 		setChanged();
 		notifyObservers();
 	}
-		
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#moveGizmo(java.awt.Point, java.awt.Point)
 	 */
 	@Override
-	public void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException{
-		
+	public void moveGizmo(Point gizmoPoint, Point newPoint)
+			throws InvalidGridPosException, GridPosAlreadyTakenException {
+
 		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
 		this.board.moveGizmo(g, gizmoPoint,newPoint);
+
 
 		setChanged();
 		notifyObservers(g);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getBoard()
 	 */
 	Board getBoard() {
 		return board;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getBall()
 	 */
 	@Override
@@ -198,7 +226,9 @@ public class Model extends Observable implements IModel {
 		return ball;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#addBall()
 	 */
 	@Override
@@ -207,21 +237,26 @@ public class Model extends Observable implements IModel {
 		//ball = new Ball(9.5,19,0,-50); 	//old one
 		//ball = new Ball(28.5,19,0,-50);	//new one
 		ball = new Ball(28.5,28.5,-10,-50);	//testing one
+
 		setChanged();
 		notifyObservers(ball);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#setGravity(double)
 	 */
 	@Override
 	public void setGravity(double gravity) {
-		
-		MODELLOG.log(Level.INFO, "Gravity set to " + gravity );
-		Global.GRAVITY = gravity;		
+
+		MODELLOG.log(Level.INFO, "Gravity set to " + gravity);
+		Global.GRAVITY = gravity;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getGravity()
 	 */
 	@Override
@@ -230,19 +265,24 @@ public class Model extends Observable implements IModel {
 		return Global.GRAVITY;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#setFriction(float, float)
 	 */
 	@Override
 	public void setFriction(float mu, float mu2) {
-		
-		MODELLOG.log(Level.INFO, "Friction set to: mu - " + mu + " mu2 - " + mu2);
-		
+
+		MODELLOG.log(Level.INFO, "Friction set to: mu - " + mu + " mu2 - "
+				+ mu2);
+
 		Global.FRICTIONMU = mu;
 		Global.FRICTIONMU2 = mu2;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getFrictionMU()
 	 */
 	@Override
@@ -251,7 +291,9 @@ public class Model extends Observable implements IModel {
 		return Global.FRICTIONMU;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getFrictionMU2()
 	 */
 	@Override
@@ -259,36 +301,84 @@ public class Model extends Observable implements IModel {
 
 		return Global.FRICTIONMU2;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#registerKeyStroke(int, boolean, model.gizmos.IGizmo)
 	 */
 	@Override
-	public void registerKeyStroke(int keynumber, boolean onDown, IGizmo gizmo){
-		//TODO
-		MODELLOG.log(Level.WARNING, "Asked to register key stroke. Feture not yet added");
+	public void registerKeyStroke(int key, IGizmo gizmo) {
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).add(gizmo); // add new gizmo to set
+		} else // key already registered
+			keyConnections.put(key, new HashSet<IGizmo>());
+
+		MODELLOG.log(Level.INFO,
+				"Keystroke \"" + key + "\" added to model, now triggering "
+						+ keyConnections.get(key).size() + "gizmos");
+
 	}
 	
+
 	/* (non-Javadoc)
+	 * @see model.IModel#unRegisterKeyStroke(int, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void unRegisterKeyStroke(int key, IGizmo gizmo) {
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).remove(gizmo); // remove gizmo from set
+		} else // key already registered
+			throw new RuntimeException("Can't remove key connection: No such key connection exists");
+		// throw out any registered keys without connections
+		if (keyConnections.get(key).size() == 0)
+			keyConnections.remove(key);
+	}
+
+	/* (non-Javadoc)
+	 * @see model.IModel#triggerKeyPress(int, boolean)
+	 */
+	@Override
+	public void triggerKeyPress(int key, boolean onDown) {
+		MODELLOG.log(Level.INFO, "Key " + key + " processed by model");
+		
+		Set<IGizmo> gizmos = keyConnections.get(key);
+		if( gizmos != null){
+		
+			for (IGizmo g : keyConnections.get(key)) {
+				g.trigger();
+			}
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#moveBall()
 	 */
 	@Override
 	public void moveBall() {
 		
+		//Update the state of all the gizmos
+		for(IGizmo g: board.getGizmos()){
+			g.update();
+		}
+		
+		//move the ball
 		double moveTime = Global.MOVETIME;
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
-		
+
 		if (ball != null) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
-			
-			if (timeUntilCollision > moveTime) { //no collisions
+
+			if (timeUntilCollision > moveTime) { // no collisions
 				PHYSICSLOG.log(Level.FINE, "No  collisions");
 				ball = moveBallForTime(ball, moveTime);
-			}
-			else {// collision
-				
+			} else {// collision
+
 				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
+				
 				ball = moveBallForTime(ball, timeUntilCollision); 
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 				if(getAbsorberHit()){
@@ -413,6 +503,7 @@ public class Model extends Observable implements IModel {
 				}
 			} else if (gizmo instanceof model.gizmos.Square) {
 
+
 				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
 				ArrayList<Circle> Corners = new ArrayList<Circle>();
 				int x = gizmo.getXPos();
@@ -486,12 +577,13 @@ public class Model extends Observable implements IModel {
 						newVelocity = Geometry.reflectWall(abLine, ballVelocity);
 						setAbsorberHit(true);
 					}
-				}	
+				}
 			}
 		}
 
 		// TODO: check for collision with gizmos
-		
-		return new CollisionDetails(shortestTime, newVelocity);	
+
+		return new CollisionDetails(shortestTime, newVelocity);
 	}
+
 }

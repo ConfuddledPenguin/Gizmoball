@@ -15,7 +15,7 @@ import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
-public  class RunBoard extends Board {
+public class RunBoard extends Board {
 
 	private static final long serialVersionUID = 1L;
 	protected int width;
@@ -39,7 +39,7 @@ public  class RunBoard extends Board {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
 		
@@ -51,23 +51,23 @@ public  class RunBoard extends Board {
 			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
 			int width = (int) (20 * (ball.getRadius() * 2));
 			g2.fillOval(x, y, width, width);
-		}	
-}
-	
+		}
+	}
+
 	@Override
 	public void update(Observable o, Object arg) {
-		
+
 		if (arg instanceof Ball)
-			this.ball = (IBall)arg;
-			
-		if (arg instanceof Gizmo){
-			gizmoList.add((Gizmo)arg);
+			this.ball = (IBall) arg;
+
+		if (arg instanceof Gizmo) {
+			gizmoList.add((Gizmo) arg);
 			System.out.print("GIZMO");
 		} else if(arg instanceof List<?>){
 			
 			gizmoList = (List<IGizmo>) arg;
 		}
-		
+
 		repaint();
 	}
 }
