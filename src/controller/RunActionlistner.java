@@ -32,18 +32,12 @@ public class RunActionlistner implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-//		System.out.println("Controller: The " + e.getActionCommand()
-//				+ " button is clicked at " + new java.util.Date(e.getWhen())
-//				+ " with e.paramString " + e.paramString());
-
 		if (e.getSource() == timer) {
-			 System.out.println("timer.");
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
 				GizmoBallMain.gui.switchMode();
-				System.out.println("Going into Build Mode!!");
 				break;
 			case "Load":
 				IFileChooser fc = new FileChooser();

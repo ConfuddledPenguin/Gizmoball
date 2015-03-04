@@ -10,6 +10,7 @@ import java.util.Observable;
 import javax.swing.BorderFactory;
 
 import model.Ball;
+import model.Global;
 import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
@@ -20,7 +21,6 @@ public class RunBoard extends Board {
 	private static final long serialVersionUID = 1L;
 	protected int width;
 	protected int height;
-	protected IBall ball;
 	
 	public RunBoard(int w, int h, IModel m) {
 		
@@ -31,6 +31,8 @@ public class RunBoard extends Board {
 		m.addObserver(this);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
+		
+		m.addBall();
 	}
 
 	public Dimension getPreferredSize() {
@@ -46,10 +48,10 @@ public class RunBoard extends Board {
 		drawGizmos(g2);
 		
 		if (ball != null) {
-			g2.setColor(Color.GREEN);
-			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
-			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
-			int width = (int) (20 * (ball.getRadius() * 2));
+			g2.setColor(new Color(148,0,211));
+			int x = (int) ((ball.getX() * Global.L) - (ball.getRadius()*Global.L));
+			int y = (int) ((ball.getY() * Global.L) - (ball.getRadius()*Global.L));
+			int width = (int) (Global.L * (ball.getRadius() * 2));
 			g2.fillOval(x, y, width, width);
 		}
 	}
@@ -62,7 +64,6 @@ public class RunBoard extends Board {
 
 		if (arg instanceof Gizmo) {
 			gizmoList.add((Gizmo) arg);
-			System.out.print("GIZMO");
 		} else if(arg instanceof List<?>){
 			
 			gizmoList = (List<IGizmo>) arg;

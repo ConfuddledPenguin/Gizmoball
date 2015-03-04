@@ -187,8 +187,9 @@ public abstract class Gizmo implements IGizmo {
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
-	public void trigger(boolean onDown){
+	public void trigger(Boolean onDown){
 		this.onDown = onDown;
+
 		triggered = true;
 		
 		triggerConnections();	

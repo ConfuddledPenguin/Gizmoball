@@ -26,7 +26,7 @@ public class Ball implements IBall {
 	 */
 	public Ball(double x, double y, double xv, double yv) {
 
-		radius = 0.5;
+		radius = 0.35;
 
 		xpos = x; // Centre coordinates
 		ypos = y;

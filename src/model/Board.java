@@ -38,7 +38,7 @@ public class Board {
 			return false;
 		}
 		
-		checkPosValid((Gizmo) g);
+		checkPosValid(new Point(g.getXPos(),g.getYPos()));
 		
 		//add
 		gizmos.add(g);
@@ -151,7 +151,10 @@ public class Board {
 			return false;
 		}
 		
-		checkPosValid(g);
+		if(!oldPoint.equals(newPoint)){
+			checkPosValid(newPoint);
+		}
+		
 		
 		markAsEmpty(g);
 		
@@ -213,28 +216,21 @@ public class Board {
 	 * @throws InvalidGridPosException 
 	 * @throws GridPosAlreadyTakenException
 	 */
-	private void checkPosValid(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
+	private void checkPosValid(Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException{
 		
-		int x = g.getXPos();
-		int y = g.getYPos();
-		int width = g.getWidth();
-		int height = g.getHeight();
-		
+
 		//check if in bounds
-		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
-			throw new InvalidGridPosException("Position: " + x + ":" + y + 
+		if(newPoint.getX() > Global.BOARDWIDTH || newPoint.getY() > Global.BOARDHEIGHT){
+			throw new InvalidGridPosException("Position: " + newPoint.getX() + ":" +  newPoint.getY() + 
 					"is invalid. Please ensure Grid position is viable.");
 		}
 		
-		//check if already filled
-		for(int i = x; i < x + width; i++){
-			for (int j = y; j < y + height; j++){
-				if(grid[i][j] != null){
-					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
-					"is already taken");
-				}
-			}
+		if(grid[(int) newPoint.getX()][(int) newPoint.getY()] != null){
+			throw new GridPosAlreadyTakenException("Postion: " + newPoint.getX() + ":" + newPoint.getY() + 
+			"is already taken");
 		}
 		
+					
+			
 	}
 }

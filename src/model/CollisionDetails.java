@@ -1,4 +1,5 @@
 package model;
+import model.gizmos.IGizmo;
 import physics.Vect;
 
 /**
@@ -7,10 +8,18 @@ import physics.Vect;
 public class CollisionDetails {
 	private Vect velocity;
 	private double timeUntilCollision;
+	private IGizmo gizmo;
 	
 	public CollisionDetails(double time, Vect velocity) {
 		this.velocity = velocity;
 		timeUntilCollision = time;
+		gizmo = null;
+	}
+	
+	public CollisionDetails(double time, Vect velocity, IGizmo gizmo) {
+		this.velocity = velocity;
+		timeUntilCollision = time;
+		this.gizmo = gizmo;
 	}
 	
 	public double getTimeUntilCollision() {
@@ -19,6 +28,10 @@ public class CollisionDetails {
 	
 	public Vect getVelocity() {
 		return velocity;
+	}
+
+	public IGizmo getGizmo() {
+		return gizmo;
 	}
 
 }

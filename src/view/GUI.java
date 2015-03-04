@@ -14,6 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import model.Global;
 import model.Model;
 import controller.Controller;
 
@@ -45,7 +46,9 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		this.runBoard = new RunBoard(400, 400, this.model);
+		int width = (Global.L * Global.BOARDHEIGHT);
+		
+		this.runBoard = new RunBoard((Global.L * Global.BOARDWIDTH), (Global.L * Global.BOARDHEIGHT), this.model);
 		this.buildBoard = null;
 		Container cp = frame.getContentPane();
 
