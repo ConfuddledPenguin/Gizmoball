@@ -20,7 +20,7 @@ import controller.Controller;
 
 public class GUI {
 
-	private JFrame frame;
+	public JFrame frame;
 	private RunBoard runBoard;
 	private Controller controller;
 	private char mode;

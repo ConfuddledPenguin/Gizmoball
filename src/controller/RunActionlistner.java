@@ -5,7 +5,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import main.GizmoBallMain;
 import model.Global;
@@ -13,7 +17,6 @@ import model.IModel;
 import model.exceptions.IncorrectFileFormatException;
 import view.FileChooser;
 import view.GUI;
-import view.IFileChooser;
 
 
 public class RunActionlistner implements ActionListener {
@@ -40,23 +43,35 @@ public class RunActionlistner implements ActionListener {
 				GizmoBallMain.gui.switchMode();
 				break;
 			case "Load":
-				IFileChooser fc = new FileChooser();
-				File file = fc.getFile();
 				
-				if (file == null){
-					break;
-				}
+				File portfolios = new File((System.getProperty("user.dir"))+"\\res");
+				FileSystemView fsv = new RestrictedFileSystemView(new File[] {portfolios});
 				
-				try {
-					model.loadBoard(file);
-				} catch (IOException | IncorrectFileFormatException e1) {
-					// TODO inform the user their file is dreadful
-					e1.printStackTrace();
-				}
+				JFileChooser jfc = new JFileChooser(fsv);
+				jfc.setCurrentDirectory(portfolios);
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+				jfc.setFileFilter(filter);
+				
+				int returnVal = jfc.showOpenDialog(this.gui.frame);
+				
+				 if (returnVal == JFileChooser.APPROVE_OPTION) {
+			            File file = jfc.getSelectedFile();
+			            
+			            System.out.println("Opening: " + file.getName() + ".");
+			            try {
+							model.loadBoard(file);
+						} catch (IOException | IncorrectFileFormatException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			
+			        } else {
+			        	System.out.println("Open command cancelled by user.");
+			        }
 				break;
 			case "Save As":
-				fc = new FileChooser();
-				file = fc.saveFile();
+				FileChooser fc = new FileChooser();
+				File file = fc.saveFile();
 				
 				if (file == null){
 					break;
