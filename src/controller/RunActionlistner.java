@@ -41,6 +41,8 @@ public class RunActionlistner implements ActionListener {
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
 				GizmoBallMain.gui.switchMode();
+				timer.stop();
+				gui.changeStartStop("Start");
 				break;
 			case "Load":
 				
