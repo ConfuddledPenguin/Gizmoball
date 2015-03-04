@@ -37,7 +37,7 @@ public class RunActionlistner implements ActionListener {
 //				+ " with e.paramString " + e.paramString());
 
 		if (e.getSource() == timer) {
-			// System.out.println("timer.");
+			 System.out.println("timer.");
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {

@@ -45,7 +45,7 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		this.runBoard = new RunBoard(600, 600, this.model);
+		this.runBoard = new RunBoard(400, 400, this.model);
 		this.buildBoard = null;
 		Container cp = frame.getContentPane();
 
@@ -59,6 +59,7 @@ public class GUI {
 		cp.addKeyListener(controller.getRunKeyListener());
 		cp.setFocusable(true);
 		cp.setFocusTraversalKeysEnabled(false);
+		
 		frame.setResizable(false);
 		frame.pack();
 		frame.setLocationRelativeTo(null);

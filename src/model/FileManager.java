@@ -36,7 +36,7 @@ class FileManager {
 	
 		Map<String, IGizmo> gizmos = new HashMap<String, IGizmo>();
 		Board board = (Board) m.getBoard();
-		board.clear();
+		m.clear();
 		
 		LineNumberReader reader = new LineNumberReader(new FileReader(file));
 		
@@ -106,7 +106,7 @@ class FileManager {
 					}
 					name = st.nextToken();
 					g = gizmos.get(name);
-					m.registerKeyStroke(keynumber, onDown, g);
+					m.registerKeyStroke(keynumber, g);
 					continue;
 				case "Gravity":
 					token = st.nextToken();

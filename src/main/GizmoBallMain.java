@@ -6,7 +6,9 @@ import javax.swing.SwingUtilities;
 import model.Model;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
+import model.gizmos.IGizmo;
 import model.gizmos.Square;
+import model.gizmos.LeftFlipper;
 import view.GUI;
 
 public class GizmoBallMain {
@@ -25,7 +27,7 @@ public class GizmoBallMain {
 			public void run() {
 				gui = new GUI('r',m);
 				makeGizmos();
-			}
+			}	
 			
 		});	
 	}
@@ -34,16 +36,18 @@ public class GizmoBallMain {
 		m.addBall();
 
 //		m.addGizmo(new Square(10,5));
-		m.addGizmo(new Absorber(0, 29, 30, 1));
-//		m.addGizmo(new Circle(15,15));
-//		m.addGizmo(new Circle(25,10));
-//		m.addGizmo(new Circle(18,9));
-//		m.addGizmo(new Circle(14,14));
-//		m.addGizmo(new Circle(29,4));	
+		IGizmo g = new Absorber(0, 19, 20, 1);
+		m.addGizmo(g);
+		m.registerKeyStroke(32, g);
+		m.addGizmo(new Circle(15,15));
+		m.addGizmo(new Circle(15,10));
+		m.addGizmo(new Circle(18,9));
+		m.addGizmo(new Circle(14,14));
+		m.addGizmo(new Circle(19,4));	
 //		
-//		m.addGizmo(new Circle(10,4));
-//		m.addGizmo(new Circle(11,5));
-//		m.addGizmo(new Circle(12,6));
+		m.addGizmo(new Circle(10,4));
+		m.addGizmo(new Circle(11,5));
+		m.addGizmo(new Circle(12,6));
 //		m.addGizmo(new Circle(13,7));
 //		m.addGizmo(new Circle(14,8));
 //		m.addGizmo(new Circle(15,9));
@@ -54,8 +58,12 @@ public class GizmoBallMain {
 //		m.addGizmo(new Circle(20,14));
 //		m.addGizmo(new Circle(21,14));
 //		m.addGizmo(new Circle(22,14));
-		m.addGizmo(new Circle(23,13));
+//		m.addGizmo(new Circle(23,13));
 //		m.addGizmo(new Circle(26,10));
+//		IGizmo flip = new LeftFlipper(5,5);
+//		m.addGizmo(flip);
+		
+//		m.registerKeyStroke(65, flip);
 
 	}
 }

@@ -24,8 +24,8 @@ import model.gizmos.IGizmo;
 public class BuildBoard extends Board {
 
 	private static final long serialVersionUID = -4952517095084067303L;
-	private static final int columnCount = 30;
-	private static final int rowCount = 30;
+	private static final int columnCount = 20;
+	private static final int rowCount = 20;
 
 	private List<Rectangle> cells;
 
@@ -183,7 +183,7 @@ public class BuildBoard extends Board {
 	
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(600, 600);
+		return new Dimension(400, 400);
 	}
 
 	@Override
@@ -237,11 +237,18 @@ public class BuildBoard extends Board {
 		}
 
 		g2d.setColor(Color.BLUE);
+		
+		if (ball != null) {
+			g2d.setColor(Color.GREEN);
+			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
+			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
+			int ballWidth = (int) (20 * (ball.getRadius() * 2));
+			g2d.fillOval(x, y, ballWidth, ballWidth);
+		}
 
 		drawGizmos(g2d);
 
 		g2d.dispose();
-
 	}
 	
 	@Override

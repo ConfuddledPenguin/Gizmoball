@@ -20,7 +20,6 @@ public class RunBoard extends Board {
 	private static final long serialVersionUID = 1L;
 	protected int width;
 	protected int height;
-	protected IBall ball;
 	
 	public RunBoard(int w, int h, IModel m) {
 		
@@ -31,6 +30,8 @@ public class RunBoard extends Board {
 		m.addObserver(this);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
+		
+		m.addBall();
 	}
 
 	public Dimension getPreferredSize() {

@@ -104,8 +104,8 @@ public abstract class Gizmo implements IGizmo {
 	protected Type type;
 	protected Orientation o;
 	protected boolean triggered = false;
-	protected double TRIGGER_TIME = 5000; // in ms
-	protected double triggeredFor = 0;
+	protected double TRIGGER_TIME = 500; // in ms
+	protected double triggeredFor = 0; // in seconds???
 	
 	/**
 	 * This expresses the triggeredFor time as a
@@ -153,7 +153,7 @@ public abstract class Gizmo implements IGizmo {
 	 * This action is interested in the triggeredPercentage
 	 * value.
 	 */
-	private void action(){
+	protected void action(){
 		
 	}
 	
@@ -162,14 +162,14 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#update()
 	 */
 	public void update(){
-		
+
 		if(triggered){
 			
 			triggeredPercentage = TRIGGER_TIME / triggeredFor;
 			
 			triggeredFor += Global.MOVETIME;
 			
-			if(triggeredFor >= TRIGGER_TIME){
+			if(triggeredFor >= (TRIGGER_TIME / 1000)){
 				triggered = false;
 			}
 			
@@ -177,6 +177,7 @@ public abstract class Gizmo implements IGizmo {
 			
 		}else{
 			triggeredPercentage = 0;
+			triggeredFor = 0;
 		}
 		
 	}
@@ -186,7 +187,7 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
 	public void trigger(){
-		
+
 		triggered = true;
 		
 		triggerConnections();	
@@ -324,5 +325,13 @@ public abstract class Gizmo implements IGizmo {
 	public Type getType(){
 		
 		return type;
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getAngle()
+	 */
+	@Override
+	public int getAngle() {
+		return 0;
 	}
 }
