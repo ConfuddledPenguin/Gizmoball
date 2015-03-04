@@ -8,6 +8,7 @@ import model.gizmos.Absorber;
 import model.gizmos.Circle;
 import model.gizmos.IGizmo;
 import model.gizmos.Square;
+import model.gizmos.LeftFlipper;
 import view.GUI;
 
 public class GizmoBallMain {
@@ -37,7 +38,7 @@ public class GizmoBallMain {
 //		m.addGizmo(new Square(10,5));
 		IGizmo g = new Absorber(0, 29, 30, 1);
 		m.addGizmo(g);
-		m.registerKeyStroke(49, g);
+		m.registerKeyStroke(32, g);
 //		m.addGizmo(new Circle(15,15));
 //		m.addGizmo(new Circle(25,10));
 //		m.addGizmo(new Circle(18,9));
@@ -57,8 +58,12 @@ public class GizmoBallMain {
 //		m.addGizmo(new Circle(20,14));
 //		m.addGizmo(new Circle(21,14));
 //		m.addGizmo(new Circle(22,14));
-		m.addGizmo(new Circle(23,13));
+//		m.addGizmo(new Circle(23,13));
 //		m.addGizmo(new Circle(26,10));
+//		IGizmo flip = new LeftFlipper(5,5);
+//		m.addGizmo(flip);
+		
+//		m.registerKeyStroke(65, flip);
 
 	}
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -17,6 +19,12 @@ public class RunKeyListener implements KeyListener {
 	 */
 	public RunKeyListener(IModel game) {
 		this.model = game;
+		
+		/*
+		 * Grab the focus manager so we are always listening to
+		 * the keyboard, no matter what the ui focus is on
+		 */
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Dispatcher(this));
 	}
 
 	/* (non-Javadoc)
@@ -26,8 +34,7 @@ public class RunKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		model.triggerKeyPress(arg0.getKeyCode(), true);
-		System.out.println("key pressed");
-
+		System.out.println("key pressed " + arg0.getKeyCode());
 	}
 
 	/* (non-Javadoc)
@@ -36,7 +43,6 @@ public class RunKeyListener implements KeyListener {
 	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		System.out.println("key released");
 		model.triggerKeyPress(arg0.getKeyCode(), false);
 	}
 
@@ -45,8 +51,69 @@ public class RunKeyListener implements KeyListener {
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("key typed");
-
 		// do nothing
+	}
+	
+	/**
+	 * The dispatcher is responsible for handling 
+	 * the key events and sending them to the focused
+	 * component.
+	 * 
+	 * In this case it basically hijacks the key event
+	 * and handles it its self.
+	 * 
+	 * @author Tom Maxwell
+	 *
+	 */
+	private class Dispatcher implements KeyEventDispatcher{
+
+		//This listener to call.
+		private KeyListener listener;
+		
+		/**
+		 * The constructor
+		 * 
+		 * @param listener the listener to use
+		 */
+		public Dispatcher(RunKeyListener listener) {
+			this.listener = listener;
+		}
+		
+		/**
+		 * The dispatch key event
+		 * 
+		 * This is the overwritten method that deals with
+		 * the handling of the event
+		 * 
+		 * Here we catch it and pass it to the listener
+		 * specified
+		 * 
+		 * see {@link java.awt.keyEventDispatcher#dispatchKeyEvent(KeyEvent e) } for more info
+		 * 
+		 * @param e The event to dispatch
+		 * 
+		 * @return true if the KeyboardFocusManager should take 
+		 * no further action with regard to the KeyEvent; 
+		 * false otherwise
+		 */
+		@Override
+		public boolean dispatchKeyEvent(KeyEvent e) {
+			
+			switch (e.getID()) {
+				case KeyEvent.KEY_PRESSED:
+					listener.keyPressed(e);
+					break;
+					
+				case KeyEvent.KEY_RELEASED:
+					listener.keyReleased(e);
+					break;
+				
+				case KeyEvent.KEY_TYPED:
+					listener.keyTyped(e);
+					break;		
+			}
+			
+			return true;
+		}
 	}
 }

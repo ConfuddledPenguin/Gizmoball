@@ -59,6 +59,7 @@ public class GUI {
 		cp.addKeyListener(controller.getRunKeyListener());
 		cp.setFocusable(true);
 		cp.setFocusTraversalKeysEnabled(false);
+		
 		frame.setResizable(false);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
