@@ -407,8 +407,8 @@ public class Model extends Observable implements IModel {
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 				if(getAbsorberHit()){
 					System.out.println("ABSORBER HIT"); //testing
-					ball.setX(28.5);
-					ball.setY(28.5);
+					ball.setX(19.5);
+					ball.setY(18.5);
 					ball.stop();
 					Vect v = new Vect(0, 0);
 					ball.setVelo(v);
