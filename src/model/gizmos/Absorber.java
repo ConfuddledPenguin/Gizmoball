@@ -11,7 +11,7 @@ public class Absorber extends Gizmo {
 	}
 
 	@Override
-	public void trigger() {
+	public void trigger(boolean onDown) {
 		System.out.println("THIS WILL MOVE THE BALL AND FIRE UP!!!");
 		//triggerConnections();
 		
