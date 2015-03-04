@@ -1,23 +1,31 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import model.gizmos.Absorber;
-import model.gizmos.Circle;
+import model.IModel;
+import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
-import model.gizmos.Square;
-import model.gizmos.Triangle;
-import model.gizmos.Gizmo.Orientation;
+import model.gizmos.LeftFlipper;
+import model.gizmos.RightFlipper;
 
 public abstract class Board extends JPanel implements Observer {
 	
 	private static final long serialVersionUID = -8454000231742359788L;
 	protected List<IGizmo> gizmoList;
 	protected static final int L = 20;
+	
+	protected IModel model;
+	
+	public Board(IModel model) {
+		
+		gizmoList = new ArrayList<IGizmo>(model.getGizmos());
+	}
 
 	protected void drawGizmos(Graphics2D g2d){
 		
@@ -28,34 +36,55 @@ public abstract class Board extends JPanel implements Observer {
 				int x = gizmo.getXPos()*L;
 				int y = gizmo.getYPos()*L;
 				int width = gizmo.getWidth()*L;
-				int height = gizmo.getHeight()*L;
-				int radius = width/2;
+				int height = gizmo.getHeight()*L;						
 						
-						
-				if (gizmo instanceof Square)
+				if (gizmo.getType() == Gizmo.Type.Square)
 					g2d.fillRect(x, y, width, height);
-				else if (gizmo instanceof Circle)
-					g2d.fillOval(x-radius, y-radius, width, height);
-				else if (gizmo instanceof Triangle) {
-					if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomLeft)) {
+				else if (gizmo.getType() == Gizmo.Type.Circle)
+					g2d.fillOval(x, y, width, height);
+				else if (gizmo.getType() == Gizmo.Type.Triangle) {
+					if ((gizmo).getOrientation().equals(Gizmo.Orientation.BottomLeft)) {
 						g2d.fillPolygon(new int[] {x,x,x+width}, new int[] {y,y+height,y+height}, 3);
-					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.BottomRight)) {
+					}else if (gizmo.getOrientation().equals(Gizmo.Orientation.BottomRight)) {
 						g2d.fillPolygon(new int[] {x+width,x+width,x}, new int[] {y,y+height,y+height}, 3);
-					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopLeft)) {
+					}else if (gizmo.getOrientation().equals(Gizmo.Orientation.TopLeft)) {
 						g2d.fillPolygon(new int[] {x,x,x+width}, new int[] {y+height,y,y}, 3);
-					}else if (((Triangle) gizmo).getOrientation().equals(Orientation.TopRight)) {
+					}else if ( gizmo.getOrientation().equals(Gizmo.Orientation.TopRight)) {
 						g2d.fillPolygon(new int[] {x,x+width,x+width}, new int[] {y,y,y+height}, 3);
 					}
+<<<<<<< HEAD
 <<<<<<< HEAD
 				} else if(gizmo instanceof Absorber){
 =======
 				} else if(gizmo instanceof Absorber) {
 >>>>>>> 48c381c9c56491b45813e4852ba01d81759fc7aa
+=======
+				} else if(gizmo.getType() == Gizmo.Type.Absorber) {
+					g2d.setColor(new Color(255,0,0));
 					g2d.fillRect(x, y, width, height);
+					g2d.setColor(new Color(0,0,255));
+				} else if(gizmo instanceof LeftFlipper){
+					int angleDeg = gizmo.getAngle();
+					double angleRad = Math.toRadians(angleDeg);
+					
+			        g2d.translate(x, y);
+			        g2d.rotate(angleRad);
+					g2d.fillRect(0, 0, width, height);
+					g2d.rotate(- angleRad);
+					
+			        g2d.translate(-x, -y);
+				}  else if(gizmo instanceof RightFlipper){
+					int angleDeg = gizmo.getAngle();
+					double angleRad = Math.toRadians(angleDeg);
+					
+			        //g2d.translate(x, y);
+			        g2d.rotate(angleRad, x+40, y);
+>>>>>>> prototypes
+					g2d.fillRect(x, y, width, height);
+					g2d.rotate(- angleRad, x+40, y);
+			        //g2d.translate(-x, -y);
 				}
-
 			}
 		}
 	}
-
 }

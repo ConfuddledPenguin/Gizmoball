@@ -1,5 +1,7 @@
 package model.gizmos;
 
+import model.gizmos.Gizmo.Orientation;
+
 /**
  * The gizmo interface
  * 
@@ -9,9 +11,18 @@ package model.gizmos;
 public interface IGizmo {
 	
 	/**
-	 * Trigger this gizmos action
+	 * Update the state of the gizmo
+	 * 
+	 * And performs any action the gizmo
+	 * is asked to perform
 	 */
-	void trigger();
+	public void update();
+	
+	/**
+	 * Trigger this gizmos action
+	 * @param onDown 
+	 */
+	void trigger(boolean onDown);
 	
 	/**
 	 * Connect the gizmo g to this gizmo
@@ -70,11 +81,34 @@ public interface IGizmo {
 	/**
 	 * Rotates the gizmo.
 	 * 
-	 * The gizmo has for positions, 0, 1, 2, 3 each
-	 * increment is at 90` clockwise to the last.
-	 * 
 	 */
 	void rotateClockwise();
 
+	/**
+	 * Rotates the gizmo anticlockwise
+	 */
 	void rotateAntiClockwise();
+	
+	/**
+	 * 
+	 * Get the rotation of the gizmo
+	 * 
+	 * @return The rotation enum
+	 */
+	public Orientation getOrientation();
+	
+	/**
+	 * Returns the type of the gizmo
+	 * 
+	 * @return The type
+	 */
+	public Gizmo.Type getType();
+	
+	/**
+	 * Get the angle of the gizmo (flippers especially...)
+	 * 
+	 * @return Angle in Degrees
+	 */
+	public int getAngle();
+	
 }

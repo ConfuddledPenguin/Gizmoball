@@ -5,19 +5,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Observable;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import physics.Geometry;
-import physics.LineSegment;
-import physics.Vect;
-import physics.Circle;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Gizmo.Orientation;
+import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
-import model.gizmos.Triangle;
-import model.Global;
+import physics.Circle;
+import physics.Geometry;
+import physics.LineSegment;
+import physics.Vect;
 
 /**
  * 
@@ -31,6 +36,11 @@ public class Model extends Observable implements IModel {
 	private Board board;
 	private Ball ball;
 	private Walls walls;
+	private boolean absorberHit;
+	private Map<Integer, HashSet<IGizmo>> keyConnections;
+
+	private Logger MODELLOG = Logger.getLogger("modelLog");
+	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
 
 	/**
 	 * The constructor
@@ -41,54 +51,67 @@ public class Model extends Observable implements IModel {
 	 *            The width of the board;
 	 */
 	public Model(int boardHeight, int boardWidth) {
+
+		logging.Logger.setUp(MODELLOG);
+		logging.Logger.setUp(PHYSICSLOG);
+		MODELLOG.log(Level.FINE, "Model started");
+
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		walls = new Walls(0, 0, 30, 30);
+		walls = new Walls(0, 0, 20, 20);
+
+		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+
+		MODELLOG.log(Level.FINE, "Model loaded");
+
+		absorberHit = false;
 	}
 
-	/**
-	 * Loads a board from the given file
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param file
-	 *            The file to load from
-	 * 
-	 * @throws FileNotFoundException
-	 *             File not found
-	 * @throws IOException
-	 *             Error reading file
-	 * @throws IncorrectFileFormatException
-	 *             File in the wrong format
+	 * @see model.IModel#loadBoard(java.io.File)
 	 */
+	@Override
 	public void loadBoard(File file) throws FileNotFoundException, IOException,
 			IncorrectFileFormatException {
+
+		MODELLOG.log(Level.FINE,
+				"Asked to load file at " + file.getAbsolutePath());
+
 		FileManager fm = new FileManager();
 		board = fm.load(this, file);
 		setChanged();
 		notifyObservers(board.getGizmos());
+
+		MODELLOG.log(Level.FINE, "File loaded: " + file.getAbsolutePath());
 	}
 
-	/**
-	 * Save the board to the given file
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param file
-	 *            The file to write to
-	 * @throws IOException
-	 *             Error writing to file
+	 * @see model.IModel#saveBoard(java.io.File)
 	 */
+	@Override
 	public void saveBoard(File file) throws IOException {
 		// TODO write to disk
-		System.out.println("--MODEL---: Asked to write to file "
-				+ file.getPath());
+		MODELLOG.log(Level.WARNING,
+				"Asked to load file at : " + file.getAbsolutePath()
+						+ " . Feature not added yet");
 	}
 
-	/**
-	 * Add a gizmo to the board
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param g
-	 *            the gizmo to add
-	 * 
+	 * @see model.IModel#addGizmo(model.gizmos.IGizmo)
 	 */
+	@Override
 	public void addGizmo(IGizmo g) {
+
+		MODELLOG.log(Level.FINE,
+				"Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":"
+						+ g.getYPos());
+		;
 
 		try {
 			board.addGizmo(g);
@@ -100,13 +123,54 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#deleteGizmo(java.awt.Point)
+	 */
+	@Override
 	public void deleteGizmo(Point p) {
+
+		IGizmo g = board.getGizmo(p.x, p.y);
+
+		MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
+				+ g.getXPos() + ":" + g.getYPos());
+		;
+
+		board.removeGizmo(g);
+
 		setChanged();
-		notifyObservers(board.getGizmo(p.x, p.y));
-		board.removeGizmo(board.getGizmo(p.x, p.y));
+		notifyObservers(g);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getGizmo(java.awt.Point)
+	 */
+	@Override
+	public IGizmo getGizmo(Point p) {
+		return board.getGizmo(p.x, p.y);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#getGizmos()
+	 */
+	public List<IGizmo> getGizmos() {
+
+		return board.getGizmos();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#RotateClockwise(java.awt.Point)
+	 */
+	@Override
 	public void RotateClockwise(Point p) {
+
 		IGizmo g = board.getGizmo(p.x, p.y);
 
 		g.rotateClockwise();
@@ -114,7 +178,14 @@ public class Model extends Observable implements IModel {
 		notifyObservers();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#RotateAntiClockwise(java.awt.Point)
+	 */
+	@Override
 	public void RotateAntiClockwise(Point p) {
+
 		IGizmo g = board.getGizmo(p.x, p.y);
 
 		g.rotateAntiClockwise();
@@ -122,36 +193,52 @@ public class Model extends Observable implements IModel {
 		notifyObservers();
 	}
 
-	public void moveGizmo(Point oldPoint, Point newPoint) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#moveGizmo(java.awt.Point, java.awt.Point)
+	 */
+	@Override
+	public void moveGizmo(Point gizmoPoint, Point newPoint)
+			throws InvalidGridPosException, GridPosAlreadyTakenException {
 
-		IGizmo g = this.board.getGizmoForMove(oldPoint);
-		g.setPos(newPoint.x, newPoint.y);
-		this.board.moveGizmo(g, oldPoint, newPoint);
+		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
+		this.board.moveGizmo(g, gizmoPoint, newPoint);
+
 		setChanged();
-		notifyObservers();
+		notifyObservers(g);
 	}
 
-	/**
-	 * Returns the Board s
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @return the board
+	 * @see model.IModel#getBoard()
 	 */
-	public IBoard getBoard() {
+	Board getBoard() {
 		return board;
 	}
 
-	/**
-	 * Returns the ball
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @return the ball
+	 * @see model.IModel#getBall()
 	 */
+	@Override
 	public IBall getBall() {
 		return ball;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#addBall()
+	 */
+	@Override
 	public void addBall() {
 
-		ball = new Ball(9.5, 19, 0, -50);
+		// ball = new Ball(9.5,19,0,-50); //old one
+		// ball = new Ball(28.5,19,0,-50); //new one
+		ball = new Ball(18.5, 18.5, -10, -50); // testing one
 
 		setChanged();
 		notifyObservers(ball);
@@ -160,17 +247,19 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.setGravity(double gravity)
+	 * @see model.IModel#setGravity(double)
 	 */
 	@Override
 	public void setGravity(double gravity) {
+
+		MODELLOG.log(Level.INFO, "Gravity set to " + gravity);
 		Global.GRAVITY = gravity;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.getGravity()
+	 * @see model.IModel#getGravity()
 	 */
 	@Override
 	public double getGravity() {
@@ -181,10 +270,13 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.setFriction(float my, float, mu2)
+	 * @see model.IModel#setFriction(float, float)
 	 */
 	@Override
 	public void setFriction(float mu, float mu2) {
+
+		MODELLOG.log(Level.INFO, "Friction set to: mu - " + mu + " mu2 - "
+				+ mu2);
 
 		Global.FRICTIONMU = mu;
 		Global.FRICTIONMU2 = mu2;
@@ -193,7 +285,7 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.getFrictionMU()
+	 * @see model.IModel#getFrictionMU()
 	 */
 	@Override
 	public double getFrictionMU() {
@@ -204,7 +296,7 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.getFrictionMU2()
+	 * @see model.IModel#getFrictionMU2()
 	 */
 	@Override
 	public double getFrictionMU2() {
@@ -215,30 +307,143 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel.moveBall()
+	 * @see model.IModel#registerKeyStroke(int, boolean, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void registerKeyStroke(int key, IGizmo gizmo) {
+		HashSet<IGizmo> set;
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).add(gizmo); // add new gizmo to set
+		} else {
+			// key already registered
+			set = new HashSet<IGizmo>();
+			set.add(gizmo);
+			keyConnections.put(key, set);
+		}
+
+		MODELLOG.log(Level.INFO, "Keystroke \"" + key
+				+ "\" added to model, now triggering "
+				+ keyConnections.get(key).size() + "gizmos");
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#unRegisterKeyStroke(int, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void unRegisterKeyStroke(int key, IGizmo gizmo) {
+		if (keyConnections.get(key) != null) { // key already has asssignment
+			keyConnections.get(key).remove(gizmo); // remove gizmo from set
+		} else
+			// key already registered
+			throw new RuntimeException(
+					"Can't remove key connection: No such key connection exists");
+		// throw out any registered keys without connections
+		if (keyConnections.get(key).size() == 0)
+			keyConnections.remove(key);
+	}
+	
+	public void clear(){
+		board.clear();
+		
+		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#triggerKeyPress(int, boolean)
+	 */
+	@Override
+	public void triggerKeyPress(int key, boolean onDown) {
+		MODELLOG.log(Level.INFO, "Key " + key + " processed by model");
+
+		Set<IGizmo> gizmos = keyConnections.get(key);
+		if (gizmos != null) {
+
+			for (IGizmo g : keyConnections.get(key)) {
+				
+				if(g.getType() == Gizmo.Type.Absorber){
+					if(absorberHit){
+						
+						Vect v = new Vect(-10, -50);
+						ball.setVelo(v);
+						absorberHit = false;
+						ball.start();
+					}
+				}else{
+					g.trigger(true);
+				}
+				System.out.println("TRIGGER");
+			}
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#moveBall()
 	 */
 	@Override
 	public void moveBall() {
-		double moveTime = 0.03;// Global.MOVETIME;
-		System.out.println("movetime " + moveTime);
 
-		if (ball != null && !ball.stopped()) {
+		// Update the state of all the gizmos
+		for (IGizmo g : board.getGizmos()) {
+			g.update();
+		}
+
+		// move the ball
+		double moveTime = Global.MOVETIME;
+		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
+
+		if (ball != null && !ball.isStopped()) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
 
-			if (timeUntilCollision > moveTime) {
-				// no collision this move
+			if (timeUntilCollision > moveTime) { // no collisions
+				PHYSICSLOG.log(Level.FINE, "No  collisions");
 				ball = moveBallForTime(ball, moveTime);
-			} else {
-				// there is a collision this move
-				ball = moveBallForTime(ball, timeUntilCollision);
-				ball.setVelo(cd.getVelocity()); // update velocity after
-												// collision
+			} else {// collision
+
+				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
+				
+				ball = moveBallForTime(ball, timeUntilCollision); 
+				ball.setVelo(cd.getVelocity()); // update velocity after collision
+				if(getAbsorberHit()){
+					System.out.println("ABSORBER HIT"); //testing
+					ball.setX(19.5);
+					ball.setY(18.5);
+					ball.stop();
+					Vect v = new Vect(0, 0);
+					ball.setVelo(v);
+				}
 			}
 
 			this.setChanged();
 			this.notifyObservers();
 		}
+	}
+
+	/**
+	 * 
+	 * @param hit
+	 * 
+	 *            this is to set the absorberHit attribute that is used for the
+	 *            absorber
+	 */
+	public void setAbsorberHit(boolean hit) {
+		absorberHit = hit;
+	}
+
+	/**
+	 * 
+	 * @return absorberHit this is so moveBall() knows if it has hit the
+	 *         absorber or not
+	 */
+	private boolean getAbsorberHit() {
+		return absorberHit;
 	}
 
 	/**
@@ -253,29 +458,50 @@ public class Model extends Observable implements IModel {
 	 */
 	private Ball moveBallForTime(Ball b, double moveTime) {
 
-		// Detect possible crashes into shit
+		String logString = "MOVING BALL--------------------------\nFor "
+				+ moveTime + "\n";
 
 		// Move ball
 		double xVelocity = b.getVelo().x();
 		double yVelocity = b.getVelo().y();
 
+		logString = logString + "Current velocity: x " + xVelocity + " y "
+				+ yVelocity + "\n";
+
 		// calculate distance travelled
 		double xDistance = xVelocity * moveTime;
 		double yDistance = yVelocity * moveTime;
-		System.out.println("Distance: x " + xDistance + " y " + yDistance);
+
+		logString = logString + "Moving distance: x " + xDistance + " y "
+				+ yDistance + "\n";
 
 		double newX = b.getX() + xDistance;
 		double newY = b.getY() + yDistance;
-		System.out.println("new coords: x " + newX + " y " + newY);
+
+		logString = logString + "New Coords: x " + newX + " y " + newY
+				+ "\nTime for Friction and Gravity calcs\n";
 
 		b.setX(newX);
 		b.setY(newY);
 
 		// Work out new v
-		xVelocity = xVelocity;
-		yVelocity = yVelocity - Global.GRAVITY;
+
+		// Gravity
+		yVelocity = (Global.GRAVITY * moveTime) + yVelocity;
+
+		// Friction
+		xVelocity = xVelocity
+				* (1 - Global.FRICTIONMU * moveTime - Global.FRICTIONMU2
+						* Math.abs(xVelocity) * moveTime);
+		yVelocity = yVelocity
+				* (1 - Global.FRICTIONMU * moveTime - Global.FRICTIONMU2
+						* Math.abs(yVelocity) * moveTime);
+
 		Vect v = new Vect(xVelocity, yVelocity);
 		b.setVelo(v);
+
+		PHYSICSLOG.log(Level.FINE, logString + "New velocity: x " + xVelocity
+				+ " y " + yVelocity);
 
 		return b;
 	}
@@ -302,25 +528,33 @@ public class Model extends Observable implements IModel {
 		}
 
 		ArrayList<IGizmo> gizmos = new ArrayList<IGizmo>(board.getGizmos());
+
 		for (IGizmo gizmo : gizmos) {
 			if (gizmo instanceof model.gizmos.Circle) {
-				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo; // need access to model.Circle methods
+
+				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo; // need
+																			// access
+																			// to
+																			// model.Circle
+																			// methods
 				Vect pos = new Vect(mCircle.getXPos(), mCircle.getYPos());
 
-				double radius = (double)mCircle.getWidth()/2; // use 1 for now
-				Circle circleSim = new Circle(pos, radius); // simulate  circle
+				double radius = (double) mCircle.getWidth() / 2;
+				Circle circleSim = new Circle(pos, radius); // simulate the
+															// circle
 				timeToObject = Geometry.timeUntilCircleCollision(circleSim,
 						ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
 					newVelocity = Geometry.reflectCircle(circleSim.getCenter(),
 							ballSim.getCenter(), ballVelocity);
+					setAbsorberHit(false);
+					ball.stop();
 				}
-			}
+			} else if (gizmo instanceof model.gizmos.Square) {
 
-			else if (gizmo instanceof model.gizmos.Square) {
-				ArrayList<Circle> Corners = new ArrayList<Circle>();
 				ArrayList<LineSegment> SqaureLines = new ArrayList<LineSegment>();
+				ArrayList<Circle> Corners = new ArrayList<Circle>();
 				int x = gizmo.getXPos();
 				int y = gizmo.getYPos();
 				int w = gizmo.getWidth();
@@ -361,106 +595,45 @@ public class Model extends Observable implements IModel {
 							ballSim, ballVelocity);
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectCircle(
-								corner.getCenter(), ballSim.getCenter(),
-								ballVelocity);
+
+						// TODO fix
+						// newVelocity = Geometry.reflectWall(sqLine,
+						// ballVelocity);
+						setAbsorberHit(false);
 					}
-
 				}
+			} else if (gizmo instanceof model.gizmos.Absorber) {
+				ArrayList<LineSegment> absorberLines = new ArrayList<LineSegment>();
 
-			} else if (gizmo instanceof Triangle) {
-				ArrayList<Circle> Corners = new ArrayList<Circle>();
-				ArrayList<LineSegment> TriangeLines = new ArrayList<LineSegment>();
 				int x = gizmo.getXPos();
 				int y = gizmo.getYPos();
 				int w = gizmo.getWidth();
 				int h = gizmo.getHeight();
 
-				LineSegment ls1 = new LineSegment(0, 0, 0, 0);
-				LineSegment ls2 = new LineSegment(0, 0, 0, 0);
-				LineSegment ls3 = new LineSegment(0, 0, 0, 0);
-				
-				Circle c1 = new Circle(0,0,0);
-				Circle c2 = new Circle(0,0,0);
-				Circle c3 = new Circle(0,0,0);
+				LineSegment ls1 = new LineSegment(x, y, x + w, y); // top wall
+				LineSegment ls2 = new LineSegment(x, y, x, y + h);
+				LineSegment ls3 = new LineSegment(x + w, y, x + w, y + h);
+				LineSegment ls4 = new LineSegment(x, y + h, x + w, y + h);
 
+				absorberLines.add(ls1);
+				absorberLines.add(ls2);
+				absorberLines.add(ls3);
+				absorberLines.add(ls4);
 
-				if (((Triangle) gizmo).getOrientation().equals(
-						Orientation.BottomLeft)) {
-					ls1 = new LineSegment(x, y, x, y + h);
-					ls2 = new LineSegment(x, y + h, x + w, y + h);
-					ls3 = new LineSegment(x + w, y + h, x, y);
-					
-					c1 = new Circle(x,y,0);
-					c2 = new Circle(x,y+h,0);
-					c3 = new Circle(x+w,y+h,0);
-					
-				} else if (((Triangle) gizmo).getOrientation().equals(
-						Orientation.BottomRight)) {
-					ls1 = new LineSegment(x, y + h, x + w, y);
-					ls2 = new LineSegment(x + w, y, x + w, y + h);
-					ls3 = new LineSegment(x + w, y + h, x, y + h);
-					
-					c1 = new Circle(x+w,y,0);
-					c2 = new Circle(x,y+h,0);
-					c3 = new Circle(x+w,y+h,0);
-					
-				} else if (((Triangle) gizmo).getOrientation().equals(
-						Orientation.TopLeft)) {
-					ls1 = new LineSegment(x, y, x + w, y);
-					ls2 = new LineSegment(x + w, y, x, y + h);
-					ls3 = new LineSegment(x, y + h, x, y);
-					
-					c1 = new Circle(x,y,0);
-					c2 = new Circle(x+w,y,0);
-					c3 = new Circle(x,y+h,0);
-					
-				} else if (((Triangle) gizmo).getOrientation().equals(
-						Orientation.TopRight)) {
-					ls1 = new LineSegment(x, y, x + w, y);
-					ls2 = new LineSegment(x + w, y, x + w, y + h);
-					ls3 = new LineSegment(x + w, y + h, x, y);
-
-					c1 = new Circle(x,y,0);
-					c2 = new Circle(x+w,y,0);
-					c3 = new Circle(x+w,y+h,0);
-				}
-
-				TriangeLines.add(ls1);
-				TriangeLines.add(ls2);
-				TriangeLines.add(ls3);
-				
-				Corners.add(c1);
-				Corners.add(c2);
-				Corners.add(c3);
-				
-
-				for (LineSegment tLine : TriangeLines) {
-					timeToObject = Geometry.timeUntilWallCollision(tLine,
+				for (LineSegment abLine : absorberLines) {
+					timeToObject = Geometry.timeUntilWallCollision(abLine,
 							ballSim, ballVelocity);
 					if (timeToObject < shortestTime) {
 						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(tLine, ballVelocity);
-					}
-				}
-
-				for (Circle corner : Corners) {
-					timeToObject = Geometry.timeUntilCircleCollision(corner,
-							ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectCircle(
-								corner.getCenter(), ballSim.getCenter(),
-								ballVelocity);
+						newVelocity = Geometry
+								.reflectWall(abLine, ballVelocity);
+						setAbsorberHit(true);
 					}
 				}
 			}
 		}
 
-		// TODO: check for collision with gizmos
-
 		return new CollisionDetails(shortestTime, newVelocity);
-
 	}
 
 }

@@ -3,11 +3,14 @@ package model.gizmos;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Global;
+
 
 /**
  * A gizmo
  * 
- * Imagine lots of interesting things written here
+ * This abstract class provided the base for all
+ * of the gizmo's that the model has.
  */
 public abstract class Gizmo implements IGizmo {
 	
@@ -59,6 +62,10 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/**
+	 * Used to represent the orientation
+	 * of the gizmo
+	 */
 	public enum Orientation {
 		BottomLeft{
 			@Override
@@ -96,9 +103,35 @@ public abstract class Gizmo implements IGizmo {
 	protected int angle;
 	protected Type type;
 	protected Orientation o;
+	protected boolean triggered = false;
+	protected boolean onDown = false;
+	protected double TRIGGER_TIME = 500; // in ms
+	protected double triggeredFor = 0; // in seconds???
 	
+	/**
+	 * This expresses the triggeredFor time as a
+	 * percentage of the TRIGGER_TIME.
+	 * 
+	 * This value is expressed as a decimal and should
+	 * be between 0 and 1; 
+	 */
+	protected double triggeredPercentage = 0;
+	
+	/**
+	 * All of the gizmos interesting in being triggered 
+	 * when this gizmo is.
+	 */
 	protected Set<IGizmo> connections = new HashSet<IGizmo>();
 
+	/**
+	 * The constructor for the gizmo
+	 * 
+	 * @param x The x cord
+	 * @param y The y cord
+	 * @param width the width
+	 * @param height The height
+	 * @param type The Type of gizmo
+	 */
 	public Gizmo(int x, int y, int width, int height, Type type) {
 		this.xcord = x;
 		this.ycord = y;
@@ -107,12 +140,56 @@ public abstract class Gizmo implements IGizmo {
 		this.type = type;
 		this.o = Orientation.BottomLeft;
 	}
+	
+	/**
+	 * Performs the action of the gizmo
+	 *
+	 * This is called by the update method
+	 * and should be overridden by individual 
+	 * gizmos.
+	 * 
+	 * By default this does nothing, so it should
+	 * be overridden to make things more interesting
+	 * 
+	 * This action is interested in the triggeredPercentage
+	 * value.
+	 */
+	protected void action(){
+		
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#update()
+	 */
+	public void update(){
+
+		if(triggered){
+			
+			triggeredPercentage = TRIGGER_TIME / triggeredFor;
+			
+			triggeredFor += Global.MOVETIME;
+			
+			if(triggeredFor >= (TRIGGER_TIME / 1000)){
+				triggered = false;
+			}
+			
+			action();
+			
+		}else{
+			triggeredPercentage = 0;
+			triggeredFor = 0;
+		}
+		
+	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
-	public void trigger(){
+	public void trigger(boolean onDown){
+		this.onDown = onDown;
+		triggered = true;
 		
 		triggerConnections();	
 	}
@@ -183,12 +260,12 @@ public abstract class Gizmo implements IGizmo {
 	protected void triggerConnections(){
 		
 		for(IGizmo g: connections)
-			g.trigger();
+			g.trigger(true);
 	}
 	
 	/*
 	 * (non-Javadoc)
-	 * @see model.gizmos.IGizmo#rotate()
+	 * @see model.gizmos.IGizmo#rotateClockwise()
 	 */
 	public void rotateClockwise(){
 		switch(this.o){
@@ -210,6 +287,10 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#rotateAntiClockwise()
+	 */
 	public void rotateAntiClockwise(){
 		switch(this.o){
 			
@@ -230,7 +311,28 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getOrientation()
+	 */
 	public Orientation getOrientation(){
 		return o;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getType()
+	 */
+	public Type getType(){
+		
+		return type;
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getAngle()
+	 */
+	@Override
+	public int getAngle() {
+		return 0;
 	}
 }

@@ -1,40 +1,68 @@
 package model;
 
-import java.awt.Color;
+import physics.Circle;
+import physics.Vect;
 
-import physics.*;
-
+/**
+ * An interface for the ball
+ *
+ */
 public interface IBall {
 
+	/**
+	 * Returns the velocity of the ball 
+	 * 
+	 * @return this.velocity
+	 */
 	public abstract Vect getVelo();
 
+	/**
+	 * Sets the velocity of the ball
+	 * 
+	 * @param v The velocity
+	 */
 	public abstract void setVelo(Vect v);
 
+	/**
+	 * Gets the radius of the ball
+	 * 
+	 * @return The radius
+	 */
 	public abstract double getRadius();
 
+	/**
+	 * Get a MIT physics circle representation of
+	 * the ball
+	 * 
+	 * @return The representation of the ball
+	 */
 	public abstract Circle getCircle();
-
-	// Ball specific methods that deal with double precision.
+	
+	/**
+	 * Get the X coord
+	 * 
+	 * @return The x coord
+	 */
 	public abstract double getX();
 
+	/**
+	 * Get the Y coord
+	 * 
+	 * @return The y coord
+	 */
 	public abstract double getY();
-
-	public abstract void setExactX(double x);
-
-	public abstract void setExactY(double y);
 	
-	// set X using L as the measurement
+	/**
+	 * Set the x coord
+	 * 
+	 * @param x the coord
+	 */
 	public abstract void setX(double x);
 	
-	// set Y using L as the measurement
+	/**
+	 * Set the Y coords
+	 * 
+	 * @param y The y coord
+	 */
 	public abstract void setY(double y);
-
-	public abstract void stop();
-
-	public abstract void start();
-
-	public abstract boolean stopped();
-
-	public abstract Color getColour();
-
 }

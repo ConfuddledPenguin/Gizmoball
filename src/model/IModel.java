@@ -1,27 +1,28 @@
 package model;
 
+import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Observer;
 
+import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.IGizmo;
 
-/**
- * A public interface for the Model
- *
- */
 public interface IModel {
 
 	/**
-	 * Loads a board from the file
+	 * Loads a board from the given file
 	 * 
-	 * @param file The file to load
+	 * @param file The file to load from
 	 * 
 	 * @throws FileNotFoundException File not found
-	 * @throws IOException Error Reading file
-	 * @throws IncorrectFileFormatException File in wrong format
+	 * @throws IOException Error reading file 
+	 * @throws IncorrectFileFormatException File in the wrong format
 	 */
 	public abstract void loadBoard(File file) throws FileNotFoundException,
 			IOException, IncorrectFileFormatException;
@@ -32,70 +33,138 @@ public interface IModel {
 	 * @param file The file to write to
 	 * @throws IOException Error writing to file
 	 */
-	public void saveBoard(File file) throws IOException;
-	
+	public abstract void saveBoard(File file) throws IOException;
+
 	/**
-	 * Get the Board
-	 *  
-	 * @return The board
+	 * Add a gizmo to the board
+	 * 
+	 * @param g the gizmo to add
+	 * 
 	 */
-	public abstract IBoard getBoard();
-	
+	public abstract void addGizmo(IGizmo g);
+
+	/**
+	 * Removes a gizmo from the board
+	 * 
+	 * @param p The point the gizmo is at
+	 */
+	public abstract void deleteGizmo(Point p);
+
+	/**
+	 * Get the gizmo at the specified point
+	 * 
+	 * @param p the point to get
+	 * @return The gizmo at that location
+	 */
+	public abstract IGizmo getGizmo(Point p);
+
+	/**
+	 * Rotate the gizmo by 90' clockwise
+	 * 
+	 * @param p The point the gizmo is at
+	 */
+	public abstract void RotateClockwise(Point p);
+
+	/**
+	 * Rotate the gizmo 90' antiClockwise
+	 * 
+	 * @param p The point the gizmo is at
+	 */
+	public abstract void RotateAntiClockwise(Point p);
+
+	/**
+	 * Move the gizmo at old point to the new point
+	 * 
+	 * @param oldPoint The pint the gizmo is at
+	 * @param newPoint The new location for the gizmo
+	 * 
+	 * @throws GridPosAlreadyTakenException 
+	 * @throws InvalidGridPosException 
+	 */
+	public abstract void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException;
+
+	/**
+	 * Returns the ball
+	 * 
+	 * @return the ball
+	 */
+	public abstract IBall getBall();
+
+
 	/**
 	 * Set the value of gravity on the model
 	 * 
 	 * @param gravity the value for gravity
 	 */
-	public void setGravity(double gravity);
-	
+	public abstract void setGravity(double gravity);
+
 	/**
 	 * Get the value of gravity on the model
 	 * 
 	 * @return this.gravity
 	 */
-	public double getGravity();
-	
-	
+	public abstract double getGravity();
+
 	/**
 	 * Sets the value of friction in the model
 	 *  
 	 * @param mu The mu value
 	 * @param mu2 The mu2 values
 	 */
-	public void setFriction(float mu, float mu2);
-	
+	public abstract void setFriction(float mu, float mu2);
+
 	/**
 	 * Get the value of friction mu on the model
 	 * 
 	 * @return this.frictionMU
 	 */
-	public double getFrictionMU();
-	
+	public abstract double getFrictionMU();
+
 	/**
 	 * Get the value of friction mu2 on the model
 	 * 
 	 * @return this.frictionMU2
 	 */
-	public double getFrictionMU2();
+	public abstract double getFrictionMU2();
 
 	/**
-	 * Adds a gizmo
+	 * Register a key to the model
 	 * 
-	 * @param g The gizmo to add
-	 * 
-	 * @deprecated Add gizmos through the board now.
+	 * @param key The key number -- here since the file represents them this way
+	 * @param gizmo The gizmo to trigger
 	 */
-	public abstract void addGizmo(IGizmo g);
+	public abstract void registerKeyStroke(int key, IGizmo gizmo);
+	
+	/**
+	 * Unregister a previously registered key-gizmo connection
+	 * 
+	 * @param key The key number
+	 * @param gizmo The gizmo registered 
+	 */
+	public abstract void unRegisterKeyStroke(int key, IGizmo gizmo);
+	
+	/**
+	 * Inform the model that a key has been pressed
+	 * 
+	 * @param key The key number that has been pressed
+	 * @param onDown If on key pressed down pass true else false
+	 */
+	public abstract void triggerKeyPress(int key, boolean onDown);
 	
 	/**
 	 * Updates the balls position after 1 frame of movement
 	 */
-	public void moveBall();
+	public abstract void moveBall();
 
-	/**
-	 * Add yourself as a 
-	 * @param buildBoard
-	 */
 	public abstract void addObserver(Observer o);
+	
+	public void addBall();
+	
+	/**
+	 * Get all gizmos
+	 * 
+	 * @return this.gizmos
+	 */
+	public List<IGizmo> getGizmos();
 
 }

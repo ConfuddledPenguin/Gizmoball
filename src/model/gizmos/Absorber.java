@@ -1,5 +1,9 @@
 package model.gizmos;
 
+/**
+ * The absorber gizmo
+ *
+ */
 public class Absorber extends Gizmo {
 	
 	public Absorber(int x, int y, int width, int height) {
@@ -7,9 +11,9 @@ public class Absorber extends Gizmo {
 	}
 
 	@Override
-	public void trigger() {
-		
-		triggerConnections();
+	public void trigger(boolean onDown) {
+		System.out.println("THIS WILL MOVE THE BALL AND FIRE UP!!!");
+		//triggerConnections();
 		
 	}
 

@@ -1,19 +1,23 @@
 package controller;
 
 import java.awt.event.ActionListener;
-import model.Model;
+import java.awt.event.KeyListener;
+
+import model.IModel;
 import view.GUI;
 
 public class Controller  {
 	
-	private Model model;
+	private IModel model;
 	private ActionListener runListener;
 	private ActionListener buildListener;
+	private KeyListener runKeyListener;
 	
-	public Controller(Model m, GUI g) {
+	public Controller(IModel m, GUI g) {
 		model = m;
 		runListener = new RunActionlistner(m, g);
 		buildListener = new BuildActionlistner(m, g);
+		runKeyListener =  new RunKeyListener(m);
 	}
 	
 	public ActionListener getRunListener() {
@@ -24,4 +28,7 @@ public class Controller  {
 		return buildListener;
 	}
 
+	public KeyListener getRunKeyListener() {
+		return runKeyListener;
+	}
 }

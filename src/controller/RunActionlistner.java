@@ -10,7 +10,6 @@ import javax.swing.Timer;
 import main.GizmoBallMain;
 import model.Global;
 import model.IModel;
-import model.Model;
 import model.exceptions.IncorrectFileFormatException;
 import view.FileChooser;
 import view.GUI;
@@ -23,7 +22,7 @@ public class RunActionlistner implements ActionListener {
 	private Timer timer;
 	private GUI gui;
 
-	public RunActionlistner(Model m, GUI g) {
+	public RunActionlistner(IModel m, GUI g) {
 
 		model = m;
 		gui = g;
@@ -33,12 +32,12 @@ public class RunActionlistner implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println("Controller: The " + e.getActionCommand()
-				+ " button is clicked at " + new java.util.Date(e.getWhen())
-				+ " with e.paramString " + e.paramString());
+//		System.out.println("Controller: The " + e.getActionCommand()
+//				+ " button is clicked at " + new java.util.Date(e.getWhen())
+//				+ " with e.paramString " + e.paramString());
 
 		if (e.getSource() == timer) {
-			System.out.println("timer.");
+			 System.out.println("timer.");
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
@@ -88,6 +87,9 @@ public class RunActionlistner implements ActionListener {
 				gui.changeStartStop("Start");
 				break;
 			case ("Restart"):
+				timer.stop();
+				gui.changeStartStop("Start");
+				model.addBall();
 				break;
 			case ("Quit"):
 				System.exit(0);

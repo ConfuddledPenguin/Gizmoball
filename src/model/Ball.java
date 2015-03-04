@@ -1,31 +1,36 @@
 package model;
 
-import java.awt.Color;
-
-import physics.*;
+import physics.Circle;
+import physics.Vect;
 
 /**
- * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
+ * 
+ * This represents any balls in the model
  */
-
 public class Ball implements IBall {
 
 	private Vect velocity;
 	private double radius;
 	private double xpos;
 	private double ypos;
-	private Color colour;
+	
+	private boolean stopped = false;
 
-	private boolean stopped;
-
-	// x, y coordinates(L) and x,y velocity
+	/**
+	 * Tha ball constructor
+	 * 
+	 * @param x The x coord
+	 * @param y The y coord
+	 * @param xv The x velocity
+	 * @param yv The y velocity
+	 */
 	public Ball(double x, double y, double xv, double yv) {
+
 		radius = 0.5;
+
 		xpos = x; // Centre coordinates
 		ypos = y;
-		colour = Color.GREEN;
 		velocity = new Vect(xv, yv);
-		stopped = false;
 	}
 
 	/* (non-Javadoc)
@@ -76,54 +81,6 @@ public class Ball implements IBall {
 		return ypos * Global.L + radius;
 	}
 
-	/* (non-Javadoc)
-	 * @see model.IBall#setExactX(double)
-	 */
-	@Override
-	public void setExactX(double x) {
-		xpos = x;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IBall#setExactY(double)
-	 */
-	@Override
-	public void setExactY(double y) {
-		ypos = y;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IBall#stop()
-	 */
-	@Override
-	public void stop() {
-		stopped = true;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IBall#start()
-	 */
-	@Override
-	public void start() {
-		stopped = false;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IBall#stopped()
-	 */
-	@Override
-	public boolean stopped() {
-		return stopped;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IBall#getColour()
-	 */
-	@Override
-	public Color getColour() {
-		return colour;
-	}
-
 	/* Set x using L as the measurement */
 	@Override
 	public void setX(double x) {
@@ -144,6 +101,18 @@ public class Ball implements IBall {
 	/* Set y using L as the measurement */
 	public double getY() {
 		return ypos;
+	}
+	
+	public void stop(){
+		stopped = true;
+	}
+	
+	public void start(){
+		stopped = false;
+	}
+	
+	public boolean isStopped(){
+		return stopped;
 	}
 
 }
