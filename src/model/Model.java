@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import physics.Circle;
 import physics.Geometry;
@@ -346,7 +347,17 @@ public class Model extends Observable implements IModel {
 		if( gizmos != null){
 		
 			for (IGizmo g : keyConnections.get(key)) {
-				g.trigger();
+				
+				if(g.getType() == Gizmo.Type.Absorber){
+					if(absorberHit){
+						Vect v = new Vect(-10, -50);
+						ball.setVelo(v);
+						absorberHit = false;
+						ball.start();
+					}
+				}else{
+					g.trigger();
+				}
 			}
 		}
 	}
@@ -368,7 +379,7 @@ public class Model extends Observable implements IModel {
 		double moveTime = Global.MOVETIME;
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 
-		if (ball != null) {
+		if (ball != null && !ball.isStopped()) {
 			CollisionDetails cd = timeUntilCollision();
 			double timeUntilCollision = cd.getTimeUntilCollision();
 
@@ -383,8 +394,11 @@ public class Model extends Observable implements IModel {
 				ball.setVelo(cd.getVelocity()); // update velocity after collision
 				if(getAbsorberHit()){
 					System.out.println("ABSORBER HIT"); //testing
-					addBall();
-					setAbsorberHit(false);
+					ball.setX(28.5);
+					ball.setY(20.5);
+					ball.stop();
+					Vect v = new Vect(0, 0);
+					ball.setVelo(v);
 				}
 			}
 
@@ -500,6 +514,7 @@ public class Model extends Observable implements IModel {
 					shortestTime = timeToObject;
 					newVelocity = Geometry.reflectCircle(circleSim.getCenter(), ballSim.getCenter(), ballVelocity);
 					setAbsorberHit(false);
+					ball.stop();
 				}
 			} else if (gizmo instanceof model.gizmos.Square) {
 

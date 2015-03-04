@@ -13,6 +13,8 @@ public class Ball implements IBall {
 	private double radius;
 	private double xpos;
 	private double ypos;
+	
+	private boolean stopped = false;
 
 	/**
 	 * Tha ball constructor
@@ -99,6 +101,18 @@ public class Ball implements IBall {
 	/* Set y using L as the measurement */
 	public double getY() {
 		return ypos;
+	}
+	
+	public void stop(){
+		stopped = true;
+	}
+	
+	public void start(){
+		stopped = false;
+	}
+	
+	public boolean isStopped(){
+		return stopped;
 	}
 
 }

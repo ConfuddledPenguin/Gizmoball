@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 import model.Model;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
+import model.gizmos.IGizmo;
 import model.gizmos.Square;
 import view.GUI;
 
@@ -34,7 +35,9 @@ public class GizmoBallMain {
 		m.addBall();
 
 //		m.addGizmo(new Square(10,5));
-		m.addGizmo(new Absorber(0, 29, 30, 1));
+		IGizmo g = new Absorber(0, 29, 30, 1);
+		m.addGizmo(g);
+		m.registerKeyStroke(49, g);
 //		m.addGizmo(new Circle(15,15));
 //		m.addGizmo(new Circle(25,10));
 //		m.addGizmo(new Circle(18,9));
