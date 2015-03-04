@@ -20,8 +20,9 @@ public interface IGizmo {
 	
 	/**
 	 * Trigger this gizmos action
+	 * @param onDown 
 	 */
-	void trigger();
+	void trigger(boolean onDown);
 	
 	/**
 	 * Connect the gizmo g to this gizmo

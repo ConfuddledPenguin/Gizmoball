@@ -22,11 +22,23 @@ public class LeftFlipper extends Gizmo {
 		int av = 1080; // angular velocity in degrees per second
 		int angleStep = (int) (av / rotationAngle * 1 / Global.MOVETIME);
 
+		if (onDown) {
+			if (!natural) {
+				natural = true;
+				angle = 0;
+			}
+		} else if (!onDown) {
+			if (natural) {
+				natural = false;
+				angle = rotationAngle;
+			}
+				
+			}
 		if (natural) {
-			if (angle < 90) {
+			if (angle < rotationAngle) {
 				angle += angleStep;
-				if (angle > 90) {
-					angle = 90;
+				if (angle > rotationAngle) {
+					angle = rotationAngle;
 					natural = false;
 					triggered = false;
 				}
@@ -46,7 +58,7 @@ public class LeftFlipper extends Gizmo {
 
 	@Override
 	public int getAngle() {
-		return angle % 180;
+		return angle;
 	}
 
 }

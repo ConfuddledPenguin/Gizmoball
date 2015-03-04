@@ -1,0 +1,2144 @@
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -10.0 y -50.0
+Moving distance: x -0.5 y -2.5
+New Coords: x 18.0 y 16.0
+Time for Friction and Gravity calcs
+New velocity: x -9.8625 y -45.718359375000006
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.8625 y -45.718359375000006
+Moving distance: x -0.49312500000000004 y -2.28591796875
+New Coords: x 17.506875 y 13.71408203125
+Time for Friction and Gravity calcs
+New velocity: x -9.728585742187501 y -41.94098019390107
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.728585742187501 y -41.94098019390107
+Moving distance: x -0.4864292871093751 y -2.0970490096950534
+New Coords: x 17.020445712890627 y 11.617033021554946
+Time for Friction and Gravity calcs
+New velocity: x -9.5981182843309 y -38.570421632233135
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.5981182843309 y -38.570421632233135
+Moving distance: x -0.479905914216545 y -1.928521081611657
+New Coords: x 16.540539798674082 y 9.68851193994329
+Time for Friction and Gravity calcs
+New velocity: x -9.470965793225478 y -35.53275376668328
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.470965793225478 y -35.53275376668328
+Moving distance: x -0.47354828966127394 y -1.776637688334164
+New Coords: x 16.06699150901281 y 7.911874251609126
+Time for Friction and Gravity calcs
+New velocity: x -9.347003094663387 y -32.77076631719113
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.347003094663387 y -32.77076631719113
+Moving distance: x -0.4673501547331694 y -1.6385383158595568
+New Coords: x 15.599641354279639 y 6.273335935749569
+Time for Friction and Gravity calcs
+New velocity: x -9.2261112572305 y -30.23941697276593
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.2261112572305 y -30.23941697276593
+Moving distance: x -0.461305562861525 y -1.5119708486382966
+New Coords: x 15.138335791418113 y 4.7613650871112725
+Time for Friction and Gravity calcs
+New velocity: x -9.108177206995467 y -27.902697331023862
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:50 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:50 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.108177206995467 y -27.902697331023862
+Moving distance: x -0.4554088603497734 y -1.3951348665511931
+New Coords: x 14.682926931068339 y 3.3662302205600794
+Time for Friction and Gravity calcs
+New velocity: x -8.993093370444184 y -25.731423615586127
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.993093370444184 y -25.731423615586127
+Moving distance: x -0.4496546685222092 y -1.2865711807793065
+New Coords: x 14.23327226254613 y 2.079659039780773
+Time for Friction and Gravity calcs
+New velocity: x -8.88075734326922 y -23.701646708259425
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.88075734326922 y -23.701646708259425
+Moving distance: x -0.44403786716346105 y -1.1850823354129714
+New Coords: x 13.78923439538267 y 0.8945767043678015
+Time for Friction and Gravity calcs
+New velocity: x -8.771071582852596 y -21.79348659998348
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.018105258309980582
+Current velocity: x -8.771071582852596 y -21.79348659998348
+Moving distance: x -0.15880251666287648 y -0.3945767043678014
+New Coords: x 13.630431878719794 y 0.5
+Time for Friction and Gravity calcs
+New velocity: x -8.732279813906343 y -21.12505270534631
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.771071582852596 y 21.79348659998348
+Moving distance: x -0.4385535791426298 y 1.089674329999174
+New Coords: x 13.191878299577164 y 1.589674329999174
+Time for Friction and Gravity calcs
+New velocity: x -8.663943122484625 y 22.35092939837898
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.663943122484625 y 22.35092939837898
+Moving distance: x -0.43319715612423126 y 1.117546469918949
+New Coords: x 12.758681143452932 y 2.7072207999181233
+Time for Friction and Gravity calcs
+New velocity: x -8.559283305544458 y 22.875173401046922
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.559283305544458 y 22.875173401046922
+Moving distance: x -0.4279641652772229 y 1.143758670052346
+New Coords: x 12.33071697817571 y 3.8509794699704694
+Time for Friction and Gravity calcs
+New velocity: x -8.457007538031812 y 23.367486944757385
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.457007538031812 y 23.367486944757385
+Moving distance: x -0.4228503769015906 y 1.1683743472378694
+New Coords: x 11.907866601274119 y 5.019353817208339
+Time for Friction and Gravity calcs
+New velocity: x -8.357035057986364 y 23.829189256732313
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.357035057986364 y 23.829189256732313
+Moving distance: x -0.4178517528993182 y 1.1914594628366157
+New Coords: x 11.4900148483748 y 6.210813280044954
+Time for Friction and Gravity calcs
+New velocity: x -8.259288720463365 y 24.261633102942653
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.259288720463365 y 24.261633102942653
+Moving distance: x -0.4129644360231683 y 1.2130816551471328
+New Coords: x 11.077050412351632 y 7.423894935192087
+Time for Friction and Gravity calcs
+New velocity: x -8.16369479685282 y 24.666189282090027
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.16369479685282 y 24.666189282090027
+Moving distance: x -0.40818473984264103 y 1.2333094641045015
+New Coords: x 10.668865672508991 y 8.657204399296589
+Time for Friction and Gravity calcs
+New velocity: x -8.070182787436552 y 25.044232961856018
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.070182787436552 y 25.044232961856018
+Moving distance: x -0.40350913937182764 y 1.252211648092801
+New Coords: x 10.265356533137163 y 9.90941604738939
+Time for Friction and Gravity calcs
+New velocity: x -7.97868524617396 y 25.397131811838257
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.97868524617396 y 25.397131811838257
+Moving distance: x -0.398934262308698 y 1.269856590591913
+New Coords: x 9.866422270828465 y 11.179272637981303
+Time for Friction and Gravity calcs
+New velocity: x -7.88913761679435 y 25.72623585482661
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.88913761679435 y 25.72623585482661
+Moving distance: x -0.3944568808397175 y 1.2863117927413306
+New Coords: x 9.471965389988748 y 12.465584430722632
+Time for Friction and Gravity calcs
+New velocity: x -7.801478079352457 y 26.032868933889038
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.801478079352457 y 26.032868933889038
+Moving distance: x -0.39007390396762287 y 1.301643446694452
+New Coords: x 9.081891486021124 y 13.767227877417085
+Time for Friction and Gravity calcs
+New velocity: x -7.715647406474996 y 26.318321676141966
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.715647406474996 y 26.318321676141966
+Moving distance: x -0.3857823703237498 y 1.3159160838070985
+New Coords: x 8.696109115697375 y 15.083143961224183
+Time for Friction and Gravity calcs
+New velocity: x -7.631588828590597 y 26.58384582399774
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.631588828590597 y 26.58384582399774
+Moving distance: x -0.3815794414295299 y 1.3291922911998872
+New Coords: x 8.314529674267845 y 16.41233625242407
+Time for Friction and Gravity calcs
+New velocity: x -7.549247907494022 y 26.83064980002515
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.549247907494022 y 26.83064980002515
+Moving distance: x -0.37746239537470117 y 1.3415324900012575
+New Coords: x 7.937067278893144 y 17.753868742425325
+Time for Friction and Gravity calcs
+New velocity: x -7.468572417648652 y 27.059895371285553
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:54:51 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.027573323818776748
+Current velocity: x -7.468572417648652 y 27.059895371285553
+Moving distance: x -0.20593336573581061 y 0.7461312575746746
+New Coords: x 7.731133913157334 y 18.5
+Time for Friction and Gravity calcs
+New velocity: x -7.424973377125056 y 27.199299955267545
+Mar 04, 2015 11:54:51 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:52 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:53 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:54 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:55 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:58 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:58 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:58 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:58 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:58 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:54:59 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:00 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:01 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:02 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:03 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -10.0 y -50.0
+Moving distance: x -0.5 y -2.5
+New Coords: x 18.0 y 16.0
+Time for Friction and Gravity calcs
+New velocity: x -9.8625 y -45.718359375000006
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.8625 y -45.718359375000006
+Moving distance: x -0.49312500000000004 y -2.28591796875
+New Coords: x 17.506875 y 13.71408203125
+Time for Friction and Gravity calcs
+New velocity: x -9.728585742187501 y -41.94098019390107
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.728585742187501 y -41.94098019390107
+Moving distance: x -0.4864292871093751 y -2.0970490096950534
+New Coords: x 17.020445712890627 y 11.617033021554946
+Time for Friction and Gravity calcs
+New velocity: x -9.5981182843309 y -38.570421632233135
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.5981182843309 y -38.570421632233135
+Moving distance: x -0.479905914216545 y -1.928521081611657
+New Coords: x 16.540539798674082 y 9.68851193994329
+Time for Friction and Gravity calcs
+New velocity: x -9.470965793225478 y -35.53275376668328
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.470965793225478 y -35.53275376668328
+Moving distance: x -0.47354828966127394 y -1.776637688334164
+New Coords: x 16.06699150901281 y 7.911874251609126
+Time for Friction and Gravity calcs
+New velocity: x -9.347003094663387 y -32.77076631719113
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.347003094663387 y -32.77076631719113
+Moving distance: x -0.4673501547331694 y -1.6385383158595568
+New Coords: x 15.599641354279639 y 6.273335935749569
+Time for Friction and Gravity calcs
+New velocity: x -9.2261112572305 y -30.23941697276593
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.2261112572305 y -30.23941697276593
+Moving distance: x -0.461305562861525 y -1.5119708486382966
+New Coords: x 15.138335791418113 y 4.7613650871112725
+Time for Friction and Gravity calcs
+New velocity: x -9.108177206995467 y -27.902697331023862
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.108177206995467 y -27.902697331023862
+Moving distance: x -0.4554088603497734 y -1.3951348665511931
+New Coords: x 14.682926931068339 y 3.3662302205600794
+Time for Friction and Gravity calcs
+New velocity: x -8.993093370444184 y -25.731423615586127
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.993093370444184 y -25.731423615586127
+Moving distance: x -0.4496546685222092 y -1.2865711807793065
+New Coords: x 14.23327226254613 y 2.079659039780773
+Time for Friction and Gravity calcs
+New velocity: x -8.88075734326922 y -23.701646708259425
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.88075734326922 y -23.701646708259425
+Moving distance: x -0.44403786716346105 y -1.1850823354129714
+New Coords: x 13.78923439538267 y 0.8945767043678015
+Time for Friction and Gravity calcs
+New velocity: x -8.771071582852596 y -21.79348659998348
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.018105258309980582
+Current velocity: x -8.771071582852596 y -21.79348659998348
+Moving distance: x -0.15880251666287648 y -0.3945767043678014
+New Coords: x 13.630431878719794 y 0.5
+Time for Friction and Gravity calcs
+New velocity: x -8.732279813906343 y -21.12505270534631
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.771071582852596 y 21.79348659998348
+Moving distance: x -0.4385535791426298 y 1.089674329999174
+New Coords: x 13.191878299577164 y 1.589674329999174
+Time for Friction and Gravity calcs
+New velocity: x -8.663943122484625 y 22.35092939837898
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.663943122484625 y 22.35092939837898
+Moving distance: x -0.43319715612423126 y 1.117546469918949
+New Coords: x 12.758681143452932 y 2.7072207999181233
+Time for Friction and Gravity calcs
+New velocity: x -8.559283305544458 y 22.875173401046922
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.559283305544458 y 22.875173401046922
+Moving distance: x -0.4279641652772229 y 1.143758670052346
+New Coords: x 12.33071697817571 y 3.8509794699704694
+Time for Friction and Gravity calcs
+New velocity: x -8.457007538031812 y 23.367486944757385
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.457007538031812 y 23.367486944757385
+Moving distance: x -0.4228503769015906 y 1.1683743472378694
+New Coords: x 11.907866601274119 y 5.019353817208339
+Time for Friction and Gravity calcs
+New velocity: x -8.357035057986364 y 23.829189256732313
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.357035057986364 y 23.829189256732313
+Moving distance: x -0.4178517528993182 y 1.1914594628366157
+New Coords: x 11.4900148483748 y 6.210813280044954
+Time for Friction and Gravity calcs
+New velocity: x -8.259288720463365 y 24.261633102942653
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:07 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:07 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.259288720463365 y 24.261633102942653
+Moving distance: x -0.4129644360231683 y 1.2130816551471328
+New Coords: x 11.077050412351632 y 7.423894935192087
+Time for Friction and Gravity calcs
+New velocity: x -8.16369479685282 y 24.666189282090027
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.16369479685282 y 24.666189282090027
+Moving distance: x -0.40818473984264103 y 1.2333094641045015
+New Coords: x 10.668865672508991 y 8.657204399296589
+Time for Friction and Gravity calcs
+New velocity: x -8.070182787436552 y 25.044232961856018
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.070182787436552 y 25.044232961856018
+Moving distance: x -0.40350913937182764 y 1.252211648092801
+New Coords: x 10.265356533137163 y 9.90941604738939
+Time for Friction and Gravity calcs
+New velocity: x -7.97868524617396 y 25.397131811838257
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.97868524617396 y 25.397131811838257
+Moving distance: x -0.398934262308698 y 1.269856590591913
+New Coords: x 9.866422270828465 y 11.179272637981303
+Time for Friction and Gravity calcs
+New velocity: x -7.88913761679435 y 25.72623585482661
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.88913761679435 y 25.72623585482661
+Moving distance: x -0.3944568808397175 y 1.2863117927413306
+New Coords: x 9.471965389988748 y 12.465584430722632
+Time for Friction and Gravity calcs
+New velocity: x -7.801478079352457 y 26.032868933889038
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.801478079352457 y 26.032868933889038
+Moving distance: x -0.39007390396762287 y 1.301643446694452
+New Coords: x 9.081891486021124 y 13.767227877417085
+Time for Friction and Gravity calcs
+New velocity: x -7.715647406474996 y 26.318321676141966
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.715647406474996 y 26.318321676141966
+Moving distance: x -0.3857823703237498 y 1.3159160838070985
+New Coords: x 8.696109115697375 y 15.083143961224183
+Time for Friction and Gravity calcs
+New velocity: x -7.631588828590597 y 26.58384582399774
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.631588828590597 y 26.58384582399774
+Moving distance: x -0.3815794414295299 y 1.3291922911998872
+New Coords: x 8.314529674267845 y 16.41233625242407
+Time for Friction and Gravity calcs
+New velocity: x -7.549247907494022 y 26.83064980002515
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.549247907494022 y 26.83064980002515
+Moving distance: x -0.37746239537470117 y 1.3415324900012575
+New Coords: x 7.937067278893144 y 17.753868742425325
+Time for Friction and Gravity calcs
+New velocity: x -7.468572417648652 y 27.059895371285553
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:55:08 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.027573323818776748
+Current velocity: x -7.468572417648652 y 27.059895371285553
+Moving distance: x -0.20593336573581061 y 0.7461312575746746
+New Coords: x 7.731133913157334 y 18.5
+Time for Friction and Gravity calcs
+New velocity: x -7.424973377125056 y 27.199299955267545
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:08 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:09 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:10 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:11 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:12 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:13 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:14 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:15 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:16 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:16 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:16 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -10.0 y -50.0
+Moving distance: x -0.5 y -2.5
+New Coords: x 18.0 y 16.0
+Time for Friction and Gravity calcs
+New velocity: x -9.8625 y -45.718359375000006
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.8625 y -45.718359375000006
+Moving distance: x -0.49312500000000004 y -2.28591796875
+New Coords: x 17.506875 y 13.71408203125
+Time for Friction and Gravity calcs
+New velocity: x -9.728585742187501 y -41.94098019390107
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.728585742187501 y -41.94098019390107
+Moving distance: x -0.4864292871093751 y -2.0970490096950534
+New Coords: x 17.020445712890627 y 11.617033021554946
+Time for Friction and Gravity calcs
+New velocity: x -9.5981182843309 y -38.570421632233135
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.5981182843309 y -38.570421632233135
+Moving distance: x -0.479905914216545 y -1.928521081611657
+New Coords: x 16.540539798674082 y 9.68851193994329
+Time for Friction and Gravity calcs
+New velocity: x -9.470965793225478 y -35.53275376668328
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.470965793225478 y -35.53275376668328
+Moving distance: x -0.47354828966127394 y -1.776637688334164
+New Coords: x 16.06699150901281 y 7.911874251609126
+Time for Friction and Gravity calcs
+New velocity: x -9.347003094663387 y -32.77076631719113
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.347003094663387 y -32.77076631719113
+Moving distance: x -0.4673501547331694 y -1.6385383158595568
+New Coords: x 15.599641354279639 y 6.273335935749569
+Time for Friction and Gravity calcs
+New velocity: x -9.2261112572305 y -30.23941697276593
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.2261112572305 y -30.23941697276593
+Moving distance: x -0.461305562861525 y -1.5119708486382966
+New Coords: x 15.138335791418113 y 4.7613650871112725
+Time for Friction and Gravity calcs
+New velocity: x -9.108177206995467 y -27.902697331023862
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -9.108177206995467 y -27.902697331023862
+Moving distance: x -0.4554088603497734 y -1.3951348665511931
+New Coords: x 14.682926931068339 y 3.3662302205600794
+Time for Friction and Gravity calcs
+New velocity: x -8.993093370444184 y -25.731423615586127
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.993093370444184 y -25.731423615586127
+Moving distance: x -0.4496546685222092 y -1.2865711807793065
+New Coords: x 14.23327226254613 y 2.079659039780773
+Time for Friction and Gravity calcs
+New velocity: x -8.88075734326922 y -23.701646708259425
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.88075734326922 y -23.701646708259425
+Moving distance: x -0.44403786716346105 y -1.1850823354129714
+New Coords: x 13.78923439538267 y 0.8945767043678015
+Time for Friction and Gravity calcs
+New velocity: x -8.771071582852596 y -21.79348659998348
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.018105258309980582
+Current velocity: x -8.771071582852596 y -21.79348659998348
+Moving distance: x -0.15880251666287648 y -0.3945767043678014
+New Coords: x 13.630431878719794 y 0.5
+Time for Friction and Gravity calcs
+New velocity: x -8.732279813906343 y -21.12505270534631
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.771071582852596 y 21.79348659998348
+Moving distance: x -0.4385535791426298 y 1.089674329999174
+New Coords: x 13.191878299577164 y 1.589674329999174
+Time for Friction and Gravity calcs
+New velocity: x -8.663943122484625 y 22.35092939837898
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.663943122484625 y 22.35092939837898
+Moving distance: x -0.43319715612423126 y 1.117546469918949
+New Coords: x 12.758681143452932 y 2.7072207999181233
+Time for Friction and Gravity calcs
+New velocity: x -8.559283305544458 y 22.875173401046922
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.559283305544458 y 22.875173401046922
+Moving distance: x -0.4279641652772229 y 1.143758670052346
+New Coords: x 12.33071697817571 y 3.8509794699704694
+Time for Friction and Gravity calcs
+New velocity: x -8.457007538031812 y 23.367486944757385
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.457007538031812 y 23.367486944757385
+Moving distance: x -0.4228503769015906 y 1.1683743472378694
+New Coords: x 11.907866601274119 y 5.019353817208339
+Time for Friction and Gravity calcs
+New velocity: x -8.357035057986364 y 23.829189256732313
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.357035057986364 y 23.829189256732313
+Moving distance: x -0.4178517528993182 y 1.1914594628366157
+New Coords: x 11.4900148483748 y 6.210813280044954
+Time for Friction and Gravity calcs
+New velocity: x -8.259288720463365 y 24.261633102942653
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.259288720463365 y 24.261633102942653
+Moving distance: x -0.4129644360231683 y 1.2130816551471328
+New Coords: x 11.077050412351632 y 7.423894935192087
+Time for Friction and Gravity calcs
+New velocity: x -8.16369479685282 y 24.666189282090027
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.16369479685282 y 24.666189282090027
+Moving distance: x -0.40818473984264103 y 1.2333094641045015
+New Coords: x 10.668865672508991 y 8.657204399296589
+Time for Friction and Gravity calcs
+New velocity: x -8.070182787436552 y 25.044232961856018
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:31 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:31 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -8.070182787436552 y 25.044232961856018
+Moving distance: x -0.40350913937182764 y 1.252211648092801
+New Coords: x 10.265356533137163 y 9.90941604738939
+Time for Friction and Gravity calcs
+New velocity: x -7.97868524617396 y 25.397131811838257
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.97868524617396 y 25.397131811838257
+Moving distance: x -0.398934262308698 y 1.269856590591913
+New Coords: x 9.866422270828465 y 11.179272637981303
+Time for Friction and Gravity calcs
+New velocity: x -7.88913761679435 y 25.72623585482661
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.88913761679435 y 25.72623585482661
+Moving distance: x -0.3944568808397175 y 1.2863117927413306
+New Coords: x 9.471965389988748 y 12.465584430722632
+Time for Friction and Gravity calcs
+New velocity: x -7.801478079352457 y 26.032868933889038
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.801478079352457 y 26.032868933889038
+Moving distance: x -0.39007390396762287 y 1.301643446694452
+New Coords: x 9.081891486021124 y 13.767227877417085
+Time for Friction and Gravity calcs
+New velocity: x -7.715647406474996 y 26.318321676141966
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.715647406474996 y 26.318321676141966
+Moving distance: x -0.3857823703237498 y 1.3159160838070985
+New Coords: x 8.696109115697375 y 15.083143961224183
+Time for Friction and Gravity calcs
+New velocity: x -7.631588828590597 y 26.58384582399774
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.631588828590597 y 26.58384582399774
+Moving distance: x -0.3815794414295299 y 1.3291922911998872
+New Coords: x 8.314529674267845 y 16.41233625242407
+Time for Friction and Gravity calcs
+New velocity: x -7.549247907494022 y 26.83064980002515
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: No  collisions
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.05
+Current velocity: x -7.549247907494022 y 26.83064980002515
+Moving distance: x -0.37746239537470117 y 1.3415324900012575
+New Coords: x 7.937067278893144 y 17.753868742425325
+Time for Friction and Gravity calcs
+New velocity: x -7.468572417648652 y 27.059895371285553
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Collision detected. Handling
+Mar 04, 2015 11:55:32 AM model.Model moveBallForTime
+FINE: MOVING BALL--------------------------
+For 0.027573323818776748
+Current velocity: x -7.468572417648652 y 27.059895371285553
+Moving distance: x -0.20593336573581061 y 0.7461312575746746
+New Coords: x 7.731133913157334 y 18.5
+Time for Friction and Gravity calcs
+New velocity: x -7.424973377125056 y 27.199299955267545
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:32 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:33 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:34 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:35 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:36 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:37 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:38 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:39 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:40 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:41 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:42 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:43 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:44 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:45 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
+Mar 04, 2015 11:55:46 AM model.Model moveBall
+FINE: Moving ball for 0.05
