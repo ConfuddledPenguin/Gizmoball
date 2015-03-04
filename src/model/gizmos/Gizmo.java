@@ -104,6 +104,7 @@ public abstract class Gizmo implements IGizmo {
 	protected Type type;
 	protected Orientation o;
 	protected boolean triggered = false;
+	protected boolean onDown = false;
 	protected double TRIGGER_TIME = 500; // in ms
 	protected double triggeredFor = 0; // in seconds???
 	
@@ -186,8 +187,8 @@ public abstract class Gizmo implements IGizmo {
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
-	public void trigger(){
-
+	public void trigger(boolean onDown){
+		this.onDown = onDown;
 		triggered = true;
 		
 		triggerConnections();	
@@ -259,7 +260,7 @@ public abstract class Gizmo implements IGizmo {
 	protected void triggerConnections(){
 		
 		for(IGizmo g: connections)
-			g.trigger();
+			g.trigger(true);
 	}
 	
 	/*

@@ -357,7 +357,7 @@ public class Model extends Observable implements IModel {
 		if (gizmos != null) {
 
 			for (IGizmo g : keyConnections.get(key)) {
-				g.trigger();
+				g.trigger(onDown);
 				System.out.println("TRIGGER");
 			}
 		}
