@@ -57,7 +57,7 @@ public class GizmoBallMain {
 //		m.addGizmo(new Circle(22,14));
 		m.addGizmo(new Circle(23,13));
 //		m.addGizmo(new Circle(26,10));
-		IGizmo flip = new LeftFlipper(10,10);
+		IGizmo flip = new LeftFlipper(5,5);
 		m.addGizmo(flip);
 		
 		m.registerKeyStroke(65, flip);
