@@ -344,6 +344,12 @@ public class Model extends Observable implements IModel {
 		if (keyConnections.get(key).size() == 0)
 			keyConnections.remove(key);
 	}
+	
+	public void clear(){
+		board.clear();
+		
+		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+	}
 
 	/*
 	 * (non-Javadoc)
