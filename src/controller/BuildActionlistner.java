@@ -59,15 +59,19 @@ public class BuildActionlistner implements ActionListener {
 			GizmoBallMain.gui.switchMode();
 			break;
 		case ("Move"):
-			try {
-				model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
-			} catch (InvalidGridPosException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (GridPosAlreadyTakenException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}	
+			
+			if(!view.getClickedCell().equals(view.getMovedPoint())){
+				
+				try {
+					model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
+				} catch (InvalidGridPosException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (GridPosAlreadyTakenException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
+			}
 			break;
 		}
 

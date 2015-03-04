@@ -18,15 +18,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import model.Global;
 import model.Model;
 import model.gizmos.IGizmo;
 
 public class BuildBoard extends Board {
 
 	private static final long serialVersionUID = -4952517095084067303L;
-	private static final int columnCount = 20;
-	private static final int rowCount = 20;
-
 	private List<Rectangle> cells;
 
 	private boolean moving = false;
@@ -38,7 +36,7 @@ public class BuildBoard extends Board {
 
 		super(m);
 		
-		cells = new ArrayList<>(columnCount * rowCount);
+		cells = new ArrayList<>(Global.BOARDWIDTH * Global.BOARDHEIGHT);
 		m.addObserver(this);
 		moveTarget = new Point (0,0);
 
@@ -51,8 +49,8 @@ public class BuildBoard extends Board {
 				int width = getWidth();
 				int height = getHeight();
 
-				int cellWidth = width / columnCount;
-				int cellHeight = height / rowCount;
+				int cellWidth = width / Global.BOARDWIDTH;
+				int cellHeight = height / Global.BOARDHEIGHT;
 
 				int column = e.getX() / cellWidth;
 				int row = e.getY() / cellHeight;
@@ -71,8 +69,8 @@ public class BuildBoard extends Board {
 				int width = getWidth();
 				int height = getHeight();
 
-				int cellWidth = width / columnCount;
-				int cellHeight = height / rowCount;
+				int cellWidth = width / Global.BOARDWIDTH;
+				int cellHeight = height / Global.BOARDHEIGHT;
 				int column = e.getX() / cellWidth;
 				int row = e.getY() / cellHeight;
 
@@ -160,8 +158,9 @@ public class BuildBoard extends Board {
 		int width = getWidth();
 		int height = getHeight();
 
-		int cellWidth = width / columnCount;
-		int cellHeight = height / rowCount;
+		int cellWidth = width / Global.BOARDWIDTH;
+		int cellHeight = height / Global.BOARDHEIGHT;
+		
 		int column = (int) (moveTarget.getX() / cellWidth);
 		int row = (int) (moveTarget.getY() / cellHeight);		
 		return new Point(column, row);
@@ -183,7 +182,7 @@ public class BuildBoard extends Board {
 	
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(400, 400);
+		return new Dimension((Global.L*Global.BOARDWIDTH), (Global.L*Global.BOARDHEIGHT));
 	}
 
 	@Override
@@ -201,15 +200,16 @@ public class BuildBoard extends Board {
 		int width = getWidth();
 		int height = getHeight();
 
-		int cellWidth = width / columnCount;
-		int cellHeight = height / rowCount;
 
-		int xOffset = (width - (columnCount * cellWidth)) / 2;
-		int yOffset = (height - (rowCount * cellHeight)) / 2;
+		int cellWidth = width / Global.BOARDWIDTH;
+		int cellHeight = height / Global.BOARDHEIGHT;
+
+		int xOffset = (width - (Global.BOARDWIDTH * cellWidth)) / 2;
+		int yOffset = (height - (Global.BOARDHEIGHT * cellHeight)) / 2;
 
 		if (cells.isEmpty()) {
-			for (int row = 0; row < rowCount; row++) {
-				for (int col = 0; col < columnCount; col++) {
+			for (int row = 0; row < Global.BOARDHEIGHT; row++) {
+				for (int col = 0; col < Global.BOARDWIDTH; col++) {
 					Rectangle cell = new Rectangle(xOffset + (col * cellWidth),
 							yOffset + (row * cellHeight), cellWidth, cellHeight);
 					cells.add(cell);
@@ -218,14 +218,14 @@ public class BuildBoard extends Board {
 		}
 
 		if (selectedCell != null) {
-			int index = selectedCell.x + (selectedCell.y * columnCount);
+			int index = selectedCell.x + (selectedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
 			g2d.setColor(Color.YELLOW);
 			g2d.fill(cell);
 		}
 
 		if (clickedCell != null) {
-			int index = clickedCell.x + (clickedCell.y * columnCount);
+			int index = clickedCell.x + (clickedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
 			g2d.setColor(Color.RED);
 			g2d.fill(cell);
@@ -240,9 +240,9 @@ public class BuildBoard extends Board {
 		
 		if (ball != null) {
 			g2d.setColor(Color.GREEN);
-			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
-			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
-			int ballWidth = (int) (20 * (ball.getRadius() * 2));
+			int x = (int) ((ball.getX() * Global.L) - (ball.getRadius()*Global.L));
+			int y = (int) ((ball.getY() * Global.L) - (ball.getRadius()*Global.L));
+			int ballWidth = (int) (Global.L * (ball.getRadius() * 2));
 			g2d.fillOval(x, y, ballWidth, ballWidth);
 		}
 

@@ -17,7 +17,7 @@ public class GizmoBallMain {
 	 * 
 	 */
 	public static GUI gui;
-	final static Model m = new Model(50, 50);
+	final static Model m = new Model();
 	
 	public static void main(String[] args){
 

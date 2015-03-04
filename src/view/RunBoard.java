@@ -10,6 +10,7 @@ import java.util.Observable;
 import javax.swing.BorderFactory;
 
 import model.Ball;
+import model.Global;
 import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
@@ -48,9 +49,9 @@ public class RunBoard extends Board {
 		
 		if (ball != null) {
 			g2.setColor(Color.GREEN);
-			int x = (int) ((ball.getX() * 20) - (ball.getRadius()*20));
-			int y = (int) ((ball.getY() * 20) - (ball.getRadius()*20));
-			int width = (int) (20 * (ball.getRadius() * 2));
+			int x = (int) ((ball.getX() * Global.L) - (ball.getRadius()*Global.L));
+			int y = (int) ((ball.getY() * Global.L) - (ball.getRadius()*Global.L));
+			int width = (int) (Global.L * (ball.getRadius() * 2));
 			g2.fillOval(x, y, width, width);
 		}
 	}

@@ -5,7 +5,7 @@ public class Global {
 	public static int BOARDHEIGHT = 20;
 	public static int BOARDWIDTH = 20;
 
-	static int L = 20;  // 1 L = 20 pixels
+	public static int L = 20;  // 1 L = 20 pixels
 	/**
 	 * Expressed in terms of L
 	 */
@@ -22,12 +22,5 @@ public class Global {
 	public static double REFRESHTIME = 50; // 50fps
 	
 	public static double MOVETIME = REFRESHTIME / 1000;
-	
-	Global(int boardHeight, int boardWidth) {
-		
-		Global.BOARDHEIGHT = boardHeight;
-		Global.BOARDWIDTH = boardWidth;
-	}
-	
 
 }
