@@ -58,7 +58,7 @@ public class Model extends Observable implements IModel {
 
 		new Global(boardHeight, boardWidth);
 		board = new Board();
-		walls = new Walls(0, -0, 30, 30);
+		walls = new Walls(0, 0, 20, 20);
 
 		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
 
@@ -238,7 +238,7 @@ public class Model extends Observable implements IModel {
 
 		// ball = new Ball(9.5,19,0,-50); //old one
 		// ball = new Ball(28.5,19,0,-50); //new one
-		ball = new Ball(28.5, 28.5, -10, -50); // testing one
+		ball = new Ball(18.5, 18.5, -10, -50); // testing one
 
 		setChanged();
 		notifyObservers(ball);

@@ -36,7 +36,7 @@ public class GizmoBallMain {
 		m.addBall();
 
 //		m.addGizmo(new Square(10,5));
-		IGizmo g = new Absorber(0, 29, 30, 1);
+		IGizmo g = new Absorber(0, 19, 20, 1);
 		m.addGizmo(g);
 		m.registerKeyStroke(32, g);
 //		m.addGizmo(new Circle(15,15));

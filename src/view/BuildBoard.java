@@ -24,8 +24,8 @@ import model.gizmos.IGizmo;
 public class BuildBoard extends Board {
 
 	private static final long serialVersionUID = -4952517095084067303L;
-	private static final int columnCount = 30;
-	private static final int rowCount = 30;
+	private static final int columnCount = 20;
+	private static final int rowCount = 20;
 
 	private List<Rectangle> cells;
 
@@ -183,7 +183,7 @@ public class BuildBoard extends Board {
 	
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(600, 600);
+		return new Dimension(400, 400);
 	}
 
 	@Override
