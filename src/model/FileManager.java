@@ -106,7 +106,7 @@ class FileManager {
 					}
 					name = st.nextToken();
 					g = gizmos.get(name);
-					m.registerKeyStroke(keynumber, onDown, g);
+					m.registerKeyStroke(keynumber, g);
 					continue;
 				case "Gravity":
 					token = st.nextToken();
