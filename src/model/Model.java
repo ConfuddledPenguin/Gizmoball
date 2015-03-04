@@ -374,7 +374,7 @@ public class Model extends Observable implements IModel {
 						ball.start();
 					}
 				}else{
-					g.trigger();
+					g.trigger(true);
 				}
 				System.out.println("TRIGGER");
 			}

@@ -62,7 +62,6 @@ public class GizmoBallMain {
 //		m.addGizmo(new Circle(23,13));
 //		m.addGizmo(new Circle(26,10));
 
-
 		//For flipper demo
 //		IGizmo flip = new LeftFlipper(5,5);
 //		m.addGizmo(flip);

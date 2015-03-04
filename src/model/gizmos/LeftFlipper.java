@@ -8,7 +8,7 @@ import model.Global;
  *
  */
 public class LeftFlipper extends Gizmo {
-	private int angle = 0;
+	private int angle = 90;
 	private boolean natural = true; // 0˚ represents natural position, 90˚ !natural (false)
 
 	public LeftFlipper(int x, int y) {
@@ -34,7 +34,7 @@ public class LeftFlipper extends Gizmo {
 			}
 				
 			}
-		if (natural) {
+		if (!natural) {
 			if (angle < rotationAngle) {
 				angle += angleStep;
 				if (angle > rotationAngle) {
@@ -43,7 +43,7 @@ public class LeftFlipper extends Gizmo {
 					triggered = false;
 				}
 			}
-		} else if (!natural) {
+		} else if (natural) {
 			if (angle > 0) {
 				angle -= angleStep;
 				if (angle < 0) {
