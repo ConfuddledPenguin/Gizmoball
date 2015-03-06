@@ -100,7 +100,7 @@ public class RunActionlistner implements ActionListener {
 			case ("Restart"):
 				timer.stop();
 				gui.changeStartStop("Start");
-				model.addBall();
+				model.addBall(19.5,18.5,0,-50);
 				break;
 			case ("Quit"):
 				System.exit(0);

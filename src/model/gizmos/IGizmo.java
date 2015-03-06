@@ -1,6 +1,10 @@
 package model.gizmos;
 
+import java.util.List;
+
 import model.gizmos.Gizmo.Orientation;
+import physics.Circle;
+import physics.LineSegment;
 
 /**
  * The gizmo interface
@@ -20,6 +24,8 @@ public interface IGizmo {
 	
 	/**
 	 * Trigger this gizmos action
+	 * 
+	 * @param onDown key press down or up
 	 */
 	void trigger(Boolean onDown);
 	
@@ -109,5 +115,26 @@ public interface IGizmo {
 	 * @return Angle in Degrees
 	 */
 	public int getAngle();
+	
+	/**
+	 * Get the LineSegments that can be collided with
+	 * 
+	 * @return The linesegments
+	 */
+	public List<LineSegment> getEdges();
+	
+	/**
+	 * Get the Circle objects that can be collided with
+	 * 
+	 * @return The circles
+	 */
+	public List<Circle> getCorners();
+	
+	/**
+	 * Returns the triggered state of the gizmo
+	 * 
+	 * @return this.triggered
+	 */
+	public boolean isTriggered();
 	
 }

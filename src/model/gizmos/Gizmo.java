@@ -1,10 +1,14 @@
 package model.gizmos;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import physics.Circle;
+import physics.LineSegment;
 import model.Global;
-
 
 /**
  * A gizmo
@@ -96,8 +100,8 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
-	protected int xcord;
-	protected int ycord;
+	protected int xcoord;
+	protected int ycoord;
 	protected int width;
 	protected int height;
 	protected int angle;
@@ -106,7 +110,7 @@ public abstract class Gizmo implements IGizmo {
 	protected boolean triggered = false;
 	protected boolean onDown = false;
 	protected double TRIGGER_TIME = 500; // in ms
-	protected double triggeredFor = 0; // in seconds???
+	protected double triggeredFor = 0; // in ms
 	
 	/**
 	 * This expresses the triggeredFor time as a
@@ -122,6 +126,12 @@ public abstract class Gizmo implements IGizmo {
 	 * when this gizmo is.
 	 */
 	protected Set<IGizmo> connections = new HashSet<IGizmo>();
+	
+	/**
+	 * The collision physics objects
+	 */
+	protected List<LineSegment> edges;
+	protected List<Circle> corners;
 
 	/**
 	 * The constructor for the gizmo
@@ -133,12 +143,28 @@ public abstract class Gizmo implements IGizmo {
 	 * @param type The Type of gizmo
 	 */
 	public Gizmo(int x, int y, int width, int height, Type type) {
-		this.xcord = x;
-		this.ycord = y;
+		
+		this.xcoord = x;
+		this.ycoord = y;
 		this.width = width;
 		this.height = height;
 		this.type = type;
 		this.o = Orientation.BottomLeft;
+		
+		this.corners = new ArrayList<Circle>();
+		this.edges = new ArrayList<LineSegment>();
+		
+		setCollisionDetails();
+	}
+	
+	/**
+	 * Sets the Collision Details of the gizmo
+	 * 
+	 * This should be over ridden by the individual
+	 * gizmos
+	 */
+	protected void setCollisionDetails(){
+		
 	}
 	
 	/**
@@ -209,8 +235,8 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#setPos(int, int)
 	 */
 	public void setPos(int x, int y) {
-		this.xcord = x;
-		this.ycord = y;
+		this.xcoord = x;
+		this.ycoord = y;
 	}
 
 	/*
@@ -227,7 +253,7 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#getXPos()
 	 */
 	public int getXPos() {
-		return xcord;
+		return xcoord;
 	}
 	
 	/*
@@ -235,7 +261,7 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#getYPos()
 	 */
 	public int getYPos() {
-		return ycord;
+		return ycoord;
 	}
 
 	/*
@@ -269,6 +295,7 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#rotateClockwise()
 	 */
 	public void rotateClockwise(){
+		
 		switch(this.o){
 			
 		case BottomLeft:
@@ -286,6 +313,9 @@ public abstract class Gizmo implements IGizmo {
 		default:
 			break;
 		}
+		
+		//update collision mesh
+		setCollisionDetails();
 	}
 	
 	/*
@@ -293,6 +323,7 @@ public abstract class Gizmo implements IGizmo {
 	 * @see model.gizmos.IGizmo#rotateAntiClockwise()
 	 */
 	public void rotateAntiClockwise(){
+		
 		switch(this.o){
 			
 		case BottomLeft:
@@ -310,6 +341,9 @@ public abstract class Gizmo implements IGizmo {
 		default:
 			break;
 		}
+		
+		//update collision mesh
+		setCollisionDetails();
 	}
 	
 	/*
@@ -335,5 +369,31 @@ public abstract class Gizmo implements IGizmo {
 	@Override
 	public int getAngle() {
 		return 0;
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getEdges()
+	 */
+	@Override
+	public List<LineSegment> getEdges(){
+		return Collections.unmodifiableList(edges);
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getCorners()
+	 */
+	@Override
+	public List<Circle> getCorners(){
+		
+		return Collections.unmodifiableList(corners);
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.gizmos.IGizmo#isTriggered()
+	 */
+	@Override
+	public boolean isTriggered(){
+	
+		return triggered;
 	}
 }

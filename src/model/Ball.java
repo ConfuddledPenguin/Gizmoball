@@ -17,7 +17,7 @@ public class Ball implements IBall {
 	private boolean stopped = false;
 
 	/**
-	 * Tha ball constructor
+	 * The ball constructor
 	 * 
 	 * @param x The x coord
 	 * @param y The y coord

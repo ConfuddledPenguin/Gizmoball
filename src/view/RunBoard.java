@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -32,7 +33,7 @@ public class RunBoard extends Board {
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
 		
-		m.addBall();
+		m.addBall(19.5,18.5,0,-50);
 	}
 
 	public Dimension getPreferredSize() {
@@ -66,7 +67,7 @@ public class RunBoard extends Board {
 			gizmoList.add((Gizmo) arg);
 		} else if(arg instanceof List<?>){
 			
-			gizmoList = (List<IGizmo>) arg;
+			gizmoList = new ArrayList<IGizmo>( (List<IGizmo>) arg);
 		}
 
 		repaint();

@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,10 +18,7 @@ import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
-import model.gizmos.Gizmo.Orientation;
 import model.gizmos.IGizmo;
-import model.gizmos.Square;
-import model.gizmos.Triangle;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
@@ -40,7 +36,6 @@ public class Model extends Observable implements IModel {
 	private Board board;
 	private Ball ball;
 	private Walls walls;
-	private boolean absorberHit;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
@@ -48,17 +43,13 @@ public class Model extends Observable implements IModel {
 
 	/**
 	 * The constructor
-	 * 
-	 * @param boardHeight
-	 *            The height of the board
-	 * @param boardWidth
-	 *            The width of the board;
 	 */
 	public Model() {
 
 		logging.Logger.setUp(MODELLOG);
 		logging.Logger.setUp(PHYSICSLOG);
 		MODELLOG.log(Level.FINE, "Model started");
+		MODELLOG.setLevel(Level.FINE);
 		
 		board = new Board();
 		walls = new Walls(0, 0, Global.BOARDWIDTH, Global.BOARDHEIGHT);
@@ -67,7 +58,6 @@ public class Model extends Observable implements IModel {
 
 		MODELLOG.log(Level.FINE, "Model loaded");
 
-		absorberHit = false;
 	}
 
 	/*
@@ -236,10 +226,9 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addBall()
 	 */
 	@Override
-	public void addBall() {
+	public void addBall(double x, double y, double xv, double yv) {
 
-		// ball = new Ball(9.5,19,0,-50); //old one
-		 ball = new Ball(19.5,18.5,0,-50); //new one
+		ball = new Ball(x,y,xv,yv);
 		setChanged();
 		notifyObservers(ball);
 	}
@@ -370,7 +359,6 @@ public class Model extends Observable implements IModel {
 						
 						Vect v = new Vect(0, -50);
 						ball.setVelo(v);
-						absorberHit = false;
 						ball.start();
 					}
 				}else{
@@ -425,26 +413,6 @@ public class Model extends Observable implements IModel {
 			this.setChanged();
 			this.notifyObservers();
 		}
-	}
-
-	/**
-	 * 
-	 * @param hit
-	 * 
-	 *            this is to set the absorberHit attribute that is used for the
-	 *            absorber
-	 */
-	public void setAbsorberHit(boolean hit) {
-		absorberHit = hit;
-	}
-
-	/**
-	 * 
-	 * @return absorberHit this is so moveBall() knows if it has hit the
-	 *         absorber or not
-	 */
-	private boolean getAbsorberHit() {
-		return absorberHit;
 	}
 
 	/**
@@ -514,7 +482,6 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @return New Collision Details
 	 */
-	
 	private CollisionDetails timeUntilCollision() {
 
 		Circle ballSim = ball.getCircle();
@@ -534,93 +501,33 @@ public class Model extends Observable implements IModel {
 			}
 		}
 
-		
+		//Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
-			if (gizmo instanceof model.gizmos.Circle) {
 
-				model.gizmos.Circle mCircle = (model.gizmos.Circle) gizmo;													
-				Vect pos = new Vect(mCircle.getXPos()+0.5, mCircle.getYPos()+0.5);
-
-				double radius = (double) mCircle.getWidth() / 2;
-				Circle circleSim = new Circle(pos, radius); 
-				
-				timeToObject = Geometry.timeUntilCircleCollision(circleSim,ballSim, ballVelocity);
-				
+			//The gizmos edges
+			for (LineSegment edge : gizmo.getEdges()) {
+				timeToObject = Geometry.timeUntilWallCollision(edge,ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectCircle(circleSim.getCenter(),ballSim.getCenter(), ballVelocity);
+					newVelocity = Geometry.reflectWall(edge, ballVelocity);
 					colidingGizmo = gizmo;
-				}
-			
-			} else if (gizmo instanceof model.gizmos.Square) {
-
-				for (LineSegment edge : ((Square) gizmo).getEdges()) {
-					timeToObject = Geometry.timeUntilWallCollision(edge,ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(edge, ballVelocity);
-						colidingGizmo = gizmo;
-					}
-				}
-
-				for (Circle corner : ((Square) gizmo).getCorners()) {
-					timeToObject = Geometry.timeUntilCircleCollision(corner,
-							ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity);
-						colidingGizmo = gizmo;
-					}
-				}
-				
-			} else if (gizmo instanceof Triangle) {
-				
-				/*Recalculates the collison details for the triangle incase there was a rotation*/
-				((Triangle) gizmo).setCollisionDetails();
-
-				for (LineSegment tLine : ((Triangle) gizmo).getEdges()) {
-					timeToObject = Geometry.timeUntilWallCollision(tLine,ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(tLine, ballVelocity);
-						colidingGizmo = gizmo;
-					}
-				}
-
-				for (Circle corner : ((Triangle) gizmo).getCorners()) {
-					timeToObject = Geometry.timeUntilCircleCollision(corner,ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectCircle(corner.getCenter(), ballSim.getCenter(),ballVelocity);
-						colidingGizmo = gizmo;
-					}
-				}
-				
-			} else if (gizmo instanceof Absorber) {
-				
-				for (LineSegment abLine : ((Absorber) gizmo).getEdges()) {
 					
-					timeToObject = Geometry.timeUntilWallCollision(abLine,ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectWall(abLine, ballVelocity);
-						colidingGizmo = gizmo;
-					}
 				}
-				
-				for (Circle corner : ((Absorber) gizmo).getCorners()) {
-					timeToObject = Geometry.timeUntilCircleCollision(corner,
-							ballSim, ballVelocity);
-					if (timeToObject < shortestTime) {
-						shortestTime = timeToObject;
-						newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity);
-						colidingGizmo = gizmo;
-					}
-				}				
 			}
-		}
 
+			//The gizmos circle components
+			for (Circle corner : gizmo.getCorners()) {
+				timeToObject = Geometry.timeUntilCircleCollision(corner,
+						ballSim, ballVelocity);
+				if (timeToObject < shortestTime) {
+					shortestTime = timeToObject;
+					newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity);
+					colidingGizmo = gizmo;
+					
+				}
+			}
+		}//finish gizmo collision checking
+		
 		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
 	}
-
 }

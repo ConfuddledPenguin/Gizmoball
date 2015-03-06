@@ -1,7 +1,5 @@
 package model.gizmos;
 
-import java.util.ArrayList;
-
 import physics.Circle;
 import physics.LineSegment;
 
@@ -12,31 +10,21 @@ import physics.LineSegment;
  */
 public class Triangle extends Gizmo{
 	
-	private ArrayList<LineSegment> edges;
-	private ArrayList<Circle> corners;
 	
 	public Triangle(int x, int y) {
 		super(x, y, 1, 1, Gizmo.Type.Triangle);
 		
-		this.corners = new ArrayList<Circle>();
-		this.edges = new ArrayList<LineSegment>();
 		
-		setCollisionDetails();
 	}
 	
 	/**
 	 * sets the Collision Details
 	 */
-	
-	public void setCollisionDetails(){
+	@Override
+	protected void setCollisionDetails(){
 		
 		if(!corners.isEmpty()) corners.clear();
 		if(!edges.isEmpty()) edges.clear();
-		
-		int x = this.getXPos();
-		int y = this.getYPos();
-		int w = this.getWidth();
-		int h = this.getHeight();
 
 		LineSegment ls1 = new LineSegment(0, 0, 0, 0);
 		LineSegment ls2 = new LineSegment(0, 0, 0, 0);
@@ -48,40 +36,40 @@ public class Triangle extends Gizmo{
 
 
 		if (this.getOrientation().equals(Orientation.BottomLeft)) {
-			ls1 = new LineSegment(x, y, x, y + h);
-			ls2 = new LineSegment(x, y + h, x + w, y + h);
-			ls3 = new LineSegment(x + w, y + h, x, y);
+			ls1 = new LineSegment(xcoord, ycoord, xcoord, ycoord + height);
+			ls2 = new LineSegment(xcoord, ycoord + height, xcoord + width, ycoord + height);
+			ls3 = new LineSegment(xcoord + width, ycoord + height, xcoord, ycoord);
 			
-			c1 = new Circle(x,y,0);
-			c2 = new Circle(x,y+h,0);
-			c3 = new Circle(x+w,y+h,0);
+			c1 = new Circle(xcoord,ycoord,0);
+			c2 = new Circle(xcoord,ycoord+height,0);
+			c3 = new Circle(xcoord+width,ycoord+height,0);
 			
 		} else if (this.getOrientation().equals(Orientation.BottomRight)) {
-			ls1 = new LineSegment(x, y + h, x + w, y);
-			ls2 = new LineSegment(x + w, y, x + w, y + h);
-			ls3 = new LineSegment(x + w, y + h, x, y + h);
+			ls1 = new LineSegment(xcoord, ycoord + height, xcoord + width, ycoord);
+			ls2 = new LineSegment(xcoord + width, ycoord, xcoord + width, ycoord + height);
+			ls3 = new LineSegment(xcoord + width, ycoord + height, xcoord, ycoord + height);
 			
-			c1 = new Circle(x+w,y,0);
-			c2 = new Circle(x,y+h,0);
-			c3 = new Circle(x+w,y+h,0);
+			c1 = new Circle(xcoord+width,ycoord,0);
+			c2 = new Circle(xcoord,ycoord+height,0);
+			c3 = new Circle(xcoord+width,ycoord+height,0);
 			
 		} else if (this.getOrientation().equals(Orientation.TopLeft)) {
-			ls1 = new LineSegment(x, y, x + w, y);
-			ls2 = new LineSegment(x + w, y, x, y + h);
-			ls3 = new LineSegment(x, y + h, x, y);
+			ls1 = new LineSegment(xcoord, ycoord, xcoord + width, ycoord);
+			ls2 = new LineSegment(xcoord + width, ycoord, xcoord, ycoord + height);
+			ls3 = new LineSegment(xcoord, ycoord + height, xcoord, ycoord);
 			
-			c1 = new Circle(x,y,0);
-			c2 = new Circle(x+w,y,0);
-			c3 = new Circle(x,y+h,0);
+			c1 = new Circle(xcoord,ycoord,0);
+			c2 = new Circle(xcoord+width,ycoord,0);
+			c3 = new Circle(xcoord,ycoord+height,0);
 			
 		} else if (this.getOrientation().equals(Orientation.TopRight)) {
-			ls1 = new LineSegment(x, y, x + w, y);
-			ls2 = new LineSegment(x + w, y, x + w, y + h);
-			ls3 = new LineSegment(x + w, y + h, x, y);
+			ls1 = new LineSegment(xcoord, ycoord, xcoord + width, ycoord);
+			ls2 = new LineSegment(xcoord + width, ycoord, xcoord + width, ycoord + height);
+			ls3 = new LineSegment(xcoord + width, ycoord + height, xcoord, ycoord);
 
-			c1 = new Circle(x,y,0);
-			c2 = new Circle(x+w,y,0);
-			c3 = new Circle(x+w,y+h,0);
+			c1 = new Circle(xcoord,ycoord,0);
+			c2 = new Circle(xcoord+width,ycoord,0);
+			c3 = new Circle(xcoord+width,ycoord+height,0);
 		}
 
 		edges.add(ls1);
@@ -92,13 +80,4 @@ public class Triangle extends Gizmo{
 		corners.add(c2);
 		corners.add(c3);
 	}
-	
-	public ArrayList<LineSegment> getEdges(){
-		return edges;
-	}
-	
-	public ArrayList<Circle> getCorners(){
-		return corners;
-	}
-	
 }

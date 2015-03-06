@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Observer;
 
@@ -13,6 +12,9 @@ import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.IGizmo;
 
+/**
+ * An Interface for the Model
+ */
 public interface IModel {
 
 	/**
@@ -75,11 +77,11 @@ public interface IModel {
 	/**
 	 * Move the gizmo at old point to the new point
 	 * 
-	 * @param oldPoint The pint the gizmo is at
+	 * @param gizmoPoint The pint the gizmo is at
 	 * @param newPoint The new location for the gizmo
 	 * 
-	 * @throws GridPosAlreadyTakenException 
-	 * @throws InvalidGridPosException 
+	 * @throws GridPosAlreadyTakenException Grid pos already taken
+	 * @throws InvalidGridPosException Invalid Grid pos
 	 */
 	public abstract void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException;
 
@@ -156,9 +158,24 @@ public interface IModel {
 	 */
 	public abstract void moveBall();
 
+	/**
+	 * Adds an observer to the set of observers for this object
+	 * , provided that it is not the same as some observer 
+	 * already in the set.
+	 * 
+	 * @param o The object to add
+	 */
 	public abstract void addObserver(Observer o);
 	
-	public void addBall();
+	/**
+	 * Adds a ball to the model with the given values
+	 * 
+	 * @param x The x coord
+	 * @param y The y coord
+	 * @param xv The x velocity
+	 * @param yv The y velocity
+	 */
+	public void addBall(double x, double y, double xv, double yv);
 	
 	/**
 	 * Get all gizmos

@@ -49,7 +49,7 @@ public class Logger {
 		}
 		FileHandler fh = null;
 		try {
-			//log to log, with 5MB max file size, use one file append
+			//log to l.getName, with 5MB max file size, use one file appending to the end
 			fh = new FileHandler("logs/" + l.getName() + ".log", 1024 * 1024 * 5, 1, true);
 		} catch (SecurityException | IOException e) {
 			// TODO Auto-generated catch block

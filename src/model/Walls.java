@@ -1,7 +1,15 @@
 package model;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 import physics.LineSegment;
 
+/**
+ * Used to represent the walls
+ *
+ */
 public class Walls {
 	
 	private ArrayList<LineSegment> lines;
@@ -26,9 +34,7 @@ public class Walls {
 	 * Returns the lines which make up the wall surrounding the board
 	 * @return the walls of the board
 	 */
-	public ArrayList<LineSegment> getWalls() {
-		return lines;
+	public List<LineSegment> getWalls() {
+		return Collections.unmodifiableList(lines);
 	}
-	
-
 }

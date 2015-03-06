@@ -33,7 +33,8 @@ public class GizmoBallMain {
 	}
 	
 	private static void makeGizmos(){
-		m.addBall();
+		
+		m.addBall(19.5,18.5,0,-50);
 
 //		m.addGizmo(new Square(10,5));
 		IGizmo g = new Absorber(0, 19, 20, 1);
