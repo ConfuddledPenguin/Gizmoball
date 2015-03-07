@@ -11,7 +11,7 @@ import controller.RestrictedFileSystemView;
 /**
  * FileChooser
  * 
- * A wrapper on the JFileChooser to make geting files from the user
+ * A wrapper on the JFileChooser to make getting files from the user
  * easy for the controller.
  * 
  * This is taken from the portfolio tracker exercise from the class CS308.

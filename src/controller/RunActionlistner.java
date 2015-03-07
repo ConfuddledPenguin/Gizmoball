@@ -5,10 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JFileChooser;
 import javax.swing.Timer;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
+
+import com.sun.jmx.snmp.Timestamp;
 
 import main.GizmoBallMain;
 import model.Global;
@@ -36,7 +35,20 @@ public class RunActionlistner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == timer) {
+			long time = System.nanoTime()/ 1000/ 1000;
 			model.moveBall();
+			time = System.nanoTime() / 1000 / 1000 - time;
+			
+			int delay = (int) (Global.REFRESHTIME - time);
+			
+			if(delay < 0){ // drop a frame
+				delay = (int) (Global.REFRESHTIME - delay);
+				Global.MOVETIME = Global.MOVETIME * 2;
+			}else{ // move for frame
+				Global.MOVETIME = Global.REFRESHTIME / 1000;
+			}
+			
+			timer.setDelay(delay);
 		} else
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
@@ -45,6 +57,8 @@ public class RunActionlistner implements ActionListener {
 				gui.changeStartStop("Start");
 				break;
 			case "Load":
+				
+				timer.stop();
 				
 				IFileChooser fc = new FileChooser();
 				File file = fc.getFile();

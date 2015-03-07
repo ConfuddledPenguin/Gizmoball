@@ -19,8 +19,8 @@ public class Global {
 	 */
 	static double FRICTIONMU2 = 0.025;
 	
-	public static double REFRESHTIME = 50; // 50fps
+	public static double REFRESHTIME = 20; // 50fps in ms
 	
-	public static double MOVETIME = REFRESHTIME / 1000;
+	public static double MOVETIME = REFRESHTIME / 1000; // in seconds
 
 }
