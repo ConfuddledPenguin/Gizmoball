@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -17,6 +16,7 @@ import model.IModel;
 import model.exceptions.IncorrectFileFormatException;
 import view.FileChooser;
 import view.GUI;
+import view.IFileChooser;
 
 
 public class RunActionlistner implements ActionListener {
@@ -46,34 +46,24 @@ public class RunActionlistner implements ActionListener {
 				break;
 			case "Load":
 				
-				File portfolios = new File((System.getProperty("user.dir"))+"\\res");
-				FileSystemView fsv = new RestrictedFileSystemView(new File[] {portfolios});
+				IFileChooser fc = new FileChooser();
+				File file = fc.getFile();
 				
-				JFileChooser jfc = new JFileChooser(fsv);
-				jfc.setCurrentDirectory(portfolios);
-				FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
-				jfc.setFileFilter(filter);
+				if (file == null){
+					break;
+				}
 				
-				int returnVal = jfc.showOpenDialog(this.gui.frame);
+				try {
+					model.loadBoard(file);
+				} catch (IOException | IncorrectFileFormatException e1) {
+					// TODO inform the user their file is dreadful
+					e1.printStackTrace();
+				}
 				
-				 if (returnVal == JFileChooser.APPROVE_OPTION) {
-			            File file = jfc.getSelectedFile();
-			            
-			            System.out.println("Opening: " + file.getName() + ".");
-			            try {
-							model.loadBoard(file);
-						} catch (IOException | IncorrectFileFormatException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-			
-			        } else {
-			        	System.out.println("Open command cancelled by user.");
-			        }
 				break;
 			case "Save As":
-				FileChooser fc = new FileChooser();
-				File file = fc.saveFile();
+				fc = new FileChooser();
+				file = fc.saveFile();
 				
 				if (file == null){
 					break;

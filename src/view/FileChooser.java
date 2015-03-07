@@ -4,6 +4,9 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+
+import controller.RestrictedFileSystemView;
 
 /**
  * FileChooser
@@ -23,10 +26,13 @@ public class FileChooser implements IFileChooser{
 		JFileChooser chooser;
 	
 	public FileChooser() {
-		chooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt");
+		
+		File dir = new File((System.getProperty("user.dir"))+"\\res");
+		FileSystemView fsv = new RestrictedFileSystemView(new File[] {dir});
+		
+		chooser = new JFileChooser(fsv);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "txt", "text");
 		chooser.setFileFilter(filter);
-		File dir = new File(System.getProperty("user.home"));
 		chooser.setCurrentDirectory(dir);
 	}
 	
