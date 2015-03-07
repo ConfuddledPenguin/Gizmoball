@@ -4,8 +4,10 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
@@ -16,11 +18,11 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import physics.Circle;
 import physics.Geometry;
+import physics.Geometry.VectPair;
 import physics.LineSegment;
 import physics.Vect;
 
@@ -37,6 +39,7 @@ public class Model extends Observable implements IModel {
 	private Ball ball;
 	private Walls walls;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
+	private List<Ball> balls = new LinkedList<Ball>();
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
 	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
@@ -213,11 +216,11 @@ public class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see model.IModel#getBall()
+	 * @see model.IModel#getBalls()
 	 */
 	@Override
-	public IBall getBall() {
-		return ball;
+	public List<IBall> getBalls() {
+		return Collections.unmodifiableList(balls);
 	}
 
 	/*
@@ -226,11 +229,28 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addBall()
 	 */
 	@Override
-	public void addBall(double x, double y, double xv, double yv) {
+	public IBall addBall(double x, double y, double xv, double yv) {
 
-		ball = new Ball(x,y,xv,yv);
+		Ball ball = new Ball(x,y,xv,yv);
+		
+		balls.add(ball);
+		
 		setChanged();
 		notifyObservers(ball);
+		
+		return ball;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IModel#deleteBall(Point p)
+	 */
+	@Override
+	public void deleteBall(Point p){
+		
+		//TODO remove ball
+		System.out.println("Asked to remove ball");
 	}
 
 	/*
@@ -335,7 +355,9 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void clear(){
+		
 		board.clear();
+		balls.clear();
 		
 		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
 	}
@@ -368,26 +390,38 @@ public class Model extends Observable implements IModel {
 			}
 		}
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see model.IModel#moveBall()
-	 */
-	@Override
-	public void moveBall() {
-
+	
+	public void update(){
+		
 		// Update the state of all the gizmos
 		for (IGizmo g : board.getGizmos()) {
 			g.update();
 		}
+		
+		for(Ball b : balls){
+			moveBall(b);
+		}
+		
+		this.setChanged();
+		this.notifyObservers();
+		
+	}
+
+	/**
+	 * Updates the given ball.
+	 * 
+	 * @param ball
+	 */
+	public void moveBall(Ball ball) {
+
+		
 
 		// move the ball
 		double moveTime = Global.MOVETIME;
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 
 		if (ball != null && !ball.isStopped()) {
-			CollisionDetails cd = timeUntilCollision();
+			CollisionDetails cd = timeUntilCollision(ball);
 			double timeUntilCollision = cd.getTimeUntilCollision();
 
 			if (timeUntilCollision > moveTime) { // no collisions
@@ -397,21 +431,32 @@ public class Model extends Observable implements IModel {
 
 				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
 				
-				ball = moveBallForTime(ball, timeUntilCollision); 
-				ball.setVelo(cd.getVelocity()); // update velocity after collision
+				if(cd.getGizmo() != null){
 				
-				if(cd.getGizmo() instanceof Absorber){
-					System.out.println("ABSORBER HIT"); //testing
-					ball.setX(19.6);
-					ball.setY(18.9);
-					ball.stop();
-					Vect v = new Vect(0, 0);
-					ball.setVelo(v);
+					ball = moveBallForTime(ball, timeUntilCollision); 
+					ball.setVelo(cd.getVelocity()); // update velocity after collision
+					
+					if(cd.getGizmo() != null && cd.getGizmo().getType() == Gizmo.Type.Absorber){
+						ball.setX(19.6);
+						ball.setY(18.9);
+						ball.stop();
+						Vect v = new Vect(0, 0);
+						ball.setVelo(v);
+						
+						this.ball = ball;
+					}
+					
+				}else if (cd.getSecondBall() != null){
+					
+					moveBallForTime(ball, timeUntilCollision);
+					ball.setVelo(cd.getVelocity());
+					cd.getSecondBall().setVelo(cd.getVelocity2());
+					
+				}else{
+					ball = moveBallForTime(ball, timeUntilCollision); 
+					ball.setVelo(cd.getVelocity()); // update velocity after collision
 				}
 			}
-
-			this.setChanged();
-			this.notifyObservers();
 		}
 	}
 
@@ -482,7 +527,7 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @return New Collision Details
 	 */
-	private CollisionDetails timeUntilCollision() {
+	private CollisionDetails timeUntilCollision(Ball ball) {
 
 		Circle ballSim = ball.getCircle();
 		Vect ballVelocity = ball.getVelo();
@@ -527,6 +572,35 @@ public class Model extends Observable implements IModel {
 				}
 			}
 		}//finish gizmo collision checking
+		
+		//Check for collisions with other balls
+		for( IBall otherBall: balls){
+			
+			if(otherBall != ball){ // make sure not same ball
+				
+				Circle otherBallSim = otherBall.getCircle();
+				Vect otherBallVelocity = otherBall.getVelo();
+				timeToObject = Geometry.timeUntilBallBallCollision(ballSim, ballVelocity, otherBallSim, otherBallVelocity);
+				
+				if(timeToObject < shortestTime){
+					
+					shortestTime = timeToObject;
+					Vect center1 = new Vect(ball.getX(), ball.getY());
+					int mass1 = 1;
+					Vect velocity1 = ball.getVelo();
+					
+					Vect center2 = new Vect(otherBall.getX(), otherBall.getY());
+					int mass2 = 1;
+					Vect velocity2 = otherBall.getVelo();
+					VectPair pair = Geometry.reflectBalls(center1, mass1, velocity1, center2, mass2, velocity2);
+					
+					newVelocity = pair.v1;
+					
+					return new CollisionDetails(shortestTime, newVelocity, pair.v2, otherBall);
+					
+				}
+			}
+		}//finish other ball checking
 		
 		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
 	}

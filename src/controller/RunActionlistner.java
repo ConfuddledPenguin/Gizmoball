@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import javax.swing.Timer;
 
-import com.sun.jmx.snmp.Timestamp;
-
 import main.GizmoBallMain;
 import model.Global;
 import model.IModel;
@@ -36,7 +34,7 @@ public class RunActionlistner implements ActionListener {
 		
 		if (e.getSource() == timer) {
 			long time = System.nanoTime()/ 1000/ 1000;
-			model.moveBall();
+			model.update();
 			time = System.nanoTime() / 1000 / 1000 - time;
 			
 			int delay = (int) (Global.REFRESHTIME - time);
@@ -95,7 +93,7 @@ public class RunActionlistner implements ActionListener {
 				gui.changeStartStop("Stop");
 				break;
 			case ("Step"):
-				model.moveBall();
+				model.update();
 				break;
 			case ("Stop"):
 				timer.stop();

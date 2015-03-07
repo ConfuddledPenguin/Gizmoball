@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import model.Global;
+import model.IBall;
 import model.Model;
 import model.gizmos.IGizmo;
 
@@ -238,12 +239,12 @@ public class BuildBoard extends Board {
 
 		g2d.setColor(Color.BLUE);
 		
-		if (ball != null) {
-			g2d.setColor(Color.GREEN);
+		for (IBall ball: balls){
+			g.setColor(new Color(148,0,211));
 			int x = (int) ((ball.getX() * Global.L) - (ball.getRadius()*Global.L));
 			int y = (int) ((ball.getY() * Global.L) - (ball.getRadius()*Global.L));
-			int ballWidth = (int) (Global.L * (ball.getRadius() * 2));
-			g2d.fillOval(x, y, ballWidth, ballWidth);
+			int widthBall = (int) (Global.L * (ball.getRadius() * 2));
+			g.fillOval(x, y, widthBall, widthBall);
 		}
 
 		drawGizmos(g2d);

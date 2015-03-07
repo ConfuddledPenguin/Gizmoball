@@ -20,13 +20,14 @@ public abstract class Board extends JPanel implements Observer {
 	private static final long serialVersionUID = -8454000231742359788L;
 	protected List<IGizmo> gizmoList;
 	protected static final int L = 20;
-	protected IBall ball;
+	protected List<IBall> balls;
 	
 	protected IModel model;
 	
 	public Board(IModel model) {
 		
 		gizmoList = new ArrayList<IGizmo>(model.getGizmos());
+		balls = new ArrayList<IBall>(model.getBalls());
 	}
 
 	protected void drawGizmos(Graphics2D g2d){

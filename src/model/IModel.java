@@ -90,7 +90,7 @@ public interface IModel {
 	 * 
 	 * @return the ball
 	 */
-	public abstract IBall getBall();
+	public abstract List<IBall> getBalls();
 
 
 	/**
@@ -154,9 +154,9 @@ public interface IModel {
 	public abstract void triggerKeyPress(int key, boolean onDown);
 	
 	/**
-	 * Updates the balls position after 1 frame of movement
+	 * Updates the model
 	 */
-	public abstract void moveBall();
+	public abstract void update();
 
 	/**
 	 * Adds an observer to the set of observers for this object
@@ -174,8 +174,10 @@ public interface IModel {
 	 * @param y The y coord
 	 * @param xv The x velocity
 	 * @param yv The y velocity
+	 * 
+	 * @return The added ball
 	 */
-	public void addBall(double x, double y, double xv, double yv);
+	public IBall addBall(double x, double y, double xv, double yv);
 	
 	/**
 	 * Get all gizmos
@@ -183,5 +185,12 @@ public interface IModel {
 	 * @return this.gizmos
 	 */
 	public List<IGizmo> getGizmos();
+	
+	/**
+	 * Removes a ball from the board
+	 * 
+	 * @param p The point the ball is at
+	 */
+	public abstract void deleteBall(Point p);
 
 }

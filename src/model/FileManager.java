@@ -11,7 +11,6 @@ import java.util.StringTokenizer;
 
 import model.exceptions.*;
 import model.gizmos.*;
-import physics.Vect;
 
 /**
  * Responsible for loading and saving the files
@@ -35,6 +34,7 @@ class FileManager {
 	Board load(Model m, File file) throws FileNotFoundException, IOException, IncorrectFileFormatException {
 	
 		Map<String, IGizmo> gizmos = new HashMap<String, IGizmo>();
+		Map<String, IBall> balls = new HashMap<String, IBall>();
 		Board board = (Board) m.getBoard();
 		m.clear();
 		
@@ -78,12 +78,12 @@ class FileManager {
 						ystring = st.nextToken();
 						y = Integer.parseInt(ystring);
 						g.setPos(x, y);
-					}else{
+					}else if ( balls.containsKey(name)){
+						ball = balls.get(name);
 						xstring = st.nextToken();
 						float xf = Float.parseFloat(xstring);
 						ystring = st.nextToken();
 						float yf = Float.parseFloat(ystring);
-						ball = m.getBall();
 						ball.setX(xf);
 						ball.setY(yf);
 					}
@@ -126,16 +126,12 @@ class FileManager {
 					float xf = Float.parseFloat(xstring);
 					ystring = st.nextToken();
 					float yf = Float.parseFloat(ystring);
-					ball = m.getBall();
-					ball.setX(xf);
-					ball.setY(yf);
 					xstring = st.nextToken();
-					xf = Float.parseFloat(xstring);
+					float vx = Float.parseFloat(xstring);
 					ystring = st.nextToken();
-					yf = Float.parseFloat(ystring);
-					ball = m.getBall();
-					Vect v = new Vect(xf, yf);
-					ball.setVelo(v);
+					float vy = Float.parseFloat(ystring);
+					ball = m.addBall(xf, yf, vx, vy);
+					balls.put(name, ball);
 					continue;
 			}
 			

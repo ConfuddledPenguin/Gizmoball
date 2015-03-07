@@ -9,6 +9,8 @@ import physics.Vect;
 public class CollisionDetails {
 	
 	private Vect velocity;
+	private Vect velocity2;
+	private IBall secondBall;
 	private double timeUntilCollision;
 	private IGizmo gizmo;
 
@@ -23,6 +25,21 @@ public class CollisionDetails {
 		this.velocity = velocity;
 		timeUntilCollision = time;
 		this.gizmo = gizmo;
+	}
+	
+	/**
+	 * The constructor for the {@link CollisionDetails} object
+	 * 
+	 * @param time The time until the next collision
+	 * @param velocity The velocity of ball 1
+	 * @param velocity2 The velocity of ball two
+	 * @param secondBall The ball collided with
+	 */
+	public CollisionDetails(double time, Vect velocity, Vect velocity2, IBall secondBall) {
+		this.velocity = velocity;
+		timeUntilCollision = time;
+		this.velocity2 = velocity2;
+		this.secondBall = secondBall;
 	}
 	
 	/**
@@ -42,6 +59,15 @@ public class CollisionDetails {
 	public Vect getVelocity() {
 		return velocity;
 	}
+	
+	/**
+	 * Get the velocity
+	 * 
+	 * @return this.velocity
+	 */
+	public Vect getVelocity2() {
+		return velocity2;
+	}
 
 	/**
 	 * Get the gizmo collided with
@@ -52,4 +78,12 @@ public class CollisionDetails {
 		return gizmo;
 	}
 
+	/**
+	 * Get the ball collided with
+	 * 
+	 * @return this.ball
+	 */
+	public IBall getSecondBall(){
+		return secondBall;
+	}
 }

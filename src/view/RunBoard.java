@@ -32,8 +32,6 @@ public class RunBoard extends Board {
 		m.addObserver(this);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setPreferredSize(new Dimension(width, height));
-		
-		m.addBall(19.5,18.5,0,-50);
 	}
 
 	public Dimension getPreferredSize() {
@@ -48,21 +46,24 @@ public class RunBoard extends Board {
 		
 		drawGizmos(g2);
 		
-		if (ball != null) {
+		for (IBall ball: balls){
 			g2.setColor(new Color(148,0,211));
 			int x = (int) ((ball.getX() * Global.L) - (ball.getRadius()*Global.L));
 			int y = (int) ((ball.getY() * Global.L) - (ball.getRadius()*Global.L));
 			int width = (int) (Global.L * (ball.getRadius() * 2));
 			g2.fillOval(x, y, width, width);
 		}
+		
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 
 		if (arg instanceof Ball)
-			this.ball = (IBall) arg;
-
+			if (!balls.contains(arg))
+				balls.add((IBall) arg);
+			else
+				balls.remove(arg);
 		if (arg instanceof Gizmo) {
 			gizmoList.add((Gizmo) arg);
 		} else if(arg instanceof List<?>){
@@ -70,6 +71,7 @@ public class RunBoard extends Board {
 			gizmoList = new ArrayList<IGizmo>( (List<IGizmo>) arg);
 		}
 
+		System.out.println(balls.size());
 		repaint();
 	}
 }
