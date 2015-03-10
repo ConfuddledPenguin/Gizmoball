@@ -71,7 +71,8 @@ public class RunBoard extends Board {
 			gizmoList = new ArrayList<IGizmo>( (List<IGizmo>) arg);
 		}
 
-		System.out.println(balls.size());
+		//to view current number of balls registered with the ui uncomment below
+//		System.out.println(balls.size());
 		repaint();
 	}
 }

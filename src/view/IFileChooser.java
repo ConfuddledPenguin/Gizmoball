@@ -1,6 +1,7 @@
 package view;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * An interface for the file chooser.
@@ -28,7 +29,8 @@ public interface IFileChooser {
 	 * Ask the user for a file to save to
 	 * 
 	 * @return The file the user wishes to save to
+	 * @throws IOException 
 	 */
-	public abstract File saveFile();
+	public abstract File saveFile() throws IOException;
 
 }

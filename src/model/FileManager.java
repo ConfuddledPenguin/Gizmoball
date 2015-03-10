@@ -1,16 +1,28 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import model.exceptions.*;
-import model.gizmos.*;
+import model.exceptions.GridPosAlreadyTakenException;
+import model.exceptions.IncorrectFileFormatException;
+import model.exceptions.InvalidGridPosException;
+import model.gizmos.Absorber;
+import model.gizmos.Circle;
+import model.gizmos.Gizmo;
+import model.gizmos.IGizmo;
+import model.gizmos.LeftFlipper;
+import model.gizmos.RightFlipper;
+import model.gizmos.Square;
+import model.gizmos.Triangle;
+import physics.Vect;
 
 /**
  * Responsible for loading and saving the files
@@ -19,6 +31,9 @@ import model.gizmos.*;
  * creating new boards, as well as saving existing boards.
  */
 class FileManager {	
+	
+	private char space = ' ';
+	private char newLine = '\n';
 
 	/**
 	 * Loads the given file and returns the playable board,
@@ -257,4 +272,120 @@ class FileManager {
 		
 		return board;
 	}//Close loadfile()
+	
+	/**
+	 * Save out the given model to the given file
+	 * 
+	 * @param m The model to save
+	 * @param file The file to save to
+	 * @throws IOException Something went wrong
+	 */
+	public void saveFile(Model m, File file) throws IOException {
+		
+		System.out.println(file.getAbsolutePath());
+		
+		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		
+		
+		
+		//Gizmos
+		for(IGizmo g: m.getGizmos()){
+			
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append(g.getType());
+			sb.append(space);
+			sb.append("NAME");
+			sb.append(space);
+			sb.append(g.getXPos());
+			sb.append(space);
+			sb.append(g.getYPos());
+			
+			if(g.getType() == Gizmo.Type.Absorber){
+				sb.append(space);
+				sb.append(g.getXPos() + g.getWidth());
+				sb.append(space);
+				sb.append(g.getYPos() + g.getHeight());
+			}
+			
+			sb.append(newLine);
+			
+			bw.write(sb.toString());
+			
+			Gizmo.Orientation orientation = g.getOrientation();
+			
+			switch (orientation) {
+			
+				case BottomRight:
+					
+					rotateSaveHelper(bw, "NAME");
+					
+				case BottomLeft:
+					
+					rotateSaveHelper(bw, "NAME");
+			
+				case TopRight:
+					
+					rotateSaveHelper(bw, "NAME");
+					
+					break;
+			}
+		}
+		
+		for(IBall ball : m.getBalls()){
+			
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("Ball");
+			sb.append(space);
+			
+			sb.append("NAME");
+			sb.append(space);
+			
+			sb.append(ball.getX());
+			sb.append(space);
+			sb.append(ball.getY());
+			sb.append(space);
+			
+			Vect v = ball.getVelo();
+			
+			sb.append(v.x());
+			sb.append(space);
+			sb.append(v.y());	
+			
+			sb.append(newLine);
+			bw.write(sb.toString());
+		}
+		
+		//Settings
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(newLine);
+		sb.append("Gravity");
+		sb.append(space);
+		sb.append(m.getGravity());
+		sb.append(newLine);
+		sb.append("Friction");
+		sb.append(space);
+		sb.append(m.getFrictionMU());
+		sb.append(space);
+		sb.append(m.getFrictionMU2());
+		
+		bw.write(sb.toString());
+		
+		bw.close();
+	}
+	
+	private void rotateSaveHelper(BufferedWriter bw, String name) throws IOException {
+	
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Rotate");
+		sb.append(space);
+		sb.append(name);
+		sb.append(newLine);
+		
+		bw.write(sb.toString());
+
+	}
 }

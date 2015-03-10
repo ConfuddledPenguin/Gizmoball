@@ -12,7 +12,9 @@ import model.IModel;
  *
  */
 public class RunKeyListener implements KeyListener {
+	
 	private IModel model;
+	private boolean processKey = true;
 
 	/**
 	 * @param game The Gizmoball model
@@ -25,6 +27,19 @@ public class RunKeyListener implements KeyListener {
 		 * the keyboard, no matter what the ui focus is on
 		 */
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Dispatcher(this));
+	}
+	
+	/**
+	 * Process the key press
+	 * 
+	 * Set to false if you wish for the focus 
+	 * to be on the swing component. Otherwise
+	 * set to true;
+	 * 
+	 * @param process true for yes, otherwise false;
+	 */
+	public void processkey(boolean process){
+		processKey = process;
 	}
 
 	/* (non-Javadoc)
@@ -98,6 +113,9 @@ public class RunKeyListener implements KeyListener {
 		 */
 		@Override
 		public boolean dispatchKeyEvent(KeyEvent e) {
+			
+			if(!processKey)
+				return false;
 			
 			switch (e.getID()) {
 				case KeyEvent.KEY_PRESSED:

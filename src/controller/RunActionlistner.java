@@ -21,11 +21,14 @@ public class RunActionlistner implements ActionListener {
 	private IModel model;
 	private Timer timer;
 	private GUI gui;
+	private RunKeyListener runKey;
 
-	public RunActionlistner(IModel m, GUI g) {
+	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey) {
 
 		model = m;
 		gui = g;
+		this.runKey = runKey;
+		
 		timer = new Timer((int) Global.REFRESHTIME, this);
 	}
 
@@ -33,8 +36,14 @@ public class RunActionlistner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == timer) {
+			
+			//get time
 			long time = System.nanoTime()/ 1000/ 1000;
+			
+			//perform update
 			model.update();
+			
+			//compensate for update time
 			time = System.nanoTime() / 1000 / 1000 - time;
 			
 			int delay = (int) (Global.REFRESHTIME - time);
@@ -46,7 +55,9 @@ public class RunActionlistner implements ActionListener {
 				Global.MOVETIME = Global.REFRESHTIME / 1000;
 			}
 			
+			//set timer
 			timer.setDelay(delay);
+			
 		} else
 			switch (e.getActionCommand()) {
 			case ("Build Mode"):
@@ -57,6 +68,7 @@ public class RunActionlistner implements ActionListener {
 			case "Load":
 				
 				timer.stop();
+				runKey.processkey(false);
 				
 				IFileChooser fc = new FileChooser();
 				File file = fc.getFile();
@@ -72,10 +84,22 @@ public class RunActionlistner implements ActionListener {
 					e1.printStackTrace();
 				}
 				
+				runKey.processkey(true);
+				
 				break;
 			case "Save As":
+				
+				timer.stop();
+				runKey.processkey(false);
+				
 				fc = new FileChooser();
-				file = fc.saveFile();
+				file = null;
+				try {
+					file = fc.saveFile();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
 				if (file == null){
 					break;
@@ -87,6 +111,10 @@ public class RunActionlistner implements ActionListener {
 					// TODO inform user we failed
 					e1.printStackTrace();
 				}
+				
+				runKey.processkey(true);
+				timer.start();
+				
 				break;
 			case ("Start"):
 				timer.start();

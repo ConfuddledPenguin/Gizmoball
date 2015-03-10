@@ -1,6 +1,5 @@
 Triangle T 19 0
 Rotate T
-Rotate T
 
 Triangle T2 1 1
 

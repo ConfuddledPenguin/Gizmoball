@@ -1,6 +1,7 @@
 package view;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -55,13 +56,30 @@ public class FileChooser implements IFileChooser{
 	 * @see gui.FileChooserInterface#SaveFile()
 	 */
 	@Override
-	public File saveFile(){
+	public File saveFile() throws IOException{
 		
 		
 		int returnval = chooser.showSaveDialog(chooser);
 		
 		if(returnval == JFileChooser.APPROVE_OPTION) {
-			   return chooser.getSelectedFile();
+			   File file = chooser.getSelectedFile();
+			   
+			   String path = file.getAbsolutePath();
+			   
+			   if( ! ( path.endsWith(".txt") || path.endsWith(".text") ) ){
+				   path = path + ".txt";
+			   }
+			   
+			   file = new File(path);
+			   
+			   if(file.exists()){
+				   //TODO ask if we should overwrite
+			   }else{
+				   file.createNewFile();
+			   }
+			   
+			   
+			   return file;
 		}
 		
 		return null;

@@ -52,7 +52,7 @@ public class Model extends Observable implements IModel {
 		logging.Logger.setUp(MODELLOG);
 		logging.Logger.setUp(PHYSICSLOG);
 		MODELLOG.log(Level.FINE, "Model started");
-		MODELLOG.setLevel(Level.FINE);
+		MODELLOG.setLevel(Level.FINE); // Change this to change what is visible in the logs
 		
 		board = new Board();
 		walls = new Walls(0, 0, Global.BOARDWIDTH, Global.BOARDHEIGHT);
@@ -94,6 +94,10 @@ public class Model extends Observable implements IModel {
 		MODELLOG.log(Level.WARNING,
 				"Asked to load file at : " + file.getAbsolutePath()
 						+ " . Feature not added yet");
+		
+		FileManager fm = new FileManager();
+		
+		fm.saveFile(this, file);
 	}
 
 	/*

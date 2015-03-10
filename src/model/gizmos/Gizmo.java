@@ -149,7 +149,7 @@ public abstract class Gizmo implements IGizmo {
 		this.width = width;
 		this.height = height;
 		this.type = type;
-		this.o = Orientation.BottomLeft;
+		this.o = Orientation.TopLeft;
 		
 		this.corners = new ArrayList<Circle>();
 		this.edges = new ArrayList<LineSegment>();
