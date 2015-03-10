@@ -75,6 +75,7 @@ public class BuildActionlistner implements ActionListener {
 		
 		case ("Delete"):
 			model.deleteGizmo(view.getClickedCell());
+			model.deleteBall(view.getClickedCell());
 			break;
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
