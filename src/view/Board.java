@@ -8,6 +8,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import model.Global;
 import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
@@ -24,14 +25,17 @@ public abstract class Board extends JPanel implements Observer {
 	
 	protected IModel model;
 	
-	public Board(IModel model) {
-		
+	public Board(IModel model) {		
 		gizmoList = new ArrayList<IGizmo>(model.getGizmos());
 		balls = new ArrayList<IBall>(model.getBalls());
+		this.model = model;
 	}
 
 	protected void drawGizmos(Graphics2D g2d){
 		
+		// update list of balls so they appear instantly when added to the board
+		balls = new ArrayList<IBall>(model.getBalls());
+
 		if (!gizmoList.isEmpty()) {
 			for (int i = 0; i < gizmoList.size(); i++) {
 				IGizmo gizmo = gizmoList.get(i);
@@ -69,7 +73,7 @@ public abstract class Board extends JPanel implements Observer {
 			        g2d.translate(x, y);
 			        g2d.rotate(angleRad);
 			        g2d.setColor(new Color(0,255,0));
-					g2d.fillRect(0, 0, width, height);
+					g2d.fillRect(0, 0-Global.L, width, height);
 					g2d.rotate(- angleRad);
 					
 			        g2d.translate(-x, -y);
@@ -78,10 +82,12 @@ public abstract class Board extends JPanel implements Observer {
 					int angleDeg = gizmo.getAngle();
 					double angleRad = Math.toRadians(angleDeg);
 
-			        g2d.rotate(angleRad, x+40, y);
+			        g2d.rotate(angleRad, x, y);
 			        g2d.setColor(new Color(0,255,0));
-					g2d.fillRect(x, y, width, height);
-					g2d.rotate(- angleRad, x+40, y);
+			        // for some reason, decreasing X moves the gizmo down, perhaps because of rotate??
+			        // we need it here to make the top of the flipper line up with other gizmos on the same line
+					g2d.fillRect(x-(2*Global.L), y, width, height);
+					g2d.rotate(- angleRad, x, y);
 					
 				}
 			}
