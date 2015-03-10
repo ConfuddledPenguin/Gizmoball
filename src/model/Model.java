@@ -132,15 +132,17 @@ public class Model extends Observable implements IModel {
 	public void deleteGizmo(Point p) {
 
 		IGizmo g = board.getGizmo(p.x, p.y);
+		
+		if (g != null) {
+			MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
+					+ g.getXPos() + ":" + g.getYPos());
+			;
 
-		MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
-				+ g.getXPos() + ":" + g.getYPos());
-		;
+			board.removeGizmo(g);
 
-		board.removeGizmo(g);
-
-		setChanged();
-		notifyObservers(g);
+			setChanged();
+			notifyObservers(g);
+		}
 	}
 
 	/*
@@ -224,7 +226,12 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public List<IBall> getBalls() {
-		return Collections.unmodifiableList(balls);
+		List<IBall> iBalls = new LinkedList<IBall>();
+		for (Ball b : balls) {
+			iBalls.add((IBall)b);
+			
+		}
+		return Collections.unmodifiableList(iBalls);
 	}
 
 	/*
@@ -252,9 +259,14 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void deleteBall(Point p){
-		
-		//TODO remove ball
-		System.out.println("Asked to remove ball");
+		// loop through all balls, if we find ball at point p -> remove it
+		for (Ball b : balls) {
+			if ((int)b.getX() == p.x && (int)b.getY() == p.y) {
+				balls.remove(b);
+				setChanged();
+				notifyObservers(b);
+			}
+		}
 	}
 
 	/*

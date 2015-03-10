@@ -130,7 +130,7 @@ public class RunActionlistner implements ActionListener {
 			case ("Restart"):
 				timer.stop();
 				gui.changeStartStop("Start");
-				model.addBall(19.5,18.5,0,-50);
+				model.addBall(19.5,18.5,0,-50);  // TODO: find workaround to adding a new ball each time
 				break;
 			case ("Quit"):
 				System.exit(0);

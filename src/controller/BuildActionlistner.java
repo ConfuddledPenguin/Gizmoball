@@ -8,9 +8,8 @@ import model.IModel;
 import view.GUI;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Circle;
-import model.gizmos.Square;
-import model.gizmos.Triangle;
+import model.gizmos.*;
+import model.Global;
 
 
 public class BuildActionlistner implements ActionListener {
@@ -43,6 +42,29 @@ public class BuildActionlistner implements ActionListener {
 			model.addGizmo(new Circle(view.getClickedCell().x,view.getClickedCell().y));
 			break;
 			
+		case ("Left Triangle"):
+			model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			break;
+			
+		case ("Right Triangle"):
+			model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			model.RotateClockwise(view.getClickedCell());  // rotate 180 degrees total
+			model.RotateClockwise(view.getClickedCell());  // to produce right triangle
+			break;
+			
+		case ("Left Flipper"):
+			model.addGizmo(new LeftFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			break;
+			
+		case ("Right Flipper"):
+			model.addGizmo(new RightFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			break;
+			
+		case ("Add Ball"):
+			// adding 0.5L to x and y makes the centre of the ball == centre of cell
+			model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
+			break;
+			
 		case ("Clockwise"):
 			model.RotateClockwise(view.getClickedCell());
 			break;
@@ -53,6 +75,7 @@ public class BuildActionlistner implements ActionListener {
 		
 		case ("Delete"):
 			model.deleteGizmo(view.getClickedCell());
+			model.deleteBall(view.getClickedCell());
 			break;
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
