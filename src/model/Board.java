@@ -51,9 +51,9 @@ public class Board {
 	/**
 	 * Removes the given gizmo from the board
 	 * 
-	 * @param g The gixmo to remove
+	 * @param g The gizmo to remove
 	 * 
-	 * @return flase if gizmo was not registered, otherwise true;
+	 * @return false if gizmo was not registered, otherwise true;
 	 */
 	public boolean removeGizmo(IGizmo g){
 		
@@ -196,7 +196,7 @@ public class Board {
 		int x = g.getXPos();
 		int y = g.getYPos();
 		int width = g.getWidth();
-		int height = g.getWidth();
+		int height = g.getHeight();
 		
 		//mark as empty
 		for(int i = x; i < x + width; i++){

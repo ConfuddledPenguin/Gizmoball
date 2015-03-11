@@ -244,15 +244,6 @@ public abstract class Gizmo implements IGizmo {
 
 	/*
 	 * (non-Javadoc)
-	 * @see model.gizmos.IGizmo#setWidthHeight(int, int)
-	 */
-	public void setWidthHeight(int w, int h) {
-		width = w;
-		height = h;
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#getXPos()
 	 */
 	public int getXPos() {

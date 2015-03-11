@@ -48,15 +48,6 @@ public interface IGizmo {
 	void setPos(int x, int y);
 	
 	/**
-	 * Set the width and height of the
-	 * gizmo
-	 * 
-	 * @param w the width
-	 * @param h the height
-	 */
-	void setWidthHeight(int w, int h);
-	
-	/**
 	 * Get the position of the gizmo
 	 *
 	 * @return The position as a Point 
