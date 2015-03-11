@@ -136,7 +136,7 @@ public class BuildBoard extends Board {
 		
 		addGizmo.add(addFlipper);
 		
-		JMenuItem AddBall = new JMenuItem("Add Ball");
+		JMenuItem AddBall = new JMenuItem("Ball");
 		AddBall.addActionListener(listener);
 		addGizmo.add(AddBall);
 

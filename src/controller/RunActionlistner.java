@@ -45,7 +45,6 @@ public class RunActionlistner implements ActionListener {
 			
 			//compensate for update time
 			time = System.nanoTime() / 1000 / 1000 - time;
-			
 			int delay = (int) (Global.REFRESHTIME - time);
 			
 			if(delay < 0){ // drop a frame
