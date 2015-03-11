@@ -87,6 +87,7 @@ public class RunActionlistner implements ActionListener {
 				runKey.processkey(true);
 				
 				break;
+			case "Save":
 			case "Save As":
 				
 				timer.stop();

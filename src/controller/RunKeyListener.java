@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -13,8 +15,12 @@ import model.IModel;
  */
 public class RunKeyListener implements KeyListener {
 	
+	private ActionListener run;
 	private IModel model;
 	private boolean processKey = true;
+	
+	private int lastKey = -1;
+	
 
 	/**
 	 * @param game The Gizmoball model
@@ -27,6 +33,16 @@ public class RunKeyListener implements KeyListener {
 		 * the keyboard, no matter what the ui focus is on
 		 */
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new Dispatcher(this));
+	}
+	
+	/**
+	 * Register the run listener 
+	 * 
+	 * @param run The run listener
+	 */
+	public void registerRunActionListener(ActionListener run){
+		
+		this.run = run;		
 	}
 	
 	/**
@@ -58,6 +74,29 @@ public class RunKeyListener implements KeyListener {
 	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		
+		int keyCode = arg0.getKeyCode();
+		
+		//On alt
+		if(lastKey == 18){
+			
+			if(keyCode == 115)
+				System.exit(0);
+		}
+		
+		//On ctrl
+		if(lastKey == 17){
+			
+			if(keyCode == 83){ // s
+				run.actionPerformed(new ActionEvent(this, 0, "Save"));				
+			}
+			
+			if(keyCode == 76) // l
+				run.actionPerformed(new ActionEvent(this, 0, "Load"));
+		}
+		
+		lastKey = arg0.getKeyCode();
+		
 		model.triggerKeyPress(arg0.getKeyCode(), false);
 	}
 

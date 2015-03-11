@@ -8,7 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import model.exceptions.GridPosAlreadyTakenException;
@@ -286,16 +288,19 @@ class FileManager {
 	 */
 	public void saveFile(Model m, File file) throws IOException {
 		
-		System.out.println(file.getAbsolutePath());
+		
+		List<IGizmo> gizmos = m.getGizmos();
+		
+		Map<IGizmo, String> nameMapping = new HashMap<IGizmo, String>();
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		
-		
-		
 		//Gizmos
-		for(IGizmo g: m.getGizmos()){
+		for(IGizmo g: gizmos){
 			
 			String name = GIZMO_BASE + noGizmos++;
+			
+			nameMapping.put(g, name);
 			
 			StringBuilder sb = new StringBuilder();
 			
@@ -336,6 +341,52 @@ class FileManager {
 					
 					break;
 			}
+		}
+		
+		for(IGizmo g: gizmos){
+			
+			Set<IGizmo> cons = g.getConnections();
+			
+			for(IGizmo g2: cons){
+				String producer = nameMapping.get(g2);
+				String consumer = nameMapping.get(g);
+				
+				StringBuilder sb = new StringBuilder();
+				
+				sb.append("Connect");
+				sb.append(space);
+				sb.append(producer);
+				sb.append(space);
+				sb.append(consumer);
+				sb.append(newLine);
+				
+				bw.write(sb.toString());
+			}
+		}
+		
+		for(Map.Entry<Integer, Set<IGizmo>> mapping: m.getKeyStrokes().entrySet()){
+			
+			for(IGizmo g : mapping.getValue()){
+			
+				StringBuilder sb = new StringBuilder();
+				
+				sb.append("KeyConnect key");
+				sb.append(space);
+				
+				sb.append(mapping.getKey());
+				
+				sb.append(space);
+				
+				sb.append("ondown");
+				sb.append(space);
+				
+				String name = nameMapping.get(g);
+				
+				sb.append(name);
+				sb.append(newLine);
+				
+				bw.write(sb.toString());
+			}			
 		}
 		
 		for(IBall ball : m.getBalls()){
