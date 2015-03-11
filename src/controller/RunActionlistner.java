@@ -68,6 +68,7 @@ public class RunActionlistner implements ActionListener {
 			case "Load":
 				
 				timer.stop();
+				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
 				IFileChooser fc = new FileChooser();
@@ -90,6 +91,7 @@ public class RunActionlistner implements ActionListener {
 			case "Save As":
 				
 				timer.stop();
+				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
 				fc = new FileChooser();

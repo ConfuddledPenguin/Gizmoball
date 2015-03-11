@@ -262,7 +262,7 @@ public class BuildBoard extends Board {
 				gizmoList.remove(arg);
 		} else if(arg instanceof List<?>){
 			
-			gizmoList = (List<IGizmo>) arg;
+			gizmoList = new ArrayList<>((List<IGizmo>) arg);
 		}
 
 		repaint();
