@@ -192,5 +192,15 @@ public interface IModel {
 	 * @param p The point the ball is at
 	 */
 	public abstract void deleteBall(Point p);
+	
+	/**
+	 * Clears the board
+	 */
+	public void clear();
+	
+	/**
+	 * resets the board
+	 */
+	public void reset();
 
 }

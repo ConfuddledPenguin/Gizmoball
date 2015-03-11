@@ -14,6 +14,10 @@ public class Ball implements IBall {
 	private double xpos;
 	private double ypos;
 	
+	private Vect startVelocity;
+	private double startxpos;
+	private double startypos;
+	
 	private boolean stopped = false;
 
 	/**
@@ -31,6 +35,10 @@ public class Ball implements IBall {
 		xpos = x; // Centre coordinates
 		ypos = y;
 		velocity = new Vect(xv, yv);
+		
+		startVelocity = velocity;
+		startxpos = x;
+		startypos = y;
 	}
 
 	/* (non-Javadoc)
@@ -113,6 +121,18 @@ public class Ball implements IBall {
 	
 	public boolean isStopped(){
 		return stopped;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBall#reset()
+	 */
+	public void reset(){
+		
+		xpos = startxpos;
+		ypos = startypos;
+		velocity = startVelocity;
+		
 	}
 
 }

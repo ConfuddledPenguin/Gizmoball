@@ -2,6 +2,7 @@ package model.gizmos;
 
 import java.util.List;
 
+import model.IBall;
 import model.gizmos.Gizmo.Orientation;
 import physics.Circle;
 import physics.LineSegment;
@@ -136,5 +137,14 @@ public interface IGizmo {
 	 * @return this.triggered
 	 */
 	public boolean isTriggered();
+	
+	/**
+	 * Add the ball to the list of balls gizmo knows about
+	 * 
+	 * All balls are removed if an action uses them
+	 * 
+	 * @param ball the ball to add
+	 */
+	public void addBall(IBall ball);
 	
 }

@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import physics.Circle;
@@ -366,12 +367,27 @@ public class Model extends Observable implements IModel {
 			keyConnections.remove(key);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel#clear()
+	 */
 	public void clear(){
 		
 		board.clear();
 		balls.clear();
 		
 		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel#reset()
+	 */
+	public void reset(){
+		
+		for(Ball b: balls){
+			b.reset();
+		}
 	}
 
 	/*
@@ -388,16 +404,7 @@ public class Model extends Observable implements IModel {
 
 			for (IGizmo g : keyConnections.get(key)) {
 				
-				if(g.getType() == Gizmo.Type.Absorber){
-					if(ball.isStopped()){
-						
-						Vect v = new Vect(0, -50);
-						ball.setVelo(v);
-						ball.start();
-					}
-				}else{
-					g.trigger(onDown);
-				}
+				g.trigger(onDown);
 				System.out.println("TRIGGER");
 			}
 		}
@@ -410,6 +417,7 @@ public class Model extends Observable implements IModel {
 			g.update();
 		}
 		
+		//Move the balls
 		for(Ball b : balls){
 			moveBall(b);
 		}
@@ -425,8 +433,6 @@ public class Model extends Observable implements IModel {
 	 * @param ball
 	 */
 	public void moveBall(Ball ball) {
-
-		
 
 		// move the ball
 		double moveTime = Global.MOVETIME;
@@ -449,13 +455,8 @@ public class Model extends Observable implements IModel {
 					ball.setVelo(cd.getVelocity()); // update velocity after collision
 					
 					if(cd.getGizmo() != null && cd.getGizmo().getType() == Gizmo.Type.Absorber){
-						ball.setX(19.6);
-						ball.setY(18.9);
-						ball.stop();
-						Vect v = new Vect(0, 0);
-						ball.setVelo(v);
 						
-						this.ball = ball;
+						cd.getGizmo().addBall(ball);
 					}
 					
 				}else if (cd.getSecondBall() != null){

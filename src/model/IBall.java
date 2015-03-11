@@ -65,4 +65,26 @@ public interface IBall {
 	 * @param y The y coord
 	 */
 	public abstract void setY(double y);
+	
+	/**
+	 * Reset the ball to the starting state
+	 */
+	public void reset();
+	
+	/**
+	 * Starts the ball
+	 */
+	public void start();
+	
+	/**
+	 * Stops the ball
+	 */
+	public void stop();
+
+	/**
+	 * Returns the stopped state of the ball
+	 * 
+	 * @return true is stopped otherwise false
+	 */
+	public boolean isStopped();
 }

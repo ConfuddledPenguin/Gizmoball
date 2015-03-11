@@ -3,12 +3,14 @@ package model.gizmos;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import physics.Circle;
 import physics.LineSegment;
 import model.Global;
+import model.IBall;
 
 /**
  * A gizmo
@@ -111,6 +113,7 @@ public abstract class Gizmo implements IGizmo {
 	protected boolean onDown = false;
 	protected double TRIGGER_TIME = 500; // in ms
 	protected double triggeredFor = 0; // in ms
+	protected List<IBall> balls = new LinkedList<IBall>();
 	
 	/**
 	 * This expresses the triggeredFor time as a
@@ -395,5 +398,15 @@ public abstract class Gizmo implements IGizmo {
 	public boolean isTriggered(){
 	
 		return triggered;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#addBall()
+	 */
+	@Override
+	public void addBall(IBall ball) {
+		
+		balls.add(ball);
 	}
 }

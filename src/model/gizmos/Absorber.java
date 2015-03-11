@@ -1,5 +1,6 @@
 package model.gizmos;
 
+import model.IBall;
 import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
@@ -14,12 +15,38 @@ public class Absorber extends Gizmo {
 		super(x, y, width, height, Gizmo.Type.Absorber);
 		
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.Gizmo#action()
+	 */
 	@Override
-	public void trigger(Boolean onDown) {
-		//System.out.println("THIS WILL MOVE THE BALL AND FIRE UP!!!");
-		//triggerConnections();
+	protected void action() {
 		
+		for(IBall b: balls){
+			
+			
+			b.start();
+		}
+		
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.Gizmo#addBall(model.IBall)
+	 */
+	@Override
+	public void addBall(IBall ball) {
+		
+		super.addBall(ball);
+		
+		ball.stop();
+		
+		ball.setX(xcoord + width - ball.getRadius());
+		ball.setY(ycoord - ball.getRadius());
+		
+		Vect v = new Vect(0, -50);
+		ball.setVelo(v);
 	}
 	
 	protected void setCollisionDetails(){
