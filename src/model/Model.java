@@ -207,6 +207,7 @@ public class Model extends Observable implements IModel {
 		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
 		this.board.moveGizmo(g, gizmoPoint, newPoint);
 
+		g.setCollisionDetails();
 		setChanged();
 		notifyObservers();
 	}

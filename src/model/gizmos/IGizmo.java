@@ -138,4 +138,12 @@ public interface IGizmo {
 	 */
 	public void addBall(IBall ball);
 	
+	/**
+	 * Sets the Collision Details of the gizmo
+	 * 
+	 * This should be over ridden by the individual
+	 * gizmos
+	 */
+	public void setCollisionDetails();
+	
 }

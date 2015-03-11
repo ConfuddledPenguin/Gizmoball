@@ -12,15 +12,15 @@ import physics.Vect;
 public class RightFlipper extends Flipper {
 
 	private int angle = -90;
-	private boolean natural = true;
+	private boolean natural = true;	
 
 	public RightFlipper(int x, int y) {
 		super(x, y, 2, 1, Gizmo.Type.RightFlipper);
-	}
+	}	
 	
-	protected void setCollisionDetails(){
+	public void setCollisionDetails(){
 		
-//		if(!corners.isEmpty()) corners.clear();
+//		if(!corners.isEmpty()) corners.clear();w
 //		if(!edges.isEmpty()) edges.clear();
 //		
 //		int x = this.getXPos();

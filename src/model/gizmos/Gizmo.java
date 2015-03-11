@@ -160,15 +160,7 @@ public abstract class Gizmo implements IGizmo {
 		setCollisionDetails();
 	}
 	
-	/**
-	 * Sets the Collision Details of the gizmo
-	 * 
-	 * This should be over ridden by the individual
-	 * gizmos
-	 */
-	protected void setCollisionDetails(){
-		
-	}
+
 	
 	/**
 	 * Performs the action of the gizmo

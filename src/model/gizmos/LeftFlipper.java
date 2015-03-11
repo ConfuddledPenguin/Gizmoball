@@ -19,7 +19,7 @@ public class LeftFlipper extends Flipper {
 	}
 
 	
-	protected void setCollisionDetails(){
+	public void setCollisionDetails(){
 		
 //		if(!corners.isEmpty()) corners.clear();
 //		if(!edges.isEmpty()) edges.clear();

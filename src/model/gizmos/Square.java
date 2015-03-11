@@ -18,7 +18,7 @@ public class Square extends Gizmo{
 	/**
 	 * sets the Collision Details
 	 */
-	protected void setCollisionDetails(){
+	public void setCollisionDetails(){
 		
 		if(!corners.isEmpty()) corners.clear();
 		if(!edges.isEmpty()) edges.clear();
