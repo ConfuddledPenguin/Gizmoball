@@ -45,7 +45,6 @@ public class RunActionlistner implements ActionListener {
 			
 			//compensate for update time
 			time = System.nanoTime() / 1000 / 1000 - time;
-			
 			int delay = (int) (Global.REFRESHTIME - time);
 			
 			if(delay < 0){ // drop a frame
@@ -68,6 +67,7 @@ public class RunActionlistner implements ActionListener {
 			case "Load":
 				
 				timer.stop();
+				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
 				IFileChooser fc = new FileChooser();
@@ -90,6 +90,7 @@ public class RunActionlistner implements ActionListener {
 			case "Save As":
 				
 				timer.stop();
+				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
 				fc = new FileChooser();

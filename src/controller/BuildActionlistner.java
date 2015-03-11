@@ -3,6 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 import main.GizmoBallMain;
 import model.IModel;
 import view.GUI;
@@ -16,10 +19,12 @@ public class BuildActionlistner implements ActionListener {
 
 	private IModel model;
 	private GUI view;
+	private RunKeyListener run;
 
-	public BuildActionlistner(IModel m, GUI g) {
+	public BuildActionlistner(IModel m, GUI g, RunKeyListener r) {
 		model = m;
 		view = g;
+		run = r;
 	}
 
 	@Override
@@ -80,6 +85,14 @@ public class BuildActionlistner implements ActionListener {
 		case ("Run Mode"):
 			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();
+			break;
+		case ("Friction"):
+			System.out.println("FRICTION");
+			run.processkey(false);
+		
+			float[] friction = view.getUserFriction();
+			model.setFriction(friction[0], friction[1]);
+			run.processkey(true);
 			break;
 		case ("Move"):
 			

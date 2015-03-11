@@ -34,7 +34,11 @@ class FileManager {
 	
 	private char space = ' ';
 	private char newLine = '\n';
-
+	private String GIZMO_BASE = "GIZMO";
+	private int noGizmos = 0;
+	private String BALL_BASE = "BALL";
+	private int noBalls = 0;
+	
 	/**
 	 * Loads the given file and returns the playable board,
 	 * while setting up the model for gameplay.
@@ -291,11 +295,13 @@ class FileManager {
 		//Gizmos
 		for(IGizmo g: m.getGizmos()){
 			
+			String name = GIZMO_BASE + noGizmos++;
+			
 			StringBuilder sb = new StringBuilder();
 			
 			sb.append(g.getType());
 			sb.append(space);
-			sb.append("NAME");
+			sb.append(name);
 			sb.append(space);
 			sb.append(g.getXPos());
 			sb.append(space);
@@ -318,15 +324,15 @@ class FileManager {
 			
 				case BottomRight:
 					
-					rotateSaveHelper(bw, "NAME");
+					rotateSaveHelper(bw, name);
 					
 				case BottomLeft:
 					
-					rotateSaveHelper(bw, "NAME");
+					rotateSaveHelper(bw, name);
 			
 				case TopRight:
 					
-					rotateSaveHelper(bw, "NAME");
+					rotateSaveHelper(bw, name);
 					
 					break;
 			}
@@ -334,12 +340,14 @@ class FileManager {
 		
 		for(IBall ball : m.getBalls()){
 			
+			String name = BALL_BASE + noBalls++;
+			
 			StringBuilder sb = new StringBuilder();
 			
 			sb.append("Ball");
 			sb.append(space);
 			
-			sb.append("NAME");
+			sb.append(name);
 			sb.append(space);
 			
 			sb.append(ball.getX());

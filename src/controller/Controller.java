@@ -16,7 +16,7 @@ public class Controller  {
 
 		runKeyListener =  new RunKeyListener(m);
 		runListener = new RunActionlistner(m, g, runKeyListener);
-		buildListener = new BuildActionlistner(m, g);
+		buildListener = new BuildActionlistner(m, g, runKeyListener);
 	}
 	
 	public ActionListener getRunListener() {
