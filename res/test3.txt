@@ -79,19 +79,26 @@ Ball B 15.5 3.5 0.0 0.0
 Ball B 16.5 3.5 0.0 0.0
 Ball B 17.5 3.5 0.0 0.0
 
-Square S142 2 7
-Square S142 3 8
-Square S142 4 9
-Square S142 5 10
-Square S142 6 11
-Square S142 7 12
-Square S142 8 13
-Square S142 9 14
-Square S142 11 14
-Square S142 12 13
-Square S142 13 12
-Square S142 14 11
-Square S152 15 10
-Square S162 16 9
-Square S172 17 8
-Square S182 18 7
+Square S200 2 7
+Square S201 3 8
+Square S202 4 9
+Square S203 5 10
+Square S204 6 11
+Square S205 7 12
+Square S206 8 13
+Triangle T3 9 14
+Rotate T3
+Rotate T3
+Rotate T3
+Triangle T4 11 14
+Rotate T4
+Rotate T4
+Square S207 12 13
+Square S208 13 12
+Square S209 14 11
+Square S210 15 10
+Square S211 16 9
+Square S212 17 8
+Square S213 18 7
+Connect S206 T3
+Connect S207 T4

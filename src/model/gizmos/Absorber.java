@@ -24,8 +24,6 @@ public class Absorber extends Gizmo {
 	protected void action() {
 		
 		for(IBall b: balls){
-			
-			
 			b.start();
 		}
 		
