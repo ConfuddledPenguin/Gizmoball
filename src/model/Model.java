@@ -40,7 +40,7 @@ public class Model extends Observable implements IModel {
 	private Ball ball;
 	private Walls walls;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
-	private List<Ball> balls = new LinkedList<Ball>();
+	private List<IBall> balls = new LinkedList<IBall>();
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
 	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
@@ -257,7 +257,7 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void deleteBall(Point p){
 		// loop through all balls, if we find ball at point p -> remove it
-		for (Ball b : balls) {
+		for (IBall b : balls) {
 			if ((int)b.getX() == p.x && (int)b.getY() == p.y) {
 				balls.remove(b);
 				setChanged();
@@ -385,7 +385,7 @@ public class Model extends Observable implements IModel {
 	 */
 	public void reset(){
 		
-		for(Ball b: balls){
+		for(IBall b: balls){
 			b.reset();
 		}
 	}
@@ -418,7 +418,7 @@ public class Model extends Observable implements IModel {
 		}
 		
 		//Move the balls
-		for(Ball b : balls){
+		for(IBall b : balls){
 			moveBall(b);
 		}
 		
@@ -432,7 +432,7 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @param ball
 	 */
-	public void moveBall(Ball ball) {
+	public void moveBall(IBall ball) {
 
 		// move the ball
 		double moveTime = Global.MOVETIME;
@@ -477,20 +477,20 @@ public class Model extends Observable implements IModel {
 	 * Updates the X and Y coordinates of ball b to represent movement over a
 	 * given time
 	 * 
-	 * @param b
+	 * @param ball2
 	 *            a ball
 	 * @param moveTime
 	 *            the time over which the ball has moved
 	 * @return ball b with updated coordinates
 	 */
-	private Ball moveBallForTime(Ball b, double moveTime) {
+	private IBall moveBallForTime(IBall ball2, double moveTime) {
 
 		String logString = "MOVING BALL--------------------------\nFor "
 				+ moveTime + "\n";
 
 		// Move ball
-		double xVelocity = b.getVelo().x();
-		double yVelocity = b.getVelo().y();
+		double xVelocity = ball2.getVelo().x();
+		double yVelocity = ball2.getVelo().y();
 
 		logString = logString + "Current velocity: x " + xVelocity + " y "
 				+ yVelocity + "\n";
@@ -502,14 +502,14 @@ public class Model extends Observable implements IModel {
 		logString = logString + "Moving distance: x " + xDistance + " y "
 				+ yDistance + "\n";
 
-		double newX = b.getX() + xDistance;
-		double newY = b.getY() + yDistance;
+		double newX = ball2.getX() + xDistance;
+		double newY = ball2.getY() + yDistance;
 
 		logString = logString + "New Coords: x " + newX + " y " + newY
 				+ "\nTime for Friction and Gravity calcs\n";
 
-		b.setX(newX);
-		b.setY(newY);
+		ball2.setX(newX);
+		ball2.setY(newY);
 
 		// Work out new v
 
@@ -525,12 +525,12 @@ public class Model extends Observable implements IModel {
 						* Math.abs(yVelocity) * moveTime);
 
 		Vect v = new Vect(xVelocity, yVelocity);
-		b.setVelo(v);
+		ball2.setVelo(v);
 
 		PHYSICSLOG.log(Level.FINE, logString + "New velocity: x " + xVelocity
 				+ " y " + yVelocity);
 
-		return b;
+		return ball2;
 	}
 
 	
@@ -540,10 +540,10 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @return New Collision Details
 	 */
-	private CollisionDetails timeUntilCollision(Ball ball) {
+	private CollisionDetails timeUntilCollision(IBall ball2) {
 
-		Circle ballSim = ball.getCircle();
-		Vect ballVelocity = ball.getVelo();
+		Circle ballSim = ball2.getCircle();
+		Vect ballVelocity = ball2.getVelo();
 		Vect newVelocity = new Vect(0, 0);
 		double shortestTime = Double.MAX_VALUE;
 		double timeToObject = 0;
@@ -589,7 +589,7 @@ public class Model extends Observable implements IModel {
 		//Check for collisions with other balls
 		for( IBall otherBall: balls){
 			
-			if(otherBall != ball){ // make sure not same ball
+			if(otherBall != ball2){ // make sure not same ball
 				
 				Circle otherBallSim = otherBall.getCircle();
 				Vect otherBallVelocity = otherBall.getVelo();
@@ -598,9 +598,9 @@ public class Model extends Observable implements IModel {
 				if(timeToObject < shortestTime){
 					
 					shortestTime = timeToObject;
-					Vect center1 = new Vect(ball.getX(), ball.getY());
+					Vect center1 = new Vect(ball2.getX(), ball2.getY());
 					int mass1 = 1;
-					Vect velocity1 = ball.getVelo();
+					Vect velocity1 = ball2.getVelo();
 					
 					Vect center2 = new Vect(otherBall.getX(), otherBall.getY());
 					int mass2 = 1;

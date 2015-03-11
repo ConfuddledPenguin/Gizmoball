@@ -280,8 +280,12 @@ public abstract class Gizmo implements IGizmo {
 	 */
 	protected void triggerConnections(){
 		
-		for(IGizmo g: connections)
-			g.trigger(true);
+		for(IGizmo g: connections){
+			if(!g.isTriggered()){
+				g.trigger(true);
+			}
+			
+		}
 	}
 	
 	/*
