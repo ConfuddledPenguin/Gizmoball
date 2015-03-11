@@ -87,13 +87,18 @@ public class BuildActionlistner implements ActionListener {
 			GizmoBallMain.gui.switchMode();
 			break;
 		case ("Friction"):
-			System.out.println("FRICTION");
 			run.processkey(false);
 		
 			float[] friction = view.getUserFriction();
 			model.setFriction(friction[0], friction[1]);
 			run.processkey(true);
 			break;
+		case ("Gravity"):
+			run.processkey(false);
+			double gravity = view.getUserGravity();
+			model.setGravity(gravity);
+			run.processkey(true);
+			
 		case ("Move"):
 			
 			if(!view.getClickedCell().equals(view.getMovedPoint())){

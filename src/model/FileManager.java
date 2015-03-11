@@ -8,8 +8,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -364,7 +366,7 @@ class FileManager {
 			}
 		}
 		
-		for(Map.Entry<Integer, Set<IGizmo>> mapping: m.getKeyStrokes().entrySet()){
+		for(Entry<Integer, HashSet<IGizmo>> mapping: m.getKeyStrokes().entrySet()){
 			
 			for(IGizmo g : mapping.getValue()){
 			

@@ -370,7 +370,7 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @return Map of key Strokes
 	 */
-	Map<Integer, Set<IGizmo>> getKeyStrokes(){
+	Map<Integer, HashSet<IGizmo>> getKeyStrokes(){
 		
 		return Collections.unmodifiableMap(keyConnections);
 	}

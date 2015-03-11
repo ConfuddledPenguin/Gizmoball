@@ -274,6 +274,14 @@ public class GUI {
 		friction[1] = Float.parseFloat(mu2.getText());
 		return friction;
 	}
+	
+	public double getUserGravity() {
+		JTextField g = new JTextField();
+		Object[] input = {"Gravity", g};
+		JOptionPane.showConfirmDialog(this.frame, input, "Enter Gravity", JOptionPane.OK_CANCEL_OPTION);
+		return Double.parseDouble(g.getText());
+		
+	}
 
 
 	public String switchMode() {
