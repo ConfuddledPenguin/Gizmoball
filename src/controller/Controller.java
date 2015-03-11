@@ -18,6 +18,7 @@ public class Controller  {
 		runListener = new RunActionlistner(m, g, runKeyListener);
 		runKeyListener.registerRunActionListener(runListener);
 		buildListener = new BuildActionlistner(m, g);
+
 	}
 	
 	public ActionListener getRunListener() {

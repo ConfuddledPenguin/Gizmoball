@@ -1,5 +1,4 @@
 package model.gizmos;
-
 import physics.Circle;
 import physics.LineSegment;
 
@@ -13,6 +12,15 @@ public class Triangle extends Gizmo{
 	
 	public Triangle(int x, int y) {
 		super(x, y, 1, 1, Gizmo.Type.Triangle);		
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.Gizmo#action()
+	 */
+	@Override
+	protected void action() {
+		rotateClockwise();
 	}
 	
 	/**

@@ -110,21 +110,37 @@ public class BuildBoard extends Board {
 
 		JPopupMenu popup = new JPopupMenu();
 
-		JMenu AddGizmo = new JMenu("Add");
+		JMenu addGizmo = new JMenu("Add");
 
 		JMenuItem square = new JMenuItem("Square");
 		square.addActionListener(listener);
-		AddGizmo.add(square);
+		addGizmo.add(square);
 
 		JMenuItem circle = new JMenuItem("Circle");
 		circle.addActionListener(listener);
-		AddGizmo.add(circle);
+		addGizmo.add(circle);
 
 		JMenuItem triangle = new JMenuItem("Triangle");
 		triangle.addActionListener(listener);
-		AddGizmo.add(triangle);
+		addGizmo.add(triangle);
+		
+		JMenu addFlipper = new JMenu("Flipper");
+		
+		JMenuItem leftTriangle = new JMenuItem("Left Flipper");
+		leftTriangle.addActionListener(listener);
+		addFlipper.add(leftTriangle);
+		
+		JMenuItem rightTriangle = new JMenuItem("Right Flipper");
+		rightTriangle.addActionListener(listener);
+		addFlipper.add(rightTriangle);
+		
+		addGizmo.add(addFlipper);
+		
+		JMenuItem AddBall = new JMenuItem("Ball");
+		AddBall.addActionListener(listener);
+		addGizmo.add(AddBall);
 
-		popup.add(AddGizmo);
+		popup.add(addGizmo);
 
 		JMenu rotate = new JMenu("Rotate");
 

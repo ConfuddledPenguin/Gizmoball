@@ -463,10 +463,9 @@ public class Model extends Observable implements IModel {
 					ball.setVelo(cd.getVelocity()); // update velocity after collision
 					
 					if(cd.getGizmo() != null && cd.getGizmo().getType() == Gizmo.Type.Absorber){
-						
 						cd.getGizmo().addBall(ball);
 					}
-					
+					cd.getGizmo().trigger(true);
 				}else if (cd.getSecondBall() != null){
 					
 					moveBallForTime(ball, timeUntilCollision);
