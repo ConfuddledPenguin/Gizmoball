@@ -226,12 +226,8 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public List<IBall> getBalls() {
-		List<IBall> iBalls = new LinkedList<IBall>();
-		for (Ball b : balls) {
-			iBalls.add((IBall)b);
-			
-		}
-		return Collections.unmodifiableList(iBalls);
+	
+		return Collections.unmodifiableList(balls);
 	}
 
 	/*
