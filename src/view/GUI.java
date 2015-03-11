@@ -12,7 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import model.Global;
 import model.Model;
@@ -278,6 +280,19 @@ public class GUI {
 		flipperMenu.add(Right);	
 		
 		return flipperMenu;
+	}
+	
+	public float[] getUserFriction() {
+		float[] friction = new float[2];
+		JTextField mu = new JTextField();
+		JTextField mu2 = new JTextField();
+		Object[] input = {"Friction MU", mu, "Friction MU2", mu2};
+		Object[] input2 = {"Friction MU2", mu2};
+		
+		JOptionPane.showConfirmDialog(this.frame, input, "Enter Friction", JOptionPane.OK_CANCEL_OPTION);
+		friction[0] = Float.parseFloat(mu.getText());
+		friction[1] = Float.parseFloat(mu2.getText());
+		return friction;
 	}
 
 	public String switchMode() {
