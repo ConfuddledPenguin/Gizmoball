@@ -1,6 +1,7 @@
 package model.gizmos;
 
 import java.util.List;
+import java.util.Set;
 
 import model.IBall;
 import model.gizmos.Gizmo.Orientation;
@@ -145,5 +146,12 @@ public interface IGizmo {
 	 * gizmos
 	 */
 	public void setCollisionDetails();
+	
+	/**
+	 * Gets the list of gizmos listening for this gizmo
+	 * 
+	 * @return The set of gizmos
+	 */
+	public Set<IGizmo>getConnections();
 	
 }

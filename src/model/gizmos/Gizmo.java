@@ -396,4 +396,14 @@ public abstract class Gizmo implements IGizmo {
 		
 		balls.add(ball);
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getConnections()
+	 */
+	@Override
+	public Set<IGizmo> getConnections() {
+		
+		return Collections.unmodifiableSet(connections);
+	}
 }

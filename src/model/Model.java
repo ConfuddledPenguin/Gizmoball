@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import physics.Circle;
@@ -37,7 +36,6 @@ import physics.Vect;
 public class Model extends Observable implements IModel {
 
 	private Board board;
-	private Ball ball;
 	private Walls walls;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
 	private List<IBall> balls = new LinkedList<IBall>();
@@ -61,7 +59,6 @@ public class Model extends Observable implements IModel {
 		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
 
 		MODELLOG.log(Level.FINE, "Model loaded");
-
 	}
 
 	/*
@@ -366,6 +363,16 @@ public class Model extends Observable implements IModel {
 		// throw out any registered keys without connections
 		if (keyConnections.get(key).size() == 0)
 			keyConnections.remove(key);
+	}
+	
+	/**
+	 * Get keyStrokes
+	 * 
+	 * @return Map of key Strokes
+	 */
+	Map<Integer, Set<IGizmo>> getKeyStrokes(){
+		
+		return Collections.unmodifiableMap(keyConnections);
 	}
 	
 	/*
