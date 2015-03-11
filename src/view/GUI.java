@@ -133,8 +133,6 @@ public class GUI {
 		JMenuBar menuBar = new JMenuBar();
 
 		menuBar.add(createFileMenu());
-		menuBar.add(createBuildMenu());
-		menuBar.add(createEditMenu());
 		menuBar.add(createSettingsMenu());
 
 		return menuBar;
@@ -194,32 +192,14 @@ public class GUI {
 		JMenuItem Disconnect = new JMenuItem("Disconnect");
 		Disconnect.addActionListener(controller.getBuildListener());
 		menuList.add(Disconnect);
-
-		return menuList;
-	}
-
-	private JMenu createEditMenu() {
-
-		JMenu menuList = new JMenu("Edit");
-
-		JMenuItem Rotate = new JMenuItem("Rotate");
-		Rotate.addActionListener(controller.getBuildListener());
-		menuList.add(Rotate);
-
-		JMenuItem Move = new JMenuItem("Move");
-		Move.addActionListener(controller.getBuildListener());
-		menuList.add(Move);
-
-		JMenuItem Delete = new JMenuItem("Delete");
-		Delete.addActionListener(controller.getBuildListener());
-		menuList.add(Delete);
-
+		
 		JMenuItem ClearBoard = new JMenuItem("Clear Board");
 		ClearBoard.addActionListener(controller.getBuildListener());
 		menuList.add(ClearBoard);
 
 		return menuList;
 	}
+
 
 	private JMenu createBuildMenu() {
 		
@@ -295,6 +275,7 @@ public class GUI {
 		return friction;
 	}
 
+
 	public String switchMode() {
 		if (this.mode == 'r') {
 			this.mode = 'b';
@@ -310,6 +291,7 @@ public class GUI {
 		
 		
 	}
+	
 	public Point getClickedCell() {
 		Point cell = buildBoard.getclickedCell();
 		if (cell == null)
