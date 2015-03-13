@@ -571,6 +571,7 @@ public class Model extends Observable implements IModel {
 		//Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
 
+			gizmo.setCollisionDetails();
 			//The gizmos edges
 			for (LineSegment edge : gizmo.getEdges()) {
 				timeToObject = Geometry.timeUntilWallCollision(edge,ballSim, ballVelocity);
