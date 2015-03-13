@@ -396,6 +396,8 @@ public class Model extends Observable implements IModel {
 		for(IBall b: balls){
 			b.reset();
 		}
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	/*

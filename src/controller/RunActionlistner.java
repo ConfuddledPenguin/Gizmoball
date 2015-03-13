@@ -133,7 +133,6 @@ public class RunActionlistner implements ActionListener {
 				timer.stop();
 				gui.changeStartStop("Start");
 				model.reset();
-				//TODO update UI
 				break;
 			case ("Quit"):
 				System.exit(0);
