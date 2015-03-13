@@ -66,7 +66,6 @@ public class BuildBoard extends Board {
 		addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
-				System.out.println("PRESSED");
 
 				int width = getWidth();
 				int height = getHeight();

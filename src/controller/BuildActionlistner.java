@@ -65,7 +65,7 @@ public class BuildActionlistner implements ActionListener {
 			model.addGizmo(new RightFlipper(view.getClickedCell().x, view.getClickedCell().y));
 			break;
 			
-		case ("Add Ball"):
+		case ("Ball"):
 			// adding 0.5L to x and y makes the centre of the ball == centre of cell
 			model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
 			break;
