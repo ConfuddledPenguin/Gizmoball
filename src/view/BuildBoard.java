@@ -66,6 +66,7 @@ public class BuildBoard extends Board {
 		addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
+				System.out.println("PRESSED");
 
 				int width = getWidth();
 				int height = getHeight();
@@ -79,6 +80,14 @@ public class BuildBoard extends Board {
 				repaint();
 				moving = true;
 				
+				// popup menus are triggered in mousePressed rather than mouseReleased on Linux
+				// so we check for popup triggers in both methods to ensure cross platform compatibility 
+				if (e.isPopupTrigger()) {
+					popup.show(e.getComponent(), e.getX(), e.getY());
+					if (clickedCell == null)
+						mousePressed(e);
+				}
+				
 			}
 
 			public void mouseReleased(MouseEvent e) {
@@ -88,7 +97,6 @@ public class BuildBoard extends Board {
 					if (clickedCell == null)
 						mousePressed(e);
 				}
-				
 				moving = false;
 			}
 

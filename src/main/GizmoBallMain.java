@@ -10,6 +10,7 @@ import model.gizmos.IGizmo;
 import model.gizmos.Square;
 import model.gizmos.LeftFlipper;
 import model.gizmos.RightFlipper;
+import model.gizmos.Triangle;
 import view.GUI;
 
 public class GizmoBallMain {
