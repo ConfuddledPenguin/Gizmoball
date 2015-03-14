@@ -115,7 +115,9 @@ class FileManager {
 					name = st.nextToken();
 					String name2 = st.nextToken();
 					g = gizmos.get(name);
-					g.connection(gizmos.get(name2));
+					IGizmo g2 = gizmos.get(name2);
+					
+					m.connectGizmos(g, g2);
 					continue;
 				case "KeyConnect":
 					if(!st.nextToken().equals("key")){
@@ -153,7 +155,11 @@ class FileManager {
 					float vx = Float.parseFloat(xstring);
 					ystring = st.nextToken();
 					float vy = Float.parseFloat(ystring);
-					ball = m.addBall(xf, yf, vx, vy);
+					try{
+						ball = m.addBall(xf, yf, vx, vy);
+					}catch(InvalidGridPosException e){
+						throw new IncorrectFileFormatException("Invalid grid pos found in file");
+					}
 					balls.put(name, ball);
 					continue;
 			}

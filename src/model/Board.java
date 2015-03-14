@@ -166,6 +166,28 @@ public class Board {
 	}
 	
 	/**
+	 * Is the given space empty
+	 * 
+	 * @param x The xcoord
+	 * @param y The ycoord
+	 * @param width The width
+	 * @param height The height
+	 * 
+	 * @return true if empty, otherwise false;
+	 */
+	public boolean isEmpty(int x, int y, int width, int height) throws InvalidGridPosException{
+		
+		try{
+			checkPosValid(x, y, width, height);
+		}catch(GridPosAlreadyTakenException e){
+			return false;
+		}
+		
+		return true;
+		
+	}
+	
+	/**
 	 * Marks the grid as taken
 	 * 
 	 * @param g The gizmo to mark for

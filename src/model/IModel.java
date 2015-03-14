@@ -86,6 +86,22 @@ public interface IModel {
 	public abstract void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException;
 
 	/**
+	 * Connect the g2 to g1 
+	 * 
+	 * @param g1 The producer
+	 * @param g2 The consumer
+	 */
+	public void connectGizmos(IGizmo g1, IGizmo g2);
+	
+	/**
+	 * Disconnect g2 from g1
+	 * 
+	 * @param g1 The producer
+	 * @param g2 The consumer
+	 */
+	public void disconnectGizmos(IGizmo g1, IGizmo g2);
+	
+	/**
 	 * Returns the ball
 	 * 
 	 * @return the ball
@@ -176,8 +192,9 @@ public interface IModel {
 	 * @param yv The y velocity
 	 * 
 	 * @return The added ball
+	 * @throws InvalidGridPosException Grid pos invalid
 	 */
-	public IBall addBall(double x, double y, double xv, double yv);
+	public IBall addBall(double x, double y, double xv, double yv) throws InvalidGridPosException;
 	
 	/**
 	 * Get all gizmos

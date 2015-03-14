@@ -67,7 +67,12 @@ public class BuildActionlistner implements ActionListener {
 			
 		case ("Ball"):
 			// adding 0.5L to x and y makes the centre of the ball == centre of cell
-			model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
+			try {
+				model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
+			} catch (InvalidGridPosException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			break;
 			
 		case ("Clockwise"):

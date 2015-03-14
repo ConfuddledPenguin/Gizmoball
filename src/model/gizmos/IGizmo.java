@@ -41,6 +41,13 @@ public interface IGizmo {
 	void connection(IGizmo g);
 	
 	/**
+	 * Disconnect the given gizmo from this one
+	 * 
+	 * @param g The gizmo to disconnect
+	 */
+	public void Disconnect(IGizmo g);
+	
+	/**
 	 * Set the positions of the gizmo
 	 * 
 	 * @param x The x cord

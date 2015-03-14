@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Set;
 import java.util.logging.Level;
@@ -39,6 +40,8 @@ public class Model extends Observable implements IModel {
 	private Walls walls;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
 	private List<IBall> balls = new LinkedList<IBall>();
+	
+	private Map<IGizmo, HashSet<IGizmo>> connections = new HashMap<IGizmo, HashSet<IGizmo>>();
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
 	private Logger PHYSICSLOG = Logger.getLogger("physicsLog");
@@ -137,7 +140,27 @@ public class Model extends Observable implements IModel {
 			;
 
 			board.removeGizmo(g);
-
+			
+			/*
+			 * Remove connections
+			 *
+			 * Required to remove memory leak.
+			 */
+			connections.remove(g);
+			
+			for(Entry<IGizmo, HashSet<IGizmo>> temp : connections.entrySet()){
+				HashSet<IGizmo> gizmos = temp.getValue();
+				
+				for(IGizmo gtemp: gizmos){
+					
+					if(g == gtemp){
+						g.Disconnect(gtemp);
+						gizmos.remove(gtemp);
+					}
+				}
+			}
+			
+			//notify
 			setChanged();
 			notifyObservers(g);
 		}
@@ -211,6 +234,47 @@ public class Model extends Observable implements IModel {
 
 	/*
 	 * (non-Javadoc)
+	 * @see model.IModel#connectGizmos(model.gizmos.IGizmo, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void connectGizmos(IGizmo g1, IGizmo g2) {
+		
+		List<IGizmo> gizmos = board.getGizmos();
+		
+		if(gizmos.contains(g1) && gizmos.contains(g2)){
+			g1.connection(g2);
+			
+			HashSet<IGizmo> temp = null;
+			if( (temp = connections.get(g1)) != null){
+				temp.add(g2);
+			}else{
+				temp = new HashSet<IGizmo>();
+				temp.add(g2);
+				connections.put(g1, temp);
+			}
+		}
+	};
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel#disconnectGizmos(model.gizmos.IGizmo, model.gizmos.IGizmo)
+	 */
+	@Override
+	public void disconnectGizmos(IGizmo g1, IGizmo g2) {
+		
+		List<IGizmo> gizmos = board.getGizmos();
+		
+		if(gizmos.contains(g1) && gizmos.contains(g2)){
+			g1.Disconnect(g2);
+			
+			HashSet<IGizmo> temp = connections.get(g1);
+			temp.remove(g2);
+			
+		}
+	};
+	
+	/*
+	 * (non-Javadoc)
 	 * 
 	 * @see model.IModel#getBoard()
 	 */
@@ -235,16 +299,20 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addBall()
 	 */
 	@Override
-	public IBall addBall(double x, double y, double xv, double yv) {
+	public IBall addBall(double x, double y, double xv, double yv) throws InvalidGridPosException{
 
-		Ball ball = new Ball(x,y,xv,yv);
+		if(board.isEmpty( (int) x, (int) y, 1, 1)){
+			Ball ball = new Ball(x,y,xv,yv);
+			
+			balls.add(ball);
+			
+			setChanged();
+			notifyObservers(ball);
+			
+			return ball;
+		}
 		
-		balls.add(ball);
-		
-		setChanged();
-		notifyObservers(ball);
-		
-		return ball;
+		return null;
 	}
 	
 	/*

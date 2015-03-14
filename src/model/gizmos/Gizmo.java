@@ -107,12 +107,15 @@ public abstract class Gizmo implements IGizmo {
 	protected int width;
 	protected int height;
 	protected int angle;
-	protected Type type;
 	protected Orientation o;
+	
+	protected Type type;
+	
 	protected boolean triggered = false;
 	protected boolean onDown = false;
 	protected double TRIGGER_TIME = 500; // in ms
 	protected double triggeredFor = 0; // in ms
+	
 	protected List<IBall> balls = new LinkedList<IBall>();
 	
 	/**
@@ -225,6 +228,16 @@ public abstract class Gizmo implements IGizmo {
 		connections.add(g);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#Disconnect(model.gizmos.IGizmo)
+	 */
+	@Override
+	public void Disconnect(IGizmo g) {
+		
+		connections.remove(g);		
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#setPos(int, int)

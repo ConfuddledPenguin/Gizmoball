@@ -4,13 +4,9 @@ package main;
 import javax.swing.SwingUtilities;
 
 import model.Model;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
-import model.gizmos.Circle;
 import model.gizmos.IGizmo;
-import model.gizmos.Square;
-import model.gizmos.LeftFlipper;
-import model.gizmos.RightFlipper;
-import model.gizmos.Triangle;
 import view.GUI;
 
 public class GizmoBallMain {
@@ -36,7 +32,12 @@ public class GizmoBallMain {
 	
 	private static void makeGizmos(){
 		
-		m.addBall(19.5,18.5,0,-50);
+		try {
+			m.addBall(19.5,18.5,0,-50);
+		} catch (InvalidGridPosException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 //		m.addGizmo(new Square(10,5));
 		IGizmo g = new Absorber(0, 19, 20, 1);
