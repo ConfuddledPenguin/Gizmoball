@@ -11,7 +11,6 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import model.Global;
 import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
@@ -50,13 +49,26 @@ public abstract class Board extends JPanel implements Observer {
 				int radius = width/2;
 						
 				if (gizmo.getType() == Gizmo.Type.Square){
-					g2d.setColor(new Color(0,0,255));
+					
+					if(gizmo.isTriggered()){
+						g2d.setColor(new Color(0,165,255));
+					}else{
+						g2d.setColor(new Color(0,0,255));
+					}
 					g2d.fillRect(x, y, width, height);
 				} else if (gizmo.getType() == Gizmo.Type.Circle){
-					g2d.setColor(new Color(255,165,0));
+					if(gizmo.isTriggered()){
+						g2d.setColor(new Color(255,255,0));
+					}else{
+						g2d.setColor(new Color(255,165,0));
+					}
 					g2d.fillOval(x, y, width, height);
 				} else if (gizmo.getType() == Gizmo.Type.Triangle) {
-					g2d.setColor(new Color(255,255,0));
+					if(gizmo.isTriggered()){
+						g2d.setColor(new Color(165,255,0));
+					}else{
+						g2d.setColor(new Color(255,255,0));
+					}
 					if ((gizmo).getOrientation().equals(Gizmo.Orientation.BottomLeft)) {
 						g2d.fillPolygon(new int[] {x,x,x+width}, new int[] {y,y+height,y+height}, 3);
 					}else if (gizmo.getOrientation().equals(Gizmo.Orientation.BottomRight)) {
