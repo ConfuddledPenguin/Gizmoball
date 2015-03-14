@@ -102,6 +102,21 @@ public abstract class Gizmo implements IGizmo {
 		}
 	}
 	
+	/**
+	 * Provides the type of trigger type
+	 * 
+	 * @author Tom
+	 *
+	 */
+	public enum TriggerType{
+		
+		ONDOWN,
+		ONUP,
+		GIZMO,
+		BALL,
+		NONE;
+	}
+	
 	protected int xcoord;
 	protected int ycoord;
 	protected int width;
@@ -112,7 +127,7 @@ public abstract class Gizmo implements IGizmo {
 	protected Type type;
 	
 	protected boolean triggered = false;
-	protected boolean onDown = false;
+	protected TriggerType triggerType = TriggerType.NONE;
 	protected double TRIGGER_TIME = 500; // in ms
 	protected double triggeredFor = 0; // in ms
 	
@@ -190,11 +205,11 @@ public abstract class Gizmo implements IGizmo {
 
 		if(triggered){
 			
-			triggeredPercentage = TRIGGER_TIME / triggeredFor;
+			triggeredPercentage = triggeredFor / TRIGGER_TIME;
 			
-			triggeredFor += Global.MOVETIME;
+			triggeredFor += Global.MOVETIME * 1000;
 			
-			if(triggeredFor >= (TRIGGER_TIME / 1000)){
+			if(triggeredFor >= (TRIGGER_TIME)){
 				triggered = false;
 			}
 			
@@ -204,15 +219,15 @@ public abstract class Gizmo implements IGizmo {
 			triggeredPercentage = 0;
 			triggeredFor = 0;
 		}
-		
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see model.gizmos.IGizmo#trigger()
 	 */
-	public void trigger(Boolean onDown){
-		this.onDown = onDown;
+	public void trigger(TriggerType type){
+		
+		this.triggerType = type;
 
 		triggered = true;
 		
@@ -287,7 +302,7 @@ public abstract class Gizmo implements IGizmo {
 		
 		for(IGizmo g: connections){
 			if(!g.isTriggered()){
-				g.trigger(true);
+				g.trigger(TriggerType.GIZMO);
 			}
 			
 		}

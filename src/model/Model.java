@@ -20,6 +20,7 @@ import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Gizmo;
+import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
 import physics.Circle;
 import physics.Geometry;
@@ -482,7 +483,14 @@ public class Model extends Observable implements IModel {
 
 			for (IGizmo g : keyConnections.get(key)) {
 				
-				g.trigger(onDown);
+				TriggerType type = null;
+				if(onDown){
+					type = TriggerType.ONDOWN;
+				}else{
+					type = TriggerType.ONUP;
+				}
+				
+				g.trigger(type);
 				System.out.println("TRIGGER");
 			}
 		}
@@ -535,7 +543,7 @@ public class Model extends Observable implements IModel {
 					if(cd.getGizmo() != null && cd.getGizmo().getType() == Gizmo.Type.Absorber){
 						cd.getGizmo().addBall(ball);
 					}
-					cd.getGizmo().trigger(true);
+					cd.getGizmo().trigger(TriggerType.BALL);
 				}else if (cd.getSecondBall() != null){
 					
 					moveBallForTime(ball, timeUntilCollision);

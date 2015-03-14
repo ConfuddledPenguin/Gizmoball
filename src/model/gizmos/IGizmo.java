@@ -27,9 +27,9 @@ public interface IGizmo {
 	/**
 	 * Trigger this gizmos action
 	 * 
-	 * @param onDown key press down or up
+	 * @param type the type of event
 	 */
-	void trigger(Boolean onDown);
+	void trigger(Gizmo.TriggerType type);
 	
 	/**
 	 * Connect the gizmo g to this gizmo

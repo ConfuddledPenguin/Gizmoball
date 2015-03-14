@@ -20,7 +20,7 @@ public class Triangle extends Gizmo{
 	 */
 	@Override
 	protected void action() {
-		rotateClockwise();
+//		rotateClockwise();
 	}
 	
 	/**

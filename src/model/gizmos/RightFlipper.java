@@ -3,6 +3,7 @@ package model.gizmos;
 import java.awt.geom.AffineTransform;
 
 import model.Global;
+import model.gizmos.Gizmo.TriggerType;
 import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
@@ -70,16 +71,28 @@ public class RightFlipper extends Flipper {
 		int rotationAngle = 90; // in deg ˚
 		int av = 15; // angular velocity in degrees per seconds
 		
-		if(onDown == true){
+		if(triggerType == TriggerType.ONDOWN){
 			if(angle < rotationAngle){
 				angle=angle+av;
 			}
-		}else{
+		}else if(triggerType == TriggerType.ONUP){
 			if(angle > 0){
 				angle=angle-av;
 			}
 		}
-		if(angle > 0);
+		
+		if(triggerType == TriggerType.GIZMO || triggerType == TriggerType.BALL){
+			if( triggeredPercentage < 0.5){
+				if(angle < rotationAngle){
+					angle=angle+av;
+				}
+			}else{
+				if(angle > 0){
+					angle=angle-av;
+				}
+			}
+		}
+		
 		System.out.println(angle);
 		setCollisionDetails();
 		

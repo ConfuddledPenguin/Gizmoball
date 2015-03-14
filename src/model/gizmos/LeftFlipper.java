@@ -18,6 +18,9 @@ public class LeftFlipper extends Flipper {
 
 	public LeftFlipper(int x, int y) {
 		super(x, y, 1, 2, Gizmo.Type.LeftFlipper);
+		
+		//TODO find a good time
+		TRIGGER_TIME = 2500;
 
 	}
 
@@ -71,16 +74,28 @@ public class LeftFlipper extends Flipper {
 		int rotationAngle = 90; // in deg ˚
 		int av = 15; // angular velocity in degrees per second
 		
-		if(onDown == true){
+		if(triggerType == TriggerType.ONDOWN){
 			if(angle < rotationAngle){
 				angle=angle+av;
 			}
-		}else{
+		}else if(triggerType == TriggerType.ONUP){
 			if(angle > 0){
 				angle=angle-av;
 			}
 		}
-		if(angle > 0);
+		
+		if(triggerType == TriggerType.GIZMO || triggerType == TriggerType.BALL){
+			if( triggeredPercentage < 0.5){
+				if(angle < rotationAngle){
+					angle=angle+av;
+				}
+			}else{
+				if(angle > 0){
+					angle=angle-av;
+				}
+			}
+		}
+		
 		System.out.println(angle);
 		
 		setCollisionDetails();
@@ -91,5 +106,4 @@ public class LeftFlipper extends Flipper {
 	public int getAngle() {
 		return -angle;
 	}
-
 }
