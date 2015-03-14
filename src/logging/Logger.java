@@ -36,7 +36,7 @@ public class Logger {
 	 * filter. The filter is used to control what is 
 	 * written to the .log file
 	 * 
-	 * @param f The filter to use
+	 * @param l The logger to set up
 	 */
 	static public void setUp(java.util.logging.Logger l) {
 		

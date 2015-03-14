@@ -1,5 +1,11 @@
 package model.exceptions;
 
+/**
+ * Invalid grid pos exception
+ * 
+ * @author Tom Maxwell
+ *
+ */
 public class InvalidGridPosException extends Exception {
 	
 	/**

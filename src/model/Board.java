@@ -174,6 +174,8 @@ public class Board {
 	 * @param height The height
 	 * 
 	 * @return true if empty, otherwise false;
+	 * 
+	 * @throws InvalidGridPosException Grid pos invalid
 	 */
 	public boolean isEmpty(int x, int y, int width, int height) throws InvalidGridPosException{
 		

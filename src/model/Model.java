@@ -516,7 +516,7 @@ public class Model extends Observable implements IModel {
 	/**
 	 * Updates the given ball.
 	 * 
-	 * @param ball
+	 * @param ball The ball to move
 	 */
 	public void moveBall(IBall ball) {
 
