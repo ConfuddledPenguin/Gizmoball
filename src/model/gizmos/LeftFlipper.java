@@ -96,7 +96,7 @@ public class LeftFlipper extends Flipper {
 			}
 		}
 		
-		System.out.println(angle);
+//		System.out.println(angle);
 		
 		setCollisionDetails();
 		

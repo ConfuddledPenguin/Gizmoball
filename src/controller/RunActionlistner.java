@@ -47,9 +47,19 @@ public class RunActionlistner implements ActionListener {
 			time = System.nanoTime() / 1000 / 1000 - time;
 			int delay = (int) (Global.REFRESHTIME - time);
 			
-			if(delay < 0){ // drop a frame
-				delay = (int) (Global.REFRESHTIME - delay);
-				Global.MOVETIME = Global.MOVETIME * 2;
+			if(delay < 0){ // drop frames
+				
+				if(delay < Global.REFRESHTIME){ // if one frame
+				
+					delay = (int) (Global.REFRESHTIME - delay);
+					Global.MOVETIME = Global.MOVETIME * 2;
+				}else{
+					delay *= -1;
+					
+					int frames = (int) (delay / Global.REFRESHTIME);
+					Global.MOVETIME *= frames;
+					delay = (int) Global.REFRESHTIME;					
+				}
 			}else{ // move for frame
 				Global.MOVETIME = Global.REFRESHTIME / 1000;
 			}

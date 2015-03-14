@@ -3,7 +3,6 @@ package model.gizmos;
 import java.awt.geom.AffineTransform;
 
 import model.Global;
-import model.gizmos.Gizmo.TriggerType;
 import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
@@ -93,7 +92,7 @@ public class RightFlipper extends Flipper {
 			}
 		}
 		
-		System.out.println(angle);
+//		System.out.println(angle);
 		setCollisionDetails();
 		
 	}
