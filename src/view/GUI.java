@@ -200,6 +200,23 @@ public class GUI {
 		Disconnect.addActionListener(controller.getBuildListener());
 		menuList.add(Disconnect);
 		
+		JMenu modes = new JMenu("Modes");
+		
+		JMenuItem normal = new JMenuItem("Normal");
+		normal.addActionListener(controller.getBuildListener());
+		modes.add(normal);
+		
+		JMenuItem disco = new JMenuItem("Disco");
+		disco.addActionListener(controller.getBuildListener());
+		modes.add(disco);
+		
+		JMenuItem rave = new JMenuItem("Rave");
+		rave.addActionListener(controller.getBuildListener());
+		modes.add(rave);
+		
+		menuList.add(modes);
+		
+		
 		JMenuItem ClearBoard = new JMenuItem("Clear Board");
 		ClearBoard.addActionListener(controller.getBuildListener());
 		menuList.add(ClearBoard);
