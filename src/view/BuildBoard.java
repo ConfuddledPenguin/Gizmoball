@@ -41,7 +41,8 @@ public class BuildBoard extends Board {
 		m.addObserver(this);
 		moveTarget = new Point (0,0);
 
-		final JPopupMenu popup = createPopupMenu(listener);
+		final JPopupMenu emptyPopup = createEmptyPopupMenu(listener);
+		final JPopupMenu gizmoPopup = createGizmoPopupMenu(listener);
 
 		addMouseMotionListener(new MouseAdapter() {
 			@Override
@@ -82,7 +83,12 @@ public class BuildBoard extends Board {
 				// popup menus are triggered in mousePressed rather than mouseReleased on Linux
 				// so we check for popup triggers in both methods to ensure cross platform compatibility 
 				if (e.isPopupTrigger()) {
-					popup.show(e.getComponent(), e.getX(), e.getY());
+					Point p = new Point(e.getX() /20, e.getY()/20);
+					if(model.getGizmo(p) == null){
+						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
+					}else{
+						gizmoPopup.show(e.getComponent(), e.getX(), e.getY());
+					}
 					if (clickedCell == null)
 						mousePressed(e);
 				}
@@ -92,7 +98,12 @@ public class BuildBoard extends Board {
 			public void mouseReleased(MouseEvent e) {
 
 				if (e.isPopupTrigger()) {
-					popup.show(e.getComponent(), e.getX(), e.getY());
+					Point p = new Point(e.getX() /20, e.getY() /20);
+					if(model.getGizmo(p) == null){
+						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
+					}else{
+						gizmoPopup.show(e.getComponent(), e.getX(), e.getY());
+					}
 					if (clickedCell == null)
 						mousePressed(e);
 				}
@@ -113,11 +124,58 @@ public class BuildBoard extends Board {
 		});
 	}
 
-	private JPopupMenu createPopupMenu(ActionListener listener) {
+	private JPopupMenu createGizmoPopupMenu(ActionListener listener) {
 
 		JPopupMenu popup = new JPopupMenu();
 
-		JMenu addGizmo = new JMenu("Add");
+		JMenu rotate = new JMenu("Rotate");
+
+		JMenuItem clockwise = new JMenuItem("Clockwise");
+		clockwise.addActionListener(listener);
+		rotate.add(clockwise);
+
+		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
+		aClockwise.addActionListener(listener);
+		rotate.add(aClockwise);
+
+		popup.add(rotate);
+		
+		JMenu connect = new JMenu("Connect");
+		
+		JMenuItem connectGizmo = new JMenuItem("Connect Gizmo to Gizmo");
+		connectGizmo.addActionListener(listener);
+		connect.add(connectGizmo);
+		
+		JMenuItem connectKey = new JMenuItem("Connect Key to Gizmo");
+		connectKey.addActionListener(listener);
+		connect.add(connectKey);
+		
+		popup.add(connect);
+		
+		JMenu disConnect = new JMenu("Disconnect");
+		
+		JMenuItem disConnectGizmo = new JMenuItem("Disconnect Gizmo to Gizmo");
+		disConnectGizmo.addActionListener(listener);
+		disConnect.add(disConnectGizmo);
+		
+		JMenuItem disConnectKey = new JMenuItem("Disconnect Key to Gizmo");
+		disConnectKey.addActionListener(listener);
+		disConnect.add(disConnectKey);
+		
+		popup.add(disConnect);
+
+		JMenuItem jm2 = new JMenuItem("Delete");
+		jm2.addActionListener(listener);
+		popup.add(jm2);
+
+		return popup;
+	}
+	
+	private JPopupMenu createEmptyPopupMenu(ActionListener listener) {
+
+		JPopupMenu popup = new JPopupMenu();
+
+		JMenu addGizmo = new JMenu("Add Gizmo");
 
 		JMenuItem square = new JMenuItem("Square");
 		square.addActionListener(listener);
@@ -143,27 +201,30 @@ public class BuildBoard extends Board {
 		
 		addGizmo.add(addFlipper);
 		
+		popup.add(addGizmo);
+		
 		JMenuItem AddBall = new JMenuItem("Ball");
 		AddBall.addActionListener(listener);
 		addGizmo.add(AddBall);
 
-		popup.add(addGizmo);
+		popup.add(AddBall);
+		
 
-		JMenu rotate = new JMenu("Rotate");
-
-		JMenuItem clockwise = new JMenuItem("Clockwise");
-		clockwise.addActionListener(listener);
-		rotate.add(clockwise);
-
-		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
-		aClockwise.addActionListener(listener);
-		rotate.add(aClockwise);
-
-		popup.add(rotate);
-
-		JMenuItem jm2 = new JMenuItem("Delete");
-		jm2.addActionListener(listener);
-		popup.add(jm2);
+//		JMenu rotate = new JMenu("Rotate");
+//
+//		JMenuItem clockwise = new JMenuItem("Clockwise");
+//		clockwise.addActionListener(listener);
+//		rotate.add(clockwise);
+//
+//		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
+//		aClockwise.addActionListener(listener);
+//		rotate.add(aClockwise);
+//
+//		popup.add(rotate);
+//
+//		JMenuItem jm2 = new JMenuItem("Delete");
+//		jm2.addActionListener(listener);
+//		popup.add(jm2);
 
 		return popup;
 
@@ -188,20 +249,6 @@ public class BuildBoard extends Board {
 		int column = (int) (moveTarget.getX() / cellWidth);
 		int row = (int) (moveTarget.getY() / cellHeight);		
 		return new Point(column, row);
-	}
-
-	private boolean containsGizmo(Point p){
-		
-		//int x = (p.x/(getWidth()/columnCount));
-		//int y = (p.y/(getHeight()/rowCount));
-		
-		for (IGizmo g: gizmoList){
-			if (g.getXPos() == p.x && g.getYPos() == p.y){
-				return true;
-			}
-		}
-		
-		return false;
 	}
 	
 	@Override
