@@ -84,7 +84,7 @@ public class LeftFlipper extends Flipper {
 			}
 		}
 		
-		if(triggerType == TriggerType.GIZMO || triggerType == TriggerType.BALL){
+		if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
 				if(angle < rotationAngle){
 					angle=angle+av;

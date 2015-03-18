@@ -494,7 +494,6 @@ public class Model extends Observable implements IModel {
 				}
 				
 				g.trigger(type);
-				System.out.println("TRIGGER");
 			}
 		}
 	}
