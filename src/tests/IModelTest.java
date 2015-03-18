@@ -264,10 +264,10 @@ public class IModelTest {
 		assertTrue("Must be no connections", circ.getConnections().isEmpty());
 		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
 	}
-	
+
 	@Test
 	public void testDisconnectGizmos() {
-		
+
 		// create a couple of gizmos
 		IGizmo circ = new Circle(10, 10);
 		IGizmo sqr = new Square(11, 10);
@@ -280,5 +280,27 @@ public class IModelTest {
 
 		assertTrue("Must be no connections", circ.getConnections().isEmpty());
 		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
+	}
+
+	@Test
+	public void testDeleteBall() throws InvalidGridPosException {
+		m.addBall(19.5, 18.5, 0, -50);
+		m.deleteBall(new Point(1, 1));
+		assertFalse("Ball should still exist", m.getBalls().isEmpty());
+
+		m.deleteBall(new Point(19, 18));
+		assertTrue("Ball should be gone", m.getBalls().isEmpty());
+
+	}
+
+	@Test
+	public void testDeleteGizmo() throws InvalidGridPosException {
+		m.addGizmo(new Square(5, 5));
+		m.deleteGizmo(new Point(5, 1));
+		assertFalse("Gizmo should still exist", m.getGizmos().isEmpty());
+
+		m.deleteGizmo(new Point(5, 5));
+		assertTrue("Gizmo should be gone", m.getGizmos().isEmpty());
+
 	}
 }
