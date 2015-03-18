@@ -22,5 +22,9 @@ public class Global {
 	public static double REFRESHTIME = 20; // 50fps in ms
 	
 	public static double MOVETIME = REFRESHTIME / 1000; // in seconds
+	
+	public static Boolean discoMode = false;
+	
+	public static Boolean raveMode = false;
 
 }

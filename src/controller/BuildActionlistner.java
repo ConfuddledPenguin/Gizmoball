@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import main.GizmoBallMain;
+import model.Global;
 import model.IModel;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
@@ -115,7 +116,6 @@ public class BuildActionlistner implements ActionListener {
 			model.deleteBall(view.getClickedCell());
 			break;
 		case ("Run Mode"):
-			System.out.println("Going into running mode!!!!");
 			GizmoBallMain.gui.switchMode();
 			break;
 		case ("Friction"):
@@ -152,6 +152,18 @@ public class BuildActionlistner implements ActionListener {
 					view.displayErrorMessage(e2.getMessage());
 				}
 			}
+			break;
+		case ("Normal"):
+			Global.raveMode = false;
+			Global.discoMode = false;
+			break;
+		case ("Disco"):
+			Global.raveMode = false;
+			Global.discoMode = true;
+			break;
+		case ("Rave"):
+			Global.raveMode = true;
+			Global.discoMode = false;
 			break;
 		}
 	}

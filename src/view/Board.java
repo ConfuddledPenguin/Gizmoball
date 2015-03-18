@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -8,9 +9,11 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
+import model.Global;
 import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
@@ -24,6 +27,9 @@ public abstract class Board extends JPanel implements Observer {
 	protected List<IGizmo> gizmoList;
 	protected static final int L = 20;
 	protected List<IBall> balls;
+	protected int[] colour = {240,172,217};
+	private int tickerC = 0;
+	private Boolean direction = null;
 	
 	protected IModel model;
 	
@@ -32,6 +38,7 @@ public abstract class Board extends JPanel implements Observer {
 		balls = new ArrayList<IBall>(model.getBalls());
 		this.model = model;
 	}
+	
 
 	protected void drawGizmos(Graphics2D g2d){
 		
@@ -105,5 +112,34 @@ public abstract class Board extends JPanel implements Observer {
 				}
 			}
 		}
+	}
+	
+	public void nextColour(){
+		if(Global.discoMode){
+			if(tickerC > 99){
+				direction = false;
+			} else if(tickerC < 1){
+				direction = true;
+			}
+			
+			if(direction){
+				tickerC++;
+			} else {
+				tickerC--;
+			}
+			
+			colour[0] = (255 * tickerC) / 100;
+			colour[1] = (255 * (100 - tickerC)) / 100; 
+		} else if(Global.raveMode){
+			 Random rand = new Random();
+			 colour[0] = rand.nextInt((255 - 0) + 1);
+			 colour[1] = rand.nextInt((255 - 0) + 1);
+			 colour[2] = rand.nextInt((255 - 0) + 1);
+		} else {
+			colour[0] = 240;
+			colour[1] = 172;
+			colour[2] = 217;
+		}
+		
 	}
 }

@@ -452,7 +452,7 @@ public class Model extends Observable implements IModel {
 		board.clear();
 		balls.clear();
 		
-		keyConnections = new HashMap<Integer, HashSet<IGizmo>>();
+		keyConnections.clear();
 		
 		setChanged();
 		notifyObservers(board.getGizmos());

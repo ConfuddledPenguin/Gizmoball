@@ -23,7 +23,7 @@ import controller.Controller;
 public class GUI {
 
 	public JFrame frame;
-	private RunBoard runBoard;
+	public RunBoard runBoard;
 	private Controller controller;
 	private char mode;
 	private Model model;
@@ -41,14 +41,14 @@ public class GUI {
 		else if (mode == 'b')
 			createAndShowBuildGUI();
 	}
-
+	
 	private void createAndShowRunGUI() {
 
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		int width = (Global.L * Global.BOARDHEIGHT);
+		//int width = (Global.L * Global.BOARDHEIGHT);
 		
 		this.runBoard = new RunBoard((Global.L * Global.BOARDWIDTH), (Global.L * Global.BOARDHEIGHT), this.model);
 		this.buildBoard = null;
@@ -199,6 +199,23 @@ public class GUI {
 		JMenuItem Disconnect = new JMenuItem("Disconnect");
 		Disconnect.addActionListener(controller.getBuildListener());
 		menuList.add(Disconnect);
+		
+		JMenu modes = new JMenu("Modes");
+		
+		JMenuItem normal = new JMenuItem("Normal");
+		normal.addActionListener(controller.getBuildListener());
+		modes.add(normal);
+		
+		JMenuItem disco = new JMenuItem("Disco");
+		disco.addActionListener(controller.getBuildListener());
+		modes.add(disco);
+		
+		JMenuItem rave = new JMenuItem("Rave");
+		rave.addActionListener(controller.getBuildListener());
+		modes.add(rave);
+		
+		menuList.add(modes);
+		
 		
 		JMenuItem ClearBoard = new JMenuItem("Clear Board");
 		ClearBoard.addActionListener(controller.getBuildListener());
