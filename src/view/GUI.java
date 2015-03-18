@@ -269,25 +269,69 @@ public class GUI {
 		return flipperMenu;
 	}
 	
+	/**
+	 * Prompt the user to enter numeric values for friction (mu and mu2)
+	 * @return array containing values for mu and mu2. Null on cancel
+	 */
 	public float[] getUserFriction() {
 		float[] friction = new float[2];
 		JTextField mu = new JTextField();
 		JTextField mu2 = new JTextField();
 		Object[] input = {"Friction MU", mu, "Friction MU2", mu2};
-		Object[] input2 = {"Friction MU2", mu2};
+		boolean valid = false;
 		
-		JOptionPane.showConfirmDialog(this.frame, input, "Enter Friction", JOptionPane.OK_CANCEL_OPTION);
-		friction[0] = Float.parseFloat(mu.getText());
-		friction[1] = Float.parseFloat(mu2.getText());
+		// loop until valid values are entered by the user
+		while (!valid) {
+			int n = JOptionPane.showConfirmDialog(this.frame, input, "Enter Friction", JOptionPane.OK_CANCEL_OPTION);
+			if (n == JOptionPane.OK_OPTION) {
+				try {
+					friction[0] = Float.parseFloat(mu.getText());
+					friction[1] = Float.parseFloat(mu2.getText());
+					valid = true;
+				}
+				catch (NumberFormatException e) {
+					String error = "Error: Please enter numeric values for MU and MU2";
+					JOptionPane.showMessageDialog(this.frame, error, "Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			// user clicked cancel
+			if (n == JOptionPane.CANCEL_OPTION) {
+				return null;
+			}	
+			
+		}
 		return friction;
 	}
 	
-	public double getUserGravity() {
+	/**
+	 * Prompt the user to enter a numeric value for gravity
+	 * @return users value for gravity. Null on cancel
+	 */
+	public Double getUserGravity() {
 		JTextField g = new JTextField();
 		Object[] input = {"Gravity", g};
-		JOptionPane.showConfirmDialog(this.frame, input, "Enter Gravity", JOptionPane.OK_CANCEL_OPTION);
-		return Double.parseDouble(g.getText());
+		boolean valid = false;
 		
+		// loop until a valid value is entered by the user
+		while (!valid) {
+			int n = JOptionPane.showConfirmDialog(this.frame, input, "Enter Gravity", JOptionPane.OK_CANCEL_OPTION);
+			if (n == JOptionPane.OK_OPTION) {
+				try {
+					Double.parseDouble(g.getText());
+					valid = true;
+				}
+				catch (NumberFormatException e) {
+					String error = "Error: Please enter a numeric value for gravity";
+					JOptionPane.showMessageDialog(this.frame, error, "Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			
+			// user clicked cancel
+			if (n == JOptionPane.CANCEL_OPTION) {
+				return null;
+			}	
+		}
+		return Double.parseDouble(g.getText());
 	}
 
 
