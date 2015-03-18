@@ -45,7 +45,7 @@ public class RunActionlistner implements ActionListener {
 			
 			//perform update
 			model.update();
-			
+			gui.runBoard.nextColour();
 			//compensate for update time
 			time = System.nanoTime() / 1000 / 1000 - time;
 			int delay = (int) (Global.REFRESHTIME - time);

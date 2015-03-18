@@ -36,11 +36,8 @@ public class GizmoBallMain {
 		try {
 			m.addBall(19.5,18.5,0,-50);
 		} catch (InvalidGridPosException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-//		m.addGizmo(new Square(10,5));
 		IGizmo g = new Absorber(0, 19, 20, 1);
 		try {
 			m.addGizmo(g);
@@ -49,35 +46,6 @@ public class GizmoBallMain {
 			e.printStackTrace();
 		}
 		m.registerKeyStroke(32, g);
-//		m.addGizmo(new Circle(10,10));
-//		m.addGizmo(new Square(11,10));
-//		m.addGizmo(new RightFlipper(11,11));
-		//m.addGizmo(new LeftFlipper(10,11));
-//		m.addGizmo(new Circle(15,15));
-//		m.addGizmo(new Circle(15,10));
-//		m.addGizmo(new Circle(18,9));
-//		m.addGizmo(new Circle(14,14));
-//		m.addGizmo(new Circle(19,4));	
-//		
-//		m.addGizmo(new Circle(10,4));
-//		m.addGizmo(new Circle(11,5));
-//		m.addGizmo(new Circle(12,6));
-//		m.addGizmo(new Circle(13,7));
-//		m.addGizmo(new Circle(14,8));
-//		m.addGizmo(new Circle(15,9));
-//		m.addGizmo(new Circle(16,10));
-//		m.addGizmo(new Circle(17,11));
-//		m.addGizmo(new Circle(18,12));
-//		m.addGizmo(new Circle(19,13));
-//		m.addGizmo(new Circle(20,14));
-//		m.addGizmo(new Circle(21,14));
-//		m.addGizmo(new Circle(22,14));
-//		m.addGizmo(new Circle(23,13));
-//		m.addGizmo(new Circle(26,10));
-//		IGizmo flip = new RightFlipper(5,5);
-//		m.addGizmo(flip);
-		
-//		m.registerKeyStroke(65, flip);
 
 	}
 }

@@ -40,7 +40,9 @@ public class RunBoard extends Board {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		this.setBackground(new Color(this.colour[0],this.colour[1],this.colour[2]));
 
+		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0,0,255));
 		

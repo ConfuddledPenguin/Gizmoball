@@ -23,7 +23,7 @@ import controller.Controller;
 public class GUI {
 
 	public JFrame frame;
-	private RunBoard runBoard;
+	public RunBoard runBoard;
 	private Controller controller;
 	private char mode;
 	private Model model;
@@ -41,14 +41,14 @@ public class GUI {
 		else if (mode == 'b')
 			createAndShowBuildGUI();
 	}
-
+	
 	private void createAndShowRunGUI() {
 
 		frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		int width = (Global.L * Global.BOARDHEIGHT);
+		//int width = (Global.L * Global.BOARDHEIGHT);
 		
 		this.runBoard = new RunBoard((Global.L * Global.BOARDWIDTH), (Global.L * Global.BOARDHEIGHT), this.model);
 		this.buildBoard = null;
