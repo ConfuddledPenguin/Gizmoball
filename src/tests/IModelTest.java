@@ -3,7 +3,7 @@
  */
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ import model.Ball;
 import model.IBall;
 import model.IModel;
 import model.Model;
+import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
 import model.gizmos.IGizmo;
@@ -42,7 +43,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddBall() {
+	public void testAddBall() throws InvalidGridPosException {
 		assertEquals("Model must initially have no balls", 0, m.getBalls()
 				.size());
 
@@ -150,6 +151,34 @@ public class IModelTest {
 				.getGizmos().get(0));
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
+	}
+	
+	@Test
+	public void testClear() throws InvalidGridPosException {
+		// add some stuff
+		m.addBall(19.5,18.5,0,-50);
+		IGizmo g = new Absorber(0, 19, 20, 1);
+		m.addGizmo(g);
+		m.registerKeyStroke(32, g);
+		m.addGizmo(new Circle(10,10));
+		m.addGizmo(new Square(11,10));
+		m.addGizmo(new RightFlipper(11,11));
+		m.addGizmo(new LeftFlipper(10,11));
+		m.addGizmo(new Circle(15,15));
+		m.addGizmo(new Circle(15,10));
+		m.addGizmo(new Circle(18,9));
+		
+		// test stuff has been added
+		assertFalse("Stuff should exist", m.getBalls().isEmpty());
+		assertFalse("Stuff should exist", m.getGizmos().isEmpty());
+
+		m.clear();
+		
+		// test stuff has gone
+		assertTrue("Stuff should not exist", m.getBalls().isEmpty());
+		assertTrue("Stuff should not exist", m.getGizmos().isEmpty());
+
+
 	}
 
 }
