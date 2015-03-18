@@ -1,104 +1,97 @@
-Triangle T 19 0
-Rotate T
+Triangle GIZMO0 19 0
+Rotate GIZMO0
+Triangle GIZMO1 1 1
+Square GIZMO2 0 2
+Square GIZMO3 1 2
+Square GIZMO4 2 2
+Square GIZMO5 3 2
+Square GIZMO6 4 2
+Square GIZMO7 5 2
+Square GIZMO8 6 2
+Square GIZMO9 7 2
+Square GIZMO10 8 2
+Square GIZMO11 13 2
+Square GIZMO12 14 2
+Square GIZMO13 15 2
+Square GIZMO14 16 2
+Square GIZMO15 17 2
+Square GIZMO16 18 2
+Circle GIZMO17 4 3
+Circle GIZMO18 5 4
+Circle GIZMO19 6 5
+Circle GIZMO20 7 6
+Circle GIZMO21 9 9
+Circle GIZMO22 10 9
+Circle GIZMO23 11 10
+Circle GIZMO24 12 9
+Circle GIZMO25 13 9
+Circle GIZMO26 15 6
+Circle GIZMO27 16 5
+Circle GIZMO28 17 4
+Circle GIZMO29 18 3
+LeftFlipper GIZMO30 9 2
+RightFlipper GIZMO31 11 2
+LeftFlipper GIZMO32 8 7
+RightFlipper GIZMO33 13 7
+Absorber GIZMO34 0 19 20 20
+Square GIZMO35 2 7
+Square GIZMO36 3 8
+Square GIZMO37 4 9
+Square GIZMO38 5 10
+Square GIZMO39 6 11
+Square GIZMO40 7 12
+Square GIZMO41 8 13
+Triangle GIZMO42 9 14
+Rotate GIZMO42
+Rotate GIZMO42
+Triangle GIZMO43 11 14
+Rotate GIZMO43
+Rotate GIZMO43
+Rotate GIZMO43
+Square GIZMO44 12 13
+Square GIZMO45 13 12
+Square GIZMO46 14 11
+Square GIZMO47 15 10
+Square GIZMO48 16 9
+Square GIZMO49 17 8
+Square GIZMO50 18 7
+Connect GIZMO32 GIZMO17
+Connect GIZMO32 GIZMO18
+Connect GIZMO32 GIZMO19
+Connect GIZMO32 GIZMO20
+Connect GIZMO33 GIZMO21
+Connect GIZMO32 GIZMO22
+Connect GIZMO33 GIZMO23
+Connect GIZMO32 GIZMO23
+Connect GIZMO33 GIZMO24
+Connect GIZMO32 GIZMO25
+Connect GIZMO33 GIZMO26
+Connect GIZMO33 GIZMO27
+Connect GIZMO33 GIZMO28
+Connect GIZMO33 GIZMO29
+Connect GIZMO34 GIZMO34
+Connect GIZMO42 GIZMO41
+Connect GIZMO43 GIZMO44
+KeyConnect key 32 ondown GIZMO30
+KeyConnect key 32 ondown GIZMO31
+KeyConnect key 32 ondown GIZMO34
+KeyConnect key 81 ondown GIZMO32
+KeyConnect key 87 ondown GIZMO33
+Ball BALL0 0.5 3.5 0.0 0.0
+Ball BALL1 1.5 3.5 0.0 0.0
+Ball BALL2 2.5 3.5 0.0 0.0
+Ball BALL3 3.5 3.5 0.0 0.0
+Ball BALL4 5.5 3.5 0.0 0.0
+Ball BALL5 6.5 3.5 0.0 0.0
+Ball BALL6 7.5 3.5 0.0 0.0
+Ball BALL7 8.5 3.5 0.0 0.0
+Ball BALL8 10.5 3.5 0.0 0.0
+Ball BALL9 12.5 3.5 0.0 0.0
+Ball BALL10 13.5 3.5 0.0 0.0
+Ball BALL11 14.5 3.5 0.0 0.0
+Ball BALL12 15.5 3.5 0.0 0.0
+Ball BALL13 16.5 3.5 0.0 0.0
+Ball BALL14 17.5 3.5 0.0 0.0
 
-Triangle T2 1 1
-
-Square S02 0 2
-Square S12 1 2
-Square S22 2 2
-Square S32 3 2
-Square S42 4 2
-Square S52 5 2
-Square S62 6 2
-Square S72 7 2
-Square S82 8 2
-Square S132 13 2
-Square S142 14 2
-Square S152 15 2
-Square S162 16 2
-Square S172 17 2
-Square S182 18 2
-
-Circle C43 4 3
-Circle C54 5 4
-Circle C65 6 5
-Circle C76 7 6
-Circle C99 9 9
-Circle C109 10 9
-Circle C1110 11 10
-Circle C129 12 9
-Circle C139 13 9
-Circle C156 15 6
-Circle C165 16 5
-Circle C174 17 4
-Circle C183 18 3
-
-LeftFlipper LF92 9 2
-KeyConnect key 32 down LF92
-KeyConnect key 32 up LF92
-RightFlipper RF112 11 2
-KeyConnect key 32 down RF112
-KeyConnect key 32 up RF112
-LeftFlipper LF87 8 7
-KeyConnect key 81 down LF87
-KeyConnect key 81 up LF87
-Connect C43 LF87
-Connect C54 LF87
-Connect C65 LF87
-Connect C76 LF87
-Connect C109 LF87
-Connect C1110 LF87
-Connect C139 LF87
-
-RightFlipper RF137 13 7
-KeyConnect key 87 down RF137
-KeyConnect key 87 up RF137
-Connect C99 RF137
-Connect C1110 RF137
-Connect C129 RF137
-Connect C156 RF137
-Connect C165 RF137
-Connect C174 RF137
-Connect C183 RF137
-Absorber A 0 19 20 20
-KeyConnect key 32 down A
-Connect A A
-Ball B 0.5 3.5 0.0 0.0
-Ball B 1.5 3.5 0.0 0.0
-Ball B 2.5 3.5 0.0 0.0
-Ball B 3.5 3.5 0.0 0.0
-Ball B 5.5 3.5 0.0 0.0
-Ball B 6.5 3.5 0.0 0.0
-Ball B 7.5 3.5 0.0 0.0
-Ball B 8.5 3.5 0.0 0.0
-Ball B 10.5 3.5 0.0 0.0
-Ball B 12.5 3.5 0.0 0.0
-Ball B 13.5 3.5 0.0 0.0
-Ball B 14.5 3.5 0.0 0.0
-Ball B 15.5 3.5 0.0 0.0
-Ball B 16.5 3.5 0.0 0.0
-Ball B 17.5 3.5 0.0 0.0
-
-Square S200 2 7
-Square S201 3 8
-Square S202 4 9
-Square S203 5 10
-Square S204 6 11
-Square S205 7 12
-Square S206 8 13
-Triangle T3 9 14
-Rotate T3
-Rotate T3
-Rotate T3
-Triangle T4 11 14
-Rotate T4
-Rotate T4
-Square S207 12 13
-Square S208 13 12
-Square S209 14 11
-Square S210 15 10
-Square S211 16 9
-Square S212 17 8
-Square S213 18 7
-Connect S206 T3
-Connect S207 T4
+Gravity 25.0
+Friction 0.025 0.025

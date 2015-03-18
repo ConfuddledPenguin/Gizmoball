@@ -151,19 +151,26 @@ public class GUI {
 		ReloadButton.addActionListener(controller.getRunListener());
 		menuList.add(ReloadButton);
 		
+		JMenuItem SaveButton = new JMenuItem("Save");
+		SaveButton.addActionListener(controller.getRunListener());
+		menuList.add(SaveButton);
+		
 		JMenuItem SaveAsButton = new JMenuItem("Save As");
 		SaveAsButton.addActionListener(controller.getRunListener());
 		menuList.add(SaveAsButton);
 
 		JMenuItem ModeButton;
 
-		if (this.mode == 'b')
+		if (this.mode == 'b'){
 			ModeButton = new JMenuItem("Run Mode");
-		else
+			ModeButton.addActionListener(controller.getBuildListener());
+			controller.getRunKeyListener().buildMode(true);
+		}else{
 			ModeButton = new JMenuItem("Build Mode");
+			ModeButton.addActionListener(controller.getRunListener());	
+			controller.getRunKeyListener().buildMode(false);
+		}
 
-		ModeButton.addActionListener(controller.getRunListener());
-		ModeButton.addActionListener(controller.getBuildListener());
 		menuList.add(ModeButton);
 
 		JMenuItem QuitButton = new JMenuItem("Quit");

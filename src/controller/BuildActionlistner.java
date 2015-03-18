@@ -104,6 +104,12 @@ public class BuildActionlistner implements ActionListener {
 			model.setGravity(gravity);
 			run.processkey(true);
 			
+			break;
+			
+		case "Clear Board":
+			model.clear();
+			break;
+			
 		case ("Move"):
 			
 			if(!view.getClickedCell().equals(view.getMovedPoint())){

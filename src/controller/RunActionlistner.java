@@ -23,6 +23,9 @@ public class RunActionlistner implements ActionListener {
 	private GUI gui;
 	private RunKeyListener runKey;
 
+	private File currentFile = null;
+	
+	
 	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey) {
 
 		model = m;
@@ -74,6 +77,23 @@ public class RunActionlistner implements ActionListener {
 				timer.stop();
 				gui.changeStartStop("Start");
 				break;
+				
+			case "Reload":
+				
+				if(currentFile != null){
+					
+					timer.stop();
+					gui.changeStartStop("Start");
+					
+					try{
+						model.loadBoard(currentFile);
+					}catch (IOException | IncorrectFileFormatException e1){
+						e1.printStackTrace();
+					}
+					
+					break;
+				}
+				
 			case "Load":
 				
 				timer.stop();
@@ -94,14 +114,35 @@ public class RunActionlistner implements ActionListener {
 					e1.printStackTrace();
 				}
 				
+				currentFile = file;
 				runKey.processkey(true);
 				
 				break;
 			case "Save":
+				
+				if(currentFile != null){
+					
+					boolean start = timer.isRunning();
+					timer.stop();
+					
+					try{
+						model.saveBoard(currentFile);
+					}catch(IOException e1){
+						e1.printStackTrace();
+					}
+					
+					if(start){
+						timer.start();
+					}
+					
+					break;
+					
+				}
+				
 			case "Save As":
 				
+				boolean start = timer.isRunning();
 				timer.stop();
-				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
 				fc = new FileChooser();
@@ -125,7 +166,10 @@ public class RunActionlistner implements ActionListener {
 				}
 				
 				runKey.processkey(true);
-				timer.start();
+				
+				if(start){
+					timer.start();
+				}
 				
 				break;
 			case ("Start"):

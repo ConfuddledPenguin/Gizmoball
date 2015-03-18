@@ -16,10 +16,13 @@ import model.IModel;
 public class RunKeyListener implements KeyListener {
 	
 	private ActionListener run;
+	private ActionListener build;
 	private IModel model;
 	private boolean processKey = true;
+	private boolean processBuildMode = true;
 	
 	private int lastKey = -1;
+	private int secondLastKey = -1;
 	
 
 	/**
@@ -46,6 +49,25 @@ public class RunKeyListener implements KeyListener {
 	}
 	
 	/**
+	 * Register the build listener 
+	 * 
+	 * @param build The build listener
+	 */
+	public void registerBuildActionListener(ActionListener build){
+		
+		this.build = build;		
+	}
+	
+	/**
+	 * Process the build mode key strokes
+	 * 
+	 * @param process true for process else false
+	 */
+	public void buildMode(boolean process){
+		this.processBuildMode = process;
+	}
+	
+	/**
 	 * Process the key press
 	 * 
 	 * Set to false if you wish for the focus 
@@ -66,6 +88,11 @@ public class RunKeyListener implements KeyListener {
 	public void keyPressed(KeyEvent arg0) {
 		model.triggerKeyPress(arg0.getKeyCode(), true);
 		System.out.println("key pressed " + arg0.getKeyCode());
+		
+		if(arg0.getKeyChar() != lastKey){
+			secondLastKey = lastKey;
+			lastKey = arg0.getKeyCode();
+		}
 	}
 
 	/* (non-Javadoc)
@@ -77,15 +104,16 @@ public class RunKeyListener implements KeyListener {
 		
 		int keyCode = arg0.getKeyCode();
 		
+		System.out.println("lastkeys: " + secondLastKey + "  " + lastKey);
 		//On alt
-		if(lastKey == 18){
+		if(secondLastKey == 18){
 			
 			if(keyCode == 115)
 				System.exit(0);
 		}
 		
 		//On ctrl
-		if(lastKey == 17){
+		if(secondLastKey == 17){
 			
 			if(keyCode == 83){ // s
 				run.actionPerformed(new ActionEvent(this, 0, "Save"));				
@@ -93,9 +121,13 @@ public class RunKeyListener implements KeyListener {
 			
 			if(keyCode == 76) // l
 				run.actionPerformed(new ActionEvent(this, 0, "Load"));
+			
+			if(keyCode == 82) // r
+				run.actionPerformed(new ActionEvent(this, 0, "Load"));
+			
+			if(keyCode == 87 && processBuildMode) // w
+				build.actionPerformed(new ActionEvent(this, 0, "Clear Board"));
 		}
-		
-		lastKey = arg0.getKeyCode();
 		
 		model.triggerKeyPress(arg0.getKeyCode(), false);
 	}
@@ -105,7 +137,9 @@ public class RunKeyListener implements KeyListener {
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// do nothing
+		
+		
+		
 	}
 	
 	/**
