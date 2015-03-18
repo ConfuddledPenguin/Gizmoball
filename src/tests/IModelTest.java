@@ -88,7 +88,7 @@ public class IModelTest {
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
 	}
-	
+
 	@Test
 	public void testAddGizmoTriangle() {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
@@ -104,7 +104,7 @@ public class IModelTest {
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
 	}
-	
+
 	@Test
 	public void testAddGizmoAbsorber() {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
@@ -120,7 +120,7 @@ public class IModelTest {
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
 	}
-	
+
 	@Test
 	public void testAddGizmoLeftFlipper() {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
@@ -136,7 +136,7 @@ public class IModelTest {
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
 	}
-	
+
 	@Test
 	public void testAddGizmoRightFlipper() {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
@@ -152,33 +152,116 @@ public class IModelTest {
 		assertEquals("Gizmo should be at it's point", g,
 				m.getGizmo(new Point(X, Y)));
 	}
-	
+
 	@Test
 	public void testClear() throws InvalidGridPosException {
 		// add some stuff
-		m.addBall(19.5,18.5,0,-50);
+		m.addBall(19.5, 18.5, 0, -50);
 		IGizmo g = new Absorber(0, 19, 20, 1);
 		m.addGizmo(g);
 		m.registerKeyStroke(32, g);
-		m.addGizmo(new Circle(10,10));
-		m.addGizmo(new Square(11,10));
-		m.addGizmo(new RightFlipper(11,11));
-		m.addGizmo(new LeftFlipper(10,11));
-		m.addGizmo(new Circle(15,15));
-		m.addGizmo(new Circle(15,10));
-		m.addGizmo(new Circle(18,9));
-		
+		m.addGizmo(new Circle(10, 10));
+		m.addGizmo(new Square(11, 10));
+		m.addGizmo(new RightFlipper(11, 11));
+		m.addGizmo(new LeftFlipper(10, 11));
+		m.addGizmo(new Circle(15, 15));
+		m.addGizmo(new Circle(15, 10));
+		m.addGizmo(new Circle(18, 9));
+
 		// test stuff has been added
 		assertFalse("Stuff should exist", m.getBalls().isEmpty());
 		assertFalse("Stuff should exist", m.getGizmos().isEmpty());
 
 		m.clear();
-		
+
 		// test stuff has gone
 		assertTrue("Stuff should not exist", m.getBalls().isEmpty());
 		assertTrue("Stuff should not exist", m.getGizmos().isEmpty());
 
+	}
+
+	/**
+	 * Check that new gizmo's don't start with any connections which would mess
+	 * tests up
+	 */
+	@Test
+	public void testGizmoConnection() {
+
+		// create a couple of gizmos
+		IGizmo circ = new Circle(10, 10);
+		IGizmo sqr = new Square(11, 10);
+
+		assertTrue("Must be no connections initially", circ.getConnections()
+				.isEmpty());
+		assertTrue("Must be no connections initially", sqr.getConnections()
+				.isEmpty());
+	}
+
+	@Test
+	public void testConnectGizmos() {
+
+		// create a couple of gizmos
+		IGizmo circ = new Circle(10, 10);
+		IGizmo sqr = new Square(11, 10);
+
+		m.addGizmo(circ);
+		m.addGizmo(sqr);
+
+		m.connectGizmos(circ, sqr);
+
+		assertTrue("Should be 1 conncection to sqr", circ.getConnections()
+				.contains(sqr));
+		assertTrue("Should be 1 conncection to sqr", 1 == circ.getConnections()
+				.size());
+		assertTrue("Must be no connections in sqr", sqr.getConnections()
+				.isEmpty());
+
+		// add again
+		m.connectGizmos(circ, sqr);
+
+		assertTrue("Should still be 1 conncection to sqr", circ
+				.getConnections().contains(sqr));
+		assertTrue("Should still be 1 conncection to sqr", 1 == circ
+				.getConnections().size());
+		assertTrue("Must be no connections in sqr", sqr.getConnections()
+				.isEmpty());
 
 	}
 
+	/**
+	 * Test what happens when a connection is requested between Gizmos where 1
+	 * or both don't exist in the model, or where 1 is null
+	 */
+	@Test
+	public void testConnectGizmosNotExist() {
+		// create a couple of gizmos
+		IGizmo circ = new Circle(10, 10);
+		IGizmo sqr = new Square(11, 10);
+		IGizmo gNull = null;
+
+		// add null
+		m.connectGizmos(sqr, gNull);
+
+		assertTrue("Must be no connections in sqr", sqr.getConnections()
+				.isEmpty());
+
+		// not exists
+		m.connectGizmos(circ, sqr);
+		assertTrue("Must be no connections", circ.getConnections().isEmpty());
+		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
+
+		// just circ exists
+		m.clear();
+		m.addGizmo(circ);
+		m.connectGizmos(circ, sqr);
+		assertTrue("Must be no connections", circ.getConnections().isEmpty());
+		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
+
+		// just sqr exists
+		m.clear();
+		m.addGizmo(sqr);
+		m.connectGizmos(circ, sqr);
+		assertTrue("Must be no connections", circ.getConnections().isEmpty());
+		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
+	}
 }
