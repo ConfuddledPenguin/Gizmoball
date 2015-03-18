@@ -122,14 +122,18 @@ public class BuildActionlistner implements ActionListener {
 			run.processkey(false);
 		
 			float[] friction = view.getUserFriction();
-			model.setFriction(friction[0], friction[1]);
-			run.processkey(true);
+			if (friction != null) {
+				model.setFriction(friction[0], friction[1]);
+				run.processkey(true);
+			}
 			break;
 		case ("Gravity"):
 			run.processkey(false);
-			double gravity = view.getUserGravity();
-			model.setGravity(gravity);
-			run.processkey(true);
+			Double gravity = view.getUserGravity();
+			if (gravity != null) {
+				model.setGravity((double)gravity);
+				run.processkey(true);
+			}
 			
 			break;
 			
