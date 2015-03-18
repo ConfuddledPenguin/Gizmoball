@@ -245,7 +245,7 @@ public class Board {
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
 			throw new InvalidGridPosException("Position: " + x + ":" + y + 
-					"is invalid. Please ensure Grid position is viable.");
+					" is invalid. Please ensure grid position is viable.");
 		}
 		
 		//check if already filled
@@ -253,7 +253,7 @@ public class Board {
 			for (int j = y; j < y + height; j++){
 				if(grid[i][j] != null){
 					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
-					"is already taken");
+					" is already taken. Please ensure the grid position is empty.");
 				}
 			}
 		}	

@@ -108,21 +108,16 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addGizmo(model.gizmos.IGizmo)
 	 */
 	@Override
-	public void addGizmo(IGizmo g) {
+	public void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		MODELLOG.log(Level.FINE,
 				"Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":"
 						+ g.getYPos());
 		;
 
-		try {
-			board.addGizmo(g);
-			setChanged();
-			notifyObservers(g);
-		} catch (GridPosAlreadyTakenException | InvalidGridPosException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		board.addGizmo(g);
+		setChanged();
+		notifyObservers(g);
 	}
 
 	/*
@@ -226,6 +221,10 @@ public class Model extends Observable implements IModel {
 	public void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
+		
+		if(g == null){
+			return;
+		}
 		this.board.moveGizmo(g, gizmoPoint, newPoint);
 
 		g.setCollisionDetails();

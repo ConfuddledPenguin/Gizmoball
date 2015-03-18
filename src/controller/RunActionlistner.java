@@ -110,8 +110,7 @@ public class RunActionlistner implements ActionListener {
 				try {
 					model.loadBoard(file);
 				} catch (IOException | IncorrectFileFormatException e1) {
-					// TODO inform the user their file is dreadful
-					e1.printStackTrace();
+					gui.displayErrorMessage(e1.getMessage());
 				}
 				
 				currentFile = file;
@@ -150,8 +149,7 @@ public class RunActionlistner implements ActionListener {
 				try {
 					file = fc.saveFile();
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					gui.displayErrorMessage(e2.getMessage());
 				}
 				
 				if (file == null){
@@ -161,8 +159,7 @@ public class RunActionlistner implements ActionListener {
 				try {
 					model.saveBoard(file);
 				} catch (IOException e1) {
-					// TODO inform user we failed
-					e1.printStackTrace();
+					gui.displayErrorMessage(e1.getMessage());
 				}
 				
 				runKey.processkey(true);

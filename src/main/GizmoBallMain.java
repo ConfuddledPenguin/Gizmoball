@@ -4,6 +4,7 @@ package main;
 import javax.swing.SwingUtilities;
 
 import model.Model;
+import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
@@ -41,7 +42,12 @@ public class GizmoBallMain {
 
 //		m.addGizmo(new Square(10,5));
 		IGizmo g = new Absorber(0, 19, 20, 1);
-		m.addGizmo(g);
+		try {
+			m.addGizmo(g);
+		} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		m.registerKeyStroke(32, g);
 //		m.addGizmo(new Circle(10,10));
 //		m.addGizmo(new Square(11,10));

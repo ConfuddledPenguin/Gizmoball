@@ -3,16 +3,16 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import main.GizmoBallMain;
 import model.IModel;
-import view.GUI;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.*;
-import model.Global;
+import model.gizmos.Circle;
+import model.gizmos.LeftFlipper;
+import model.gizmos.RightFlipper;
+import model.gizmos.Square;
+import model.gizmos.Triangle;
+import view.GUI;
 
 
 public class BuildActionlistner implements ActionListener {
@@ -36,33 +36,61 @@ public class BuildActionlistner implements ActionListener {
 		switch (e.getActionCommand()) {
 
 		case ("Square"):
-			model.addGizmo(new Square(view.getClickedCell().x,view.getClickedCell().y));
+			try {
+				model.addGizmo(new Square(view.getClickedCell().x,view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 
 		case ("Triangle"):
-			model.addGizmo(new Triangle(view.getClickedCell().x,view.getClickedCell().y));
+			try {
+				model.addGizmo(new Triangle(view.getClickedCell().x,view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 
 		case ("Circle"):
-			model.addGizmo(new Circle(view.getClickedCell().x,view.getClickedCell().y));
+			try {
+				model.addGizmo(new Circle(view.getClickedCell().x,view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 			
 		case ("Left Triangle"):
-			model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			try {
+				model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 			
 		case ("Right Triangle"):
-			model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			try {
+				model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			model.RotateClockwise(view.getClickedCell());  // rotate 180 degrees total
 			model.RotateClockwise(view.getClickedCell());  // to produce right triangle
 			break;
 			
 		case ("Left Flipper"):
-			model.addGizmo(new LeftFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			try {
+				model.addGizmo(new LeftFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 			
 		case ("Right Flipper"):
-			model.addGizmo(new RightFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			try {
+				model.addGizmo(new RightFlipper(view.getClickedCell().x, view.getClickedCell().y));
+			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
+				view.displayErrorMessage(e3.getMessage());
+			}
 			break;
 			
 		case ("Ball"):
@@ -70,8 +98,7 @@ public class BuildActionlistner implements ActionListener {
 			try {
 				model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
 			} catch (InvalidGridPosException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
+				view.displayErrorMessage(e2.getMessage());
 			}
 			break;
 			
@@ -116,17 +143,12 @@ public class BuildActionlistner implements ActionListener {
 				
 				try {
 					model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
-				} catch (InvalidGridPosException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (GridPosAlreadyTakenException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}	
+				}catch(GridPosAlreadyTakenException | InvalidGridPosException e2){
+					//TODO be smarter about this
+					view.displayErrorMessage(e2.getMessage());
+				}
 			}
 			break;
 		}
-
 	}
-
 }

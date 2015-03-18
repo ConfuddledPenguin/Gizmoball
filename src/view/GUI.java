@@ -289,6 +289,10 @@ public class GUI {
 		return Double.parseDouble(g.getText());
 		
 	}
+	
+	public void displayErrorMessage(String msg){
+		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+	}
 
 
 	public String switchMode() {

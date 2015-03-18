@@ -41,9 +41,11 @@ public interface IModel {
 	 * Add a gizmo to the board
 	 * 
 	 * @param g the gizmo to add
+	 * @throws GridPosAlreadyTakenException Grid pos already taken
+	 * @throws InvalidGridPosException Invalid Grid pos
 	 * 
 	 */
-	public abstract void addGizmo(IGizmo g);
+	public abstract void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException;
 
 	/**
 	 * Removes a gizmo from the board
