@@ -87,7 +87,6 @@ public class RunKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		model.triggerKeyPress(arg0.getKeyCode(), true);
-		System.out.println("key pressed " + arg0.getKeyCode());
 		
 		if(arg0.getKeyChar() != lastKey){
 			secondLastKey = lastKey;
@@ -104,7 +103,6 @@ public class RunKeyListener implements KeyListener {
 		
 		int keyCode = arg0.getKeyCode();
 		
-		System.out.println("lastkeys: " + secondLastKey + "  " + lastKey);
 		//On alt
 		if(secondLastKey == 18){
 			
