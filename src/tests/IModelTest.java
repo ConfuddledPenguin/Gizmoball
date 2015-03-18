@@ -264,4 +264,21 @@ public class IModelTest {
 		assertTrue("Must be no connections", circ.getConnections().isEmpty());
 		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
 	}
+	
+	@Test
+	public void testDisconnectGizmos() {
+		
+		// create a couple of gizmos
+		IGizmo circ = new Circle(10, 10);
+		IGizmo sqr = new Square(11, 10);
+
+		m.addGizmo(circ);
+		m.addGizmo(sqr);
+
+		m.connectGizmos(circ, sqr);
+		m.disconnectGizmos(circ, sqr);
+
+		assertTrue("Must be no connections", circ.getConnections().isEmpty());
+		assertTrue("Must be no connections", sqr.getConnections().isEmpty());
+	}
 }
