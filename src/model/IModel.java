@@ -4,7 +4,9 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Observer;
 
 import model.exceptions.GridPosAlreadyTakenException;
@@ -221,5 +223,12 @@ public interface IModel {
 	 * resets the board
 	 */
 	public void reset();
+	
+	/**
+	 * Get keyStrokes
+	 * 
+	 * @return Map of key Strokes
+	 */
+	public Map<Integer, HashSet<IGizmo>> getKeyStrokes();
 
 }

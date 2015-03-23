@@ -161,4 +161,11 @@ public interface IGizmo {
 	 */
 	public Set<IGizmo>getConnections();
 	
+	/**
+	 * Get the Coefficient of the gizmo
+	 * 
+	 * @return the Coefficient
+	 */
+	public double getCoefficient();
+	
 }

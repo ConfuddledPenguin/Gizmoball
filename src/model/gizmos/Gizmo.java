@@ -73,32 +73,43 @@ public abstract class Gizmo implements IGizmo {
 	 * of the gizmo
 	 */
 	public enum Orientation {
-		BottomLeft{
+		BottomLeft(270){
 			@Override
 			public String toString() {
 				return "Bottom Left";
 			}
 		},
 		
-		BottomRight{
+		BottomRight(180){
 			@Override
 			public String toString() {
 				return "Bottom Right";
 			}
 		},
 		
-		TopLeft{
+		TopLeft(0){
 			@Override
 			public String toString() {
 				return "Top Left";
 			}
 		},
 		
-		TopRight{
+		TopRight(90){
+			
 			@Override
 			public String toString() {
 				return "Top Right";
 			}
+		};
+		
+		private int angle;
+		
+		private Orientation(int angle){
+			this.angle = angle;
+		}
+		
+		public int getAngle(){
+			return angle;
 		}
 	}
 	
@@ -123,6 +134,7 @@ public abstract class Gizmo implements IGizmo {
 	protected int height;
 	protected int angle;
 	protected Orientation o;
+	protected double coefficient = 1;
 	
 	protected Type type;
 	
@@ -433,5 +445,15 @@ public abstract class Gizmo implements IGizmo {
 	public Set<IGizmo> getConnections() {
 		
 		return Collections.unmodifiableSet(connections);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#getCoefficient()
+	 */
+	@Override
+	public double getCoefficient(){
+		
+		return coefficient;
 	}
 }

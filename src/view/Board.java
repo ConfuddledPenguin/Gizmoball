@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -18,8 +17,6 @@ import model.IBall;
 import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
-import model.gizmos.LeftFlipper;
-import model.gizmos.RightFlipper;
 
 public abstract class Board extends JPanel implements Observer {
 	
@@ -88,24 +85,72 @@ public abstract class Board extends JPanel implements Observer {
 				} else if(gizmo.getType() == Gizmo.Type.Absorber) {
 					g2d.setColor(new Color(255,0,0));
 					g2d.fillRect(x, y, width, height);
-				} else if(gizmo instanceof LeftFlipper){
-					RoundRectangle2D rectangle = new RoundRectangle2D.Double(gizmo.getXPos()*20,gizmo.getYPos()*20,gizmo.getWidth()*20,gizmo.getHeight()*20,20,20);
-					//Rectangle rectangle = new Rectangle((gizmo.getXPos())*20,gizmo.getYPos()*20,gizmo.getWidth()*20,gizmo.getHeight()*20);
+				} else if(gizmo.getType() == Gizmo.Type.LeftFlipper){
 					
-					AffineTransform transform = new AffineTransform();
-					transform.rotate(Math.toRadians(gizmo.getAngle()), rectangle.getX() + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/4);
-					Shape transformed = transform.createTransformedShape(rectangle);
+					RoundRectangle2D rectangle = null;
+					AffineTransform transform;
+					Shape transformed = null;
+					
+					switch (gizmo.getOrientation()) {
+						case TopLeft:
+							rectangle = new RoundRectangle2D.Double(gizmo.getXPos()*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						case TopRight:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						case BottomRight:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						case BottomLeft:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						default:
+							break;
+					}
+					
+					transform = new AffineTransform();
+					transform.rotate(Math.toRadians(gizmo.getAngle() + gizmo.getOrientation().getAngle()), rectangle.getX()+1 + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/4);
+					transformed = transform.createTransformedShape(rectangle);
 					
 					g2d.setColor(new Color(0,255,0));
 					g2d.fill(transformed);
 					
 			        
-				} else if(gizmo instanceof RightFlipper){
-					RoundRectangle2D rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,gizmo.getYPos()*20,gizmo.getWidth()*20,gizmo.getHeight()*20,20,20);
-			
-					AffineTransform transform = new AffineTransform();
-					transform.rotate(Math.toRadians(gizmo.getAngle()), rectangle.getX() + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/4);
-					Shape transformed = transform.createTransformedShape(rectangle);
+				} else if(gizmo.getType() == Gizmo.Type.RightFlipper){
+					
+					RoundRectangle2D rectangle = null;
+					AffineTransform transform;
+					Shape transformed = null;
+					
+					switch (gizmo.getOrientation()) {
+						case TopLeft:
+							
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						case TopRight:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						case BottomRight:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+0)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+														
+							break;
+						case BottomLeft:
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*20,(gizmo.getYPos())*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							
+							break;
+						default:
+							break;
+					}
+					
+					transform = new AffineTransform();
+					transform.rotate(Math.toRadians(gizmo.getAngle() + gizmo.getOrientation().getAngle()), rectangle.getX()+1 + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/4);
+					transformed = transform.createTransformedShape(rectangle);
 					
 					g2d.setColor(new Color(0,255,0));
 					g2d.fill(transformed);

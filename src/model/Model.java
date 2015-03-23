@@ -433,12 +433,12 @@ public class Model extends Observable implements IModel {
 			keyConnections.remove(key);
 	}
 	
-	/**
-	 * Get keyStrokes
-	 * 
-	 * @return Map of key Strokes
+	/*
+	 * (non-Javadoc)
+	 * @see model.IModel#getKeyStrokes()
 	 */
-	Map<Integer, HashSet<IGizmo>> getKeyStrokes(){
+	@Override
+	public Map<Integer, HashSet<IGizmo>> getKeyStrokes(){
 		
 		return Collections.unmodifiableMap(keyConnections);
 	}
@@ -648,13 +648,15 @@ public class Model extends Observable implements IModel {
 		//Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
 
+			double coefficient = gizmo.getCoefficient();
+			
 			gizmo.setCollisionDetails();
 			//The gizmos edges
 			for (LineSegment edge : gizmo.getEdges()) {
 				timeToObject = Geometry.timeUntilWallCollision(edge,ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectWall(edge, ballVelocity);
+					newVelocity = Geometry.reflectWall(edge, ballVelocity, coefficient);
 					colidingGizmo = gizmo;
 					
 				}
@@ -666,7 +668,7 @@ public class Model extends Observable implements IModel {
 						ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity);
+					newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity, coefficient);
 					colidingGizmo = gizmo;
 					
 				}

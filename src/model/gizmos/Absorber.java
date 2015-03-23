@@ -54,7 +54,7 @@ public class Absorber extends Gizmo {
 		
 		if(!corners.isEmpty()) corners.clear();
 		if(!edges.isEmpty()) edges.clear();
-
+		
 		LineSegment ls1 = new LineSegment(xcoord, ycoord, xcoord + width, ycoord); // top wall
 		LineSegment ls2 = new LineSegment(xcoord, ycoord, xcoord, ycoord + height);
 		LineSegment ls3 = new LineSegment(xcoord + width, ycoord, xcoord + width, ycoord + height);

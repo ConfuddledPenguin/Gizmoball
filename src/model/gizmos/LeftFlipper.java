@@ -17,10 +17,12 @@ public class LeftFlipper extends Flipper {
 	private int angle = 0;
 
 	public LeftFlipper(int x, int y) {
-		super(x, y, 1, 2, Gizmo.Type.LeftFlipper);
+		super(x, y, 2, 2, Gizmo.Type.LeftFlipper);
 		
 		//TODO find a good time
 		TRIGGER_TIME = 2500;
+		
+		coefficient = 0.95;
 
 	}
 
@@ -30,7 +32,7 @@ public class LeftFlipper extends Flipper {
 		if(!corners.isEmpty()) corners.clear();
 		if(!edges.isEmpty()) edges.clear();
 		
-		int w = this.getWidth()*Global.L;
+		int w = this.getWidth()/2*Global.L;
 		int h = this.getHeight()*Global.L;
 		int a = this.getAngle();
 		
@@ -51,7 +53,8 @@ public class LeftFlipper extends Flipper {
 		double y4 = y1 + (h/2);
 		
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
-		AffineTransform.getRotateInstance(Math.toRadians(a),cx,cy).transform(pt, 0, pt, 0, 6); 		
+		
+		AffineTransform.getRotateInstance(Math.toRadians(a + o.getAngle()),cx,cy).transform(pt, 0, pt, 0, 6); 		
 		
 		LineSegment ls1 = new LineSegment(pt[4]/Global.L, pt[5]/Global.L, pt[2]/Global.L, pt[3]/Global.L); // right wall
 		LineSegment ls2 = new LineSegment(pt[6]/Global.L,  pt[7]/Global.L, pt[0]/Global.L, pt[1]/Global.L); // left wall
@@ -72,26 +75,30 @@ public class LeftFlipper extends Flipper {
 	protected void action() {
 
 		int rotationAngle = 90; // in deg ˚
-		int av = 15; // angular velocity in degrees per second
+		int av = (int) (1080 / Global.REFREASHRATE); // angular velocity in degrees per second
 		
 		if(triggerType == TriggerType.ONDOWN){
-			if(angle < rotationAngle){
-				angle=angle+av;
+			angle=angle+av;
+			if(angle > rotationAngle){
+				angle=90;
 			}
 		}else if(triggerType == TriggerType.ONUP){
-			if(angle > 0){
-				angle=angle-av;
+			angle=angle-av;
+			if(angle < 0){
+				angle=0;
 			}
 		}
 		
 		if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
-				if(angle < rotationAngle){
-					angle=angle+av;
+				angle=angle+av;
+				if(angle > rotationAngle){
+					angle=90;
 				}
 			}else{
-				if(angle > 0){
-					angle=angle-av;
+				angle=angle-av;
+				if(angle < 0){
+					angle=0;
 				}
 			}
 		}

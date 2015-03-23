@@ -17,7 +17,9 @@ public class RightFlipper extends Flipper {
 	private int angle = 0;
 
 	public RightFlipper(int x, int y) {
-		super(x, y, 1, 2, Gizmo.Type.RightFlipper);
+		super(x, y, 2, 2, Gizmo.Type.RightFlipper);
+		
+		coefficient = 0.95;
 	}	
 	
 	public void setCollisionDetails(){
@@ -28,7 +30,7 @@ public class RightFlipper extends Flipper {
 		
 	
 		
-		int w = this.getWidth()*20;
+		int w = this.getWidth()/2*20;
 		int h = this.getHeight()*20;
 		int a = this.getAngle();
 		
@@ -68,26 +70,30 @@ public class RightFlipper extends Flipper {
 	protected void action() {
 
 		int rotationAngle = 90; // in deg ˚
-		int av = 15; // angular velocity in degrees per seconds
+		int av = (int) (1080 / Global.REFREASHRATE); // angular velocity in degrees per second
 		
 		if(triggerType == TriggerType.ONDOWN){
-			if(angle < rotationAngle){
-				angle=angle+av;
+			angle=angle+av;
+			if(angle > rotationAngle){
+				angle=90;
 			}
 		}else if(triggerType == TriggerType.ONUP){
-			if(angle > 0){
-				angle=angle-av;
+			angle=angle-av;
+			if(angle < 0){
+				angle=0;
 			}
 		}
 		
 		if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
-				if(angle < rotationAngle){
-					angle=angle+av;
+				angle=angle+av;
+				if(angle > rotationAngle){
+					angle=90;
 				}
 			}else{
-				if(angle > 0){
-					angle=angle-av;
+				angle=angle-av;
+				if(angle < 0){
+					angle=0;
 				}
 			}
 		}

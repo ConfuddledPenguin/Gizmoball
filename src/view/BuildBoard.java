@@ -8,11 +8,15 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Observable;
+import java.util.Set;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -41,8 +45,8 @@ public class BuildBoard extends Board {
 		m.addObserver(this);
 		moveTarget = new Point (0,0);
 
-		final JPopupMenu emptyPopup = createEmptyPopupMenu(listener);
-		final JPopupMenu gizmoPopup = createGizmoPopupMenu(listener);
+		JPopupMenu emptyPopup = createEmptyPopupMenu(listener);
+		JPopupMenu gizmoPopup;
 
 		addMouseMotionListener(new MouseAdapter() {
 			@Override
@@ -84,10 +88,11 @@ public class BuildBoard extends Board {
 				// so we check for popup triggers in both methods to ensure cross platform compatibility 
 				if (e.isPopupTrigger()) {
 					Point p = new Point(e.getX() /20, e.getY()/20);
-					if(model.getGizmo(p) == null){
+					IGizmo g;
+					if( (g=model.getGizmo(p)) == null){
 						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
 					}else{
-						gizmoPopup.show(e.getComponent(), e.getX(), e.getY());
+						createGizmoPopupMenu(listener, g).show(e.getComponent(), e.getX(), e.getY());
 					}
 					if (clickedCell == null)
 						mousePressed(e);
@@ -99,17 +104,17 @@ public class BuildBoard extends Board {
 
 				if (e.isPopupTrigger()) {
 					Point p = new Point(e.getX() /20, e.getY() /20);
-					if(model.getGizmo(p) == null){
+					IGizmo g;
+					if( (g=model.getGizmo(p)) == null){
 						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
 					}else{
-						gizmoPopup.show(e.getComponent(), e.getX(), e.getY());
+						createGizmoPopupMenu(listener, g).show(e.getComponent(), e.getX(), e.getY());
 					}
 					if (clickedCell == null)
 						mousePressed(e);
 				}
 				moving = false;
 			}
-
 		});
 
 		addMouseMotionListener(new MouseAdapter() {
@@ -124,7 +129,7 @@ public class BuildBoard extends Board {
 		});
 	}
 
-	private JPopupMenu createGizmoPopupMenu(ActionListener listener) {
+	private JPopupMenu createGizmoPopupMenu(ActionListener listener, IGizmo g) {
 
 		JPopupMenu popup = new JPopupMenu();
 
@@ -154,13 +159,40 @@ public class BuildBoard extends Board {
 		
 		JMenu disConnect = new JMenu("Disconnect");
 		
-		JMenuItem disConnectGizmo = new JMenuItem("Disconnect Gizmo to Gizmo");
-		disConnectGizmo.addActionListener(listener);
+		JMenu disConnectGizmo = new JMenu("Disconnect Gizmo to Gizmo");
+		
+		for(IGizmo g2: g.getConnections()){
+			
+			JMenuItem gItem = new JMenuItem(g2.getType().toString() + " at " + g2.getXPos() + ":" + g2.getYPos());
+			//TODO add listener
+			disConnectGizmo.add(gItem);
+		}
+		
 		disConnect.add(disConnectGizmo);
 		
-		JMenuItem disConnectKey = new JMenuItem("Disconnect Key to Gizmo");
-		disConnectKey.addActionListener(listener);
+		JMenu disConnectKey = new JMenu("Disconnect Key to Gizmo");
+		
+		/*
+		 * I don't even what to think about this piece of code, lets just pretend
+		 * it doesn't exist.
+		 * 
+		 * There isn't the world a better place?
+		 */
+		for(Entry<Integer, HashSet<IGizmo>> connections: model.getKeyStrokes().entrySet()){
+			
+			for(IGizmo g2: connections.getValue()){
+				
+				if(g2 == g){
+					JMenuItem keyItem = new JMenuItem("Key " + KeyEvent.getKeyText(connections.getKey()));
+					//TODO add listener
+					disConnectKey.add(keyItem);
+				}
+			}
+		}
+		
 		disConnect.add(disConnectKey);
+		
+		
 		
 		popup.add(disConnect);
 
