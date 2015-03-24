@@ -24,7 +24,7 @@ import javax.swing.JPopupMenu;
 
 import model.Global;
 import model.IBall;
-import model.Model;
+import model.IModel;
 import model.gizmos.IGizmo;
 
 public class BuildBoard extends Board {
@@ -36,16 +36,18 @@ public class BuildBoard extends Board {
 	private Point selectedCell;
 	private Point clickedCell;
 	private Point moveTarget;
+	private IModel model;
 	
-	public BuildBoard(Model m, final ActionListener listener) {
+	public BuildBoard(IModel m, final ActionListener listener) {
 
 		super(m);
+		this.model = m;
 		
 		cells = new ArrayList<>(Global.BOARDWIDTH * Global.BOARDHEIGHT);
 		m.addObserver(this);
 		moveTarget = new Point (0,0);
 
-		JPopupMenu emptyPopup = createEmptyPopupMenu(listener);
+		final JPopupMenu emptyPopup = createEmptyPopupMenu(listener);
 		JPopupMenu gizmoPopup;
 
 		addMouseMotionListener(new MouseAdapter() {
@@ -164,7 +166,7 @@ public class BuildBoard extends Board {
 		for(IGizmo g2: g.getConnections()){
 			
 			JMenuItem gItem = new JMenuItem(g2.getType().toString() + " at " + g2.getXPos() + ":" + g2.getYPos());
-			//TODO add listener
+			gItem.addActionListener(new controller.DisconnectGizmoListener(model, g, g2));
 			disConnectGizmo.add(gItem);
 		}
 		
@@ -184,7 +186,8 @@ public class BuildBoard extends Board {
 				
 				if(g2 == g){
 					JMenuItem keyItem = new JMenuItem("Key " + KeyEvent.getKeyText(connections.getKey()));
-					//TODO add listener
+					int keyValue = (int)KeyEvent.getKeyText(connections.getKey()).charAt(0); // get integer value of key
+					keyItem.addActionListener(new controller.DisconnectKeyListener(model, keyValue, g2));
 					disConnectKey.add(keyItem);
 				}
 			}
