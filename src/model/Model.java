@@ -733,9 +733,10 @@ public class Model extends Observable implements IModel {
 				y = end.y;
 				height = start.y - end.y;
 			}
-			
 			// add 1 to width and height to include clicked cells
-			addGizmo(new Absorber(x, y, width+1, height+1));
+			Absorber a = new Absorber(x, y, width+1, height+1);
+			addGizmo(a);
+			registerKeyStroke(32, a); //default to space bar for launch
 		}
 		catch (Exception e) {
 			// do nothing for now
