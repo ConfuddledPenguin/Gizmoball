@@ -94,6 +94,10 @@ public class BuildActionlistner implements ActionListener {
 			}
 			break;
 			
+		case ("Absorber"):
+			System.out.println("Add Absorber clicked: still to implement");
+			break;
+			
 		case ("Ball"):
 			// adding 0.5L to x and y makes the centre of the ball == centre of cell
 			try {

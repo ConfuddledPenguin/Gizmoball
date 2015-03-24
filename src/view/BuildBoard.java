@@ -233,8 +233,14 @@ public class BuildBoard extends Board {
 		JMenuItem rightTriangle = new JMenuItem("Right Flipper");
 		rightTriangle.addActionListener(listener);
 		addFlipper.add(rightTriangle);
-		
+	
 		addGizmo.add(addFlipper);
+		
+		JMenuItem absorber = new JMenuItem("Absorber");
+		absorber.addActionListener(listener);
+		addGizmo.add(absorber);
+		
+		
 		
 		popup.add(addGizmo);
 		
