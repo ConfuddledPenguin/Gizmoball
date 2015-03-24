@@ -76,7 +76,7 @@ public class BuildBoard extends Board {
 
 				int width = getWidth();
 				int height = getHeight();
-
+				//System."Key " + KeyEvent.getKeyText(connections.getKey())
 				int cellWidth = width / Global.BOARDWIDTH;
 				int cellHeight = height / Global.BOARDHEIGHT;
 				int column = e.getX() / cellWidth;
@@ -186,7 +186,7 @@ public class BuildBoard extends Board {
 				
 				if(g2 == g){
 					JMenuItem keyItem = new JMenuItem("Key " + KeyEvent.getKeyText(connections.getKey()));
-					int keyValue = (int)KeyEvent.getKeyText(connections.getKey()).charAt(0); // get integer value of key
+					int keyValue = connections.getKey(); // get integer value of key
 					keyItem.addActionListener(new controller.DisconnectKeyListener(model, keyValue, g2));
 					disConnectKey.add(keyItem);
 				}
