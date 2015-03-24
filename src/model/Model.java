@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
@@ -705,5 +706,40 @@ public class Model extends Observable implements IModel {
 		}//finish other ball checking
 		
 		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
+	}
+
+	@Override
+	public void addAbsorber(Point start, Point end) {
+		try {
+			int x = 0;  // x coordinate of top left corner of absorber
+			int y = 0;  // y coordinate of top left corner of absorber
+			int width = 0;
+			int height = 0;
+			
+			if (start.x < end.x) {
+				x = start.x;
+				width = end.x - start.x;
+			}
+			else {
+				x = end.x;
+				width = start.x - end.x;
+			}
+			
+			if (start.y < end.y) {
+				y = start.y;
+				height = end.y - start.y;
+			}
+			else {
+				y = end.y;
+				height = start.y - end.y;
+			}
+			
+			// add 1 to width and height to include clicked cells
+			addGizmo(new Absorber(x, y, width+1, height+1));
+		}
+		catch (Exception e) {
+			// do nothing for now
+		}
+		
 	}
 }

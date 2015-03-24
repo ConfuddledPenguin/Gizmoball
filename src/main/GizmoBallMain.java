@@ -31,7 +31,7 @@ public class GizmoBallMain {
 		});	
 	}
 	
-	private static void makeGizmos(){
+	private static void makeGizmos() {
 		
 		try {
 			m.addBall(19.5,18.5,0,-50);

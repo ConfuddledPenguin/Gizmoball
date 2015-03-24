@@ -33,10 +33,12 @@ public class BuildBoard extends Board {
 	private List<Rectangle> cells;
 
 	private boolean moving = false;
+	private Point absorberStart = null;
 	private Point selectedCell;
 	private Point clickedCell;
 	private Point moveTarget;
 	private IModel model;
+	
 	
 	public BuildBoard(IModel m, final ActionListener listener) {
 
@@ -86,6 +88,12 @@ public class BuildBoard extends Board {
 				repaint();
 				moving = true;
 				
+				if (absorberStart != null) {
+					// the previous click started absorber definition, this click finishes it
+					model.addAbsorber(absorberStart, clickedCell);
+					absorberStart = null;
+				}
+				
 				// popup menus are triggered in mousePressed rather than mouseReleased on Linux
 				// so we check for popup triggers in both methods to ensure cross platform compatibility 
 				if (e.isPopupTrigger()) {
@@ -103,6 +111,23 @@ public class BuildBoard extends Board {
 			}
 
 			public void mouseReleased(MouseEvent e) {
+				int width = getWidth();
+				int height = getHeight();
+				//System."Key " + KeyEvent.getKeyText(connections.getKey())
+				int cellWidth = width / Global.BOARDWIDTH;
+				int cellHeight = height / Global.BOARDHEIGHT;
+				int column = e.getX() / cellWidth;
+				int row = e.getY() / cellHeight;
+
+				clickedCell = new Point(column, row);
+				repaint();
+				moving = true;
+				
+				if (absorberStart != null) {
+					// the previous click started absorber definition, this click finishes it
+					model.addAbsorber(absorberStart, clickedCell);
+					absorberStart = null;
+				}
 
 				if (e.isPopupTrigger()) {
 					Point p = new Point(e.getX() /20, e.getY() /20);
@@ -302,6 +327,14 @@ public class BuildBoard extends Board {
 		cells.clear();
 		selectedCell = null;
 		super.invalidate();
+	}
+	
+	/**
+	 * Sets the starting point for an absorber definition by the user.
+	 * @param p the starting point in the grid
+	 */
+	public void setAbsorberStart(Point p) {
+		absorberStart = p;
 	}
 
 	@Override

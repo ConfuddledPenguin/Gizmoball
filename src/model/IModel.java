@@ -231,4 +231,6 @@ public interface IModel {
 	 */
 	public Map<Integer, HashSet<IGizmo>> getKeyStrokes();
 
+	public abstract void addAbsorber(Point absorberStart, Point clickedCell);
+
 }

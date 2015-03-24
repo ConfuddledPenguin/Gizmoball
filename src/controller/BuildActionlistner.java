@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -95,7 +96,7 @@ public class BuildActionlistner implements ActionListener {
 			break;
 			
 		case ("Absorber"):
-			System.out.println("Add Absorber clicked: still to implement");
+			view.setAbsorberStart(view.getClickedCell());
 			break;
 			
 		case ("Ball"):

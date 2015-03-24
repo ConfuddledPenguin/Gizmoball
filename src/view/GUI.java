@@ -382,4 +382,8 @@ public class GUI {
 	public Point getMovedPoint(){
 		return this.buildBoard.getMousePt();
 	}
+
+	public void setAbsorberStart(Point p) {
+		this.buildBoard.setAbsorberStart(p);
+	}
 }
