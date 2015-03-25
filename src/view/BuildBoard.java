@@ -44,7 +44,7 @@ public class BuildBoard extends Board {
 	private GUI ui;
 	
 	
-	public BuildBoard(IModel m, final ActionListener listener, GUI ui) {
+	public BuildBoard(final IModel m, final ActionListener listener, final GUI ui) {
 
 		super(m);
 		this.model = m;
