@@ -10,14 +10,22 @@ import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
 import view.GUI;
 
+/**
+ * The main starting class for the gizmoball application
+ * 
+ * @author Tom, Cameron, Andrew, Marc, Nathan
+ *
+ */
 public class GizmoBallMain {
-	/**
-	 * @author Cameron, Andrew, Tom, Marc, Nathan
-	 * 
-	 */
+	
 	public static GUI gui;
 	final static Model m = new Model();
 	
+	/**
+	 * Things start here and go else where
+	 * 
+	 * @param args none
+	 */
 	public static void main(String[] args){
 
 		SwingUtilities.invokeLater(new Runnable(){
@@ -31,6 +39,9 @@ public class GizmoBallMain {
 		});	
 	}
 	
+	/**
+	 * This adds the defualt gizmos to the screen
+	 */
 	private static void makeGizmos() {
 		
 		try {

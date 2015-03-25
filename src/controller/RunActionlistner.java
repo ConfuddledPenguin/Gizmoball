@@ -15,7 +15,10 @@ import view.FileChooser;
 import view.GUI;
 import view.IFileChooser;
 
-
+/**
+ * This controller listens for events coming from the run
+ * portion of gizmoball
+ */
 public class RunActionlistner implements ActionListener {
 
 	private IModel model;
@@ -25,7 +28,13 @@ public class RunActionlistner implements ActionListener {
 
 	private File currentFile = null;
 	
-	
+	/**
+	 * The constructor
+	 * 
+	 * @param m  the model
+	 * @param g The gui
+	 * @param runKey The run keylistener
+	 */
 	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey) {
 
 		model = m;
@@ -34,7 +43,11 @@ public class RunActionlistner implements ActionListener {
 		
 		timer = new Timer((int) Global.REFRESHTIME, this);
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -189,6 +202,5 @@ public class RunActionlistner implements ActionListener {
 				System.exit(0);
 				break;
 			}
-		
 	}
 }

@@ -7,10 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import physics.Circle;
-import physics.LineSegment;
 import model.Global;
 import model.IBall;
+import physics.Circle;
+import physics.LineSegment;
+import physics.Vect;
 
 /**
  * A gizmo
@@ -144,6 +145,8 @@ public abstract class Gizmo implements IGizmo {
 	protected double triggeredFor = 0; // in ms
 	
 	protected List<IBall> balls = new LinkedList<IBall>();
+	
+	protected Vect ballExitV = new Vect(0, -50);
 	
 	/**
 	 * This expresses the triggeredFor time as a
@@ -455,5 +458,31 @@ public abstract class Gizmo implements IGizmo {
 	public double getCoefficient(){
 		
 		return coefficient;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#releaseBalls()
+	 */
+	@Override
+	public void releaseBalls(){
+		
+		for (IBall b : balls){
+			
+			Vect v = new Vect(0, 0);
+			b.setVelo(v);
+			b.start();
+		}
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setBallExitVelocity(physics.Vect)
+	 */
+	@Override
+	public void setBallExitVelocity(Vect v) {
+		
+		ballExitV = v;
+		
 	}
 }

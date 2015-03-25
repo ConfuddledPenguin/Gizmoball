@@ -7,6 +7,7 @@ import model.IBall;
 import model.gizmos.Gizmo.Orientation;
 import physics.Circle;
 import physics.LineSegment;
+import physics.Vect;
 
 /**
  * The gizmo interface
@@ -167,5 +168,17 @@ public interface IGizmo {
 	 * @return the Coefficient
 	 */
 	public double getCoefficient();
+	
+	/**
+	 * Release all the balls stored by this gizmo
+	 */
+	public void releaseBalls();
+	
+	/**
+	 * Sets the velocity at which balls exit the absorber
+	 * 
+	 * @param v the velocity
+	 */
+	public void setBallExitVelocity(Vect v);
 	
 }

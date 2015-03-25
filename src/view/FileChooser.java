@@ -24,7 +24,7 @@ import controller.RestrictedFileSystemView;
  */
 public class FileChooser implements IFileChooser{
 	
-		JFileChooser chooser;
+	private JFileChooser chooser;
 	
 	public FileChooser() {
 		

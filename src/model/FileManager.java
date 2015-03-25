@@ -125,9 +125,9 @@ class FileManager {
 					}
 					int keynumber = Integer.parseInt(st.nextToken());
 					String state = st.nextToken();
-					boolean onDown = true;
+//					boolean onDown = true;
 					if(state.equals("up")){
-						onDown = false;
+//						onDown = false;
 					}
 					name = st.nextToken();
 					g = gizmos.get(name);
@@ -347,6 +347,9 @@ class FileManager {
 					
 					rotateSaveHelper(bw, name);
 					
+					break;
+					
+				case TopLeft:
 					break;
 			}
 		}

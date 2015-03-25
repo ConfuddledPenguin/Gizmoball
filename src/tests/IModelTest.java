@@ -34,9 +34,7 @@ import org.junit.Test;
 public class IModelTest {
 	IModel m;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
+
 	@Before
 	public void setUp() {
 		m = new Model();

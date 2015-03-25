@@ -78,6 +78,11 @@ public class RunKeyListener implements KeyListener {
 	 */
 	public void processkey(boolean process){
 		processKey = process;
+		
+		System.out.println("HEY!!! YOU SEE THIS???-------------------------\n" +
+				"I am bug hunting something rare, sometimes key pressed arent bing processed\n" +
+				"Pleas enesure that every false this prints is followed by a true value\n\n " + process +
+				"\n\n if not let me (tom) know plus what you did \nDanke----------------------------------");
 	}
 
 	/* (non-Javadoc)
@@ -96,8 +101,7 @@ public class RunKeyListener implements KeyListener {
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-	 */
-	
+	 */	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		

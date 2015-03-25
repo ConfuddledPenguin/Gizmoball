@@ -127,14 +127,26 @@ public class Ball implements IBall {
 		return ypos;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBall#stop()
+	 */
 	public void stop() {
 		stopped = true;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBall#start()
+	 */
 	public void start() {
 		stopped = false;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see model.IBall#isStopped()
+	 */
 	public boolean isStopped() {
 		return stopped;
 	}

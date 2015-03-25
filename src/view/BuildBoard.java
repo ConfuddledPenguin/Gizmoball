@@ -16,7 +16,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Observable;
-import java.util.Set;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -25,6 +24,10 @@ import javax.swing.JPopupMenu;
 import model.Global;
 import model.IBall;
 import model.IModel;
+import model.exceptions.GridPosAlreadyTakenException;
+import model.exceptions.InvalidGridPosException;
+import model.gizmos.Absorber;
+import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
 public class BuildBoard extends Board {
@@ -38,12 +41,14 @@ public class BuildBoard extends Board {
 	private Point clickedCell;
 	private Point moveTarget;
 	private IModel model;
+	private GUI ui;
 	
 	
-	public BuildBoard(IModel m, final ActionListener listener) {
+	public BuildBoard(IModel m, final ActionListener listener, GUI ui) {
 
 		super(m);
 		this.model = m;
+		this.ui = ui;
 		
 		cells = new ArrayList<>(Global.BOARDWIDTH * Global.BOARDHEIGHT);
 		m.addObserver(this);
@@ -90,7 +95,38 @@ public class BuildBoard extends Board {
 				
 				if (absorberStart != null) {
 					// the previous click started absorber definition, this click finishes it
-					model.addAbsorber(absorberStart, clickedCell);
+					
+					int x = 0;  // x coordinate of top left corner of absorber
+					int y = 0;  // y coordinate of top left corner of absorber
+					width = 0;
+					height = 0;
+					
+					if (absorberStart.x < clickedCell.x) {
+						x = absorberStart.x;
+						width = clickedCell.x - absorberStart.x;
+					}
+					else {
+						x = clickedCell.x;
+						width = absorberStart.x - clickedCell.x;
+					}
+					
+					if (absorberStart.y < clickedCell.y) {
+						y = absorberStart.y;
+						height = clickedCell.y - absorberStart.y;
+					}
+					else {
+						y = clickedCell.y;
+						height = absorberStart.y - clickedCell.y;
+					}
+					// add 1 to width and height to include clicked cells
+					Absorber a = new Absorber(x, y, width+1, height+1);
+					try {
+						model.addGizmo(a);
+						model.registerKeyStroke(32, a);
+					} catch (InvalidGridPosException
+							| GridPosAlreadyTakenException e1) {
+						ui.displayErrorMessage(e1.getMessage());
+					}
 					absorberStart = null;
 				}
 				
@@ -99,10 +135,13 @@ public class BuildBoard extends Board {
 				if (e.isPopupTrigger()) {
 					Point p = new Point(e.getX() /20, e.getY()/20);
 					IGizmo g;
-					if( (g=model.getGizmo(p)) == null){
-						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
-					}else{
+					IBall b;
+					if( (g=model.getGizmo(p)) != null){
 						createGizmoPopupMenu(listener, g).show(e.getComponent(), e.getX(), e.getY());
+					}else if( (b = m.getBall(p)) != null){
+						createBallPopupMenu(listener, b).show(e.getComponent(), e.getX(), e.getY());
+					}else{
+						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
 					}
 					if (clickedCell == null)
 						mousePressed(e);
@@ -125,17 +164,51 @@ public class BuildBoard extends Board {
 				
 				if (absorberStart != null) {
 					// the previous click started absorber definition, this click finishes it
-					model.addAbsorber(absorberStart, clickedCell);
+					int x = 0;  // x coordinate of top left corner of absorber
+					int y = 0;  // y coordinate of top left corner of absorber
+					width = 0;
+					height = 0;
+					
+					if (absorberStart.x < clickedCell.x) {
+						x = absorberStart.x;
+						width = clickedCell.x - absorberStart.x;
+					}
+					else {
+						x = clickedCell.x;
+						width = absorberStart.x - clickedCell.x;
+					}
+					
+					if (absorberStart.y < clickedCell.y) {
+						y = absorberStart.y;
+						height = clickedCell.y - absorberStart.y;
+					}
+					else {
+						y = clickedCell.y;
+						height = absorberStart.y - clickedCell.y;
+					}
+					// add 1 to width and height to include clicked cells
+					Absorber a = new Absorber(x, y, width+1, height+1);
+					try {
+						model.addGizmo(a);
+						model.registerKeyStroke(32, a);
+					} catch (InvalidGridPosException
+							| GridPosAlreadyTakenException e1) {
+						ui.displayErrorMessage(e1.getMessage());
+					}
+					absorberStart = null;
 					absorberStart = null;
 				}
 
 				if (e.isPopupTrigger()) {
 					Point p = new Point(e.getX() /20, e.getY() /20);
 					IGizmo g;
-					if( (g=model.getGizmo(p)) == null){
-						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
-					}else{
+					IBall b;
+					if( (g=model.getGizmo(p)) != null){
 						createGizmoPopupMenu(listener, g).show(e.getComponent(), e.getX(), e.getY());
+					}else if( (b = m.getBall(p)) != null){
+						createBallPopupMenu(listener, b).show(e.getComponent(), e.getX(), e.getY());
+					}else{
+						emptyPopup.show(e.getComponent(), e.getX(), e.getY());
 					}
 					if (clickedCell == null)
 						mousePressed(e);
@@ -156,6 +229,13 @@ public class BuildBoard extends Board {
 		});
 	}
 
+	/**
+	 * Builds the popup contect menu for a gizmo
+	 * 
+	 * @param listener The listener to use to listen for events
+	 * @param g The gizmo to build for
+	 * @return The menu
+	 */
 	private JPopupMenu createGizmoPopupMenu(ActionListener listener, IGizmo g) {
 
 		JPopupMenu popup = new JPopupMenu();
@@ -219,11 +299,17 @@ public class BuildBoard extends Board {
 		}
 		
 		disConnect.add(disConnectKey);
-		
-		
-		
+				
 		popup.add(disConnect);
 
+		if(g.getType() == Gizmo.Type.Absorber){
+			
+			JMenuItem exitV = new JMenuItem("Set Exit Velocity");
+			exitV.addActionListener(listener);
+			popup.add(exitV);
+			
+		}
+		
 		JMenuItem jm2 = new JMenuItem("Delete");
 		jm2.addActionListener(listener);
 		popup.add(jm2);
@@ -231,6 +317,13 @@ public class BuildBoard extends Board {
 		return popup;
 	}
 	
+	/**
+	 * Create a popup conetc menu for an empty area
+	 * 
+	 * @param listener The listener to use for events
+	 * 
+	 * @return The menu
+	 */
 	private JPopupMenu createEmptyPopupMenu(ActionListener listener) {
 
 		JPopupMenu popup = new JPopupMenu();
@@ -269,37 +362,53 @@ public class BuildBoard extends Board {
 		
 		popup.add(addGizmo);
 		
-		JMenuItem AddBall = new JMenuItem("Ball");
+		JMenuItem AddBall = new JMenuItem("Add Ball");
 		AddBall.addActionListener(listener);
 		addGizmo.add(AddBall);
 
 		popup.add(AddBall);
-		
 
-//		JMenu rotate = new JMenu("Rotate");
-//
-//		JMenuItem clockwise = new JMenuItem("Clockwise");
-//		clockwise.addActionListener(listener);
-//		rotate.add(clockwise);
-//
-//		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
-//		aClockwise.addActionListener(listener);
-//		rotate.add(aClockwise);
-//
-//		popup.add(rotate);
-//
-//		JMenuItem jm2 = new JMenuItem("Delete");
-//		jm2.addActionListener(listener);
-//		popup.add(jm2);
+		return popup;
+
+	}
+	
+	/**
+	 * Creates a popup context menu for when there is a ball selected
+	 * 
+	 * @param listener The listener to use
+	 * @param b The ball to build for
+	 * @return the menu
+	 */
+	private JPopupMenu createBallPopupMenu(ActionListener listener, IBall b) {
+
+		JPopupMenu popup = new JPopupMenu();
+
+		JMenuItem jm = new JMenuItem("Set Velocity");
+		jm.addActionListener(listener);
+		popup.add(jm);
+		
+		JMenuItem jm2 = new JMenuItem("Delete");
+		jm2.addActionListener(listener);
+		popup.add(jm2);
 
 		return popup;
 
 	}
 
+	/**
+	 * Returns the selected cell
+	 * 
+	 * @return this.selectedCell
+	 */
 	public Point getSelectedCell() {
 		return selectedCell;
 	}
 
+	/**
+	 * Returns the clicked cell
+	 * 
+	 * @return this.clickedCell
+	 */
 	public Point getclickedCell() {
 		return clickedCell;
 	}

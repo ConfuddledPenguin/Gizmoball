@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
@@ -135,6 +134,8 @@ public class Model extends Observable implements IModel {
 			MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
 					+ g.getXPos() + ":" + g.getYPos());
 			;
+			
+			g.releaseBalls();
 
 			board.removeGizmo(g);
 			
@@ -171,6 +172,25 @@ public class Model extends Observable implements IModel {
 	@Override
 	public IGizmo getGizmo(Point p) {
 		return board.getGizmo(p.x, p.y);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.Imodel#getBall(java.awt.Point)
+	 */
+	public IBall getBall(Point p) {
+		
+		for( IBall b : balls){
+			
+			System.out.println(p.x + ":" + p.y);
+			System.out.println(b.getX() + ":" + b.getY());
+			if ((int)b.getX() == p.x && (int)b.getY() == p.y) {
+				return b;
+			}
+		}
+		
+		return null;
 	}
 
 	/*
@@ -520,7 +540,7 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @param ball
 	 */
-	public void moveBall(IBall ball) {
+	private void moveBall(IBall ball) {
 
 		// move the ball
 		double moveTime = Global.MOVETIME;
@@ -706,41 +726,5 @@ public class Model extends Observable implements IModel {
 		}//finish other ball checking
 		
 		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
-	}
-
-	@Override
-	public void addAbsorber(Point start, Point end) {
-		try {
-			int x = 0;  // x coordinate of top left corner of absorber
-			int y = 0;  // y coordinate of top left corner of absorber
-			int width = 0;
-			int height = 0;
-			
-			if (start.x < end.x) {
-				x = start.x;
-				width = end.x - start.x;
-			}
-			else {
-				x = end.x;
-				width = start.x - end.x;
-			}
-			
-			if (start.y < end.y) {
-				y = start.y;
-				height = end.y - start.y;
-			}
-			else {
-				y = end.y;
-				height = start.y - end.y;
-			}
-			// add 1 to width and height to include clicked cells
-			Absorber a = new Absorber(x, y, width+1, height+1);
-			addGizmo(a);
-			registerKeyStroke(32, a); //default to space bar for launch
-		}
-		catch (Exception e) {
-			// do nothing for now
-		}
-		
 	}
 }

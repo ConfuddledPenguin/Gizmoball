@@ -13,6 +13,10 @@ public class Circle extends Gizmo {
 		super(x, y, 1, 1, Gizmo.Type.Circle);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setCollisionDetails()
+	 */
 	@Override
 	public void setCollisionDetails() {
 		

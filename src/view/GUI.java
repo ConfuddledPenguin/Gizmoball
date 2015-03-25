@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import physics.Vect;
 import model.Global;
 import model.Model;
 import controller.Controller;
@@ -78,7 +79,7 @@ public class GUI {
 
 		Container cp = frame.getContentPane();
 		
-		buildBoard = new BuildBoard(model, controller.getBuildListener());
+		buildBoard = new BuildBoard(model, controller.getBuildListener(), this);
 		runBoard = null;
 		cp.add(buildBoard, BorderLayout.SOUTH);
 
@@ -284,6 +285,41 @@ public class GUI {
 		flipperMenu.add(Right);	
 		
 		return flipperMenu;
+	}
+	
+	public Vect getBallVelocity(){
+		
+		float x = 0;
+		float y = 0;
+		
+		JTextField xfield = new JTextField();
+		JTextField yfield = new JTextField();
+		Object[] input = {"X velocity", xfield, "Y velocity", yfield};
+		boolean valid = false;
+		
+		// loop until valid values are entered by the user
+		while (!valid) {
+			int n = JOptionPane.showConfirmDialog(this.frame, input, "Enter the Balls velocity", JOptionPane.OK_CANCEL_OPTION);
+			if (n == JOptionPane.OK_OPTION) {
+				try {
+					x = Float.parseFloat(xfield.getText());
+					y = Float.parseFloat(yfield.getText());
+					valid = true;
+				}
+				catch (NumberFormatException e) {
+					String error = "Error: Please enter numeric values for x and y";
+					JOptionPane.showMessageDialog(this.frame, error, "Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			// user clicked cancel
+			if (n == JOptionPane.CANCEL_OPTION) {
+				return null;
+			}	
+			
+		}
+		
+		return new Vect(x, y*-1);  
+		
 	}
 	
 	/**

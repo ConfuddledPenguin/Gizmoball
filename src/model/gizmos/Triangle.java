@@ -23,8 +23,9 @@ public class Triangle extends Gizmo{
 //		rotateClockwise();
 	}
 	
-	/**
-	 * sets the Collision Details
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setCollisionDetails()
 	 */
 	@Override
 	public void setCollisionDetails(){

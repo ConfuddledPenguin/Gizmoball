@@ -15,9 +15,6 @@ import model.gizmos.IGizmo;
  */
 public class Board {
 
-	/*
-	 * This a bad idea, but it works with little thought for now
-	 */
 	private IGizmo[][] grid = new IGizmo[Global.BOARDHEIGHT][Global.BOARDWIDTH];
 	private List<IGizmo> gizmos = new ArrayList<IGizmo>();
 
@@ -174,6 +171,8 @@ public class Board {
 	 * @param height The height
 	 * 
 	 * @return true if empty, otherwise false;
+	 * 
+	 * @throws InvalidGridPosException Gri pos invalid
 	 */
 	public boolean isEmpty(int x, int y, int width, int height) throws InvalidGridPosException{
 		

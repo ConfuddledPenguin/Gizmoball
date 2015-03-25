@@ -29,7 +29,7 @@ public interface IFileChooser {
 	 * Ask the user for a file to save to
 	 * 
 	 * @return The file the user wishes to save to
-	 * @throws IOException 
+	 * @throws IOException Error writing to the file
 	 */
 	public abstract File saveFile() throws IOException;
 

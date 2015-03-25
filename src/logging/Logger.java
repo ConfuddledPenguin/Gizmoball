@@ -32,11 +32,9 @@ public class Logger {
 	};
 	
 	/**
-	 * Sets up the log to be used with the given
-	 * filter. The filter is used to control what is 
-	 * written to the .log file
+	 * Sets up the given log
 	 * 
-	 * @param f The filter to use
+	 * @param l the logger to set up
 	 */
 	static public void setUp(java.util.logging.Logger l) {
 		

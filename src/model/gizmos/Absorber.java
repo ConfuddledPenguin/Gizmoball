@@ -46,10 +46,13 @@ public class Absorber extends Gizmo {
 		ball.setX(xcoord + width - ball.getRadius());
 		ball.setY(ycoord - ball.getRadius());
 		
-		Vect v = new Vect(0, -50);
-		ball.setVelo(v);
+		ball.setVelo(ballExitV);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setCollisionDetails()
+	 */
 	public void setCollisionDetails(){
 		
 		if(!corners.isEmpty()) corners.clear();

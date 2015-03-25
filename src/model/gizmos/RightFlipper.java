@@ -22,6 +22,11 @@ public class RightFlipper extends Flipper {
 		coefficient = 0.95;
 	}	
 	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setCollisionDetails()
+	 */
+	@Override
 	public void setCollisionDetails(){
 		
 
@@ -65,7 +70,11 @@ public class RightFlipper extends Flipper {
 		corners.add(c5);
 		corners.add(c6);
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.Gizmo#action()
+	 */
 	@Override
 	protected void action() {
 

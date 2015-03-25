@@ -231,6 +231,12 @@ public interface IModel {
 	 */
 	public Map<Integer, HashSet<IGizmo>> getKeyStrokes();
 
-	public abstract void addAbsorber(Point absorberStart, Point clickedCell);
+	/**
+	 * Get the ball at this positions
+	 * 
+	 * @param p The point
+	 * @return The ball
+	 */
+	public IBall getBall(Point p);
 
 }

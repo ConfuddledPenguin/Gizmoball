@@ -15,8 +15,9 @@ public class Square extends Gizmo{
 		
 	}
 	
-	/**
-	 * sets the Collision Details
+	/*
+	 * (non-Javadoc)
+	 * @see model.gizmos.IGizmo#setCollisionDetails()
 	 */
 	public void setCollisionDetails(){
 		

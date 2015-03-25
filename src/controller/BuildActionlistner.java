@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,25 +9,42 @@ import model.IModel;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Circle;
+import model.gizmos.Gizmo.Type;
+import model.gizmos.IGizmo;
 import model.gizmos.LeftFlipper;
 import model.gizmos.RightFlipper;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
 import view.GUI;
 
-
+/**
+ * This controller listens to events coming from the build
+ * portion of gizmoball
+ *
+ */
 public class BuildActionlistner implements ActionListener {
 
 	private IModel model;
 	private GUI view;
 	private RunKeyListener run;
 
+	/**
+	 * The constructor
+	 * 
+	 * @param m The model to effect
+	 * @param g The ui to use
+	 * @param r The run key listener to update
+	 */
 	public BuildActionlistner(IModel m, GUI g, RunKeyListener r) {
 		model = m;
 		view = g;
 		run = r;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Controller: The " + e.getActionCommand()
@@ -99,13 +115,32 @@ public class BuildActionlistner implements ActionListener {
 			view.setAbsorberStart(view.getClickedCell());
 			break;
 			
-		case ("Ball"):
+		case ("Add Ball"):
 			// adding 0.5L to x and y makes the centre of the ball == centre of cell
 			try {
-				model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 0);
+				model.addBall(view.getClickedCell().x + 0.5, view.getClickedCell().y + 0.5, 0, 50);
 			} catch (InvalidGridPosException e2) {
 				view.displayErrorMessage(e2.getMessage());
 			}
+			break;
+			
+		case ("Set Velocity"):
+			
+			run.processkey(false);
+			model.getBall(view.getClickedCell()).setVelo(view.getBallVelocity());
+			run.processkey(true);
+			
+			break;
+			
+		case ("Set Exit Velocity"):
+			
+			run.processkey(false);
+			IGizmo g = model.getGizmo(view.getClickedCell());
+			if(g.getType() == Type.Absorber){
+				g.setBallExitVelocity(view.getBallVelocity());
+			}
+			run.processkey(true);
+			
 			break;
 			
 		case ("Clockwise"):
@@ -129,17 +164,16 @@ public class BuildActionlistner implements ActionListener {
 			float[] friction = view.getUserFriction();
 			if (friction != null) {
 				model.setFriction(friction[0], friction[1]);
-				run.processkey(true);
 			}
+			run.processkey(true);
 			break;
 		case ("Gravity"):
 			run.processkey(false);
 			Double gravity = view.getUserGravity();
 			if (gravity != null) {
 				model.setGravity((double)gravity);
-				run.processkey(true);
 			}
-			
+			run.processkey(true);			
 			break;
 			
 		case "Clear Board":
