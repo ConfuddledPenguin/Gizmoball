@@ -3,16 +3,17 @@
  */
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Ball;
 import model.IBall;
 import model.IModel;
 import model.Model;
+import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.Circle;
@@ -56,7 +57,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoSquare() {
+	public void testAddGizmoSquare() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -72,7 +73,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoCircle() {
+	public void testAddGizmoCircle() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -88,7 +89,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoTriangle() {
+	public void testAddGizmoTriangle() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -104,7 +105,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoAbsorber() {
+	public void testAddGizmoAbsorber() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -120,7 +121,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoLeftFlipper() {
+	public void testAddGizmoLeftFlipper() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -136,7 +137,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testAddGizmoRightFlipper() {
+	public void testAddGizmoRightFlipper() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		assertEquals("Model must initially have no Gizmos", 0, m.getGizmos()
 				.size());
 
@@ -152,7 +153,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testClear() throws InvalidGridPosException {
+	public void testClear() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		// add some stuff
 		m.addBall(19.5, 18.5, 0, -50);
 		IGizmo g = new Absorber(0, 19, 20, 1);
@@ -196,7 +197,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testConnectGizmos() {
+	public void testConnectGizmos() throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		// create a couple of gizmos
 		IGizmo circ = new Circle(10, 10);
@@ -229,9 +230,11 @@ public class IModelTest {
 	/**
 	 * Test what happens when a connection is requested between Gizmos where 1
 	 * or both don't exist in the model, or where 1 is null
+	 * @throws GridPosAlreadyTakenException 
+	 * @throws InvalidGridPosException 
 	 */
 	@Test
-	public void testConnectGizmosNotExist() {
+	public void testConnectGizmosNotExist() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		// create a couple of gizmos
 		IGizmo circ = new Circle(10, 10);
 		IGizmo sqr = new Square(11, 10);
@@ -264,7 +267,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testDisconnectGizmos() {
+	public void testDisconnectGizmos() throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		// create a couple of gizmos
 		IGizmo circ = new Circle(10, 10);
@@ -292,7 +295,7 @@ public class IModelTest {
 	}
 
 	@Test
-	public void testDeleteGizmo() throws InvalidGridPosException {
+	public void testDeleteGizmo() throws InvalidGridPosException, GridPosAlreadyTakenException {
 		m.addGizmo(new Square(5, 5));
 		m.deleteGizmo(new Point(5, 1));
 		assertFalse("Gizmo should still exist", m.getGizmos().isEmpty());
