@@ -239,18 +239,20 @@ public class BuildBoard extends Board {
 	private JPopupMenu createGizmoPopupMenu(ActionListener listener, IGizmo g) {
 
 		JPopupMenu popup = new JPopupMenu();
+		
+		if(g.getType() != Gizmo.Type.Absorber){
+			JMenu rotate = new JMenu("Rotate");
 
-		JMenu rotate = new JMenu("Rotate");
+			JMenuItem clockwise = new JMenuItem("Clockwise");
+			clockwise.addActionListener(listener);
+			rotate.add(clockwise);
 
-		JMenuItem clockwise = new JMenuItem("Clockwise");
-		clockwise.addActionListener(listener);
-		rotate.add(clockwise);
+			JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
+			aClockwise.addActionListener(listener);
+			rotate.add(aClockwise);
 
-		JMenuItem aClockwise = new JMenuItem("Anti-Clockwise");
-		aClockwise.addActionListener(listener);
-		rotate.add(aClockwise);
-
-		popup.add(rotate);
+			popup.add(rotate);
+		}
 		
 		JMenu connect = new JMenu("Connect");
 		
@@ -474,14 +476,14 @@ public class BuildBoard extends Board {
 		if (selectedCell != null) {
 			int index = selectedCell.x + (selectedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
-			g2d.setColor(Color.YELLOW);
+			g2d.setColor(Color.GRAY);
 			g2d.fill(cell);
 		}
 
 		if (clickedCell != null) {
 			int index = clickedCell.x + (clickedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
-			g2d.setColor(Color.RED);
+			g2d.setColor(Color.YELLOW);
 			g2d.fill(cell);
 		}
 

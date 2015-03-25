@@ -9,6 +9,7 @@ import java.awt.Point;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -55,12 +56,15 @@ public class GUI {
 		this.buildBoard = null;
 		Container cp = frame.getContentPane();
 
+		JLabel label = new JLabel("TEST");
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(createFileMenu());
 
 		cp.add(menuBar, BorderLayout.PAGE_START);
 		cp.add(createRunButtons(), BorderLayout.CENTER);
 		cp.add(runBoard, BorderLayout.SOUTH);
+		//cp.add(label, BorderLayout.PAGE_END);
 
 		cp.addKeyListener(controller.getRunKeyListener());
 		cp.setFocusable(true);
