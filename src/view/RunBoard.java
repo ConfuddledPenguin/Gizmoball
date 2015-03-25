@@ -52,7 +52,7 @@ public class RunBoard extends Board {
 		g2.setColor(new Color(0,0,255));
 		
 		
-		if(!Global.discoMode){
+		if(Global.discoMode){
 			Image img;
 			try {
 				if(firstImg <3){
