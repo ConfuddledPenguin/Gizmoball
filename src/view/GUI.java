@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -299,6 +300,27 @@ public class GUI {
 	}
 	
 	/**
+	 * Shows a message informing the user of how to 
+	 * connect gizmos together.
+	 * 
+	 */
+	public void showConnectMessage(){
+		
+		int n = JOptionPane.showConfirmDialog(this.frame, "Next select he gizmo you wish to trigger", null, JOptionPane.OK_CANCEL_OPTION);
+	
+		if(n == JOptionPane.CANCEL_OPTION){
+			buildBoard.cancelGizmoConnect();
+		}
+	}
+	
+	/**
+	 * Alert user to successful connection
+	 */
+	public void showGizmoConnectedMessage(){
+		JOptionPane.showConfirmDialog(this.frame, "Gizmos connected", null, JOptionPane.CLOSED_OPTION);
+	}
+	
+	/**
 	 * Prompt the user to enter a numeric value for gravity
 	 * @return users value for gravity. Null on cancel
 	 */
@@ -363,5 +385,10 @@ public class GUI {
 
 	public void setAbsorberStart(Point p) {
 		this.buildBoard.setAbsorberStart(p);
+	}
+	
+	public void setGizmoConnecting(ActionListener listener){
+		this.buildBoard.connectingGizmos(listener);
+		showConnectMessage();
 	}
 }

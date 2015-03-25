@@ -21,6 +21,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import controller.ConnectGizmoListener;
 import model.Global;
 import model.IBall;
 import model.IModel;
@@ -36,6 +37,7 @@ public class BuildBoard extends Board {
 	private List<Rectangle> cells;
 
 	private boolean moving = false;
+	private ActionListener connectingGizmos = null;
 	private Point absorberStart = null;
 	private Point selectedCell;
 	private Point clickedCell;
@@ -128,6 +130,16 @@ public class BuildBoard extends Board {
 						ui.displayErrorMessage(e1.getMessage());
 					}
 					absorberStart = null;
+					
+					return;
+				}
+				
+				if(connectingGizmos != null){
+					
+					connectingGizmos.actionPerformed(null);
+					connectingGizmos = null;
+					
+					return;
 				}
 				
 				// popup menus are triggered in mousePressed rather than mouseReleased on Linux
@@ -257,7 +269,7 @@ public class BuildBoard extends Board {
 		JMenu connect = new JMenu("Connect");
 		
 		JMenuItem connectGizmo = new JMenuItem("Connect Gizmo to Gizmo");
-		connectGizmo.addActionListener(listener);
+		connectGizmo.addActionListener( new ConnectGizmoListener(g, ui, model));
 		connect.add(connectGizmo);
 		
 		JMenuItem connectKey = new JMenuItem("Connect Key to Gizmo");
@@ -446,6 +458,20 @@ public class BuildBoard extends Board {
 	 */
 	public void setAbsorberStart(Point p) {
 		absorberStart = p;
+	}
+	
+	/**
+	 * Let the ui know that we are connecting gizmos
+	 */
+	public void connectingGizmos(ActionListener listener){
+		connectingGizmos = listener;
+	}
+	
+	/**
+	 * Cancel connecting the gizmos
+	 */
+	public void cancelGizmoConnect(){
+		connectingGizmos = null;
 	}
 
 	@Override
