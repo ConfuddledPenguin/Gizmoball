@@ -228,68 +228,6 @@ public class GUI {
 
 		return menuList;
 	}
-
-
-	private JMenu createBuildMenu() {
-		
-		JMenu menuList = new JMenu("Build");
-
-		menuList.add(createGizmoMenu());
-
-		JMenuItem AddBall = new JMenuItem("Add Ball");
-		AddBall.addActionListener(controller.getBuildListener());
-		menuList.add(AddBall);
-
-		menuList.add(createFlipperMenu());
-
-		JMenuItem AddAbsorber = new JMenuItem("Add Absorber");
-		AddAbsorber.addActionListener(controller.getBuildListener());
-		menuList.add(AddAbsorber);
-
-		return menuList;
-	}
-	
-	private JMenu createGizmoMenu(){
-	
-		JMenu AddGizmo = new JMenu("AddGizmo");
-		
-		JMenuItem AddSqaure = new JMenuItem("Square");
-		AddSqaure.addActionListener(controller.getBuildListener());
-		AddGizmo.add(AddSqaure);
-		
-		JMenuItem AddCircle = new JMenuItem("Circle");
-		AddCircle.addActionListener(controller.getBuildListener());
-		AddGizmo.add(AddCircle);	
-		
-		JMenu addTriangle = new JMenu("Triangle");
-		
-		JMenuItem leftTriangle = new JMenuItem("Left Triangle");
-		leftTriangle.addActionListener(controller.getBuildListener());
-		addTriangle.add(leftTriangle);
-		
-		JMenuItem rightTriangle = new JMenuItem("Right Triangle");
-		rightTriangle.addActionListener(controller.getBuildListener());
-		addTriangle.add(rightTriangle);
-		
-		AddGizmo.add(addTriangle);
-		
-		return AddGizmo;
-	}
-	
-	private JMenu createFlipperMenu(){
-		
-		JMenu flipperMenu = new JMenu("Add Flipper");
-		
-		JMenuItem Left = new JMenuItem("Left Flipper");
-		Left.addActionListener(controller.getBuildListener());
-		flipperMenu.add(Left);
-		
-		JMenuItem Right = new JMenuItem("Right Flipper");
-		Right.addActionListener(controller.getBuildListener());
-		flipperMenu.add(Right);	
-		
-		return flipperMenu;
-	}
 	
 	public Vect getBallVelocity(){
 		
