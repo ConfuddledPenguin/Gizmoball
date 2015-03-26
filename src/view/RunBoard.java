@@ -55,14 +55,14 @@ public class RunBoard extends Board {
 		if(Global.discoMode){
 			Image img;
 			try {
-				if(firstImg <3){
+				if(firstImg <5){
 					img = ImageIO.read(this.getClass().getResource("images/discoball21.png"));
 					g2.drawImage(img, (Global.BOARDWIDTH*Global.L)/2-125, 0, 250, 250, null);
 					firstImg++;
 				} else {
 					img = ImageIO.read(this.getClass().getResource("images/discoball22.png"));
 					g2.drawImage(img, (Global.BOARDWIDTH*Global.L)/2-125, 0, 250, 250, null);
-					if(firstImg <6){
+					if(firstImg <10){
 						firstImg++;
 					} else {
 						firstImg = 0;
