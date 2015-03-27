@@ -117,6 +117,7 @@ public class RunActionlistner implements ActionListener {
 				File file = fc.getFile();
 				
 				if (file == null){
+					runKey.processkey(true);
 					break;
 				}
 				
@@ -166,6 +167,7 @@ public class RunActionlistner implements ActionListener {
 				}
 				
 				if (file == null){
+					runKey.processkey(true);
 					break;
 				}
 				

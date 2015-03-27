@@ -241,11 +241,22 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException {
 
-		IGizmo g = this.board.getGizmoForMove(gizmoPoint);
+		IGizmo g = this.board.getGizmo(gizmoPoint.x, gizmoPoint.y);
 		
 		if(g == null){
 			return;
 		}
+		
+		for(IBall b: balls){
+			System.out.println("Moving " + (int) b.getX() + " " + (int) b.getY() +"\n" + newPoint.x + " " + newPoint.y);
+			
+			if(( (int)b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)){
+				
+				if(( (int) b.getX() <= newPoint.x + g.getWidth() -1 && (int) b.getY() <= newPoint.y + g.getHeight() -1))
+					throw new GridPosAlreadyTakenException("Ball in location");
+			}
+		}
+		
 		this.board.moveGizmo(g, gizmoPoint, newPoint);
 
 		g.setCollisionDetails();

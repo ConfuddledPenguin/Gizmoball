@@ -28,6 +28,8 @@ public class Absorber extends Gizmo {
 			for(IBall b: balls){
 				b.start();
 			}
+			
+			triggerType = null;
 		}
 		
 	}

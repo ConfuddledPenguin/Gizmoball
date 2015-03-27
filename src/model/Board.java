@@ -34,7 +34,7 @@ public class Board {
 			return false;
 		}
 		
-		checkPosValid(g.getXPos(), g.getYPos(), g.getWidth(), g.getHeight());
+		checkPosValid(g.getXPos(), g.getYPos(), g.getWidth(), g.getHeight(), g);
 		
 		//add
 		gizmos.add(g);
@@ -88,22 +88,6 @@ public class Board {
 	}
 	
 	/**
-	 * Get the gizmo at the point
-	 * 
-	 * @param p The point to check
-	 * 
-	 * @return The gizmo
-	 */
-	public IGizmo getGizmoForMove(Point p){
-		for(IGizmo g: this.gizmos){
-			if(g.getXPos() == p.x && g.getYPos() == p.y){
-				return g;
-			}
-		}
-		return null;
-	}
-	
-	/**
 	 * Clears the board.
 	 * 
 	 * WARNING: can not be undone. ENSURE ACTION
@@ -148,7 +132,7 @@ public class Board {
 		}
 		
 		if(!oldPoint.equals(newPoint)){
-			checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight());
+			checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight(), g);
 		}
 		
 		
@@ -177,7 +161,7 @@ public class Board {
 	public boolean isEmpty(int x, int y, int width, int height) throws InvalidGridPosException{
 		
 		try{
-			checkPosValid(x, y, width, height);
+			checkPosValid(x, y, width, height, null);
 		}catch(GridPosAlreadyTakenException e){
 			return false;
 		}
@@ -235,11 +219,12 @@ public class Board {
 	 * @param y The y coord
 	 * @param width The width
 	 * @param height The height
+	 * @param The gizmo to check for
 	 * 
 	 * @throws InvalidGridPosException 
 	 * @throws GridPosAlreadyTakenException
 	 */
-	private void checkPosValid(int x, int y, int width, int height) throws InvalidGridPosException, GridPosAlreadyTakenException{
+	private void checkPosValid(int x, int y, int width, int height, IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
 		
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){
@@ -250,7 +235,7 @@ public class Board {
 		//check if already filled
 		for(int i = x; i < x + width; i++){
 			for (int j = y; j < y + height; j++){
-				if(grid[i][j] != null){
+				if(grid[i][j] != null && grid[i][j] != g){
 					throw new GridPosAlreadyTakenException("Postion: " + x + ":" + y + 
 					" is already taken. Please ensure the grid position is empty.");
 				}

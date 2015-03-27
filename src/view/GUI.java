@@ -380,7 +380,7 @@ public class GUI {
 	}
 	
 	public Point getMovedPoint(){
-		return this.buildBoard.getMousePt();
+		return this.buildBoard.getMoveTarget();
 	}
 
 	public void setAbsorberStart(Point p) {

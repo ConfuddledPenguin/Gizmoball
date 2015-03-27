@@ -13,6 +13,7 @@ public class ConnectGizmoListener implements ActionListener {
 	private GUI ui;
 	private IModel m;
 	
+	
 	public ConnectGizmoListener(IGizmo g, GUI ui, IModel m) {
 		
 		this.g = g;
