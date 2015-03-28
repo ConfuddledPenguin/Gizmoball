@@ -20,6 +20,8 @@ public class LeftFlipper extends Flipper {
 		super(x, y, 2, 2, Gizmo.Type.LeftFlipper);
 		
 		coefficient = 0.95;
+		
+		TRIGGER_TIME = 750;
 
 	}
 
