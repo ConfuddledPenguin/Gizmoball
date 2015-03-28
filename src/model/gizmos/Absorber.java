@@ -23,8 +23,17 @@ public class Absorber extends Gizmo {
 	@Override
 	protected void action() {
 
+		if(triggerType == TriggerType.BALL)
+			return;
+		
 		for(IBall b: balls){
+			
+			b.setX(xcoord + width - b.getRadius() - 0.25);
+			b.setY(ycoord - b.getRadius());
+			
 			b.start();
+			
+			balls.remove(b);
 		}
 			
 		triggerType = null;		
@@ -41,8 +50,8 @@ public class Absorber extends Gizmo {
 		
 		ball.stop();
 		
-		ball.setX(xcoord + width - ball.getRadius());
-		ball.setY(ycoord - ball.getRadius());
+		ball.setX(xcoord + width - ball.getRadius() - 0.25);
+		ball.setY(ycoord + ball.getRadius() + 0.25);
 		
 		ball.setVelo(ballExitV);
 	}
