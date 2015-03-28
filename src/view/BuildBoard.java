@@ -150,7 +150,7 @@ public class BuildBoard extends Board {
 	}
 	
 	/**
-	 * Create a popup conetc menu for an empty area
+	 * Create a popup context menu for an empty area
 	 * 
 	 * @param listener The listener to use for events
 	 * 
@@ -310,6 +310,10 @@ public class BuildBoard extends Board {
 		return connectingGizmos;
 	}
 	
+	public void setConnectingGizmo(ActionListener listener){
+		connectingGizmos = listener;
+	}
+	
 	public Point getMoveTarget(){
 		return moveTarget;
 	}
@@ -349,7 +353,7 @@ public class BuildBoard extends Board {
 	 * 
 	 * @return this.moving
 	 */
-	public boolean getGizmoMoving(){
+	public boolean isGizmoMoving(){
 		return moving;
 	}
 

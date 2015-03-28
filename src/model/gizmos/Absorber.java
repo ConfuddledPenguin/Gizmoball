@@ -22,16 +22,12 @@ public class Absorber extends Gizmo {
 	 */
 	@Override
 	protected void action() {
-		
-		if(triggerType != TriggerType.BALL){
-		
-			for(IBall b: balls){
-				b.start();
-			}
-			
-			triggerType = null;
+
+		for(IBall b: balls){
+			b.start();
 		}
-		
+			
+		triggerType = null;		
 	}
 	
 	/*

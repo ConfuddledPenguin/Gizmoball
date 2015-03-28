@@ -21,8 +21,19 @@ public class RunKeyListener implements KeyListener {
 	private boolean processKey = true;
 	private boolean processBuildMode = true;
 	
-	private int lastKey = -1;
-	private int secondLastKey = -1;
+	/**
+	 * All the keys that have ever been pressed...
+	 * 
+	 * kinda
+	 */
+	private int[] keyArray = new int[10];
+	
+	private int[] discoKeys = {38,38,37,40,37,38};
+	
+	/**
+	 * The rave key order
+	 */
+	private int[] raveKeys = {38,39,37,38,40,38};
 	
 
 	/**
@@ -78,11 +89,45 @@ public class RunKeyListener implements KeyListener {
 	 */
 	public void processkey(boolean process){
 		processKey = process;
+	}
+	
+	private void checkForDisco(){
 		
-		System.out.println("HEY!!! YOU SEE THIS???-------------------------\n" +
-				"I am bug hunting something rare, sometimes key pressed arent bing processed\n" +
-				"Pleas enesure that every false this prints is followed by a true value\n\n " + process +
-				"\n\n if not let me (tom) know plus what you did \nDanke----------------------------------");
+		int start = keyArray.length - discoKeys.length;
+		for(int i = 0; i < discoKeys.length; i++){
+			if(discoKeys[i] != keyArray[start + i])
+				return;
+		}
+		build.actionPerformed(new ActionEvent(this, 0, "Disco"));
+		
+	}
+	
+	/**
+	 * Check for rave mode
+	 */
+	private void checkForRave(){
+		
+		int start = keyArray.length - raveKeys.length;
+		for(int i = 0; i < raveKeys.length; i++){
+			if(raveKeys[i] != keyArray[start + i])
+				return;
+		}
+		build.actionPerformed(new ActionEvent(this, 0, "Rave"));
+		
+	}
+	
+	/**
+	 * Add a key to the keylist
+	 * 
+	 * @param key the key to add
+	 */
+	private void addKey(int key){
+		
+		for (int i = 0; i < keyArray.length-1; i++){
+			keyArray[i] = keyArray[i+1];
+		}
+		
+		keyArray[keyArray.length-1] = key;
 	}
 
 	/* (non-Javadoc)
@@ -92,11 +137,6 @@ public class RunKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		model.triggerKeyPress(arg0.getKeyCode(), true);
-		
-		if(arg0.getKeyChar() != lastKey){
-			secondLastKey = lastKey;
-			lastKey = arg0.getKeyCode();
-		}
 	}
 
 	/* (non-Javadoc)
@@ -106,16 +146,17 @@ public class RunKeyListener implements KeyListener {
 	public void keyReleased(KeyEvent arg0) {
 		
 		int keyCode = arg0.getKeyCode();
+		addKey(keyCode);
 		
 		//On alt
-		if(secondLastKey == 18){
+		if(keyArray[9] == 18){
 			
 			if(keyCode == 115)
 				System.exit(0);
 		}
 		
 		//On ctrl
-		if(secondLastKey == 17){
+		if(keyArray[9] == 17){
 			
 			if(keyCode == 83){ // s
 				run.actionPerformed(new ActionEvent(this, 0, "Save"));				
@@ -130,6 +171,9 @@ public class RunKeyListener implements KeyListener {
 			if(keyCode == 87 && processBuildMode) // w
 				build.actionPerformed(new ActionEvent(this, 0, "Clear Board"));
 		}
+		
+		checkForDisco();
+		checkForRave();
 		
 		model.triggerKeyPress(arg0.getKeyCode(), false);
 	}

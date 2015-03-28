@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -18,9 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import physics.Vect;
 import model.Global;
 import model.Model;
+import physics.Vect;
 import controller.Controller;
 
 public class GUI {
@@ -56,8 +55,6 @@ public class GUI {
 		this.runBoard = new RunBoard((Global.L * Global.BOARDWIDTH), (Global.L * Global.BOARDHEIGHT), this.model);
 		this.buildBoard = null;
 		Container cp = frame.getContentPane();
-
-		JLabel label = new JLabel("TEST");
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(createFileMenu());
@@ -65,7 +62,6 @@ public class GUI {
 		cp.add(menuBar, BorderLayout.PAGE_START);
 		cp.add(createRunButtons(), BorderLayout.CENTER);
 		cp.add(runBoard, BorderLayout.SOUTH);
-		//cp.add(label, BorderLayout.PAGE_END);
 
 		cp.addKeyListener(controller.getRunKeyListener());
 		cp.setFocusable(true);
@@ -89,7 +85,6 @@ public class GUI {
 		cp.add(buildBoard, BorderLayout.SOUTH);
 
 		cp.add(createBuildButtons(), BorderLayout.PAGE_START);
-		//cp.add(board, BorderLayout.SOUTH);
 
 		frame.setResizable(false);
 		frame.pack();

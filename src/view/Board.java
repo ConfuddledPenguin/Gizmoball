@@ -50,7 +50,6 @@ public abstract class Board extends JPanel implements Observer {
 				int y = gizmo.getYPos()*L;
 				int width = gizmo.getWidth()*L;
 				int height = gizmo.getHeight()*L;
-				int radius = width/2;
 						
 				if (gizmo.getType() == Gizmo.Type.Square){
 					

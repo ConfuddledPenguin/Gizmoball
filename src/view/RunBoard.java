@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.Observable;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 
 import model.Ball;
 import model.Global;
@@ -88,6 +86,7 @@ public class RunBoard extends Board {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object arg) {
 
@@ -103,8 +102,6 @@ public class RunBoard extends Board {
 			gizmoList = new ArrayList<IGizmo>( (List<IGizmo>) arg);
 		}
 
-		//to view current number of balls registered with the ui uncomment below
-//		System.out.println(balls.size());
 		repaint();
 	}
 }

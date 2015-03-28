@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import view.BuildBoard;
-import view.GUI;
+import javax.swing.SwingUtilities;
+
 import model.Global;
 import model.IBall;
 import model.IModel;
@@ -15,6 +15,8 @@ import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
+import view.BuildBoard;
+import view.GUI;
 
 public class MouseClickedListener extends MouseAdapter{
 	
@@ -94,6 +96,8 @@ public class MouseClickedListener extends MouseAdapter{
 			connectingGizmos.actionPerformed(null);
 			connectingGizmos = null;
 			
+			board.setConnectingGizmo(null);
+			
 			return;
 		}
 		
@@ -132,6 +136,11 @@ public class MouseClickedListener extends MouseAdapter{
 		clickedCell = new Point(column, row);
 		board.repaint();
 		
+		if(SwingUtilities.isMiddleMouseButton(e)){
+			listener.actionPerformed(new ActionEvent(this, 0, "Add Last Gizmo"));
+			return;
+		}
+		
 		Point absorberStart = board.getAbsorberStart();
 		if (absorberStart != null) {
 			// the previous click started absorber definition, this click finishes it
@@ -168,6 +177,8 @@ public class MouseClickedListener extends MouseAdapter{
 			}
 			absorberStart = null;
 			board.setAbsorberStart(null);
+			
+			return;
 		}
 		
 
@@ -188,7 +199,7 @@ public class MouseClickedListener extends MouseAdapter{
 			return;
 		}
 		
-		if(board.getGizmoMoving()){
+		if(board.isGizmoMoving()){
 			listener.actionPerformed(new ActionEvent(this, 0, "Move"));
 			board.setGizmoMoving(false);
 		}

@@ -248,7 +248,6 @@ public class Model extends Observable implements IModel {
 		}
 		
 		for(IBall b: balls){
-			System.out.println("Moving " + (int) b.getX() + " " + (int) b.getY() +"\n" + newPoint.x + " " + newPoint.y);
 			
 			if(( (int)b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)){
 				

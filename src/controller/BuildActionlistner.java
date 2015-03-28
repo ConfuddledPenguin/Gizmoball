@@ -9,6 +9,7 @@ import model.IModel;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Circle;
+import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.Type;
 import model.gizmos.IGizmo;
 import model.gizmos.LeftFlipper;
@@ -27,6 +28,8 @@ public class BuildActionlistner implements ActionListener {
 	private IModel model;
 	private GUI view;
 	private RunKeyListener run;
+	
+	private Gizmo.Type lastAddedGizmo = null;
 
 	/**
 	 * The constructor
@@ -47,15 +50,12 @@ public class BuildActionlistner implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		System.out.println("Controller: The " + e.getActionCommand()
-//				+ " button is clicked at " + new java.util.Date(e.getWhen())
-//				+ " with e.paramString " + e.paramString());
-		
 		switch (e.getActionCommand()) {
 
 		case ("Square"):
 			try {
 				model.addGizmo(new Square(view.getClickedCell().x,view.getClickedCell().y));
+				lastAddedGizmo = Type.Square;
 			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
 				view.displayErrorMessage(e3.getMessage());
 			}
@@ -64,6 +64,7 @@ public class BuildActionlistner implements ActionListener {
 		case ("Triangle"):
 			try {
 				model.addGizmo(new Triangle(view.getClickedCell().x,view.getClickedCell().y));
+				lastAddedGizmo = Type.Triangle;
 			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
 				view.displayErrorMessage(e3.getMessage());
 			}
@@ -72,32 +73,16 @@ public class BuildActionlistner implements ActionListener {
 		case ("Circle"):
 			try {
 				model.addGizmo(new Circle(view.getClickedCell().x,view.getClickedCell().y));
+				lastAddedGizmo = Type.Circle;
 			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
 				view.displayErrorMessage(e3.getMessage());
 			}
-			break;
-			
-		case ("Left Triangle"):
-			try {
-				model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
-			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
-				view.displayErrorMessage(e3.getMessage());
-			}
-			break;
-			
-		case ("Right Triangle"):
-			try {
-				model.addGizmo(new Triangle(view.getClickedCell().x, view.getClickedCell().y));
-			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
-				view.displayErrorMessage(e3.getMessage());
-			}
-			model.RotateClockwise(view.getClickedCell());  // rotate 180 degrees total
-			model.RotateClockwise(view.getClickedCell());  // to produce right triangle
 			break;
 			
 		case ("Left Flipper"):
 			try {
 				model.addGizmo(new LeftFlipper(view.getClickedCell().x, view.getClickedCell().y));
+				lastAddedGizmo = Type.LeftFlipper;
 			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
 				view.displayErrorMessage(e3.getMessage());
 			}
@@ -106,6 +91,7 @@ public class BuildActionlistner implements ActionListener {
 		case ("Right Flipper"):
 			try {
 				model.addGizmo(new RightFlipper(view.getClickedCell().x, view.getClickedCell().y));
+				lastAddedGizmo = Type.RightFlipper;
 			} catch (InvalidGridPosException | GridPosAlreadyTakenException e3) {
 				view.displayErrorMessage(e3.getMessage());
 			}
@@ -113,6 +99,7 @@ public class BuildActionlistner implements ActionListener {
 			
 		case ("Absorber"):
 			view.setAbsorberStart(view.getClickedCell());
+			lastAddedGizmo = Type.Absorber;
 			break;
 			
 		case ("Add Ball"):
@@ -122,6 +109,14 @@ public class BuildActionlistner implements ActionListener {
 			} catch (InvalidGridPosException e2) {
 				view.displayErrorMessage(e2.getMessage());
 			}
+			break;
+		
+		case ("Add Last Gizmo"):
+			
+			if(lastAddedGizmo != null){
+				this.actionPerformed(new ActionEvent(this, 0, lastAddedGizmo.toString()));
+			}			
+			
 			break;
 			
 		case ("Set Velocity"):
@@ -181,6 +176,8 @@ public class BuildActionlistner implements ActionListener {
 			break;
 			
 		case ("Move"):
+			
+			System.out.println("Move called");
 			
 			if(!view.getClickedCell().equals(view.getMovedPoint())){
 				

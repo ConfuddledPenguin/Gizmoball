@@ -35,12 +35,11 @@ public class GizmoBallMain {
 				gui = new GUI('r',m);
 				makeGizmos();
 			}	
-			
 		});	
 	}
 	
 	/**
-	 * This adds the defualt gizmos to the screen
+	 * This adds the default gizmos to the screen
 	 */
 	private static void makeGizmos() {
 		
