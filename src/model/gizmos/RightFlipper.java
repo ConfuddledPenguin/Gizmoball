@@ -13,14 +13,14 @@ import physics.Vect;
  *
  */
 public class RightFlipper extends Flipper {
-
-	private int angle = 0;
+	private final static int restingAngle = 40;
+	private int angle = restingAngle;
 
 	public RightFlipper(int x, int y) {
 		super(x, y, 2, 2, Gizmo.Type.RightFlipper);
 		
 		coefficient = 0.95;
-		
+		setAngularVelocity(0);
 		TRIGGER_TIME = 750;
 	}	
 	
@@ -84,27 +84,53 @@ public class RightFlipper extends Flipper {
 		int av = (int) (1080 / Global.REFREASHRATE); // angular velocity in degrees per second
 		
 		if(triggerType == TriggerType.ONDOWN){
+			setAngularVelocity(av);
 			angle=angle+av;
 			if(angle > rotationAngle){
 				angle=90;
+				setAngularVelocity(0);
 			}
 		}else if(triggerType == TriggerType.ONUP){
+			setAngularVelocity(av);
 			angle=angle-av;
-			if(angle < 0){
-				angle=0;
+			if(angle < restingAngle){
+				setAngularVelocity(0);
+				angle=restingAngle;
 			}
 		}
 		
 		if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
 				angle=angle+av;
+				setAngularVelocity(av);
 				if(angle > rotationAngle){
+					setAngularVelocity(0);
 					angle=90;
 				}
 			}else{
+				setAngularVelocity(av);
 				angle=angle-av;
-				if(angle < 0){
-					angle=0;
+				if(angle < restingAngle){
+					setAngularVelocity(0);
+					angle=restingAngle;
+				}
+			}
+		}
+		
+		if(triggerType == TriggerType.BALL && angle > 0){
+			if( triggeredPercentage < 0.5){
+				setAngularVelocity(av);
+				angle=angle+av;
+				if(angle > rotationAngle){
+					setAngularVelocity(0);
+					angle=90;
+				}
+			}else{
+				setAngularVelocity(av);
+				angle=angle-av;
+				if(angle < restingAngle){
+					setAngularVelocity(0);
+					angle=restingAngle;
 				}
 			}
 		}

@@ -1,4 +1,4 @@
- package model;
+package model;
 
 import java.awt.Point;
 import java.io.File;
@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Flipper;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
@@ -41,7 +42,7 @@ public class Model extends Observable implements IModel {
 	private Walls walls;
 	private Map<Integer, HashSet<IGizmo>> keyConnections;
 	private List<IBall> balls = new LinkedList<IBall>();
-	
+
 	private Map<IGizmo, HashSet<IGizmo>> connections = new HashMap<IGizmo, HashSet<IGizmo>>();
 
 	private Logger MODELLOG = Logger.getLogger("modelLog");
@@ -55,8 +56,9 @@ public class Model extends Observable implements IModel {
 		logging.Logger.setUp(MODELLOG);
 		logging.Logger.setUp(PHYSICSLOG);
 		MODELLOG.log(Level.FINE, "Model started");
-		MODELLOG.setLevel(Level.FINE); // Change this to change what is visible in the logs
-		
+		MODELLOG.setLevel(Level.FINE); // Change this to change what is visible
+										// in the logs
+
 		board = new Board();
 		walls = new Walls(0, 0, Global.BOARDWIDTH, Global.BOARDHEIGHT);
 
@@ -96,9 +98,9 @@ public class Model extends Observable implements IModel {
 		MODELLOG.log(Level.WARNING,
 				"Asked to load file at : " + file.getAbsolutePath()
 						+ " . Feature not added yet");
-		
+
 		FileManager fm = new FileManager();
-		
+
 		fm.saveFile(this, file);
 	}
 
@@ -108,7 +110,8 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addGizmo(model.gizmos.IGizmo)
 	 */
 	@Override
-	public void addGizmo(IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException {
+	public void addGizmo(IGizmo g) throws InvalidGridPosException,
+			GridPosAlreadyTakenException {
 
 		MODELLOG.log(Level.FINE,
 				"Ading gizmo " + g.getType() + " to pos " + g.getXPos() + ":"
@@ -129,36 +132,36 @@ public class Model extends Observable implements IModel {
 	public void deleteGizmo(Point p) {
 
 		IGizmo g = board.getGizmo(p.x, p.y);
-		
+
 		if (g != null) {
-			MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType() + " at pos "
-					+ g.getXPos() + ":" + g.getYPos());
+			MODELLOG.log(Level.FINE, "Deleteing gizmo " + g.getType()
+					+ " at pos " + g.getXPos() + ":" + g.getYPos());
 			;
-			
+
 			g.releaseBalls();
 
 			board.removeGizmo(g);
-			
+
 			/*
 			 * Remove connections
-			 *
+			 * 
 			 * Required to remove memory leak.
 			 */
 			connections.remove(g);
-			
-			for(Entry<IGizmo, HashSet<IGizmo>> temp : connections.entrySet()){
+
+			for (Entry<IGizmo, HashSet<IGizmo>> temp : connections.entrySet()) {
 				HashSet<IGizmo> gizmos = temp.getValue();
-				
-				for(IGizmo gtemp: gizmos){
-					
-					if(g == gtemp){
+
+				for (IGizmo gtemp : gizmos) {
+
+					if (g == gtemp) {
 						g.Disconnect(gtemp);
 						gizmos.remove(gtemp);
 					}
 				}
 			}
-			
-			//notify
+
+			// notify
 			setChanged();
 			notifyObservers(g);
 		}
@@ -173,23 +176,23 @@ public class Model extends Observable implements IModel {
 	public IGizmo getGizmo(Point p) {
 		return board.getGizmo(p.x, p.y);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see model.Imodel#getBall(java.awt.Point)
 	 */
 	public IBall getBall(Point p) {
-		
-		for( IBall b : balls){
-			
+
+		for (IBall b : balls) {
+
 			System.out.println(p.x + ":" + p.y);
 			System.out.println(b.getX() + ":" + b.getY());
-			if ((int)b.getX() == p.x && (int)b.getY() == p.y) {
+			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
 				return b;
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -239,23 +242,25 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#moveGizmo(java.awt.Point, java.awt.Point)
 	 */
 	@Override
-	public void moveGizmo(Point gizmoPoint, Point newPoint) throws InvalidGridPosException, GridPosAlreadyTakenException {
+	public void moveGizmo(Point gizmoPoint, Point newPoint)
+			throws InvalidGridPosException, GridPosAlreadyTakenException {
 
 		IGizmo g = this.board.getGizmo(gizmoPoint.x, gizmoPoint.y);
-		
-		if(g == null){
+
+		if (g == null) {
 			return;
 		}
-		
-		for(IBall b: balls){
-			
-			if(( (int)b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)){
-				
-				if(( (int) b.getX() <= newPoint.x + g.getWidth() -1 && (int) b.getY() <= newPoint.y + g.getHeight() -1))
+
+		for (IBall b : balls) {
+
+			if (((int) b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)) {
+
+				if (((int) b.getX() <= newPoint.x + g.getWidth() - 1 && (int) b
+						.getY() <= newPoint.y + g.getHeight() - 1))
 					throw new GridPosAlreadyTakenException("Ball in location");
 			}
 		}
-		
+
 		this.board.moveGizmo(g, gizmoPoint, newPoint);
 
 		g.setCollisionDetails();
@@ -265,45 +270,48 @@ public class Model extends Observable implements IModel {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#connectGizmos(model.gizmos.IGizmo, model.gizmos.IGizmo)
 	 */
 	@Override
 	public void connectGizmos(IGizmo g1, IGizmo g2) {
-		
+
 		List<IGizmo> gizmos = board.getGizmos();
-		
-		if(gizmos.contains(g1) && gizmos.contains(g2)){
+
+		if (gizmos.contains(g1) && gizmos.contains(g2)) {
 			g1.connection(g2);
-			
+
 			HashSet<IGizmo> temp = null;
-			if( (temp = connections.get(g1)) != null){
+			if ((temp = connections.get(g1)) != null) {
 				temp.add(g2);
-			}else{
+			} else {
 				temp = new HashSet<IGizmo>();
 				temp.add(g2);
 				connections.put(g1, temp);
 			}
 		}
 	};
-	
+
 	/*
 	 * (non-Javadoc)
-	 * @see model.IModel#disconnectGizmos(model.gizmos.IGizmo, model.gizmos.IGizmo)
+	 * 
+	 * @see model.IModel#disconnectGizmos(model.gizmos.IGizmo,
+	 * model.gizmos.IGizmo)
 	 */
 	@Override
 	public void disconnectGizmos(IGizmo g1, IGizmo g2) {
-		
+
 		List<IGizmo> gizmos = board.getGizmos();
-		
-		if(gizmos.contains(g1) && gizmos.contains(g2)){
+
+		if (gizmos.contains(g1) && gizmos.contains(g2)) {
 			g1.Disconnect(g2);
-			
+
 			HashSet<IGizmo> temp = connections.get(g1);
 			temp.remove(g2);
-			
+
 		}
 	};
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -320,7 +328,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public List<IBall> getBalls() {
-	
+
 		return Collections.unmodifiableList(balls);
 	}
 
@@ -330,32 +338,33 @@ public class Model extends Observable implements IModel {
 	 * @see model.IModel#addBall()
 	 */
 	@Override
-	public IBall addBall(double x, double y, double xv, double yv) throws InvalidGridPosException{
+	public IBall addBall(double x, double y, double xv, double yv)
+			throws InvalidGridPosException {
 
-		if(board.isEmpty( (int) x, (int) y, 1, 1)){
-			Ball ball = new Ball(x,y,xv,yv);
-			
+		if (board.isEmpty((int) x, (int) y, 1, 1)) {
+			Ball ball = new Ball(x, y, xv, yv);
+
 			balls.add(ball);
-			
+
 			setChanged();
 			notifyObservers(ball);
-			
+
 			return ball;
 		}
-		
+
 		return null;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see model.IModel#deleteBall(Point p)
 	 */
 	@Override
-	public void deleteBall(Point p){
+	public void deleteBall(Point p) {
 		// loop through all balls, if we find ball at point p -> remove it
 		for (IBall b : balls) {
-			if ((int)b.getX() == p.x && (int)b.getY() == p.y) {
+			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
 				balls.remove(b);
 				setChanged();
 				notifyObservers(b);
@@ -463,39 +472,42 @@ public class Model extends Observable implements IModel {
 		if (keyConnections.get(key).size() == 0)
 			keyConnections.remove(key);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#getKeyStrokes()
 	 */
 	@Override
-	public Map<Integer, HashSet<IGizmo>> getKeyStrokes(){
-		
+	public Map<Integer, HashSet<IGizmo>> getKeyStrokes() {
+
 		return Collections.unmodifiableMap(keyConnections);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#clear()
 	 */
-	public void clear(){
-		
+	public void clear() {
+
 		board.clear();
 		balls.clear();
-		
+
 		keyConnections.clear();
-		
+
 		setChanged();
 		notifyObservers(board.getGizmos());
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see model.IModel#reset()
 	 */
-	public void reset(){
-		
-		for(IBall b: balls){
+	public void reset() {
+
+		for (IBall b : balls) {
 			b.reset();
 		}
 		this.setChanged();
@@ -515,34 +527,84 @@ public class Model extends Observable implements IModel {
 		if (gizmos != null) {
 
 			for (IGizmo g : keyConnections.get(key)) {
-				
+
 				TriggerType type = null;
-				if(onDown){
+				if (onDown) {
 					type = TriggerType.ONDOWN;
-				}else{
+				} else {
 					type = TriggerType.ONUP;
 				}
-				
+
 				g.trigger(type);
 			}
 		}
 	}
-	
-	public void update(){
-		
+
+	public void update() {
+
 		// Update the state of all the gizmos
 		for (IGizmo g : board.getGizmos()) {
 			g.update();
 		}
-		
-		//Move the balls
-		for(IBall b : balls){
+
+		// Move the balls
+		for (IBall b : balls) {
 			moveBall(b);
 		}
-		
+
 		this.setChanged();
 		this.notifyObservers();
+
+	}
+
+	private CollisionDetails movingGizmoCollision(IBall ball2) {
+
 		
+		Circle ballSim = ball2.getCircle();
+		Vect ballVelocity = ball2.getVelo();
+		Vect newVelocity = new Vect(0, 0);
+		double shortestTime = Double.MAX_VALUE;
+		double timeToObject = 0;
+		IGizmo colidingGizmo = null;
+
+		// Check for collision with gizmo
+		for (IGizmo gizmo : board.getGizmos()) {
+			if(gizmo instanceof Flipper){
+				
+				
+	
+				gizmo.update();
+				double coefficient = gizmo.getCoefficient();
+				
+				int cx = (gizmo.getXPos()*Global.L)+(gizmo.getWidth()/2);
+				int cy = (gizmo.getYPos()*Global.L)+(gizmo.getHeight()/4);
+	
+				gizmo.setCollisionDetails();
+				// The gizmos edges
+				for (LineSegment edge : gizmo.getEdges()) {
+					timeToObject = Geometry.timeUntilRotatingWallCollision(edge, new Vect(cx,cy), ((Flipper) gizmo).getAngularVelocity(), ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectRotatingWall(edge, new Vect(cx,cy), ((Flipper) gizmo).getAngularVelocity(), ballSim, ballVelocity, coefficient);
+						colidingGizmo = gizmo;
+	
+					}
+				}
+	
+				// The gizmos circle components
+				for (Circle corner : gizmo.getCorners()) {
+					timeToObject = Geometry.timeUntilRotatingCircleCollision(corner, new Vect(cx,cy), ((Flipper) gizmo).getAngularVelocity(), ballSim, ballVelocity);
+					if (timeToObject < shortestTime) {
+						shortestTime = timeToObject;
+						newVelocity = Geometry.reflectRotatingCircle(corner, new Vect(cx,cy), ((Flipper) gizmo).getAngularVelocity(), ballSim, ballVelocity);
+						colidingGizmo = gizmo;
+	
+					}
+				}
+			}
+		}// finish gizmo collision checking
+		
+		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
 	}
 
 	/**
@@ -557,34 +619,50 @@ public class Model extends Observable implements IModel {
 		PHYSICSLOG.log(Level.FINE, "Moving ball for " + moveTime);
 
 		if (ball != null && !ball.isStopped()) {
-			CollisionDetails cd = timeUntilCollision(ball);
-			double timeUntilCollision = cd.getTimeUntilCollision();
-
+			
+			CollisionDetails cd;
+			double timeUntilCollision;
+			
+			CollisionDetails cd1 = timeUntilCollision(ball);
+			CollisionDetails cd2 = movingGizmoCollision(ball);
+			
+			if(cd1.getTimeUntilCollision() < cd2.getTimeUntilCollision()){
+				cd = cd1;
+				timeUntilCollision = cd1.getTimeUntilCollision();
+			} else {
+				cd = cd2;
+				timeUntilCollision = cd2.getTimeUntilCollision();
+			}
+			
+			
 			if (timeUntilCollision > moveTime) { // no collisions
 				PHYSICSLOG.log(Level.FINE, "No  collisions");
 				ball = moveBallForTime(ball, moveTime);
 			} else {// collision
 
 				PHYSICSLOG.log(Level.FINE, "Collision detected. Handling");
-				
-				if(cd.getGizmo() != null){
-				
-					ball = moveBallForTime(ball, timeUntilCollision); 
-					ball.setVelo(cd.getVelocity()); // update velocity after collision
-					
-					if(cd.getGizmo() != null && cd.getGizmo().getType() == Gizmo.Type.Absorber){
+
+				if (cd.getGizmo() != null) {
+
+					ball = moveBallForTime(ball, timeUntilCollision);
+					ball.setVelo(cd.getVelocity()); // update velocity after
+													// collision
+
+					if (cd.getGizmo() != null
+							&& cd.getGizmo().getType() == Gizmo.Type.Absorber) {
 						cd.getGizmo().addBall(ball);
 					}
 					cd.getGizmo().trigger(TriggerType.BALL);
-				}else if (cd.getSecondBall() != null){
-					
+				} else if (cd.getSecondBall() != null) {
+
 					moveBallForTime(ball, timeUntilCollision);
 					ball.setVelo(cd.getVelocity());
 					cd.getSecondBall().setVelo(cd.getVelocity2());
-					
-				}else{
-					ball = moveBallForTime(ball, timeUntilCollision); 
-					ball.setVelo(cd.getVelocity()); // update velocity after collision
+
+				} else {
+					ball = moveBallForTime(ball, timeUntilCollision);
+					ball.setVelo(cd.getVelocity()); // update velocity after
+													// collision
 				}
 			}
 		}
@@ -650,7 +728,6 @@ public class Model extends Observable implements IModel {
 		return ball2;
 	}
 
-	
 	/**
 	 * Checks to see which object the ball will colide with next, and recieves
 	 * the collision details.
@@ -666,75 +743,81 @@ public class Model extends Observable implements IModel {
 		double timeToObject = 0;
 		IGizmo colidingGizmo = null;
 
-		
 		// check for collision with walls
 		for (LineSegment line : walls.getWalls()) {
-			timeToObject = Geometry.timeUntilWallCollision(line, ballSim,ballVelocity);
+			timeToObject = Geometry.timeUntilWallCollision(line, ballSim,
+					ballVelocity);
 			if (timeToObject < shortestTime) {
 				shortestTime = timeToObject;
 				newVelocity = Geometry.reflectWall(line, ballVelocity);
 			}
 		}
 
-		//Check for collision with gizmo
+		// Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
 
 			double coefficient = gizmo.getCoefficient();
-			
+
 			gizmo.setCollisionDetails();
-			//The gizmos edges
+			// The gizmos edges
 			for (LineSegment edge : gizmo.getEdges()) {
-				timeToObject = Geometry.timeUntilWallCollision(edge,ballSim, ballVelocity);
+				timeToObject = Geometry.timeUntilWallCollision(edge, ballSim,
+						ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectWall(edge, ballVelocity, coefficient);
+					newVelocity = Geometry.reflectWall(edge, ballVelocity,
+							coefficient);
 					colidingGizmo = gizmo;
-					
+
 				}
 			}
 
-			//The gizmos circle components
+			// The gizmos circle components
 			for (Circle corner : gizmo.getCorners()) {
 				timeToObject = Geometry.timeUntilCircleCollision(corner,
 						ballSim, ballVelocity);
 				if (timeToObject < shortestTime) {
 					shortestTime = timeToObject;
-					newVelocity = Geometry.reflectCircle(corner.getCenter(),ballSim.getCenter(), ballVelocity, coefficient);
+					newVelocity = Geometry.reflectCircle(corner.getCenter(),
+							ballSim.getCenter(), ballVelocity, coefficient);
 					colidingGizmo = gizmo;
-					
+
 				}
 			}
-		}//finish gizmo collision checking
-		
-		//Check for collisions with other balls
-		for( IBall otherBall: balls){
-			
-			if(otherBall != ball2){ // make sure not same ball
-				
+		}// finish gizmo collision checking
+
+		// Check for collisions with other balls
+		for (IBall otherBall : balls) {
+
+			if (otherBall != ball2) { // make sure not same ball
+
 				Circle otherBallSim = otherBall.getCircle();
 				Vect otherBallVelocity = otherBall.getVelo();
-				timeToObject = Geometry.timeUntilBallBallCollision(ballSim, ballVelocity, otherBallSim, otherBallVelocity);
-				
-				if(timeToObject < shortestTime){
-					
+				timeToObject = Geometry.timeUntilBallBallCollision(ballSim,
+						ballVelocity, otherBallSim, otherBallVelocity);
+
+				if (timeToObject < shortestTime) {
+
 					shortestTime = timeToObject;
 					Vect center1 = new Vect(ball2.getX(), ball2.getY());
 					int mass1 = 1;
 					Vect velocity1 = ball2.getVelo();
-					
+
 					Vect center2 = new Vect(otherBall.getX(), otherBall.getY());
 					int mass2 = 1;
 					Vect velocity2 = otherBall.getVelo();
-					VectPair pair = Geometry.reflectBalls(center1, mass1, velocity1, center2, mass2, velocity2);
-					
+					VectPair pair = Geometry.reflectBalls(center1, mass1,
+							velocity1, center2, mass2, velocity2);
+
 					newVelocity = pair.v1;
-					
-					return new CollisionDetails(shortestTime, newVelocity, pair.v2, otherBall);
-					
+
+					return new CollisionDetails(shortestTime, newVelocity,
+							pair.v2, otherBall);
+
 				}
 			}
-		}//finish other ball checking
-		
+		}// finish other ball checking
+
 		return new CollisionDetails(shortestTime, newVelocity, colidingGizmo);
 	}
 }
