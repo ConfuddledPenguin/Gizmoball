@@ -13,7 +13,7 @@ import physics.Vect;
  *
  */
 public class RightFlipper extends Flipper {
-	private final static int restingAngle = 40;
+	private final static int restingAngle = 0;
 	private int angle = restingAngle;
 
 	public RightFlipper(int x, int y) {

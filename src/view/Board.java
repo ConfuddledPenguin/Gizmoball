@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
@@ -38,6 +39,10 @@ public abstract class Board extends JPanel implements Observer {
 	
 
 	protected void drawGizmos(Graphics2D g2d){
+		
+		 g2d.setRenderingHint(
+                 RenderingHints.KEY_ANTIALIASING, 
+                 RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		// update list of balls so they appear instantly when added to the board
 		balls = new ArrayList<IBall>(model.getBalls());

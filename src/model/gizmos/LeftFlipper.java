@@ -14,7 +14,7 @@ import physics.Circle;
  *
  */
 public class LeftFlipper extends Flipper {
-	private static final int restingAngle = 40;
+	private static final int restingAngle = 0;
 	private int angle = restingAngle;
 
 	public LeftFlipper(int x, int y) {
