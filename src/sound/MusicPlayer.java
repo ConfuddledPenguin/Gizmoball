@@ -67,6 +67,9 @@ class MusicPlayer{
 			ui.displayErrorMessage("Line unavailable");
 		} catch (IOException e) {
 			ui.displayErrorMessage("Error reading in music file");
+		} catch (IllegalStateException e) {
+//			clip.stop();
+			ui.displayErrorMessage("Need to stop music");
 		}
 		
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
