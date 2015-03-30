@@ -24,7 +24,7 @@ public class Absorber extends Gizmo {
 	 */
 	@Override
 	protected void action() {
-		
+
 		synchronized (balls) {
 		
 			for(IBall b: balls){

@@ -7,10 +7,14 @@ import java.util.Observer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import view.GUI;
-import model.gizmos.Gizmo;
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Synthesizer;
+
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
+import view.GUI;
 
 /**
  * Controls the playback of sounds to the user
@@ -31,6 +35,7 @@ public class SoundController implements Observer, ISoundController {
 	
 	private List<IGizmo> gizmoList = new ArrayList<IGizmo>();
 	private List<IGizmo> triggered = new ArrayList<IGizmo>();
+	private MidiChannel[] channels;
 	
 	private ExecutorService threadPool = Executors.newCachedThreadPool();
 	
@@ -50,6 +55,16 @@ public class SoundController implements Observer, ISoundController {
 		this.ui = ui;
 		
 		player = new MusicPlayer(ui);
+		
+		Synthesizer synth;
+		try {
+			synth = MidiSystem.getSynthesizer();
+			synth.open();
+			channels = synth.getChannels();
+			
+		} catch (MidiUnavailableException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -125,7 +140,7 @@ public class SoundController implements Observer, ISoundController {
 				
 				if(g.getTriggerType() == TriggerType.BALL){
 					triggered.add(g);
-					threadPool.execute(new GizmoSoundPlayer(g, ui));
+					threadPool.execute(new GizmoSoundPlayer(g, ui, channels));
 				}
 			}
 			
@@ -136,15 +151,12 @@ public class SoundController implements Observer, ISoundController {
 
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public void update(Observable o, Object arg) {
 		
-		if (arg instanceof Gizmo) {
-			gizmoList.add((Gizmo) arg);
+		if (arg instanceof IGizmo) {
+			gizmoList.add((IGizmo) arg);
 		} else if(arg instanceof List<?>){
 			
 			gizmoList = new ArrayList<IGizmo>( (List<IGizmo>) arg);
