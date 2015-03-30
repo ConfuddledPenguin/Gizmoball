@@ -16,6 +16,8 @@ import model.gizmos.LeftFlipper;
 import model.gizmos.RightFlipper;
 import model.gizmos.Square;
 import model.gizmos.Triangle;
+import sound.ISoundController;
+import sound.SoundController.Mode;
 import view.GUI;
 
 /**
@@ -28,6 +30,7 @@ public class BuildActionlistner implements ActionListener {
 	private IModel model;
 	private GUI view;
 	private RunKeyListener run;
+	private ISoundController sc;
 	
 	private Gizmo.Type lastAddedGizmo = null;
 
@@ -38,10 +41,11 @@ public class BuildActionlistner implements ActionListener {
 	 * @param g The ui to use
 	 * @param r The run key listener to update
 	 */
-	public BuildActionlistner(IModel m, GUI g, RunKeyListener r) {
+	public BuildActionlistner(IModel m, GUI g, RunKeyListener r, ISoundController sc) {
 		model = m;
 		view = g;
 		run = r;
+		this.sc = sc;
 	}
 
 	/*
@@ -192,14 +196,19 @@ public class BuildActionlistner implements ActionListener {
 		case ("Normal"):
 			Global.raveMode = false;
 			Global.discoMode = false;
+			sc.stop();
 			break;
 		case ("Disco"):
 			Global.raveMode = false;
 			Global.discoMode = true;
+			sc.setMode(Mode.discoMode);
+			sc.play();
 			break;
 		case ("Rave"):
 			Global.raveMode = true;
 			Global.discoMode = false;
+			sc.setMode(Mode.raveMode);
+			sc.play();
 			break;
 		}
 	}

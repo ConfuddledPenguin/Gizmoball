@@ -8,7 +8,6 @@ import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
-import sound.SoundController;
 import view.GUI;
 
 /**
@@ -37,9 +36,6 @@ public class GizmoBallMain {
 				makeGizmos();
 			}	
 		});	
-		
-		SoundController sc = new SoundController();
-		m.addObserver(sc);
 	}
 	
 	/**

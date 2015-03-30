@@ -58,6 +58,7 @@ public class GUI {
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(createFileMenu());
+		menuBar.add(createSettingsMenu());
 
 		cp.add(menuBar, BorderLayout.PAGE_START);
 		cp.add(createRunButtons(), BorderLayout.CENTER);
@@ -134,7 +135,7 @@ public class GUI {
 		JMenuBar menuBar = new JMenuBar();
 
 		menuBar.add(createFileMenu());
-		menuBar.add(createSettingsMenu());
+		menuBar.add(createLevelSettingsMenu());
 
 		return menuBar;
 
@@ -181,9 +182,9 @@ public class GUI {
 		return menuList;
 	}
 	
-	private JMenu createSettingsMenu() {
+	private JMenu createLevelSettingsMenu() {
 
-		JMenu menuList = new JMenu("Settings");
+		JMenu menuList = new JMenu("Level Settings");
 
 		JMenuItem Friction = new JMenuItem("Friction");
 		Friction.addActionListener(controller.getBuildListener());
@@ -192,14 +193,6 @@ public class GUI {
 		JMenuItem Gravity = new JMenuItem("Gravity");
 		Gravity.addActionListener(controller.getBuildListener());
 		menuList.add(Gravity);
-
-		JMenuItem Connect = new JMenuItem("Connect");
-		Connect.addActionListener(controller.getBuildListener());
-		menuList.add(Connect);
-
-		JMenuItem Disconnect = new JMenuItem("Disconnect");
-		Disconnect.addActionListener(controller.getBuildListener());
-		menuList.add(Disconnect);
 		
 		JMenu modes = new JMenu("Modes");
 		
@@ -221,6 +214,21 @@ public class GUI {
 		JMenuItem ClearBoard = new JMenuItem("Clear Board");
 		ClearBoard.addActionListener(controller.getBuildListener());
 		menuList.add(ClearBoard);
+
+		return menuList;
+	}
+	
+	private JMenu createSettingsMenu() {
+
+		JMenu menuList = new JMenu("Settings");
+
+		JMenuItem muteGizmos = new JMenuItem("Mute Gizmos");
+		muteGizmos.addActionListener(controller.getSettingsListener());
+		menuList.add(muteGizmos);
+		
+		JMenuItem muteMusic = new JMenuItem("Mute Music");
+		muteMusic.addActionListener(controller.getSettingsListener());
+		menuList.add(muteMusic);
 
 		return menuList;
 	}

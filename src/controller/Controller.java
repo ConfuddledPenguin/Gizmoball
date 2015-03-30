@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionListener;
 
 import model.IModel;
+import sound.ISoundController;
+import sound.SoundController;
 import view.GUI;
 
 /**
@@ -13,7 +15,10 @@ public class Controller  {
 	
 	private ActionListener runListener;
 	private ActionListener buildListener;
+	private ActionListener settingsListener;
 	private RunKeyListener runKeyListener;
+	
+	private SoundController sc;
 	
 	/**
 	 * The constructor
@@ -23,12 +28,16 @@ public class Controller  {
 	 */
 	public Controller(IModel m, GUI g) {
 
+		sc = new SoundController(g);
+		m.addObserver(sc);
+		
 		runKeyListener =  new RunKeyListener(m);
 		runListener = new RunActionlistner(m, g, runKeyListener);
 		runKeyListener.registerRunActionListener(runListener);
-		buildListener = new BuildActionlistner(m, g, runKeyListener);
+		buildListener = new BuildActionlistner(m, g, runKeyListener, sc);
 		runKeyListener.registerBuildActionListener(buildListener);
-
+		
+		settingsListener = new SettingsListener(m, sc);
 	}
 	
 	/**
@@ -56,5 +65,23 @@ public class Controller  {
 	 */
 	public RunKeyListener getRunKeyListener() {
 		return runKeyListener;
+	}
+	
+	/**
+	 * Returns the settings listener
+	 * 
+	 * @return this.settings listener
+	 */
+	public ActionListener getSettingsListener() {
+		return settingsListener;
+	}
+	
+	/**
+	 * Get the sound controller
+	 * 
+	 * @return the sound controller
+	 */
+	public ISoundController getSoundController() {
+		return sc;
 	}
 }
