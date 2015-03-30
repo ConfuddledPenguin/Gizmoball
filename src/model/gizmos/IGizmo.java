@@ -5,6 +5,7 @@ import java.util.Set;
 
 import model.IBall;
 import model.gizmos.Gizmo.Orientation;
+import model.gizmos.Gizmo.TriggerType;
 import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
@@ -180,5 +181,12 @@ public interface IGizmo {
 	 * @param v the velocity
 	 */
 	public void setBallExitVelocity(Vect v);
+	
+	/**
+	 * Gets the type of the trigger
+	 * 
+	 * @return The type of the trigger
+	 */
+	public TriggerType getTriggerType();
 	
 }

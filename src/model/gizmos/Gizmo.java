@@ -490,4 +490,8 @@ public abstract class Gizmo implements IGizmo {
 		ballExitV = v;
 		
 	}
+	
+	public TriggerType getTriggerType(){
+		return triggerType;
+	}
 }
