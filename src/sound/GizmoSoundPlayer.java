@@ -1,68 +1,48 @@
 package sound;
 
 import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Synthesizer;
-
-import model.gizmos.Gizmo.TriggerType;
-import model.gizmos.Gizmo.Type;
 import model.gizmos.IGizmo;
 
 public class GizmoSoundPlayer extends Thread{
 	
 	private IGizmo gizmo;
+	private MidiChannel[] channels;
 	
-	public GizmoSoundPlayer(IGizmo g) {
-		
+	public GizmoSoundPlayer(IGizmo g, MidiChannel[] chan) {
+		channels = chan;
 		gizmo = g;
 	}
 	
 	@Override
 	public void run() {
-		System.out.println("Sound for " + gizmo.getType());
-		
-		int channel = 0;
-
-		int volume = 127;
-		int duration = 200;
-		
+		int channel = 0; //type of instrument, 0 is piano, 9 is some random thing
+		int volume = 100;
+		int duration = 1000;
 		int note = 0;
 		
 		switch (gizmo.getType()) {
 		case Square:
-			note = 5;
+			note = 29;
 			break;
 		case Circle:
-			note = 10;
+			note = 53;
 			break;
 		case Absorber:
-			note = 0;
+			note = 5;
 		case RightFlipper:
 		case LeftFlipper:
-			note = 40;
+			note = 89;
 			break;
 		case Triangle:
-			note = 60;
+			note = 101;
 			break;
 		}
 
 		try {
-			Synthesizer synth = MidiSystem.getSynthesizer();
-			synth.open();
-			MidiChannel[] channels = synth.getChannels();
-			
-			channels[channel].noteOn(note, volume);
-			
-			Thread.sleep(duration);
-			
-			channels[channel].noteOff(note);
-			
-			synth.close();
-		}catch(MidiUnavailableException e){
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			channels[channel].noteOn(note, volume); //turn on sound
+			Thread.sleep(duration); //keep sound on
+			channels[channel].noteOff(note); //turn off sound	
+		}catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		

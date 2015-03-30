@@ -7,6 +7,11 @@ import java.util.Observer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Synthesizer;
+
 import model.Global;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
@@ -16,11 +21,25 @@ public class SoundController implements Observer {
 
 	private List<IGizmo> gizmoList = new ArrayList<IGizmo>();
 	private List<IGizmo> triggered = new ArrayList<IGizmo>();
+	private MidiChannel[] channels;
 	
 	private ExecutorService threadPool = Executors.newCachedThreadPool();
 	
 	private boolean raveMode = false;
 	private boolean discoMode = false;
+	
+	public SoundController() {
+		Synthesizer synth;
+		try {
+			synth = MidiSystem.getSynthesizer();
+			synth.open();
+			channels = synth.getChannels();
+			
+		} catch (MidiUnavailableException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	private void triggerGizmoSounds() {
 		
@@ -42,7 +61,7 @@ public class SoundController implements Observer {
 	
 	private void playGizmoSound(IGizmo g) {
 		
-		threadPool.execute(new GizmoSoundPlayer(g));
+		threadPool.execute(new GizmoSoundPlayer(g, channels));
 
 	}
 	
