@@ -24,10 +24,6 @@ public class Absorber extends Gizmo {
 	 */
 	@Override
 	protected void action() {
-
-		if(triggerType == TriggerType.BALL)
-			return;
-		
 		synchronized (balls) {
 		
 			for(IBall b: balls){
