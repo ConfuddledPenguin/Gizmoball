@@ -37,18 +37,18 @@ public class RightFlipper extends Flipper {
 		
 	
 		
-		int w = this.getWidth()/2*20;
-		int h = this.getHeight()*20;
+		int w = this.getWidth()/2*Global.L;
+		int h = this.getHeight()*Global.L;
 		int a = this.getAngle();
 		
-		int cx = ((this.getXPos()+1)*20)+(w/2);
-		int cy = (this.getYPos()*20)+(h/4);
+		int cx = ((this.getXPos()+1)*Global.L)+(w/2);
+		int cy = (this.getYPos()*Global.L)+(h/4);
 		
-		int cx2 = ((this.getXPos()+1)*20)+(w/2);
-		int cy2 = (this.getYPos()*20)+((h/4)*3);
+		int cx2 = ((this.getXPos()+1)*Global.L)+(w/2);
+		int cy2 = (this.getYPos()*Global.L)+((h/4)*3);
 		
-		int x1 = (this.getXPos()+1)*20;
-		int y1 = (this.getYPos()*20) + h/4;
+		int x1 = (this.getXPos()+1)*Global.L;
+		int y1 = (this.getYPos()*Global.L) + h/4;
 		
 		double x2 = (x1+w);
 		double y2 = (y1);

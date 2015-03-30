@@ -28,6 +28,9 @@ public class RunKeyListener implements KeyListener {
 	 */
 	private int[] keyArray = new int[10];
 	
+	/**
+	 * The disco key order
+	 */
 	private int[] discoKeys = {38,38,37,40,37,38};
 	
 	/**
@@ -148,15 +151,17 @@ public class RunKeyListener implements KeyListener {
 		int keyCode = arg0.getKeyCode();
 		addKey(keyCode);
 		
+		
+		
 		//On alt
-		if(keyArray[9] == 18){
+		if(keyArray[keyArray.length -2] == 18){
 			
 			if(keyCode == 115)
 				System.exit(0);
 		}
 		
 		//On ctrl
-		if(keyArray[9] == 17){
+		if(keyArray[keyArray.length -2] == 17){
 			
 			if(keyCode == 83){ // s
 				run.actionPerformed(new ActionEvent(this, 0, "Save"));				
@@ -182,10 +187,7 @@ public class RunKeyListener implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	@Override
-	public void keyTyped(KeyEvent e) {
-		
-		
-		
+	public void keyTyped(KeyEvent e) {		
 	}
 	
 	/**

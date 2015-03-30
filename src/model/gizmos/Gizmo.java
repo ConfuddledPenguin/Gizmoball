@@ -437,7 +437,9 @@ public abstract class Gizmo implements IGizmo {
 	@Override
 	public void addBall(IBall ball) {
 		
-		balls.add(ball);
+		synchronized (balls) {
+			balls.add(ball);
+		}
 	}
 	
 	/*
@@ -467,11 +469,14 @@ public abstract class Gizmo implements IGizmo {
 	@Override
 	public void releaseBalls(){
 		
-		for (IBall b : balls){
-			
-			Vect v = new Vect(0, 0);
-			b.setVelo(v);
-			b.start();
+		synchronized (balls) {
+		
+			for (IBall b : balls){
+				
+				Vect v = new Vect(0, 0);
+				b.setVelo(v);
+				b.start();
+			}
 		}
 	}
 	

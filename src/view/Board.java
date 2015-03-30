@@ -23,7 +23,7 @@ public abstract class Board extends JPanel implements Observer {
 	
 	private static final long serialVersionUID = -8454000231742359788L;
 	protected List<IGizmo> gizmoList;
-	protected static final int L = 20;
+	protected static final int L = Global.L;
 	protected List<IBall> balls;
 	protected int[] colour = {240,172,217};
 	private int tickerC = 0;
@@ -97,19 +97,19 @@ public abstract class Board extends JPanel implements Observer {
 					
 					switch (gizmo.getOrientation()) {
 						case TopLeft:
-							rectangle = new RoundRectangle2D.Double(gizmo.getXPos()*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double(gizmo.getXPos()*Global.L,gizmo.getYPos()*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						case TopRight:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*Global.L,gizmo.getYPos()*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						case BottomRight:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*Global.L,(gizmo.getYPos()+1)*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						case BottomLeft:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*Global.L,(gizmo.getYPos()+1)*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						default:
@@ -133,19 +133,19 @@ public abstract class Board extends JPanel implements Observer {
 					switch (gizmo.getOrientation()) {
 						case TopLeft:
 							
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,gizmo.getYPos()*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*Global.L,gizmo.getYPos()*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						case TopRight:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+1)*Global.L,(gizmo.getYPos()+1)*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						case BottomRight:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+0)*20,(gizmo.getYPos()+1)*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos()+0)*Global.L,(gizmo.getYPos()+1)*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 														
 							break;
 						case BottomLeft:
-							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*20,(gizmo.getYPos())*20,gizmo.getWidth()/2*20,gizmo.getHeight()*20,20,20);
+							rectangle = new RoundRectangle2D.Double((gizmo.getXPos())*Global.L,(gizmo.getYPos())*Global.L,gizmo.getWidth()/2*Global.L,gizmo.getHeight()*Global.L,20,20);
 							
 							break;
 						default:

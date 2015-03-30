@@ -19,9 +19,11 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
+import model.gizmos.Absorber;
 import model.gizmos.Flipper;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
+import model.gizmos.Gizmo.Type;
 import model.gizmos.IGizmo;
 import physics.Circle;
 import physics.Geometry;
@@ -341,6 +343,7 @@ public class Model extends Observable implements IModel {
 	public IBall addBall(double x, double y, double xv, double yv)
 			throws InvalidGridPosException {
 
+		IGizmo g;
 		if (board.isEmpty((int) x, (int) y, 1, 1)) {
 			Ball ball = new Ball(x, y, xv, yv);
 
@@ -350,6 +353,10 @@ public class Model extends Observable implements IModel {
 			notifyObservers(ball);
 
 			return ball;
+		}else if((g = board.getGizmo( (int) x, (int) y)).getType() == Type.Absorber){
+			Ball ball = new Ball(10, 10, 0, 0);
+			g.addBall(ball);
+			balls.add(ball);
 		}
 
 		return null;
@@ -549,7 +556,7 @@ public class Model extends Observable implements IModel {
 
 		// Move the balls
 		for (IBall b : balls) {
-			moveBall(b);
+				moveBall(b);
 		}
 
 		this.setChanged();

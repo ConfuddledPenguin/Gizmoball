@@ -104,7 +104,7 @@ public class MouseClickedListener extends MouseAdapter{
 		// popup menus are triggered in mousePressed rather than mouseReleased on Linux
 		// so we check for popup triggers in both methods to ensure cross platform compatibility 
 		if (e.isPopupTrigger()) {
-			Point p = new Point(e.getX() /20, e.getY()/20);
+			Point p = new Point(e.getX() /Global.L, e.getY()/Global.L);
 			IGizmo g;
 			IBall b;
 			if( (g=model.getGizmo(p)) != null){
@@ -183,7 +183,7 @@ public class MouseClickedListener extends MouseAdapter{
 		
 
 		if (e.isPopupTrigger()) {
-			Point p = new Point(e.getX() /20, e.getY() /20);
+			Point p = new Point(e.getX() /Global.L, e.getY() /Global.L);
 			IGizmo g;
 			IBall b;
 			if( (g=model.getGizmo(p)) != null){

@@ -6,6 +6,7 @@ public class Global {
 	public static int BOARDWIDTH = 20;
 
 	public static int L = 20;  // 1 L = 20 pixels
+	
 	/**
 	 * Expressed in terms of L
 	 */

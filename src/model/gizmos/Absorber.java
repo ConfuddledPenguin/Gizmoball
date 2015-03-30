@@ -1,5 +1,7 @@
 package model.gizmos;
 
+import java.util.List;
+
 import model.IBall;
 import physics.Circle;
 import physics.LineSegment;
@@ -26,14 +28,17 @@ public class Absorber extends Gizmo {
 		if(triggerType == TriggerType.BALL)
 			return;
 		
-		for(IBall b: balls){
-			
-			b.setX(xcoord + width - b.getRadius() - 0.25);
-			b.setY(ycoord - b.getRadius());
-			
-			b.start();
-			
-			balls.remove(b);
+		synchronized (balls) {
+		
+			for(IBall b: balls){
+				
+				b.setX(xcoord + width - b.getRadius() - 0.25);
+				b.setY(ycoord - b.getRadius());
+				
+				b.start();
+			}
+		
+			balls.clear();
 		}
 			
 		triggerType = null;		

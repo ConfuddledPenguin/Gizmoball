@@ -22,7 +22,7 @@ public class LeftFlipper extends Flipper {
 		
 		coefficient = 0.95;
 		setAngularVelocity(0);
-		TRIGGER_TIME = 750;
+		TRIGGER_TIME = 2000;
 
 	}
 
@@ -81,6 +81,10 @@ public class LeftFlipper extends Flipper {
 	@Override
 	protected void action() {
 
+		if(!triggered){
+			return;
+		}
+		
 		int rotationAngle = 90; // in deg ˚
 		int av = (int) (1080 / Global.REFREASHRATE); // angular velocity in degrees per second
 		
@@ -100,28 +104,10 @@ public class LeftFlipper extends Flipper {
 			}
 		}
 		
-		if(triggerType == TriggerType.GIZMO){
+		if(triggerType == TriggerType.GIZMO || (triggerType == TriggerType.BALL && angle > 0)){
 			if( triggeredPercentage < 0.5){
 				angle=angle+av;
 				setAngularVelocity(av);
-				if(angle > rotationAngle){
-					setAngularVelocity(0);
-					angle=90;
-				}
-			}else{
-				setAngularVelocity(av);
-				angle=angle-av;
-				if(angle < restingAngle){
-					setAngularVelocity(0);
-					angle=restingAngle;
-				}
-			}
-		}
-		
-		if(triggerType == TriggerType.BALL && angle > 0){
-			if( triggeredPercentage < 0.5){
-				setAngularVelocity(av);
-				angle=angle+av;
 				if(angle > rotationAngle){
 					setAngularVelocity(0);
 					angle=90;
