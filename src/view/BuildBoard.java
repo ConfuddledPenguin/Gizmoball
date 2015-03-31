@@ -276,6 +276,7 @@ public class BuildBoard extends Board {
 	 * @param p the starting point in the grid
 	 */
 	public void setAbsorberStart(Point p) {
+		moveTarget = p;
 		absorberStart = p;
 	}
 	
@@ -397,7 +398,7 @@ public class BuildBoard extends Board {
 		if (clickedCell != null) {
 			int index = clickedCell.x + (clickedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
-			g2d.setColor(Color.YELLOW);
+			g2d.setColor(Color.ORANGE);
 			g2d.fill(cell);
 		}
 
