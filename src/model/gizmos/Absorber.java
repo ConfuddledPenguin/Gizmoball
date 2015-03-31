@@ -1,7 +1,5 @@
 package model.gizmos;
 
-import java.util.List;
-
 import model.IBall;
 import physics.Circle;
 import physics.LineSegment;

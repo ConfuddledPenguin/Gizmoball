@@ -19,9 +19,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Flipper;
-import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.Gizmo.Type;
 import model.gizmos.IGizmo;
@@ -576,7 +574,7 @@ public class Model extends Observable implements IModel {
 
 		// Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
-			if(gizmo instanceof Flipper){
+			if(gizmo.getType() == Type.RightFlipper || gizmo.getType() == Type.LeftFlipper){
 				
 				
 	
@@ -656,7 +654,7 @@ public class Model extends Observable implements IModel {
 													// collision
 
 					if (cd.getGizmo() != null
-							&& cd.getGizmo().getType() == Gizmo.Type.Absorber) {
+							&& cd.getGizmo().getType() == Type.Absorber) {
 						cd.getGizmo().addBall(ball);
 					}
 					cd.getGizmo().trigger(TriggerType.BALL);
