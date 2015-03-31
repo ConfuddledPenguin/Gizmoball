@@ -116,13 +116,7 @@ public class LeftFlipper extends Flipper {
 			
 		}
 		
-//		System.out.println("c1 \t   c2   \t   c4 \t   c3");
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
-//		
-//		for(int i = 0; i < pt.length ; i++){
-//			System.out.print(pt[i] + " ");
-//		}
-//		System.out.println("");
 		
 		AffineTransform.getRotateInstance(Math.toRadians(a),xrotatePoint,yrotatePoint).transform(pt, 0, pt, 0, pt.length/2);	
 		

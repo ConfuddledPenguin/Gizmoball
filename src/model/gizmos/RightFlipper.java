@@ -126,13 +126,6 @@ public class RightFlipper extends Flipper {
 		
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
 		
-		System.out.println("c1 \t   c2   \t   c4 \t   c3");
-		
-		for(int i = 0; i < pt.length ; i++){
-			System.out.print(pt[i] + " ");
-		}
-		System.out.println("");
-		
 		AffineTransform.getRotateInstance(Math.toRadians(a),xrotatePoint,yrotatePoint).transform(pt, 0, pt, 0, 6); 		
 		
 		LineSegment ls1 = new LineSegment(pt[4]/Global.L, pt[5]/Global.L, pt[2]/Global.L, pt[3]/Global.L); // right wall

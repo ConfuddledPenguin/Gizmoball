@@ -4,9 +4,7 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -188,8 +186,6 @@ public class Model extends Observable implements IModel {
 
 		for (IBall b : balls) {
 
-			System.out.println(p.x + ":" + p.y);
-			System.out.println(b.getX() + ":" + b.getY());
 			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
 				return b;
 			}

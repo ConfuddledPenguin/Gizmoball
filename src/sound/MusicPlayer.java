@@ -35,6 +35,7 @@ class MusicPlayer{
 	 * @param ui The ui to show errors on
 	 */
 	public MusicPlayer(GUI ui) {
+		
 		this.ui = ui;
 		
 		file1 = this.getClass().getResource("soundfiles/RaveTunnnnnnne.wav");
@@ -58,11 +59,15 @@ class MusicPlayer{
 	 */
 	public void play(){
 		
-		System.out.println("Asked to play");
+		if(System.getProperty("java.vm.name").toLowerCase().contains("openjdk")){
+			ui.displayErrorMessage("Due to openJDK coping the JVM badly, audio files will not play. Sorry!");
+			return;
+		}
 		
 		playing = true;
 		
 		if(playing){
+
 			clip.stop();
 			clip.close();
 		}
@@ -75,8 +80,6 @@ class MusicPlayer{
 			in = inFile1;
 		else if (currentMode == Mode.discoMode)
 			in = inFile2;
-		
-		System.out.println(in);
 		
 		try {
 			clip.open(in);
@@ -91,8 +94,6 @@ class MusicPlayer{
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 		clip.setFramePosition(0);
 		clip.start();
-		
-		System.out.println(clip);
 	}
 	
 	/**
