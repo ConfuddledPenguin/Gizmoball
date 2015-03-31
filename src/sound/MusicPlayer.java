@@ -32,7 +32,7 @@ class MusicPlayer{
 	public MusicPlayer(GUI ui) {
 		this.ui = ui;
 		
-		URL file1 = this.getClass().getResource("soundfiles/file1.wav");
+		URL file1 = this.getClass().getResource("soundfiles/RaveTunnnnnnne.wav");
 		URL file2 = this.getClass().getResource("soundfiles/file2.wav");
 		try {
 			inFile1 = AudioSystem.getAudioInputStream(file1);
