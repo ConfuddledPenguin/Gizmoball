@@ -20,12 +20,26 @@ import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 
+/**
+ * 
+ * This class creates a board for running a game of GizmoBall
+ * 
+ * @author Andrew Scott
+ *
+ */
 public class RunBoard extends Board {
 
 	private static final long serialVersionUID = 1L;
 	protected int width;
 	protected int height;
 	protected int firstImg = 0;
+	
+	/**
+	 * Constructor 
+	 * @param w : Width of Board
+	 * @param h : Height of Board
+	 * @param m : Game Model
+	 */
 	public RunBoard(int w, int h, IModel m) {
 		
 		super(m);
