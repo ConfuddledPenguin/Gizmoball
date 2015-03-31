@@ -792,6 +792,9 @@ public class Model extends Observable implements IModel {
 
 		// Check for collisions with other balls
 		for (IBall otherBall : balls) {
+			
+			if(otherBall.isStopped() || ball2.isStopped())
+				continue;
 
 			if (otherBall != ball2) { // make sure not same ball
 
