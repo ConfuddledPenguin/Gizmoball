@@ -19,6 +19,7 @@ import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import controller.ConnectGizmoListener;
+import controller.ConnectKeyListener;
 import controller.MouseClickedListener;
 import controller.MouseDraggedListener;
 import controller.MouseMovementListener;
@@ -38,6 +39,7 @@ public class BuildBoard extends Board {
 
 	private boolean moving = false;
 	private ActionListener connectingGizmos = null;
+	private ActionListener connectingKey = null;
 	private Point absorberStart = null;
 	private Point selectedCell;
 	private Point clickedCell;
@@ -100,7 +102,7 @@ public class BuildBoard extends Board {
 		connect.add(connectGizmo);
 		
 		JMenuItem connectKey = new JMenuItem("Connect Key to Gizmo");
-		connectKey.addActionListener(listener);
+		connectKey.addActionListener( new ConnectKeyListener(g, ui, model));
 		connect.add(connectKey);
 		
 		popup.add(connect);
@@ -324,6 +326,11 @@ public class BuildBoard extends Board {
 		connectingGizmos = listener;
 	}
 	
+	public void setConnectingKey(ActionListener listener) {
+		connectingKey = listener;
+		
+	}
+	
 	public Point getMoveTarget(){
 		return moveTarget;
 	}
@@ -446,4 +453,13 @@ public class BuildBoard extends Board {
 
 		repaint();
 	}
+	
+	public ActionListener getConnectingKey() {
+		return connectingKey;
+	}
+	
+	public void cancelKeyConnect() {
+		connectingKey = null;
+	}
+	
 }

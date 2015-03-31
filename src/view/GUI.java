@@ -51,10 +51,13 @@ public class GUI {
 		this.mode = mode;
 		this.controller = new Controller(this.model, this);
 		
-		if (mode == 'r')
+		if (mode == 'r') {
 			createAndShowRunGUI();
-		else if (mode == 'b')
+		}
+		else if (mode == 'b') {
 			createAndShowBuildGUI();
+		}
+		
 	}
 	
 	/**
@@ -469,5 +472,29 @@ public class GUI {
 	public void setGizmoConnecting(ActionListener listener){
 		this.buildBoard.connectingGizmos(listener);
 		showConnectMessage();
+	}
+
+	public void setKeyConnecting(ActionListener listener) {
+		this.buildBoard.setConnectingKey(listener);
+		showKeyConnectMessage();
+		
+	}
+	
+	public BuildBoard getBuildBoard() {
+		return buildBoard;
+	}
+
+	public void showKeyConnectMessage() {
+		int n = JOptionPane.showConfirmDialog(this.frame, "Next press the key you wish to trigger the selected gizmo", null, JOptionPane.OK_CANCEL_OPTION);
+		
+		if(n == JOptionPane.CANCEL_OPTION){
+			buildBoard.cancelKeyConnect();
+		}
+		
+	}
+
+	public void showKeyConnectedMessage() {
+		JOptionPane.showConfirmDialog(this.frame, "Key connected to Gizmo", null, JOptionPane.CLOSED_OPTION);
+		
 	}
 }

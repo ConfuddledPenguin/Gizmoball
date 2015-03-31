@@ -60,6 +60,8 @@ public class MouseClickedListener extends MouseAdapter{
 			return;
 		}
 		
+		
+		
 		// popup menus are triggered in mousePressed rather than mouseReleased on Linux
 		// so we check for popup triggers in both methods to ensure cross platform compatibility 
 		if (e.isPopupTrigger()) {

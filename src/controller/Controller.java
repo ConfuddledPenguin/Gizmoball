@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import model.IModel;
 import sound.ISoundController;
 import sound.SoundController;
+import view.Board;
 import view.GUI;
 
 /**
@@ -17,6 +18,8 @@ public class Controller  {
 	private ActionListener buildListener;
 	private ActionListener settingsListener;
 	private RunKeyListener runKeyListener;
+	private IModel m;
+	private GUI g;
 	
 	private SoundController sc;
 	
@@ -27,11 +30,12 @@ public class Controller  {
 	 * @param g The ui to sue
 	 */
 	public Controller(IModel m, GUI g) {
-
+		this.m = m;
+		this.g = g;
+		
 		sc = new SoundController(g);
 		m.addObserver(sc);
-		
-		runKeyListener =  new RunKeyListener(m);
+		runKeyListener =  new RunKeyListener(m, g);
 		runListener = new RunActionlistner(m, g, runKeyListener, sc);
 		runKeyListener.registerRunActionListener(runListener);
 		buildListener = new BuildActionlistner(m, g, runKeyListener, sc);
