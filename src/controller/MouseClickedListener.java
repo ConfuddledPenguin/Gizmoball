@@ -81,6 +81,7 @@ public class MouseClickedListener extends MouseAdapter{
 		
 		//got here? must be moving a gizmo
 		board.setGizmoMoving(true);
+		board.setMoveTarget(null);
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -158,9 +159,11 @@ public class MouseClickedListener extends MouseAdapter{
 			return;
 		}
 		
-		if(board.isGizmoMoving()){
+		//Got here must be moving something
+		if(board.isGizmoMoving() && ui.getMovedPoint() != null){
 			listener.actionPerformed(new ActionEvent(this, 0, "Move"));
 			board.setGizmoMoving(false);
+			board.setMoveTarget(null);
 		}
 		
 	}
