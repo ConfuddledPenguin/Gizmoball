@@ -52,6 +52,9 @@ class MusicPlayer{
 	 */
 	public void play(){
 		
+		clip.stop();
+		clip.close();
+		
 		if(currentMode == Mode.normalMode)
 			return;
 		
@@ -75,8 +78,6 @@ class MusicPlayer{
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 		
 		clip.start();
-		
-		System.out.println("Asked to play");
 	}
 	
 	/**
