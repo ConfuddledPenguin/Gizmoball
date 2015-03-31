@@ -1,12 +1,6 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -29,6 +23,14 @@ import controller.MouseClickedListener;
 import controller.MouseDraggedListener;
 import controller.MouseMovementListener;
 
+/**
+ * 
+ * A class creating a Build Board for the user to create or edit Gizmoball games
+ * 
+ * @author Andrew Scott
+ *
+ */
+
 public class BuildBoard extends Board {
 
 	private static final long serialVersionUID = -4952517095084067303L;
@@ -43,7 +45,13 @@ public class BuildBoard extends Board {
 	private IModel model;
 	private GUI ui;
 	
-	
+	/**
+	 * Constructor
+	 * 
+	 * @param m : Game Model
+	 * @param listener : Event Listener
+	 * @param ui : Parent GUI
+	 */
 	public BuildBoard(final IModel m, final ActionListener listener, final GUI ui) {
 
 		super(m);
