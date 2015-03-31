@@ -131,21 +131,16 @@ public class Board {
 			return false;
 		}
 		
-		try {
-			if(!oldPoint.equals(newPoint)){
-				checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight(), g);
-			}
-			
-			markAsEmpty(g);
-			
-			//update gizmo
-			g.setPos(newPoint.x, newPoint.y);
-			
-			markAsTaken(g);
-			
-		} catch (NullPointerException e){
-			//absorber is a weirdo
+		if(!oldPoint.equals(newPoint)){
+			checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight(), g);
 		}
+		
+		markAsEmpty(g);
+		
+		//update gizmo
+		g.setPos(newPoint.x, newPoint.y);
+		
+		markAsTaken(g);
 		return true;
 		
 		

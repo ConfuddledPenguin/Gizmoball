@@ -406,7 +406,7 @@ public class BuildBoard extends Board {
 		if (clickedCell != null) {
 			int index = clickedCell.x + (clickedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
-			g2d.setColor(Color.ORANGE);
+			g2d.setColor(Color.MAGENTA);
 			g2d.fill(cell);
 		}
 

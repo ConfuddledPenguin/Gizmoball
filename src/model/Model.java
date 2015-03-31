@@ -254,16 +254,11 @@ public class Model extends Observable implements IModel {
 		}
 
 		for (IBall b : balls) {
-			try {
-				if (((int) b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)) {
-					if (((int) b.getX() <= newPoint.x + g.getWidth() - 1 && (int) b
-							.getY() <= newPoint.y + g.getHeight() - 1))
-						throw new GridPosAlreadyTakenException("Ball in location");
-				}
-			} catch(NullPointerException e){
-				//Absorber is a weirdo
+			if (((int) b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)) {
+				if (((int) b.getX() <= newPoint.x + g.getWidth() - 1 && (int) b
+						.getY() <= newPoint.y + g.getHeight() - 1))
+					throw new GridPosAlreadyTakenException("Ball in location");
 			}
-			
 		}
 
 		this.board.moveGizmo(g, gizmoPoint, newPoint);

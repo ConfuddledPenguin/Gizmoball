@@ -52,7 +52,6 @@ public class GizmoBallMain {
 		try {
 			m.addGizmo(g);
 		} catch (InvalidGridPosException | GridPosAlreadyTakenException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		m.registerKeyStroke(32, g);

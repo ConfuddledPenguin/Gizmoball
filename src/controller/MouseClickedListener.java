@@ -48,48 +48,7 @@ public class MouseClickedListener extends MouseAdapter{
 		clickedCell = new Point(column, row);
 		board.setClickedCell(clickedCell);
 		board.repaint();
-		
-		Point absorberStart = board.getAbsorberStart();
-		if (absorberStart != null) {
-			// the previous click started absorber definition, this click finishes it
 			
-			int x = 0;  // x coordinate of top left corner of absorber
-			int y = 0;  // y coordinate of top left corner of absorber
-			width = 0;
-			height = 0;
-			
-			if (absorberStart.x < clickedCell.x) {
-				x = absorberStart.x;
-				width = clickedCell.x - absorberStart.x;
-			}
-			else {
-				x = clickedCell.x;
-				width = absorberStart.x - clickedCell.x;
-			}
-			
-			if (absorberStart.y < clickedCell.y) {
-				y = absorberStart.y;
-				height = clickedCell.y - absorberStart.y;
-			}
-			else {
-				y = clickedCell.y;
-				height = absorberStart.y - clickedCell.y;
-			}
-			// add 1 to width and height to include clicked cells
-			Absorber a = new Absorber(x, y, width+1, height+1);
-			try {
-				model.addGizmo(a);
-				model.registerKeyStroke(32, a);
-			} catch (InvalidGridPosException
-					| GridPosAlreadyTakenException e1) {
-				ui.displayErrorMessage(e1.getMessage());
-			}
-			absorberStart = null;
-			board.setAbsorberStart(null);
-			
-			return;
-		}
-		
 		ActionListener connectingGizmos = board.getConnectingGizmos();
 		if(connectingGizmos != null){
 			

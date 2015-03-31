@@ -1,0 +1,106 @@
+Triangle GIZMO0 19 0
+Rotate GIZMO0
+Triangle GIZMO1 1 1
+Square GIZMO2 0 2
+Square GIZMO3 6 2
+Square GIZMO4 7 2
+Square GIZMO5 8 2
+Square GIZMO6 13 2
+Square GIZMO7 14 2
+Square GIZMO8 15 2
+Square GIZMO9 16 2
+Square GIZMO10 17 2
+Square GIZMO11 18 2
+Circle GIZMO12 4 2
+Circle GIZMO13 5 2
+Circle GIZMO14 6 5
+Circle GIZMO15 7 6
+Circle GIZMO16 9 9
+Circle GIZMO17 10 9
+Circle GIZMO18 11 10
+Circle GIZMO19 12 9
+Circle GIZMO20 13 9
+Circle GIZMO21 15 6
+Circle GIZMO22 16 5
+Circle GIZMO23 17 4
+Circle GIZMO24 18 3
+LeftFlipper GIZMO25 9 2
+RightFlipper GIZMO26 11 2
+LeftFlipper GIZMO27 8 7
+RightFlipper GIZMO28 13 7
+Absorber GIZMO29 0 19 1 20
+Absorber GIZMO30 1 19 2 20
+Absorber GIZMO31 2 19 3 20
+Absorber GIZMO32 3 19 4 20
+Absorber GIZMO33 4 19 5 20
+Absorber GIZMO34 6 19 7 20
+Absorber GIZMO35 5 19 6 20
+Absorber GIZMO36 7 19 8 20
+Absorber GIZMO37 8 19 9 20
+Absorber GIZMO38 9 19 10 20
+Absorber GIZMO39 10 19 11 20
+Absorber GIZMO40 11 19 12 20
+Absorber GIZMO41 12 19 13 20
+Absorber GIZMO42 13 19 14 20
+Absorber GIZMO43 14 19 15 20
+Absorber GIZMO44 15 19 16 20
+Absorber GIZMO45 16 19 17 20
+Absorber GIZMO46 17 19 18 20
+Absorber GIZMO47 18 19 19 20
+Absorber GIZMO48 19 19 20 20
+Triangle GIZMO49 0 3
+Circle GIZMO50 1 2
+Circle GIZMO51 2 2
+Circle GIZMO52 3 2
+Connect GIZMO12 GIZMO27
+Connect GIZMO13 GIZMO27
+Connect GIZMO14 GIZMO27
+Connect GIZMO15 GIZMO27
+Connect GIZMO16 GIZMO28
+Connect GIZMO17 GIZMO27
+Connect GIZMO18 GIZMO27
+Connect GIZMO18 GIZMO28
+Connect GIZMO19 GIZMO28
+Connect GIZMO20 GIZMO27
+Connect GIZMO21 GIZMO28
+Connect GIZMO22 GIZMO28
+Connect GIZMO23 GIZMO28
+Connect GIZMO24 GIZMO28
+KeyConnect key 87 ondown GIZMO28
+KeyConnect key 32 ondown null
+KeyConnect key 32 ondown GIZMO25
+KeyConnect key 32 ondown GIZMO48
+KeyConnect key 32 ondown GIZMO46
+KeyConnect key 32 ondown GIZMO29
+KeyConnect key 32 ondown GIZMO36
+KeyConnect key 32 ondown GIZMO37
+KeyConnect key 32 ondown GIZMO41
+KeyConnect key 32 ondown GIZMO38
+KeyConnect key 32 ondown GIZMO30
+KeyConnect key 32 ondown GIZMO40
+KeyConnect key 32 ondown GIZMO44
+KeyConnect key 32 ondown GIZMO39
+KeyConnect key 32 ondown GIZMO32
+KeyConnect key 32 ondown GIZMO26
+KeyConnect key 32 ondown GIZMO34
+KeyConnect key 32 ondown GIZMO35
+KeyConnect key 32 ondown GIZMO47
+KeyConnect key 32 ondown GIZMO43
+KeyConnect key 32 ondown GIZMO45
+KeyConnect key 32 ondown GIZMO42
+KeyConnect key 32 ondown GIZMO33
+KeyConnect key 32 ondown GIZMO31
+KeyConnect key 81 ondown GIZMO27
+Ball BALL0 3.5 0.5 0.0 50.0
+Ball BALL1 4.5 0.5 0.0 50.0
+Ball BALL2 5.5 0.5 0.0 50.0
+Ball BALL3 6.5 0.5 0.0 50.0
+Ball BALL4 7.5 0.5 0.0 50.0
+Ball BALL5 8.5 0.5 0.0 50.0
+Ball BALL6 13.5 0.5 0.0 50.0
+Ball BALL7 14.5 0.5 0.0 50.0
+Ball BALL8 15.5 0.5 0.0 50.0
+Ball BALL9 19.5 1.5 0.0 50.0
+
+Gravity 25.0
+Friction 0.02500000037252903 0.02500000037252903
