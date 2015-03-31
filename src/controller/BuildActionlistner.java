@@ -179,16 +179,11 @@ public class BuildActionlistner implements ActionListener {
 			model.clear();
 			break;
 			
-		case ("Move"):
-			
-			System.out.println("Move called");
-			
+		case ("Move"):			
 			if(!view.getClickedCell().equals(view.getMovedPoint())){
-				
 				try {
 					model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
 				}catch(GridPosAlreadyTakenException | InvalidGridPosException e2){
-					//TODO be smarter about this
 					view.displayErrorMessage(e2.getMessage());
 				}
 			}

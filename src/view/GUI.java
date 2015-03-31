@@ -22,15 +22,6 @@ import model.Model;
 import physics.Vect;
 import controller.Controller;
 
-/**
- * 
- * The GUI
- * 
- * This class creates the master frame which contains either the run or build
- * board, and their respective menus.
- *
- */
-
 public class GUI {
 
 	public JFrame frame;
@@ -41,10 +32,6 @@ public class GUI {
 	private BuildBoard buildBoard;
 	private JButton startStopButton;
 
-	/**
-	 * The Constructor 
-	 */
-	
 	public GUI(char mode, Model m) {
 
 		this.model = m;
@@ -56,10 +43,6 @@ public class GUI {
 		else if (mode == 'b')
 			createAndShowBuildGUI();
 	}
-	
-	/**
-	 * Creates the run GUI along with the RunBoard and the menus.
-	 */
 	
 	private void createAndShowRunGUI() {
 
@@ -90,11 +73,6 @@ public class GUI {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
-	
-	
-	/**
-	 * Creates the build GUI along with the BuildBoard and the menus.
-	 */
 
 	private void createAndShowBuildGUI() {
 
@@ -114,11 +92,6 @@ public class GUI {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
-	
-	/**
-	 * Creates the buttons featured on the Run GUI.
-	 * @return A JPanel containing the run buttons
-	 */
 
 	private JPanel createRunButtons() {
 
@@ -153,19 +126,10 @@ public class GUI {
 		return buttons;
 	}
 	
-	/**
-	 * Either starts or stops the game, according to the "Start" or "Stop" string passed
-	 * as a parameter.
-	 * @param toWhat
-	 */
 	public void changeStartStop(String toWhat){
 		startStopButton.setText(toWhat);
 	}
 
-	/**
-	 *	Creates the menu bar required for build mode
-	 * @return JMenuBar containing the build mode options
-	 */
 	private JMenuBar createBuildButtons() {
 
 		JMenuBar menuBar = new JMenuBar();
@@ -176,11 +140,7 @@ public class GUI {
 		return menuBar;
 
 	}
-	
-	/**
-	 * Creates and Returns the File dropdown menu
-	 * @return JMenu containing the File Menu
-	 */
+
 	private JMenu createFileMenu() {
 
 		JMenu menuList = new JMenu("Menu");
@@ -222,11 +182,6 @@ public class GUI {
 		return menuList;
 	}
 	
-	/**
-	 * Creates and Returns the Level Settings Dropdown menu
-	 * @return JMenu containing the Settings Menu
-	 */
-	
 	private JMenu createLevelSettingsMenu() {
 
 		JMenu menuList = new JMenu("Level Settings");
@@ -263,11 +218,6 @@ public class GUI {
 		return menuList;
 	}
 	
-	/**
-	 * Creates and Returns the Settings Menu
-	 * @return JMenu containing the Settings menu
-	 */
-	
 	private JMenu createSettingsMenu() {
 
 		JMenu menuList = new JMenu("Settings");
@@ -283,10 +233,6 @@ public class GUI {
 		return menuList;
 	}
 	
-	/**
-	 * returns the Balls velocity
-	 * @return Vect containing Ball Velocity
-	 */
 	public Vect getBallVelocity(){
 		
 		float x = 0;
@@ -359,6 +305,7 @@ public class GUI {
 	/**
 	 * Shows a message informing the user of how to 
 	 * connect gizmos together.
+	 * 
 	 */
 	public void showConnectMessage(){
 		
@@ -407,18 +354,11 @@ public class GUI {
 		return Double.parseDouble(g.getText());
 	}
 	
-	/**
-	 * Displays an error message with the specified string msg
-	 * @param msg 
-	 */
 	public void displayErrorMessage(String msg){
 		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 	}
 
-	/**
-	 * Switches the mode between Build and Run Mode
-	 * @return String specifying which mode has been activated
-	 */
+
 	public String switchMode() {
 		if (this.mode == 'r') {
 			this.mode = 'b';
@@ -435,10 +375,6 @@ public class GUI {
 		
 	}
 	
-	/**
-	 * Returns the clicked cell
-	 * @return Point containing X,Y of clicked cell
-	 */
 	public Point getClickedCell() {
 		Point cell = buildBoard.getclickedCell();
 		if (cell == null)
@@ -446,26 +382,14 @@ public class GUI {
 		return cell;
 	}
 	
-	/**
-	 * Returns the move target for Move operations
-	 * @return Point containing X,Y of move target
-	 */
 	public Point getMovedPoint(){
 		return this.buildBoard.getMoveTarget();
 	}
 
-	/**
-	 * Sets the absorber start point to the specified Point p
-	 * @param p
-	 */
 	public void setAbsorberStart(Point p) {
 		this.buildBoard.setAbsorberStart(p);
 	}
 	
-	/**
-	 * 
-	 * @param listener
-	 */
 	public void setGizmoConnecting(ActionListener listener){
 		this.buildBoard.connectingGizmos(listener);
 		showConnectMessage();
