@@ -37,8 +37,9 @@ class MusicPlayer{
 	public MusicPlayer(GUI ui) {
 		this.ui = ui;
 		
-		file1 = this.getClass().getResource("soundfiles/file1.wav");
+		file1 = this.getClass().getResource("soundfiles/RaveTunnnnnnne.wav");
 		file2 = this.getClass().getResource("soundfiles/file2.wav");
+
 		try {
 			inFile1 = AudioSystem.getAudioInputStream(file1);
 			inFile2 = AudioSystem.getAudioInputStream(file2);
