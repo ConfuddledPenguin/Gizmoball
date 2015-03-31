@@ -1,0 +1,10 @@
+Absorber GIZMO0 0 19 20 20
+Triangle GIZMO1 19 0
+Rotate GIZMO1
+LeftFlipper GIZMO2 10 8
+Connect GIZMO1 GIZMO2
+KeyConnect key 32 ondown GIZMO0
+Ball BALL0 19.45 13.192608631315997 0.0 -40.65956666450775
+
+Gravity 25.0
+Friction 0.025 0.025

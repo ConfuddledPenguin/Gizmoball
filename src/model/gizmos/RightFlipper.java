@@ -172,9 +172,7 @@ public class RightFlipper extends Flipper {
 				setAngularVelocity(0);
 				angle=restingAngle;
 			}
-		}
-		
-		if(triggerType == TriggerType.GIZMO){
+		}else if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
 				angle=angle+av;
 				setAngularVelocity(av);
@@ -190,9 +188,7 @@ public class RightFlipper extends Flipper {
 					angle=restingAngle;
 				}
 			}
-		}
-		
-		if(triggerType == TriggerType.BALL && angle > 0){
+		} else if(triggerType == TriggerType.BALL && angle > 0){
 			if( triggeredPercentage < 0.5){
 				setAngularVelocity(av);
 				angle=angle+av;
@@ -207,6 +203,13 @@ public class RightFlipper extends Flipper {
 					setAngularVelocity(0);
 					angle=restingAngle;
 				}
+			}
+		} else { 
+			setAngularVelocity(av);
+			angle=angle-av;
+			if(angle < restingAngle){
+				setAngularVelocity(0);
+				angle=restingAngle;
 			}
 		}
 		

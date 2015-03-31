@@ -4,7 +4,9 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -15,6 +17,7 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
@@ -242,7 +245,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveGizmo(Point gizmoPoint, Point newPoint)
-			throws InvalidGridPosException, GridPosAlreadyTakenException {
+			throws InvalidGridPosException, GridPosAlreadyTakenException{
 
 		IGizmo g = this.board.getGizmo(gizmoPoint.x, gizmoPoint.y);
 
@@ -251,9 +254,7 @@ public class Model extends Observable implements IModel {
 		}
 
 		for (IBall b : balls) {
-
 			if (((int) b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)) {
-
 				if (((int) b.getX() <= newPoint.x + g.getWidth() - 1 && (int) b
 						.getY() <= newPoint.y + g.getHeight() - 1))
 					throw new GridPosAlreadyTakenException("Ball in location");
@@ -367,13 +368,16 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void deleteBall(Point p) {
 		// loop through all balls, if we find ball at point p -> remove it
+		IBall ballsRemove = null;
 		for (IBall b : balls) {
 			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
-				balls.remove(b);
-				setChanged();
-				notifyObservers(b);
+				ballsRemove = b;
+				
 			}
 		}
+		balls.remove(ballsRemove);
+		setChanged();
+		notifyObservers(ballsRemove);
 	}
 
 	/*

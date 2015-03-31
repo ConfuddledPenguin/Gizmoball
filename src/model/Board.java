@@ -135,15 +135,16 @@ public class Board {
 			checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight(), g);
 		}
 		
-		
 		markAsEmpty(g);
 		
 		//update gizmo
 		g.setPos(newPoint.x, newPoint.y);
 		
 		markAsTaken(g);
-		
 		return true;
+		
+		
+		
 	}
 	
 	/**
