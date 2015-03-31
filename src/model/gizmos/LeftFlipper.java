@@ -58,7 +58,9 @@ public class LeftFlipper extends Flipper {
 		
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
 		
-		AffineTransform.getRotateInstance(Math.toRadians(a + o.getAngle()),cx,cy).transform(pt, 0, pt, 0, pt.length/2); 		
+		AffineTransform.getRotateInstance(Math.toRadians(a + o.getAngle()),cx,cy).transform(pt, 0, pt, 0, pt.length/2);	
+		//from view
+		//transform.rotate(Math.toRadians(gizmo.getAngle() + gizmo.getOrientation().getAngle()), rectangle.getX()+1 + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/4);
 		
 		LineSegment ls1 = new LineSegment(pt[4]/Global.L, pt[5]/Global.L, pt[2]/Global.L, pt[3]/Global.L); // right wall
 		LineSegment ls2 = new LineSegment(pt[6]/Global.L,  pt[7]/Global.L, pt[0]/Global.L, pt[1]/Global.L); // left wall

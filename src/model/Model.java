@@ -15,11 +15,9 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Flipper;
 import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
