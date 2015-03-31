@@ -202,13 +202,11 @@ public class BuildActionlistner implements ActionListener {
 			Global.raveMode = false;
 			Global.discoMode = true;
 			sc.setMode(Mode.discoMode);
-			sc.play();
 			break;
 		case ("Rave"):
 			Global.raveMode = true;
 			Global.discoMode = false;
 			sc.setMode(Mode.raveMode);
-			sc.play();
 			break;
 		}
 	}

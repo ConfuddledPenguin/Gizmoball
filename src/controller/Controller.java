@@ -32,7 +32,7 @@ public class Controller  {
 		m.addObserver(sc);
 		
 		runKeyListener =  new RunKeyListener(m);
-		runListener = new RunActionlistner(m, g, runKeyListener);
+		runListener = new RunActionlistner(m, g, runKeyListener, sc);
 		runKeyListener.registerRunActionListener(runListener);
 		buildListener = new BuildActionlistner(m, g, runKeyListener, sc);
 		runKeyListener.registerBuildActionListener(buildListener);
