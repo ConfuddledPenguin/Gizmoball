@@ -21,10 +21,7 @@ public class Absorber extends Gizmo {
 	 * @see model.gizmos.Gizmo#action()
 	 */
 	@Override
-	protected void action() {
-
-		System.out.println(triggerType);
-		
+	protected void action() {	
 		if(triggerType == TriggerType.BALL){
 			return;
 		}
