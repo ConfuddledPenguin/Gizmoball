@@ -30,7 +30,7 @@ public class DisconnectKeyListener implements ActionListener{
 
 	
 	/**
-	 * PErform the diconnect
+	 * Perform the disconnect
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
