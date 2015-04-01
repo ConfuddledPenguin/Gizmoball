@@ -12,6 +12,7 @@ import model.Global;
 import model.IModel;
 import model.exceptions.IncorrectFileFormatException;
 import sound.ISoundController;
+import sound.SoundController.Mode;
 import view.FileChooser;
 import view.IGUI;
 import view.IFileChooser;
@@ -114,6 +115,7 @@ public class RunActionlistner implements ActionListener {
 			case "Load":
 				
 				timer.stop();
+				sc.stop();
 				gui.changeStartStop("Start");
 				runKey.processkey(false);
 				
@@ -122,6 +124,7 @@ public class RunActionlistner implements ActionListener {
 				
 				if (file == null){
 					runKey.processkey(true);
+					sc.play();
 					break;
 				}
 				
@@ -133,6 +136,9 @@ public class RunActionlistner implements ActionListener {
 				
 				currentFile = file;
 				runKey.processkey(true);
+				sc.setMode(Mode.normalMode);
+				Global.raveMode = false;
+				Global.discoMode = false;
 				
 				break;
 			case "Save":
