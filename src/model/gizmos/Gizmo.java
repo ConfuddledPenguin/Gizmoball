@@ -228,12 +228,12 @@ public abstract class Gizmo implements IGizmo {
 				triggered = false;
 			}
 			
+			action();
+			
 		}else{
 			triggeredPercentage = 0;
 			triggeredFor = 0;
 		}
-		
-		action();
 	}
 
 	/*
@@ -319,7 +319,6 @@ public abstract class Gizmo implements IGizmo {
 			if(!g.isTriggered()){
 				g.trigger(TriggerType.GIZMO);
 			}
-			
 		}
 	}
 	

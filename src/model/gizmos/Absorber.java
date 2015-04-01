@@ -24,6 +24,8 @@ public class Absorber extends Gizmo {
 	@Override
 	protected void action() {
 
+		System.out.println(triggerType);
+		
 		if(triggerType == TriggerType.BALL){
 			return;
 		}
@@ -35,15 +37,13 @@ public class Absorber extends Gizmo {
 				b.setX(xcoord + width - b.getRadius() - 0.25);
 				b.setY(ycoord - b.getRadius());
 				
-				System.out.println(b.getX() + " " + b.getY());
-				
 				b.start();
 			}
 		
 			balls.clear();
 		}
 			
-		triggerType = null;		
+//		triggerType = null;		
 	}
 	
 	/*
@@ -64,12 +64,9 @@ public class Absorber extends Gizmo {
 		if(offset >= width)
 			offset = 0;
 		
-		System.out.println(offset + " " + noBalls);
-		
 		ball.setX(xcoord + width - ball.getRadius() - 0.25 - offset);
 		ball.setY(ycoord + ball.getRadius() + 0.25);
 		
-		System.out.println(ball.getX());
 		
 		ball.setVelo(ballExitV);
 	}
