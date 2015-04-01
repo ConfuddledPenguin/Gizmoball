@@ -414,7 +414,7 @@ public class GUI implements IGUI {
 	public void displayErrorMessage(String msg){
 		controller.getRunKeyListener().processkey(false);
 		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-		controller.getRunKeyListener().processkey(false);
+		controller.getRunKeyListener().processkey(true);
 	}
 
 	/* (non-Javadoc)
