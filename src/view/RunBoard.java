@@ -27,7 +27,7 @@ import model.gizmos.IGizmo;
  * @author Andrew Scott
  *
  */
-public class RunBoard extends Board {
+public class RunBoard extends Board implements IRunBoard {
 
 	private static final long serialVersionUID = 1L;
 	protected int width;
@@ -51,10 +51,18 @@ public class RunBoard extends Board {
 		this.setPreferredSize(new Dimension(width, height));
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IRunBoard#getPreferredSize()
+	 */
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(width, height);
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IRunBoard#paintComponent(java.awt.Graphics)
+	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.setBackground(new Color(this.colour[0],this.colour[1],this.colour[2]));
@@ -100,8 +108,11 @@ public class RunBoard extends Board {
 		
 	}
 
-	@SuppressWarnings("unchecked")
+	/* (non-Javadoc)
+	 * @see view.IRunBoard#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
 
 		if (arg instanceof Ball)

@@ -8,9 +8,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import view.Board;
-import view.BuildBoard;
-import view.GUI;
-
+import view.IBuildBoard;
+import view.IGUI;
 import model.IModel;
 
 /**
@@ -22,7 +21,7 @@ public class RunKeyListener implements KeyListener {
 	private ActionListener run;
 	private ActionListener build;
 	private IModel model;
-	private GUI ui;
+	private IGUI ui;
 	private boolean processKey = true;
 	private boolean processBuildMode = true;
 	
@@ -47,7 +46,7 @@ public class RunKeyListener implements KeyListener {
 	/**
 	 * @param game The Gizmoball model
 	 */
-	public RunKeyListener(IModel game, GUI ui) {
+	public RunKeyListener(IModel game, IGUI ui) {
 		this.model = game;
 		this.ui = ui;
 		
@@ -157,7 +156,7 @@ public class RunKeyListener implements KeyListener {
 		int keyCode = arg0.getKeyCode();
 		addKey(keyCode);
 		
-		BuildBoard board = ui.getBuildBoard();
+		IBuildBoard board = ui.getBuildBoard();
 		if (board != null) {  // check if we are in build mode
 			ConnectKeyListener connectingKey = (ConnectKeyListener)board.getConnectingKey();
 			if (connectingKey != null) {  // check if this key press is to be assigned to a gizmo as a trigger

@@ -14,7 +14,7 @@ import javax.sound.midi.Synthesizer;
 
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.IGizmo;
-import view.GUI;
+import view.IGUI;
 
 /**
  * Controls the playback of sounds to the user
@@ -41,7 +41,7 @@ public class SoundController implements Observer, ISoundController {
 	
 	private MusicPlayer player;
 	
-	private GUI ui;
+	private IGUI ui;
 	
 	private boolean muteMusic = false;
 	private boolean muteGizmos = false;
@@ -51,7 +51,7 @@ public class SoundController implements Observer, ISoundController {
 	 * 
 	 * @param ui The ui to display errors on
 	 */
-	public SoundController(GUI ui) {
+	public SoundController(IGUI ui) {
 		this.ui = ui;
 		
 		player = new MusicPlayer(ui);

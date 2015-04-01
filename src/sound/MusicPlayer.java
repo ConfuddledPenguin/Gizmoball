@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import sound.SoundController.Mode;
-import view.GUI;
+import view.IGUI;
 
 /**
  * Plays music
@@ -22,7 +22,7 @@ class MusicPlayer{
 	private Clip clip;
 	private Mode currentMode = Mode.normalMode;
 	
-	private GUI ui;
+	private IGUI ui;
 	
 	private boolean playing = false;
 	
@@ -34,7 +34,7 @@ class MusicPlayer{
 	 * 
 	 * @param ui The ui to show errors on
 	 */
-	public MusicPlayer(GUI ui) {
+	public MusicPlayer(IGUI ui) {
 		
 		this.ui = ui;
 		

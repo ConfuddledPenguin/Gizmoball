@@ -13,7 +13,7 @@ import model.IModel;
 import model.exceptions.IncorrectFileFormatException;
 import sound.ISoundController;
 import view.FileChooser;
-import view.GUI;
+import view.IGUI;
 import view.IFileChooser;
 
 /**
@@ -24,7 +24,7 @@ public class RunActionlistner implements ActionListener {
 
 	private IModel model;
 	private Timer timer;
-	private GUI gui;
+	private IGUI gui;
 	private ISoundController sc;
 	private RunKeyListener runKey;
 
@@ -37,7 +37,7 @@ public class RunActionlistner implements ActionListener {
 	 * @param g The gui
 	 * @param runKey The run keylistener
 	 */
-	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey, ISoundController sc) {
+	public RunActionlistner(IModel m, IGUI g, RunKeyListener runKey, ISoundController sc) {
 
 		model = m;
 		gui = g;
@@ -61,7 +61,7 @@ public class RunActionlistner implements ActionListener {
 			
 			//perform update
 			model.update();
-			gui.runBoard.nextColour();
+			gui.getRunBoard().nextColour();
 			//compensate for update time
 			time = System.nanoTime() / 1000 / 1000 - time;
 			int delay = (int) (Global.REFRESHTIME - time);

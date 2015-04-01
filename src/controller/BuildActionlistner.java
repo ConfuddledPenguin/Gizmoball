@@ -18,7 +18,7 @@ import model.gizmos.Square;
 import model.gizmos.Triangle;
 import sound.ISoundController;
 import sound.SoundController.Mode;
-import view.GUI;
+import view.IGUI;
 
 /**
  * This controller listens to events coming from the build
@@ -28,7 +28,7 @@ import view.GUI;
 public class BuildActionlistner implements ActionListener {
 
 	private IModel model;
-	private GUI view;
+	private IGUI view;
 	private RunKeyListener run;
 	private ISoundController sc;
 	
@@ -41,7 +41,7 @@ public class BuildActionlistner implements ActionListener {
 	 * @param g The ui to use
 	 * @param r The run key listener to update
 	 */
-	public BuildActionlistner(IModel m, GUI g, RunKeyListener r, ISoundController sc) {
+	public BuildActionlistner(IModel m, IGUI g, RunKeyListener r, ISoundController sc) {
 		model = m;
 		view = g;
 		run = r;
