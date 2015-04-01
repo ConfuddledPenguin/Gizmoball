@@ -1,6 +1,5 @@
 package model.gizmos;
 
-import model.Global;
 import model.IBall;
 import physics.Circle;
 import physics.LineSegment;
