@@ -474,6 +474,11 @@ public class GUI {
 		showConnectMessage();
 	}
 
+	/**
+	 * Sets the key connecting action listener. This is used when
+	 * connecting a key to a gizmo.
+	 * @param listener
+	 */
 	public void setKeyConnecting(ActionListener listener) {
 		this.buildBoard.setConnectingKey(listener);
 		showKeyConnectMessage();
@@ -484,6 +489,9 @@ public class GUI {
 		return buildBoard;
 	}
 
+	/**
+	 * Display instructions to the user on how connect a key to the selected gizmo
+	 */
 	public void showKeyConnectMessage() {
 		int n = JOptionPane.showConfirmDialog(this.frame, "Next press the key you wish to trigger the selected gizmo", null, JOptionPane.OK_CANCEL_OPTION);
 		
@@ -493,6 +501,10 @@ public class GUI {
 		
 	}
 
+	
+	/**
+	 * Confirm to the user that a key has successfully been connected to a gizmo
+	 */
 	public void showKeyConnectedMessage() {
 		JOptionPane.showConfirmDialog(this.frame, "Key connected to Gizmo", null, JOptionPane.CLOSED_OPTION);
 		

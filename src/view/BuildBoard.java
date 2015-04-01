@@ -39,7 +39,7 @@ public class BuildBoard extends Board {
 
 	private boolean moving = false;
 	private ActionListener connectingGizmos = null;
-	private ActionListener connectingKey = null;
+	private ActionListener connectingKey = null; //  action listener to be called when assigning a key to a gizmo
 	private Point absorberStart = null;
 	private Point selectedCell;
 	private Point clickedCell;
@@ -322,13 +322,35 @@ public class BuildBoard extends Board {
 		return connectingGizmos;
 	}
 	
+	
 	public void setConnectingGizmo(ActionListener listener){
 		connectingGizmos = listener;
 	}
 	
+	/**
+	 * Set the action listener to be called when when a key is pressed after
+	 * the user has chosen to connect a key to a gizmo. If null, key presses will
+	 * be treated normally and not assigned to a gizmo.
+	 * @param listener 
+	 */
 	public void setConnectingKey(ActionListener listener) {
 		connectingKey = listener;
-		
+	}
+	
+	/**
+	 * Return the action listener which is to be called when a key is pressed
+	 * after the user has chosen to connect a key to a gizmo.
+	 */
+	public ActionListener getConnectingKey() {
+		return connectingKey;
+	}
+	
+	/**
+	 * Cancels connecting a key to a gizmo. Key presses will be treated as normal
+	 * and not assigned to a gizmo.
+	 */
+	public void cancelKeyConnect() {
+		connectingKey = null;
 	}
 	
 	public Point getMoveTarget(){
@@ -452,14 +474,6 @@ public class BuildBoard extends Board {
 		}
 
 		repaint();
-	}
-	
-	public ActionListener getConnectingKey() {
-		return connectingKey;
-	}
-	
-	public void cancelKeyConnect() {
-		connectingKey = null;
 	}
 	
 }

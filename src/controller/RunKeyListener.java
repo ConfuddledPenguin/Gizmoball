@@ -158,18 +158,15 @@ public class RunKeyListener implements KeyListener {
 		addKey(keyCode);
 		
 		BuildBoard board = ui.getBuildBoard();
-		if (board != null) {
-			// check if this key press is to be assigned to a gizmo as a trigger
+		if (board != null) {  // check if we are in build mode
 			ConnectKeyListener connectingKey = (ConnectKeyListener)board.getConnectingKey();
-			if (connectingKey != null) {
+			if (connectingKey != null) {  // check if this key press is to be assigned to a gizmo as a trigger
 				connectingKey.setKey(keyCode);
-				connectingKey.actionPerformed(null);
-				board.setConnectingKey(null);
+				connectingKey.actionPerformed(null);  // updates the model with the new key -> gizmo connection
+				board.setConnectingKey(null);  // notify the view we are no longer waiting for a key press for this connection
 				return;
 			}
 		}
-		
-		
 		
 		//On alt
 		if(keyArray[keyArray.length -2] == 18){
