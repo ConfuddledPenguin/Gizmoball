@@ -48,15 +48,14 @@ public class MouseClickedListener extends MouseAdapter{
 		clickedCell = new Point(column, row);
 		board.setClickedCell(clickedCell);
 		board.repaint();
-			
+		
 		ActionListener connectingGizmos = board.getConnectingGizmos();
-		if(connectingGizmos != null){
-			
+		if(connectingGizmos != null){  // check if we are in the process of connecting gizmos
+			// we are, so make the connection
 			connectingGizmos.actionPerformed(null);
 			connectingGizmos = null;
 			
-			board.setConnectingGizmo(null);
-			
+			board.setConnectingGizmo(null);  // notify the board that we are no longer connecting gizmos
 			return;
 		}
 		
@@ -144,6 +143,7 @@ public class MouseClickedListener extends MouseAdapter{
 		}
 		
 
+		// check if any popups are to be displayed to the user as a result of this click
 		if (e.isPopupTrigger()) {
 			Point p = new Point(e.getX() /Global.L, e.getY() /Global.L);
 			IGizmo g;

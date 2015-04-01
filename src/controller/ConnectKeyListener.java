@@ -9,7 +9,7 @@ import model.gizmos.IGizmo;
 
 /**
  * This action listener handles connecting a key press to a gizmo.
- * It is first triggered when the user selects a gizmo, at which point
+ * It is first initialised when the user selects a gizmo, at which point
  * a reference to the selected gizmo is saved. After this, the next time a key is
  * pressed the runKeyListener calls setKeyCode and passes in the pressed key.
  * ActionPerformed is then called with a null action passed in. At this point
@@ -21,7 +21,7 @@ public class ConnectKeyListener implements ActionListener {
 	private IGizmo g;
 	private IGUI ui;
 	private IModel m;
-	private int keyCode;
+	private int keyCode; // integer representation of a key
 	
 	
 	public ConnectKeyListener(IGizmo g, IGUI ui, IModel m) {
@@ -36,8 +36,10 @@ public class ConnectKeyListener implements ActionListener {
 		
 		if(event != null){
 			// notify the ui that this is the action listener for this connection
+			// and that the next key press is to be used for the connection
 			ui.setKeyConnecting(this);
 		}else{
+			// the user has selected a gizmo and a key, so make the connection
 			m.registerKeyStroke(keyCode, g);
 			ui.showKeyConnectedMessage();
 		}
