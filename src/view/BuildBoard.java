@@ -32,7 +32,7 @@ import controller.MouseMovementListener;
  *
  */
 
-public class BuildBoard extends Board {
+public class BuildBoard extends Board implements IBuildBoard {
 
 	private static final long serialVersionUID = -4952517095084067303L;
 	private List<Rectangle> cells;
@@ -45,7 +45,7 @@ public class BuildBoard extends Board {
 	private Point clickedCell;
 	private Point moveTarget;
 	private IModel model;
-	private GUI ui;
+	private IGUI ui;
 	
 	/**
 	 * Constructor
@@ -54,7 +54,7 @@ public class BuildBoard extends Board {
 	 * @param listener : Event Listener
 	 * @param ui : Parent GUI
 	 */
-	public BuildBoard(final IModel m, final ActionListener listener, final GUI ui) {
+	public BuildBoard(final IModel m, final ActionListener listener, final IGUI ui) {
 
 		super(m);
 		this.model = m;
@@ -70,13 +70,10 @@ public class BuildBoard extends Board {
 
 		addMouseMotionListener(new MouseDraggedListener(this));
 	}
-	/**
-	 * Builds the popup context menu for a gizmo
-	 * 
-	 * @param listener The listener to use to listen for events
-	 * @param g The gizmo to build for
-	 * @return The menu
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#createGizmoPopupMenu(java.awt.event.ActionListener, model.gizmos.IGizmo)
 	 */
+	@Override
 	public JPopupMenu createGizmoPopupMenu(ActionListener listener, IGizmo g) {
 
 		JPopupMenu popup = new JPopupMenu();
@@ -160,13 +157,10 @@ public class BuildBoard extends Board {
 		return popup;
 	}
 	
-	/**
-	 * Create a popup context menu for an empty area
-	 * 
-	 * @param listener The listener to use for events
-	 * 
-	 * @return The menu
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#createEmptyPopupMenu(java.awt.event.ActionListener)
 	 */
+	@Override
 	public JPopupMenu createEmptyPopupMenu(ActionListener listener) {
 
 		JPopupMenu popup = new JPopupMenu();
@@ -215,13 +209,10 @@ public class BuildBoard extends Board {
 
 	}
 	
-	/**
-	 * Creates a popup context menu for when there is a ball selected
-	 * 
-	 * @param listener The listener to use
-	 * @param b The ball to build for
-	 * @return the menu
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#createBallPopupMenu(java.awt.event.ActionListener, model.IBall)
 	 */
+	@Override
 	public JPopupMenu createBallPopupMenu(ActionListener listener, IBall b) {
 
 		JPopupMenu popup = new JPopupMenu();
@@ -238,24 +229,26 @@ public class BuildBoard extends Board {
 
 	}
 
-	/**
-	 * Returns the selected cell
-	 * 
-	 * @return this.selectedCell
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getSelectedCell()
 	 */
+	@Override
 	public Point getSelectedCell() {
 		return selectedCell;
 	}
 
-	/**
-	 * Returns the clicked cell
-	 * 
-	 * @return this.clickedCell
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getclickedCell()
 	 */
+	@Override
 	public Point getclickedCell() {
 		return clickedCell;
 	}
 	
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getMousePt()
+	 */
+	@Override
 	public Point getMousePt() {
 		
 		int width = getWidth();
@@ -269,11 +262,17 @@ public class BuildBoard extends Board {
 		return new Point(column, row);
 	}
 	
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getPreferredSize()
+	 */
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension((Global.L*Global.BOARDWIDTH), (Global.L*Global.BOARDHEIGHT));
 	}
 
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#invalidate()
+	 */
 	@Override
 	public void invalidate() {
 		cells.clear();
@@ -281,117 +280,124 @@ public class BuildBoard extends Board {
 		super.invalidate();
 	}
 	
-	/**
-	 * Sets the starting point for an absorber definition by the user.
-	 * @param p the starting point in the grid
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setAbsorberStart(java.awt.Point)
 	 */
+	@Override
 	public void setAbsorberStart(Point p) {
 		moveTarget = p;
 		absorberStart = p;
 	}
 	
-	/**
-	 * Get the absorber starting point
-	 * 
-	 * @return The point
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getAbsorberStart()
 	 */
+	@Override
 	public Point getAbsorberStart() {
 		return absorberStart;
 	}
 	
-	/**
-	 * Let the ui know that we are connecting gizmos
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#connectingGizmos(java.awt.event.ActionListener)
 	 */
+	@Override
 	public void connectingGizmos(ActionListener listener){
 		connectingGizmos = listener;
 	}
 	
-	/**
-	 * Cancel connecting the gizmos
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#cancelGizmoConnect()
 	 */
+	@Override
 	public void cancelGizmoConnect(){
 		connectingGizmos = null;
 	}
 	
-	/**
-	 * Get the listener responsible for the gizmo connecting
-	 * 
-	 * @return The listener
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getConnectingGizmos()
 	 */
+	@Override
 	public ActionListener getConnectingGizmos(){
 		return connectingGizmos;
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setConnectingGizmo(java.awt.event.ActionListener)
+	 */
+	@Override
 	public void setConnectingGizmo(ActionListener listener){
 		connectingGizmos = listener;
 	}
 	
-	/**
-	 * Set the action listener to be called when when a key is pressed after
-	 * the user has chosen to connect a key to a gizmo. If null, key presses will
-	 * be treated normally and not assigned to a gizmo.
-	 * @param listener 
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setConnectingKey(java.awt.event.ActionListener)
 	 */
+	@Override
 	public void setConnectingKey(ActionListener listener) {
 		connectingKey = listener;
 	}
 	
-	/**
-	 * Return the action listener which is to be called when a key is pressed
-	 * after the user has chosen to connect a key to a gizmo.
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getConnectingKey()
 	 */
+	@Override
 	public ActionListener getConnectingKey() {
 		return connectingKey;
 	}
 	
-	/**
-	 * Cancels connecting a key to a gizmo. Key presses will be treated as normal
-	 * and not assigned to a gizmo.
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#cancelKeyConnect()
 	 */
+	@Override
 	public void cancelKeyConnect() {
 		connectingKey = null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#getMoveTarget()
+	 */
+	@Override
 	public Point getMoveTarget(){
 		return moveTarget;
 	}
 	
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setMoveTarget(java.awt.Point)
+	 */
+	@Override
 	public void setMoveTarget(Point p){
 		moveTarget = p;
 	}
 	
-	/**
-	 * Set the selected cell
-	 * @param p the cell selected
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setSelectedCell(java.awt.Point)
 	 */
+	@Override
 	public void setSelectedCell(Point p){
 		selectedCell = p;
 	}
 	
-	/**
-	 * Set the clicked cell
-	 * 
-	 * @param clickedCell the clicked cell
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setClickedCell(java.awt.Point)
 	 */
+	@Override
 	public void setClickedCell(Point clickedCell) {
 		this.clickedCell = clickedCell;
 	}
 	
-	/**
-	 * Moving a gizmo? let me know
-	 * 
-	 * @param value tru for moving, otherwise false
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#setGizmoMoving(boolean)
 	 */
+	@Override
 	public void setGizmoMoving(boolean value){
 		moving = value;
 	}
 	
-	/**
-	 * Get whether a gizmo is being moved;
-	 * 
-	 * @return this.moving
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#isGizmoMoving()
 	 */
+	@Override
 	public boolean isGizmoMoving(){
 		return moving;
 	}
@@ -459,8 +465,11 @@ public class BuildBoard extends Board {
 		g2d.dispose();
 	}
 	
-	@SuppressWarnings("unchecked")
+	/* (non-Javadoc)
+	 * @see view.IBuildBoard#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
 
 		if (arg instanceof IGizmo) {

@@ -31,7 +31,7 @@ import controller.Controller;
  *
  */
 
-public class GUI {
+public class GUI implements IGUI {
 
 	public JFrame frame;
 	public RunBoard runBoard;
@@ -63,7 +63,6 @@ public class GUI {
 	/**
 	 * Creates the run GUI along with the RunBoard and the menus.
 	 */
-	
 	private void createAndShowRunGUI() {
 
 		frame = new JFrame("Gizmoball");
@@ -98,7 +97,6 @@ public class GUI {
 	/**
 	 * Creates the build GUI along with the BuildBoard and the menus.
 	 */
-
 	private void createAndShowBuildGUI() {
 
 		frame = new JFrame("Gizmoball (Build Mode)");
@@ -122,7 +120,6 @@ public class GUI {
 	 * Creates the buttons featured on the Run GUI.
 	 * @return A JPanel containing the run buttons
 	 */
-
 	private JPanel createRunButtons() {
 
 		JPanel buttons = new JPanel();
@@ -156,11 +153,10 @@ public class GUI {
 		return buttons;
 	}
 	
-	/**
-	 * Either starts or stops the game, according to the "Start" or "Stop" string passed
-	 * as a parameter.
-	 * @param toWhat
+	/* (non-Javadoc)
+	 * @see view.IGUI#changeStartStop(java.lang.String)
 	 */
+	@Override
 	public void changeStartStop(String toWhat){
 		startStopButton.setText(toWhat);
 	}
@@ -286,10 +282,10 @@ public class GUI {
 		return menuList;
 	}
 	
-	/**
-	 * returns the Balls velocity
-	 * @return Vect containing Ball Velocity
+	/* (non-Javadoc)
+	 * @see view.IGUI#getBallVelocity()
 	 */
+	@Override
 	public Vect getBallVelocity(){
 		
 		float x = 0;
@@ -325,10 +321,10 @@ public class GUI {
 		
 	}
 	
-	/**
-	 * Prompt the user to enter numeric values for friction (mu and mu2)
-	 * @return array containing values for mu and mu2. Null on cancel
+	/* (non-Javadoc)
+	 * @see view.IGUI#getUserFriction()
 	 */
+	@Override
 	public float[] getUserFriction() {
 		float[] friction = new float[2];
 		JTextField mu = new JTextField();
@@ -359,10 +355,10 @@ public class GUI {
 		return friction;
 	}
 	
-	/**
-	 * Shows a message informing the user of how to 
-	 * connect gizmos together.
+	/* (non-Javadoc)
+	 * @see view.IGUI#showConnectMessage()
 	 */
+	@Override
 	public void showConnectMessage(){
 		
 		int n = JOptionPane.showConfirmDialog(this.frame, "Next select he gizmo you wish to trigger", null, JOptionPane.OK_CANCEL_OPTION);
@@ -372,17 +368,18 @@ public class GUI {
 		}
 	}
 	
-	/**
-	 * Alert user to successful connection
+	/* (non-Javadoc)
+	 * @see view.IGUI#showGizmoConnectedMessage()
 	 */
+	@Override
 	public void showGizmoConnectedMessage(){
 		JOptionPane.showConfirmDialog(this.frame, "Gizmos connected", null, JOptionPane.CLOSED_OPTION);
 	}
 	
-	/**
-	 * Prompt the user to enter a numeric value for gravity
-	 * @return users value for gravity. Null on cancel
+	/* (non-Javadoc)
+	 * @see view.IGUI#getUserGravity()
 	 */
+	@Override
 	public Double getUserGravity() {
 		JTextField g = new JTextField();
 		Object[] input = {"Gravity", g};
@@ -410,18 +407,18 @@ public class GUI {
 		return Double.parseDouble(g.getText());
 	}
 	
-	/**
-	 * Displays an error message with the specified string msg
-	 * @param msg 
+	/* (non-Javadoc)
+	 * @see view.IGUI#displayErrorMessage(java.lang.String)
 	 */
+	@Override
 	public void displayErrorMessage(String msg){
 		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 	}
 
-	/**
-	 * Switches the mode between Build and Run Mode
-	 * @return String specifying which mode has been activated
+	/* (non-Javadoc)
+	 * @see view.IGUI#switchMode()
 	 */
+	@Override
 	public String switchMode() {
 		if (this.mode == 'r') {
 			this.mode = 'b';
@@ -438,10 +435,10 @@ public class GUI {
 		
 	}
 	
-	/**
-	 * Returns the clicked cell
-	 * @return Point containing X,Y of clicked cell
+	/* (non-Javadoc)
+	 * @see view.IGUI#getClickedCell()
 	 */
+	@Override
 	public Point getClickedCell() {
 		Point cell = buildBoard.getclickedCell();
 		if (cell == null)
@@ -449,49 +446,53 @@ public class GUI {
 		return cell;
 	}
 	
-	/**
-	 * Returns the move target for Move operations
-	 * @return Point containing X,Y of move target
+	/* (non-Javadoc)
+	 * @see view.IGUI#getMovedPoint()
 	 */
+	@Override
 	public Point getMovedPoint(){
 		return this.buildBoard.getMoveTarget();
 	}
 
-	/**
-	 * Sets the absorber start point to the specified Point p
-	 * @param p
+	/* (non-Javadoc)
+	 * @see view.IGUI#setAbsorberStart(java.awt.Point)
 	 */
+	@Override
 	public void setAbsorberStart(Point p) {
 		this.buildBoard.setAbsorberStart(p);
 	}
 	
-	/**
-	 * 
-	 * @param listener
+	/* (non-Javadoc)
+	 * @see view.IGUI#setGizmoConnecting(java.awt.event.ActionListener)
 	 */
+	@Override
 	public void setGizmoConnecting(ActionListener listener){
 		this.buildBoard.connectingGizmos(listener);
 		showConnectMessage();
 	}
 
-	/**
-	 * Sets the key connecting action listener. This is used when
-	 * connecting a key to a gizmo.
-	 * @param listener
+	/* (non-Javadoc)
+	 * @see view.IGUI#setKeyConnecting(java.awt.event.ActionListener)
 	 */
+	@Override
 	public void setKeyConnecting(ActionListener listener) {
 		this.buildBoard.setConnectingKey(listener);
 		showKeyConnectMessage();
 		
 	}
 	
-	public BuildBoard getBuildBoard() {
+	/* (non-Javadoc)
+	 * @see view.IGUI#getBuildBoard()
+	 */
+	@Override
+	public IBuildBoard getBuildBoard() {
 		return buildBoard;
 	}
 
-	/**
-	 * Display instructions to the user on how connect a key to the selected gizmo
+	/* (non-Javadoc)
+	 * @see view.IGUI#showKeyConnectMessage()
 	 */
+	@Override
 	public void showKeyConnectMessage() {
 		int n = JOptionPane.showConfirmDialog(this.frame, "Next press the key you wish to trigger the selected gizmo", null, JOptionPane.OK_CANCEL_OPTION);
 		
@@ -502,11 +503,20 @@ public class GUI {
 	}
 
 	
-	/**
-	 * Confirm to the user that a key has successfully been connected to a gizmo
+	/* (non-Javadoc)
+	 * @see view.IGUI#showKeyConnectedMessage()
 	 */
-	public void showKeyConnectedMessage() {
-		JOptionPane.showConfirmDialog(this.frame, "Key connected to Gizmo", null, JOptionPane.CLOSED_OPTION);
+	@Override
+	public void showKeyConnectedMessage(String msg) {
+		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION);
 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see view.IGUI#getRunBoard()
+	 */
+	@Override
+	public IRunBoard getRunBoard(){
+		return runBoard;
 	}
 }

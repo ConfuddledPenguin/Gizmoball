@@ -2,8 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-import view.GUI;
+import view.IGUI;
 import model.IModel;
 import model.gizmos.IGizmo;
 
@@ -19,12 +20,11 @@ import model.gizmos.IGizmo;
 public class ConnectKeyListener implements ActionListener {
 
 	private IGizmo g;
-	private GUI ui;
+	private IGUI ui;
 	private IModel m;
 	private int keyCode;
 	
-	
-	public ConnectKeyListener(IGizmo g, GUI ui, IModel m) {
+	public ConnectKeyListener(IGizmo g, IGUI ui, IModel m) {
 		
 		this.g = g;
 		this.ui = ui;
@@ -39,9 +39,8 @@ public class ConnectKeyListener implements ActionListener {
 			ui.setKeyConnecting(this);
 		}else{
 			m.registerKeyStroke(keyCode, g);
-			ui.showKeyConnectedMessage();
+			ui.showKeyConnectedMessage(KeyEvent.getKeyText(keyCode) + " key has been connected to the gizmo");
 		}
-		
 	}
 	
 	/**

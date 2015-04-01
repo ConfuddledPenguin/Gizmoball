@@ -9,6 +9,7 @@ import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
 import view.GUI;
+import view.IGUI;
 
 /**
  * The main starting class for the gizmoball application
@@ -18,7 +19,7 @@ import view.GUI;
  */
 public class GizmoBallMain {
 	
-	public static GUI gui;
+	public static IGUI gui;
 	final static Model m = new Model();
 	
 	/**

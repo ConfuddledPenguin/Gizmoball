@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 import model.IModel;
 import sound.ISoundController;
 import sound.SoundController;
-import view.Board;
-import view.GUI;
+import view.IGUI;
 
 /**
  * The starting point for the gizmoball control system
@@ -18,8 +17,6 @@ public class Controller  {
 	private ActionListener buildListener;
 	private ActionListener settingsListener;
 	private RunKeyListener runKeyListener;
-	private IModel m;
-	private GUI g;
 	
 	private SoundController sc;
 	
@@ -29,12 +26,11 @@ public class Controller  {
 	 * @param m The model to effect
 	 * @param g The ui to sue
 	 */
-	public Controller(IModel m, GUI g) {
-		this.m = m;
-		this.g = g;
+	public Controller(IModel m, IGUI g) {
 		
 		sc = new SoundController(g);
 		m.addObserver(sc);
+
 		runKeyListener =  new RunKeyListener(m, g);
 		runListener = new RunActionlistner(m, g, runKeyListener, sc);
 		runKeyListener.registerRunActionListener(runListener);

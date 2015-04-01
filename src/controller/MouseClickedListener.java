@@ -15,19 +15,19 @@ import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.InvalidGridPosException;
 import model.gizmos.Absorber;
 import model.gizmos.IGizmo;
-import view.BuildBoard;
-import view.GUI;
+import view.IBuildBoard;
+import view.IGUI;
 
 public class MouseClickedListener extends MouseAdapter{
 	
-	private BuildBoard board;
+	private IBuildBoard board;
 	private IModel model;
-	private GUI ui;
+	private IGUI ui;
 	private ActionListener listener;
 	
 	private Point clickedCell;
 	
-	public MouseClickedListener(BuildBoard board, IModel model, GUI ui, ActionListener listener) {
+	public MouseClickedListener(IBuildBoard board, IModel model, IGUI ui, ActionListener listener) {
 		
 		this.board = board;
 		this.model = model;
