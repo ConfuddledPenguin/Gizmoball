@@ -101,6 +101,10 @@ class MusicPlayer{
 	 */
 	public void stop(){
 		
+		if(System.getProperty("java.vm.name").toLowerCase().contains("openjdk")){
+			return;
+		}
+		
 		if(currentMode == Mode.normalMode)
 			return;
 		

@@ -92,6 +92,7 @@ public class RunActionlistner implements ActionListener {
 				GizmoBallMain.gui.switchMode();
 				timer.stop();
 				gui.changeStartStop("Start");
+				sc.stop();
 				break;
 				
 			case "Reload":
