@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import view.Board;
+import view.BuildBoard;
+import view.GUI;
+
 import model.IModel;
 
 /**
@@ -18,6 +22,7 @@ public class RunKeyListener implements KeyListener {
 	private ActionListener run;
 	private ActionListener build;
 	private IModel model;
+	private GUI ui;
 	private boolean processKey = true;
 	private boolean processBuildMode = true;
 	
@@ -42,8 +47,10 @@ public class RunKeyListener implements KeyListener {
 	/**
 	 * @param game The Gizmoball model
 	 */
-	public RunKeyListener(IModel game) {
+	public RunKeyListener(IModel game, GUI ui) {
 		this.model = game;
+		this.ui = ui;
+		
 		
 		/*
 		 * Grab the focus manager so we are always listening to
@@ -147,11 +154,19 @@ public class RunKeyListener implements KeyListener {
 	 */	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		
 		int keyCode = arg0.getKeyCode();
 		addKey(keyCode);
 		
-		
+		BuildBoard board = ui.getBuildBoard();
+		if (board != null) {  // check if we are in build mode
+			ConnectKeyListener connectingKey = (ConnectKeyListener)board.getConnectingKey();
+			if (connectingKey != null) {  // check if this key press is to be assigned to a gizmo as a trigger
+				connectingKey.setKey(keyCode);
+				connectingKey.actionPerformed(null);  // updates the model with the new key -> gizmo connection
+				board.setConnectingKey(null);  // notify the view we are no longer waiting for a key press for this connection
+				return;
+			}
+		}
 		
 		//On alt
 		if(keyArray[keyArray.length -2] == 18){

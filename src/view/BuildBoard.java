@@ -1,12 +1,6 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -25,9 +19,18 @@ import model.IModel;
 import model.gizmos.Gizmo;
 import model.gizmos.IGizmo;
 import controller.ConnectGizmoListener;
+import controller.ConnectKeyListener;
 import controller.MouseClickedListener;
 import controller.MouseDraggedListener;
 import controller.MouseMovementListener;
+
+/**
+ * 
+ * A class creating a Build Board for the user to create or edit Gizmoball games
+ * 
+ * @author Andrew Scott
+ *
+ */
 
 public class BuildBoard extends Board {
 
@@ -36,6 +39,7 @@ public class BuildBoard extends Board {
 
 	private boolean moving = false;
 	private ActionListener connectingGizmos = null;
+	private ActionListener connectingKey = null; //  action listener to be called when assigning a key to a gizmo
 	private Point absorberStart = null;
 	private Point selectedCell;
 	private Point clickedCell;
@@ -43,7 +47,13 @@ public class BuildBoard extends Board {
 	private IModel model;
 	private GUI ui;
 	
-	
+	/**
+	 * Constructor
+	 * 
+	 * @param m : Game Model
+	 * @param listener : Event Listener
+	 * @param ui : Parent GUI
+	 */
 	public BuildBoard(final IModel m, final ActionListener listener, final GUI ui) {
 
 		super(m);
@@ -92,7 +102,7 @@ public class BuildBoard extends Board {
 		connect.add(connectGizmo);
 		
 		JMenuItem connectKey = new JMenuItem("Connect Key to Gizmo");
-		connectKey.addActionListener(listener);
+		connectKey.addActionListener( new ConnectKeyListener(g, ui, model));
 		connect.add(connectKey);
 		
 		popup.add(connect);
@@ -276,6 +286,7 @@ public class BuildBoard extends Board {
 	 * @param p the starting point in the grid
 	 */
 	public void setAbsorberStart(Point p) {
+		moveTarget = p;
 		absorberStart = p;
 	}
 	
@@ -311,8 +322,35 @@ public class BuildBoard extends Board {
 		return connectingGizmos;
 	}
 	
+	
 	public void setConnectingGizmo(ActionListener listener){
 		connectingGizmos = listener;
+	}
+	
+	/**
+	 * Set the action listener to be called when when a key is pressed after
+	 * the user has chosen to connect a key to a gizmo. If null, key presses will
+	 * be treated normally and not assigned to a gizmo.
+	 * @param listener 
+	 */
+	public void setConnectingKey(ActionListener listener) {
+		connectingKey = listener;
+	}
+	
+	/**
+	 * Return the action listener which is to be called when a key is pressed
+	 * after the user has chosen to connect a key to a gizmo.
+	 */
+	public ActionListener getConnectingKey() {
+		return connectingKey;
+	}
+	
+	/**
+	 * Cancels connecting a key to a gizmo. Key presses will be treated as normal
+	 * and not assigned to a gizmo.
+	 */
+	public void cancelKeyConnect() {
+		connectingKey = null;
 	}
 	
 	public Point getMoveTarget(){
@@ -397,7 +435,7 @@ public class BuildBoard extends Board {
 		if (clickedCell != null) {
 			int index = clickedCell.x + (clickedCell.y * Global.BOARDWIDTH);
 			Rectangle cell = cells.get(index);
-			g2d.setColor(Color.YELLOW);
+			g2d.setColor(Color.MAGENTA);
 			g2d.fill(cell);
 		}
 
@@ -437,4 +475,5 @@ public class BuildBoard extends Board {
 
 		repaint();
 	}
+	
 }

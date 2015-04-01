@@ -24,16 +24,23 @@ class MusicPlayer{
 	
 	private GUI ui;
 	
+	private boolean playing = false;
+	
+	private URL file1;
+	private URL file2;
+	
 	/**
 	 * The constructor
 	 * 
 	 * @param ui The ui to show errors on
 	 */
 	public MusicPlayer(GUI ui) {
+		
 		this.ui = ui;
 		
-		URL file1 = this.getClass().getResource("soundfiles/RaveTunnnnnnne.wav");
-		URL file2 = this.getClass().getResource("soundfiles/file2.wav");
+		file1 = this.getClass().getResource("soundfiles/RaveTunnnnnnne.wav");
+		file2 = this.getClass().getResource("soundfiles/file2.wav");
+
 		try {
 			inFile1 = AudioSystem.getAudioInputStream(file1);
 			inFile2 = AudioSystem.getAudioInputStream(file2);
@@ -52,16 +59,26 @@ class MusicPlayer{
 	 */
 	public void play(){
 		
-		clip.stop();
-		clip.close();
+		if(System.getProperty("java.vm.name").toLowerCase().contains("openjdk")){
+			ui.displayErrorMessage("Due to openJDK coping the JVM badly, audio files will not play. Sorry!");
+			return;
+		}
+		
+		playing = true;
+		
+		if(playing){
+
+			clip.stop();
+			clip.close();
+		}
 		
 		if(currentMode == Mode.normalMode)
 			return;
 		
-		AudioInputStream in;
+		AudioInputStream in = null;
 		if(currentMode == Mode.raveMode)
 			in = inFile1;
-		else
+		else if (currentMode == Mode.discoMode)
 			in = inFile2;
 		
 		try {
@@ -71,12 +88,11 @@ class MusicPlayer{
 		} catch (IOException e) {
 			ui.displayErrorMessage("Error reading in music file");
 		} catch (IllegalStateException e) {
-//			clip.stop();
 			ui.displayErrorMessage("Need to stop music");
 		}
 		
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
-		
+		clip.setFramePosition(0);
 		clip.start();
 	}
 	
@@ -88,7 +104,24 @@ class MusicPlayer{
 		if(currentMode == Mode.normalMode)
 			return;
 		
+		
+		try {
+			if(currentMode == Mode.raveMode){
+			inFile1.close();
+			inFile1 = AudioSystem.getAudioInputStream(file1);
+		}else if(currentMode == Mode.discoMode){
+			inFile2.close();
+			inFile2 = AudioSystem.getAudioInputStream(file2);
+		}
+		} catch (IOException | UnsupportedAudioFileException e) {
+			ui.displayErrorMessage("Things went badly");
+		}
+			
+		
 		clip.stop();
+		clip.close();
+		
+		playing = false;
 	}
 	
 	/**
@@ -100,8 +133,8 @@ class MusicPlayer{
 		
 		currentMode = mode;
 		
-		if(currentMode == Mode.normalMode){
-			return;
+		if(playing){
+			play();
 		}
 	}
 }

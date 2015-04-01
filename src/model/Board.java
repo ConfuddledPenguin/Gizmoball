@@ -135,15 +135,16 @@ public class Board {
 			checkPosValid( (int) newPoint.getX(), (int) newPoint.getY(), g.getWidth(), g.getHeight(), g);
 		}
 		
-		
 		markAsEmpty(g);
 		
 		//update gizmo
 		g.setPos(newPoint.x, newPoint.y);
 		
 		markAsTaken(g);
-		
 		return true;
+		
+		
+		
 	}
 	
 	/**
@@ -225,6 +226,16 @@ public class Board {
 	 * @throws GridPosAlreadyTakenException
 	 */
 	private void checkPosValid(int x, int y, int width, int height, IGizmo g) throws InvalidGridPosException, GridPosAlreadyTakenException{
+		
+		if(x < 0 ){
+			throw new InvalidGridPosException("The X cord must be greater than 0.");
+		}else if( y < 0 ){
+			throw new InvalidGridPosException("The Y cord must be greater than 0."); 
+		}else if(width < 1){
+			throw new InvalidGridPosException("A gizmos width must be greater then 0.");
+		}else if(height < 1){
+			throw new InvalidGridPosException("A gizmos height must be greater then 0.");
+		}
 		
 		//check if in bounds
 		if(x + width > Global.BOARDWIDTH || y + height > Global.BOARDHEIGHT){

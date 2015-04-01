@@ -19,9 +19,7 @@ import java.util.logging.Logger;
 import model.exceptions.GridPosAlreadyTakenException;
 import model.exceptions.IncorrectFileFormatException;
 import model.exceptions.InvalidGridPosException;
-import model.gizmos.Absorber;
 import model.gizmos.Flipper;
-import model.gizmos.Gizmo;
 import model.gizmos.Gizmo.TriggerType;
 import model.gizmos.Gizmo.Type;
 import model.gizmos.IGizmo;
@@ -188,8 +186,6 @@ public class Model extends Observable implements IModel {
 
 		for (IBall b : balls) {
 
-			System.out.println(p.x + ":" + p.y);
-			System.out.println(b.getX() + ":" + b.getY());
 			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
 				return b;
 			}
@@ -245,7 +241,7 @@ public class Model extends Observable implements IModel {
 	 */
 	@Override
 	public void moveGizmo(Point gizmoPoint, Point newPoint)
-			throws InvalidGridPosException, GridPosAlreadyTakenException {
+			throws InvalidGridPosException, GridPosAlreadyTakenException{
 
 		IGizmo g = this.board.getGizmo(gizmoPoint.x, gizmoPoint.y);
 
@@ -254,9 +250,7 @@ public class Model extends Observable implements IModel {
 		}
 
 		for (IBall b : balls) {
-
 			if (((int) b.getX() >= newPoint.x && (int) b.getY() >= newPoint.y)) {
-
 				if (((int) b.getX() <= newPoint.x + g.getWidth() - 1 && (int) b
 						.getY() <= newPoint.y + g.getHeight() - 1))
 					throw new GridPosAlreadyTakenException("Ball in location");
@@ -370,13 +364,16 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void deleteBall(Point p) {
 		// loop through all balls, if we find ball at point p -> remove it
+		IBall ballsRemove = null;
 		for (IBall b : balls) {
 			if ((int) b.getX() == p.x && (int) b.getY() == p.y) {
-				balls.remove(b);
-				setChanged();
-				notifyObservers(b);
+				ballsRemove = b;
+				
 			}
 		}
+		balls.remove(ballsRemove);
+		setChanged();
+		notifyObservers(ballsRemove);
 	}
 
 	/*
@@ -576,7 +573,7 @@ public class Model extends Observable implements IModel {
 
 		// Check for collision with gizmo
 		for (IGizmo gizmo : board.getGizmos()) {
-			if(gizmo instanceof Flipper){
+			if(gizmo.getType() == Type.RightFlipper || gizmo.getType() == Type.LeftFlipper){
 				
 				
 	
@@ -656,7 +653,7 @@ public class Model extends Observable implements IModel {
 													// collision
 
 					if (cd.getGizmo() != null
-							&& cd.getGizmo().getType() == Gizmo.Type.Absorber) {
+							&& cd.getGizmo().getType() == Type.Absorber) {
 						cd.getGizmo().addBall(ball);
 					}
 					cd.getGizmo().trigger(TriggerType.BALL);
@@ -795,6 +792,9 @@ public class Model extends Observable implements IModel {
 
 		// Check for collisions with other balls
 		for (IBall otherBall : balls) {
+			
+			if(otherBall.isStopped() || ball2.isStopped())
+				continue;
 
 			if (otherBall != ball2) { // make sure not same ball
 

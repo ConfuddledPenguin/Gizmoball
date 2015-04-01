@@ -7,17 +7,17 @@ import sound.ISoundController;
 import model.IModel;
 
 /**
- * Listens for chnages in the settings
+ * Listens for changes in the settings
  *
  */
 public class SettingsListener implements ActionListener {
 
-	private IModel model;
+	//private IModel model;
 	private ISoundController sc;
 	
 	public SettingsListener(IModel model, ISoundController sc) {
 		
-		this.model = model;
+		//this.model = model;
 		this.sc = sc;
 	}
 	

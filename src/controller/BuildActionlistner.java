@@ -180,15 +180,12 @@ public class BuildActionlistner implements ActionListener {
 			break;
 			
 		case ("Move"):
-			
-			System.out.println("Move called");
-			
 			if(!view.getClickedCell().equals(view.getMovedPoint())){
 				
 				try {
 					model.moveGizmo(view.getClickedCell(), view.getMovedPoint());
-				}catch(GridPosAlreadyTakenException | InvalidGridPosException e2){
-					//TODO be smarter about this
+				}catch(GridPosAlreadyTakenException | InvalidGridPosException | ArrayIndexOutOfBoundsException e2){
+					//TODO be smarter about this - ie the array out of bounds does -1 etc
 					view.displayErrorMessage(e2.getMessage());
 				}
 			}
@@ -202,13 +199,11 @@ public class BuildActionlistner implements ActionListener {
 			Global.raveMode = false;
 			Global.discoMode = true;
 			sc.setMode(Mode.discoMode);
-			sc.play();
 			break;
 		case ("Rave"):
 			Global.raveMode = true;
 			Global.discoMode = false;
 			sc.setMode(Mode.raveMode);
-			sc.play();
 			break;
 		}
 	}

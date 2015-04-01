@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
@@ -190,5 +191,11 @@ public abstract class Board extends JPanel implements Observer {
 			colour[2] = 217;
 		}
 		
+	}
+
+
+	public ActionListener getConnectingKey() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -3,9 +3,9 @@ package model.gizmos;
 import java.awt.geom.AffineTransform;
 
 import model.Global;
+import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
-import physics.Circle;
 
 
 /**
@@ -56,9 +56,69 @@ public class LeftFlipper extends Flipper {
 		double x4 = x1;
 		double y4 = y1 + (h/2);
 		
+		int xrotatePoint = cx;
+		int yrotatePoint = cy;
+		
+		switch(o){
+		case TopLeft:
+			break;
+		case TopRight:
+			cx2 = (int) ((this.getXPos()*Global.L)+(w*1.5));
+			cy2 = cy;
+			x1 = getXPos()*Global.L + Global.L/2;
+			y1 = getYPos()*Global.L;
+			
+			x2 = x1;
+			y2 = y1 + Global.L;
+			
+			x3 = x1 + Global.L;
+			y3 = y1;
+			
+			x4 = x3;
+			y4 = y3 + w;
+			
+			xrotatePoint = cx2;
+			
+			break;
+		case BottomRight:
+			
+			cx += Global.L;
+			
+			x1 += Global.L;
+			x2 += Global.L;
+			x3 += Global.L;
+			x4 += Global.L;
+			
+			cx2 += Global.L;
+			
+			xrotatePoint = cx2;
+			yrotatePoint = cy2;
+			
+		case BottomLeft:
+			
+			cx += Global.L;
+			cy += Global.L;
+			
+			x1 = getXPos()*Global.L + Global.L/2;
+			y1 = getYPos()*Global.L + Global.L;
+			
+			x2 = x1;
+			y2 = y1 + Global.L;
+			
+			x3 = x1 + Global.L;
+			y3 = y1 + Global.L;
+			
+			x4 = x3;
+			y4 = y3;
+			
+			xrotatePoint = cx2;
+			yrotatePoint = cy2;
+			
+		}
+		
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
 		
-		AffineTransform.getRotateInstance(Math.toRadians(a + o.getAngle()),cx,cy).transform(pt, 0, pt, 0, pt.length/2); 		
+		AffineTransform.getRotateInstance(Math.toRadians(a),xrotatePoint,yrotatePoint).transform(pt, 0, pt, 0, pt.length/2);	
 		
 		LineSegment ls1 = new LineSegment(pt[4]/Global.L, pt[5]/Global.L, pt[2]/Global.L, pt[3]/Global.L); // right wall
 		LineSegment ls2 = new LineSegment(pt[6]/Global.L,  pt[7]/Global.L, pt[0]/Global.L, pt[1]/Global.L); // left wall
@@ -102,9 +162,7 @@ public class LeftFlipper extends Flipper {
 				setAngularVelocity(0);
 				angle=restingAngle;
 			}
-		}
-		
-		if(triggerType == TriggerType.GIZMO || (triggerType == TriggerType.BALL && angle > 0)){
+		} else if(triggerType == TriggerType.GIZMO || (triggerType == TriggerType.BALL && angle > 0)){
 			if( triggeredPercentage < 0.5){
 				angle=angle+av;
 				setAngularVelocity(av);
@@ -119,6 +177,13 @@ public class LeftFlipper extends Flipper {
 					setAngularVelocity(0);
 					angle=restingAngle;
 				}
+			}
+		} else {
+			setAngularVelocity(av);
+			angle=angle-av;
+			if(angle < restingAngle){
+				setAngularVelocity(0);
+				angle=restingAngle;
 			}
 		}
 		

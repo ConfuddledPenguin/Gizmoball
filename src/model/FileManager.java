@@ -366,9 +366,9 @@ class FileManager {
 				
 				sb.append("Connect");
 				sb.append(space);
-				sb.append(producer);
-				sb.append(space);
 				sb.append(consumer);
+				sb.append(space);
+				sb.append(producer);
 				sb.append(newLine);
 				
 				bw.write(sb.toString());

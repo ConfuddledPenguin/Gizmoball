@@ -57,8 +57,76 @@ public class RightFlipper extends Flipper {
 		double x4 = x1;
 		double y4 = y1 + (h/2);
 		
+		int xrotatePoint = cx;
+		int yrotatePoint = cy;
+		
+		switch (o) {
+		case TopLeft: // default
+			break;
+		case TopRight:
+			
+			cx -= Global.L;
+			cy += Global.L;
+			
+			x1 -= Global.L - 10;
+			y1 += Global.L + 10;
+			
+			x2 -= Global.L - 10;
+			y2 += Global.L + 10;
+			
+			x4 -= Global.L/2;
+			y4 -= Global.L/2;
+			
+			x3 -= Global.L/2;
+			y3 -= Global.L/2;
+			
+			xrotatePoint = cx2;
+			yrotatePoint = cy2;
+			
+			break;
+		case BottomRight:
+			
+			cx -= Global.L;
+			
+			x1 -= Global.L;
+			x2 -= Global.L;
+			x3 -= Global.L;
+			x4 -= Global.L;
+			
+			cx2 = cx;
+			
+			xrotatePoint = cx2;
+			yrotatePoint = cy2;
+			
+		case BottomLeft:
+			
+			cx -= Global.L;
+			
+			x1 -= Global.L/2;
+			y1 += 10;
+			
+			x2 -= Global.L/2;
+			y2 += 10;
+			
+			x4 -= Global.L/2;
+			y4 -= Global.L/2 + Global.L;
+			
+			x3 -= Global.L/2;
+			y3 -= Global.L/2 + Global.L;
+			
+			cy2 -= Global.L;
+			
+			xrotatePoint = cx2;
+			yrotatePoint = cy2;
+			
+			
+			break;
+		}
+		
+		
 		double[] pt = {x1, y1, x2, y2, x3, y3, x4, y4, cx, cy, cx2, cy2};
-		AffineTransform.getRotateInstance(Math.toRadians(a),cx,cy).transform(pt, 0, pt, 0, 6); 		
+		
+		AffineTransform.getRotateInstance(Math.toRadians(a),xrotatePoint,yrotatePoint).transform(pt, 0, pt, 0, 6); 		
 		
 		LineSegment ls1 = new LineSegment(pt[4]/Global.L, pt[5]/Global.L, pt[2]/Global.L, pt[3]/Global.L); // right wall
 		LineSegment ls2 = new LineSegment(pt[6]/Global.L,  pt[7]/Global.L, pt[0]/Global.L, pt[1]/Global.L); // left wall
@@ -97,9 +165,7 @@ public class RightFlipper extends Flipper {
 				setAngularVelocity(0);
 				angle=restingAngle;
 			}
-		}
-		
-		if(triggerType == TriggerType.GIZMO){
+		}else if(triggerType == TriggerType.GIZMO){
 			if( triggeredPercentage < 0.5){
 				angle=angle+av;
 				setAngularVelocity(av);
@@ -115,9 +181,7 @@ public class RightFlipper extends Flipper {
 					angle=restingAngle;
 				}
 			}
-		}
-		
-		if(triggerType == TriggerType.BALL && angle > 0){
+		} else if(triggerType == TriggerType.BALL && angle > 0){
 			if( triggeredPercentage < 0.5){
 				setAngularVelocity(av);
 				angle=angle+av;
@@ -132,6 +196,13 @@ public class RightFlipper extends Flipper {
 					setAngularVelocity(0);
 					angle=restingAngle;
 				}
+			}
+		} else { 
+			setAngularVelocity(av);
+			angle=angle-av;
+			if(angle < restingAngle){
+				setAngularVelocity(0);
+				angle=restingAngle;
 			}
 		}
 		

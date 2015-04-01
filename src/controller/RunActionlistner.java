@@ -11,6 +11,7 @@ import main.GizmoBallMain;
 import model.Global;
 import model.IModel;
 import model.exceptions.IncorrectFileFormatException;
+import sound.ISoundController;
 import view.FileChooser;
 import view.GUI;
 import view.IFileChooser;
@@ -24,6 +25,7 @@ public class RunActionlistner implements ActionListener {
 	private IModel model;
 	private Timer timer;
 	private GUI gui;
+	private ISoundController sc;
 	private RunKeyListener runKey;
 
 	private File currentFile = null;
@@ -35,11 +37,12 @@ public class RunActionlistner implements ActionListener {
 	 * @param g The gui
 	 * @param runKey The run keylistener
 	 */
-	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey) {
+	public RunActionlistner(IModel m, GUI g, RunKeyListener runKey, ISoundController sc) {
 
 		model = m;
 		gui = g;
 		this.runKey = runKey;
+		this.sc = sc;
 		
 		timer = new Timer((int) Global.REFRESHTIME, this);
 	}
@@ -187,6 +190,7 @@ public class RunActionlistner implements ActionListener {
 			case ("Start"):
 				timer.start();
 				gui.changeStartStop("Stop");
+				sc.play();
 				break;
 			case ("Step"):
 				model.update();
@@ -194,6 +198,7 @@ public class RunActionlistner implements ActionListener {
 			case ("Stop"):
 				timer.stop();
 				gui.changeStartStop("Start");
+				sc.stop();
 				break;
 			case ("Restart"):
 				timer.stop();
