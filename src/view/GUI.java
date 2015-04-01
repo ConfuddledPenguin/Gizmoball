@@ -412,7 +412,9 @@ public class GUI implements IGUI {
 	 */
 	@Override
 	public void displayErrorMessage(String msg){
+		controller.getRunKeyListener().processkey(false);
 		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+		controller.getRunKeyListener().processkey(false);
 	}
 
 	/* (non-Javadoc)
