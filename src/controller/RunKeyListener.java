@@ -7,10 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import view.Board;
+import model.IModel;
 import view.IBuildBoard;
 import view.IGUI;
-import model.IModel;
 
 /**
  * Run Key Listener for passing key press/releases to the model during the Run mode.

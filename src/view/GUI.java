@@ -507,8 +507,8 @@ public class GUI implements IGUI {
 	 * @see view.IGUI#showKeyConnectedMessage()
 	 */
 	@Override
-	public void showKeyConnectedMessage() {
-		JOptionPane.showConfirmDialog(this.frame, "Key connected to Gizmo", null, JOptionPane.CLOSED_OPTION);
+	public void showKeyConnectedMessage(String msg) {
+		JOptionPane.showConfirmDialog(this.frame, msg, null, JOptionPane.CLOSED_OPTION);
 		
 	}
 	

@@ -95,8 +95,11 @@ public interface IGUI {
 
 	/**
 	 * Confirm to the user that a key has successfully been connected to a gizmo
+	 * 
+	 * @param msg the message to show
+	 * 
 	 */
-	public abstract void showKeyConnectedMessage();
+	public abstract void showKeyConnectedMessage(String msg);
 	
 	/**
 	 * Get the runboard

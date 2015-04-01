@@ -17,8 +17,6 @@ public class Controller  {
 	private ActionListener buildListener;
 	private ActionListener settingsListener;
 	private RunKeyListener runKeyListener;
-	private IModel m;
-	private IGUI g;
 	
 	private SoundController sc;
 	
@@ -29,8 +27,6 @@ public class Controller  {
 	 * @param g The ui to sue
 	 */
 	public Controller(IModel m, IGUI g) {
-		this.m = m;
-		this.g = g;
 		
 		sc = new SoundController(g);
 		m.addObserver(sc);

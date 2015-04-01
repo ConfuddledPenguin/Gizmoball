@@ -162,7 +162,7 @@ public class IModelTest {
 		m.addGizmo(new Circle(10, 10));
 		m.addGizmo(new Square(11, 10));
 		m.addGizmo(new RightFlipper(11, 11));
-		m.addGizmo(new LeftFlipper(10, 11));
+		m.addGizmo(new LeftFlipper(15, 11));
 		m.addGizmo(new Circle(15, 15));
 		m.addGizmo(new Circle(15, 10));
 		m.addGizmo(new Circle(18, 9));
